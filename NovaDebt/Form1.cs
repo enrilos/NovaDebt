@@ -20,28 +20,24 @@ namespace NovaDebt
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // This can prove more useful. Having the columns when the app stars and letting the user to make CRUD.
             table = new DataTable();
 
             table.Columns.Add("№", typeof(int)); // Id
-            table.Columns.Add("Name", typeof(string));
-            table.Columns.Add("Tel №", typeof(string)); // Phone Number
-            table.Columns.Add("Email", typeof(string));
-            table.Columns.Add("Facebook", typeof(string));
-            table.Columns.Add("Amount", typeof(decimal));
+            table.Columns.Add("Име", typeof(string)); // Name
+            table.Columns.Add("Тел №", typeof(string)); // Phone Number
+            table.Columns.Add("Имейл", typeof(string)); // Email
+            table.Columns.Add("Фейсбук", typeof(string)); // Facebook
+            table.Columns.Add("Количество", typeof(string)); // Amount. Actual type is decimal.
 
             debtorsDataGrid.DataSource = table;
-
-            //May be required to change columns color.
-            //DataGridViewCellStyle style = new DataGridViewCellStyle();
-            //debtorsDataGrid.Columns["№"].DefaultCellStyle.ForeColor = Color.Red;
-            //debtorsDataGrid.Columns["№"].DefaultCellStyle.BackColor = Color.Red;
         }
 
         private void btnDebtors_Click(object sender, EventArgs e)
         {
+            btnDebtors.Enabled = false;
+            btnCreditors.Enabled = true;
             table.Rows.Clear();
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\debtors.txt";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\debtors.xml";
 
             this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
@@ -50,17 +46,14 @@ namespace NovaDebt
 
         private void btnCreditors_Click(object sender, EventArgs e)
         {
+            btnDebtors.Enabled = true;
+            btnCreditors.Enabled = false;
             table.Rows.Clear();
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\creditors.txt";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\creditors.xml";
 
             this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
             InitializeDataGridView(path, TransactorType.Creditors);
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            table.Rows.Clear();
         }
 
         private void InitializeDataGridView(string path, TransactorType transactorType)
@@ -74,7 +67,7 @@ namespace NovaDebt
                 // And if left null the whole object is considered invalid and doesn't go in.
                 if (IsValid(person))
                 {
-                    // Made the code a more generic/abstract.
+                    // Made the code more generic/abstract.
                     ITransactor creditor = ((Transactor)person);
 
                     table.Rows.Add(
@@ -83,7 +76,7 @@ namespace NovaDebt
                         creditor.PhoneNumber,
                         creditor.Email,
                         creditor.Facebook,
-                        creditor.Amount);
+                        creditor.Amount + " лв.");
                 }
             }
         }

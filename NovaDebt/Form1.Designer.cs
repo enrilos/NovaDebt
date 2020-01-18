@@ -32,10 +32,11 @@ namespace NovaDebt
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDebtors = new System.Windows.Forms.Button();
             this.btnCreditors = new System.Windows.Forms.Button();
             this.MenuPanel = new System.Windows.Forms.Panel();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.Title = new System.Windows.Forms.Label();
             this.DataPanel = new System.Windows.Forms.Panel();
             this.debtorsDataGrid = new System.Windows.Forms.DataGridView();
@@ -54,7 +55,7 @@ namespace NovaDebt
             this.btnDebtors.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDebtors.Font = new System.Drawing.Font("Raleway Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDebtors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnDebtors.Location = new System.Drawing.Point(-4, 113);
+            this.btnDebtors.Location = new System.Drawing.Point(0, 113);
             this.btnDebtors.Name = "btnDebtors";
             this.btnDebtors.Size = new System.Drawing.Size(218, 71);
             this.btnDebtors.TabIndex = 0;
@@ -71,7 +72,7 @@ namespace NovaDebt
             this.btnCreditors.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreditors.Font = new System.Drawing.Font("Raleway Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreditors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnCreditors.Location = new System.Drawing.Point(-3, 190);
+            this.btnCreditors.Location = new System.Drawing.Point(0, 190);
             this.btnCreditors.Name = "btnCreditors";
             this.btnCreditors.Size = new System.Drawing.Size(218, 71);
             this.btnCreditors.TabIndex = 1;
@@ -82,7 +83,6 @@ namespace NovaDebt
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.MenuPanel.Controls.Add(this.btnDelete);
             this.MenuPanel.Controls.Add(this.Title);
             this.MenuPanel.Controls.Add(this.btnDebtors);
             this.MenuPanel.Controls.Add(this.btnCreditors);
@@ -92,30 +92,12 @@ namespace NovaDebt
             this.MenuPanel.Size = new System.Drawing.Size(214, 528);
             this.MenuPanel.TabIndex = 2;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDelete.Font = new System.Drawing.Font("Raleway Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnDelete.Location = new System.Drawing.Point(-3, 402);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(218, 71);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Изтрии";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // Title
             // 
             this.Title.AutoSize = true;
             this.Title.Font = new System.Drawing.Font("Raleway Light", 24.5F);
             this.Title.ForeColor = System.Drawing.SystemColors.Window;
-            this.Title.Location = new System.Drawing.Point(4, 9);
+            this.Title.Location = new System.Drawing.Point(3, 9);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(211, 49);
             this.Title.TabIndex = 2;
@@ -134,27 +116,47 @@ namespace NovaDebt
             // 
             this.debtorsDataGrid.AllowUserToAddRows = false;
             this.debtorsDataGrid.AllowUserToDeleteRows = false;
-            this.debtorsDataGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.debtorsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.debtorsDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.debtorsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.debtorsDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.debtorsDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Raleway Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.debtorsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.debtorsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.debtorsDataGrid.ColumnHeadersHeight = 50;
+            this.debtorsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.debtorsDataGrid.EnableHeadersVisualStyles = false;
-            this.debtorsDataGrid.Location = new System.Drawing.Point(52, 36);
+            this.debtorsDataGrid.Location = new System.Drawing.Point(12, 9);
             this.debtorsDataGrid.Name = "debtorsDataGrid";
             this.debtorsDataGrid.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.debtorsDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.debtorsDataGrid.RowHeadersVisible = false;
             this.debtorsDataGrid.RowHeadersWidth = 51;
-            this.debtorsDataGrid.RowTemplate.Height = 45;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.debtorsDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.debtorsDataGrid.RowTemplate.Height = 50;
             this.debtorsDataGrid.RowTemplate.ReadOnly = true;
             this.debtorsDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.debtorsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.debtorsDataGrid.Size = new System.Drawing.Size(754, 437);
+            this.debtorsDataGrid.Size = new System.Drawing.Size(828, 400);
             this.debtorsDataGrid.TabIndex = 0;
             // 
             // Form1
@@ -187,7 +189,6 @@ namespace NovaDebt
         private System.Windows.Forms.Label Title;
         private System.Windows.Forms.Panel DataPanel;
         private System.Windows.Forms.DataGridView debtorsDataGrid;
-        private Button btnDelete;
     }
 }
 
