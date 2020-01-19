@@ -27,7 +27,7 @@ namespace NovaDebt
             table.Columns.Add("Тел №", typeof(string)); // Phone Number
             table.Columns.Add("Имейл", typeof(string)); // Email
             table.Columns.Add("Фейсбук", typeof(string)); // Facebook
-            table.Columns.Add("Количество", typeof(string)); // Amount. Actual type is decimal.
+            table.Columns.Add("Количество", typeof(string)); // Amount. Actual Amount type is decimal.
 
             debtorsDataGrid.DataSource = table;
         }
@@ -36,29 +36,37 @@ namespace NovaDebt
         {
             btnDebtors.Enabled = false;
             btnCreditors.Enabled = true;
+
             table.Rows.Clear();
+
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\debtors.xml";
 
             this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
             InitializeDataGridView(path, TransactorType.Debtors);
+
+            debtorsDataGrid.ClearSelection();
         }
 
         private void btnCreditors_Click(object sender, EventArgs e)
         {
             btnDebtors.Enabled = true;
             btnCreditors.Enabled = false;
+
             table.Rows.Clear();
+
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\creditors.xml";
 
             this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
             InitializeDataGridView(path, TransactorType.Creditors);
+
+            debtorsDataGrid.ClearSelection();
         }
 
         private void InitializeDataGridView(string path, TransactorType transactorType)
         {
-            ICollection<object> people = DeserializeXml(path, transactorType).ToHashSet();
+            IEnumerable<object> people = DeserializeXml(path, transactorType).ToHashSet();
 
             foreach (var person in people)
             {
@@ -123,6 +131,5 @@ namespace NovaDebt
 
             return Validator.TryValidateObject(dto, validationContext, validationResult, true);
         }
-
     }
 }

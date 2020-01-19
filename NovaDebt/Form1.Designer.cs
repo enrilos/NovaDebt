@@ -36,12 +36,12 @@ namespace NovaDebt
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDebtors = new System.Windows.Forms.Button();
             this.btnCreditors = new System.Windows.Forms.Button();
-            this.MenuPanel = new System.Windows.Forms.Panel();
-            this.Title = new System.Windows.Forms.Label();
-            this.DataPanel = new System.Windows.Forms.Panel();
+            this.menuPanel = new System.Windows.Forms.Panel();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.dataPanel = new System.Windows.Forms.Panel();
             this.debtorsDataGrid = new System.Windows.Forms.DataGridView();
-            this.MenuPanel.SuspendLayout();
-            this.DataPanel.SuspendLayout();
+            this.menuPanel.SuspendLayout();
+            this.dataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.debtorsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,37 +80,37 @@ namespace NovaDebt
             this.btnCreditors.UseVisualStyleBackColor = false;
             this.btnCreditors.Click += new System.EventHandler(this.btnCreditors_Click);
             // 
-            // MenuPanel
+            // menuPanel
             // 
-            this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.MenuPanel.Controls.Add(this.Title);
-            this.MenuPanel.Controls.Add(this.btnDebtors);
-            this.MenuPanel.Controls.Add(this.btnCreditors);
-            this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.MenuPanel.Location = new System.Drawing.Point(0, 0);
-            this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(214, 528);
-            this.MenuPanel.TabIndex = 2;
+            this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.menuPanel.Controls.Add(this.titleLabel);
+            this.menuPanel.Controls.Add(this.btnDebtors);
+            this.menuPanel.Controls.Add(this.btnCreditors);
+            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.menuPanel.Location = new System.Drawing.Point(0, 0);
+            this.menuPanel.Name = "menuPanel";
+            this.menuPanel.Size = new System.Drawing.Size(214, 528);
+            this.menuPanel.TabIndex = 2;
             // 
-            // Title
+            // titleLabel
             // 
-            this.Title.AutoSize = true;
-            this.Title.Font = new System.Drawing.Font("Raleway Light", 24.5F);
-            this.Title.ForeColor = System.Drawing.SystemColors.Window;
-            this.Title.Location = new System.Drawing.Point(3, 9);
-            this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(211, 49);
-            this.Title.TabIndex = 2;
-            this.Title.Text = "NovaDebt";
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Raleway Light", 24.5F);
+            this.titleLabel.ForeColor = System.Drawing.SystemColors.Window;
+            this.titleLabel.Location = new System.Drawing.Point(3, 9);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(211, 49);
+            this.titleLabel.TabIndex = 2;
+            this.titleLabel.Text = "NovaDebt";
             // 
-            // DataPanel
+            // dataPanel
             // 
-            this.DataPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.DataPanel.Controls.Add(this.debtorsDataGrid);
-            this.DataPanel.Location = new System.Drawing.Point(212, 0);
-            this.DataPanel.Name = "DataPanel";
-            this.DataPanel.Size = new System.Drawing.Size(851, 528);
-            this.DataPanel.TabIndex = 3;
+            this.dataPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.dataPanel.Controls.Add(this.debtorsDataGrid);
+            this.dataPanel.Location = new System.Drawing.Point(212, 0);
+            this.dataPanel.Name = "dataPanel";
+            this.dataPanel.Size = new System.Drawing.Size(851, 528);
+            this.dataPanel.TabIndex = 3;
             // 
             // debtorsDataGrid
             // 
@@ -165,16 +165,16 @@ namespace NovaDebt
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1063, 528);
-            this.Controls.Add(this.DataPanel);
-            this.Controls.Add(this.MenuPanel);
+            this.Controls.Add(this.dataPanel);
+            this.Controls.Add(this.menuPanel);
             this.MaximumSize = new System.Drawing.Size(1081, 575);
             this.MinimumSize = new System.Drawing.Size(1081, 575);
             this.Name = "Form1";
             this.Text = "NovaDebt";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.MenuPanel.ResumeLayout(false);
-            this.MenuPanel.PerformLayout();
-            this.DataPanel.ResumeLayout(false);
+            this.menuPanel.ResumeLayout(false);
+            this.menuPanel.PerformLayout();
+            this.dataPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.debtorsDataGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -185,9 +185,9 @@ namespace NovaDebt
 
         private System.Windows.Forms.Button btnDebtors;
         private System.Windows.Forms.Button btnCreditors;
-        private System.Windows.Forms.Panel MenuPanel;
-        private System.Windows.Forms.Label Title;
-        private System.Windows.Forms.Panel DataPanel;
+        private System.Windows.Forms.Panel menuPanel;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Panel dataPanel;
         private System.Windows.Forms.DataGridView debtorsDataGrid;
     }
 }
