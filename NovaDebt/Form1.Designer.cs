@@ -31,17 +31,19 @@ namespace NovaDebt
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDebtors = new System.Windows.Forms.Button();
             this.btnCreditors = new System.Windows.Forms.Button();
             this.menuPanel = new System.Windows.Forms.Panel();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.dataPanel = new System.Windows.Forms.Panel();
+            this.novaDebtImage = new System.Windows.Forms.PictureBox();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.debtorsDataGrid = new System.Windows.Forms.DataGridView();
             this.menuPanel.SuspendLayout();
-            this.dataPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.novaDebtImage)).BeginInit();
+            this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.debtorsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,9 +55,9 @@ namespace NovaDebt
             this.btnDebtors.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnDebtors.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnDebtors.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDebtors.Font = new System.Drawing.Font("Raleway Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDebtors.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDebtors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnDebtors.Location = new System.Drawing.Point(0, 113);
+            this.btnDebtors.Location = new System.Drawing.Point(0, 144);
             this.btnDebtors.Name = "btnDebtors";
             this.btnDebtors.Size = new System.Drawing.Size(218, 71);
             this.btnDebtors.TabIndex = 0;
@@ -70,9 +72,9 @@ namespace NovaDebt
             this.btnCreditors.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnCreditors.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnCreditors.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCreditors.Font = new System.Drawing.Font("Raleway Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreditors.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCreditors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnCreditors.Location = new System.Drawing.Point(0, 190);
+            this.btnCreditors.Location = new System.Drawing.Point(0, 221);
             this.btnCreditors.Name = "btnCreditors";
             this.btnCreditors.Size = new System.Drawing.Size(218, 71);
             this.btnCreditors.TabIndex = 1;
@@ -83,7 +85,7 @@ namespace NovaDebt
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.menuPanel.Controls.Add(this.titleLabel);
+            this.menuPanel.Controls.Add(this.novaDebtImage);
             this.menuPanel.Controls.Add(this.btnDebtors);
             this.menuPanel.Controls.Add(this.btnCreditors);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -92,25 +94,24 @@ namespace NovaDebt
             this.menuPanel.Size = new System.Drawing.Size(214, 528);
             this.menuPanel.TabIndex = 2;
             // 
-            // titleLabel
+            // novaDebtImage
             // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Raleway Light", 24.5F);
-            this.titleLabel.ForeColor = System.Drawing.SystemColors.Window;
-            this.titleLabel.Location = new System.Drawing.Point(3, 9);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(211, 49);
-            this.titleLabel.TabIndex = 2;
-            this.titleLabel.Text = "NovaDebt";
+            this.novaDebtImage.Image = ((System.Drawing.Image)(resources.GetObject("novaDebtImage.Image")));
+            this.novaDebtImage.Location = new System.Drawing.Point(6, 9);
+            this.novaDebtImage.Name = "novaDebtImage";
+            this.novaDebtImage.Size = new System.Drawing.Size(200, 90);
+            this.novaDebtImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.novaDebtImage.TabIndex = 3;
+            this.novaDebtImage.TabStop = false;
             // 
-            // dataPanel
+            // mainPanel
             // 
-            this.dataPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.dataPanel.Controls.Add(this.debtorsDataGrid);
-            this.dataPanel.Location = new System.Drawing.Point(212, 0);
-            this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(851, 528);
-            this.dataPanel.TabIndex = 3;
+            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.mainPanel.Controls.Add(this.debtorsDataGrid);
+            this.mainPanel.Location = new System.Drawing.Point(212, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(851, 528);
+            this.mainPanel.TabIndex = 3;
             // 
             // debtorsDataGrid
             // 
@@ -165,16 +166,17 @@ namespace NovaDebt
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1063, 528);
-            this.Controls.Add(this.dataPanel);
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.menuPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1081, 575);
             this.MinimumSize = new System.Drawing.Size(1081, 575);
             this.Name = "Form1";
-            this.Text = "NovaDebt";
+            this.Text = "NovaDebt - Making your financial life easier.";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuPanel.ResumeLayout(false);
-            this.menuPanel.PerformLayout();
-            this.dataPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.novaDebtImage)).EndInit();
+            this.mainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.debtorsDataGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -186,9 +188,9 @@ namespace NovaDebt
         private System.Windows.Forms.Button btnDebtors;
         private System.Windows.Forms.Button btnCreditors;
         private System.Windows.Forms.Panel menuPanel;
-        private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Panel dataPanel;
+        private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.DataGridView debtorsDataGrid;
+        private PictureBox novaDebtImage;
     }
 }
 

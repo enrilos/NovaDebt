@@ -27,9 +27,15 @@ namespace NovaDebt
             table.Columns.Add("Тел №", typeof(string)); // Phone Number
             table.Columns.Add("Имейл", typeof(string)); // Email
             table.Columns.Add("Фейсбук", typeof(string)); // Facebook
-            table.Columns.Add("Количество", typeof(string)); // Amount. Actual Amount type is decimal.
+            table.Columns.Add("Количество", typeof(string)); // Amount. (Actual Amount type is decimal.)
 
             debtorsDataGrid.DataSource = table;
+
+            DataGridViewColumn column = debtorsDataGrid.Columns[0];
+            column.Width = 50;
+
+            //debtorsDataGrid.AdvancedColumnHeadersBorderStyle.Right = DataGridViewAdvancedCellBorderStyle.Single;
+            //debtorsDataGrid.AdvancedColumnHeadersBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.Single;
         }
 
         private void btnDebtors_Click(object sender, EventArgs e)
