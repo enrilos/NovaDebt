@@ -99,7 +99,7 @@ namespace NovaDebt
             if (transactorType == TransactorType.Debtors)
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(DebtorDTO[]),
-                                              new XmlRootAttribute(transactorType.ToString())); // Can present the xmlRoot as an enum.
+                                              new XmlRootAttribute(transactorType.ToString()));
 
                 ITransactor[] debtors = (Transactor[])xmlSerializer.Deserialize(new StringReader(xmlText));
 
@@ -111,7 +111,7 @@ namespace NovaDebt
             else
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(CreditorDTO[]),
-                                              new XmlRootAttribute(transactorType.ToString())); // Can present the xmlRoot as an enum.
+                                              new XmlRootAttribute(transactorType.ToString()));
 
                 ITransactor[] debtors = (Transactor[])xmlSerializer.Deserialize(new StringReader(xmlText));
 
