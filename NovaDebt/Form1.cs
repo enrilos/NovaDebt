@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -34,8 +35,31 @@ namespace NovaDebt
             DataGridViewColumn column = debtorsDataGrid.Columns[0];
             column.Width = 50;
 
-            //debtorsDataGrid.AdvancedColumnHeadersBorderStyle.Right = DataGridViewAdvancedCellBorderStyle.Single;
-            //debtorsDataGrid.AdvancedColumnHeadersBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.Single;
+            // Customizing the buttons from here since it gives me more alternatives.
+            btnDebtors.TabStop = false;
+            btnDebtors.FlatStyle = FlatStyle.Flat;
+            btnDebtors.FlatAppearance.BorderSize = 1;
+            btnDebtors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+
+            btnCreditors.TabStop = false;
+            btnCreditors.FlatStyle = FlatStyle.Flat;
+            btnCreditors.FlatAppearance.BorderSize = 1;
+            btnCreditors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+
+            btnAdd.TabStop = false;
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.FlatAppearance.BorderSize = 1;
+            btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+
+            btnEdit.TabStop = false;
+            btnEdit.FlatStyle = FlatStyle.Flat;
+            btnEdit.FlatAppearance.BorderSize = 1;
+            btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+
+            btnDelete.TabStop = false;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.FlatAppearance.BorderSize = 1;
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
         }
 
         private void btnDebtors_Click(object sender, EventArgs e)
