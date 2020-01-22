@@ -55,7 +55,7 @@ namespace NovaDebt
             this.btnDebtors.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnDebtors.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnDebtors.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDebtors.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDebtors.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDebtors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.btnDebtors.Location = new System.Drawing.Point(0, 144);
             this.btnDebtors.Name = "btnDebtors";
@@ -72,7 +72,7 @@ namespace NovaDebt
             this.btnCreditors.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnCreditors.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnCreditors.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCreditors.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCreditors.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCreditors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.btnCreditors.Location = new System.Drawing.Point(0, 221);
             this.btnCreditors.Name = "btnCreditors";
