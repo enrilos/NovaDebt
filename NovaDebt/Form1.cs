@@ -1,4 +1,7 @@
-﻿using System;
+﻿using NovaDebt.Models;
+using NovaDebt.Models.Contracts;
+using NovaDebt.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -34,8 +37,8 @@ namespace NovaDebt
 
             DataGridViewColumn column = debtorsDataGrid.Columns[0];
             column.Width = 50;
-
-            // Customizing the buttons from here since it gives me more alternatives.
+            
+            // Some of the button customizations are here.
             btnDebtors.TabStop = false;
             btnDebtors.FlatStyle = FlatStyle.Flat;
             btnDebtors.FlatAppearance.BorderSize = 1;
@@ -105,7 +108,6 @@ namespace NovaDebt
                 // And if left null the whole object is considered invalid and doesn't go in.
                 if (IsValid(person))
                 {
-                    // Made the code more generic/abstract.
                     ITransactor creditor = ((Transactor)person);
 
                     table.Rows.Add(
@@ -125,7 +127,6 @@ namespace NovaDebt
 
             ICollection<object> people = new List<object>();
 
-            // Separate classes must be made for each XmlType so the XML can understand.
             if (transactorType == TransactorType.Debtors)
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(DebtorDTO[]),
@@ -160,6 +161,31 @@ namespace NovaDebt
             var validationResult = new List<ValidationResult>();
 
             return Validator.TryValidateObject(dto, validationContext, validationResult, true);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmAddTransactor frmAddTransactor = new frmAddTransactor();
+            frmAddTransactor.Show();
+
+            // Found a way to disable the button if the corresponding form is open.
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "frmAddTransactor")
+                {
+                    btnAdd.Enabled = false;
+                }
+            }
+            
+            // Business logic should be implemented below.
+
+            // Event handler which will enable the button back if the corresponding form is closed.
+            frmAddTransactor.FormClosed += new FormClosedEventHandler(FormClosed);
+        }
+
+        private void FormClosed(object sender, FormClosedEventArgs e)
+        {
+            btnAdd.Enabled = true;
         }
     }
 }
