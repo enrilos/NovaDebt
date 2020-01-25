@@ -1,7 +1,6 @@
 ﻿using DataAnnotationsExtensions;
 using NovaDebt.Models.Contracts;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Serialization;
 
 namespace NovaDebt.Models
 {
@@ -13,12 +12,13 @@ namespace NovaDebt.Models
         private string email;
         private string facebook;
         private decimal amount;
+        private string transactorType;
 
         public Transactor()
         {
         }
 
-        public Transactor(int id, string name, string phoneNumber, string email, string facebook, decimal amount)
+        public Transactor(int id, string name, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
         {
             this.id = id;
             this.name = name;
@@ -26,9 +26,9 @@ namespace NovaDebt.Models
             this.email = email;
             this.facebook = facebook;
             this.amount = amount;
+            this.transactorType = transactorType;
         }
 
-        [XmlElement("Id")]
         [Key]
         [Required]
         public int Id
@@ -37,7 +37,6 @@ namespace NovaDebt.Models
             set { this.id = value; }
         }
 
-        [XmlElement("Name")]
         [Required]
         [MaxLength(100)]
         public string Name
@@ -46,7 +45,6 @@ namespace NovaDebt.Models
             set { this.name = value; }
         }
 
-        [XmlElement("PhoneNumber")]
         [Phone]
         public string PhoneNumber
         {
@@ -54,7 +52,6 @@ namespace NovaDebt.Models
             set { this.phoneNumber = value; }
         }
 
-        [XmlElement("Email")]
         [Email]
         public string Email
         {
@@ -62,7 +59,6 @@ namespace NovaDebt.Models
             set { this.email = value; }
         }
 
-        [XmlElement("Facebook")]
         [MaxLength(70)]
         public string Facebook
         {
@@ -70,13 +66,19 @@ namespace NovaDebt.Models
             set { this.facebook = value; }
         }
 
-        [XmlElement("Amount")]
         [Required]
         [Range(typeof(decimal), minimum: "0.01", maximum: "4294967295")]
         public decimal Amount
         {
             get { return this.amount; }
             set { this.amount = value; }
+        }
+
+        [Required]
+        public string TransactorType
+        {
+            get { return this.transactorType; }
+            set { this.transactorType = value; }
         }
     }
 }

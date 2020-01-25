@@ -1,4 +1,6 @@
-﻿namespace NovaDebt.Models.Contracts
+﻿using NovaDebt.Models.Enums;
+
+namespace NovaDebt.Models.Contracts
 {
     public interface ITransactor
     {
@@ -13,5 +15,7 @@
         string Facebook { get; }
 
         decimal Amount { get; }
+
+        string TransactorType { get; }
     }
 }

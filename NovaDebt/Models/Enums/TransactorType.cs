@@ -2,7 +2,7 @@
 {
     public enum TransactorType
     {
-        Debtors,
-        Creditors
+        Debtor,
+        Creditor
     }
 }
