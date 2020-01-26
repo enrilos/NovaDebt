@@ -54,6 +54,8 @@ namespace NovaDebt
         private void Form1_Load(object sender, EventArgs e)
         {
             // Initializing a profile class which contains mapping configurations inside it.
+            // Current version: 7.0.1
+            // NOTE: Newer versions of the AutoMapper don't use the static Mapper class.
             Mapper
                 .Initialize(cfg => cfg.AddProfile<NovaDebtProfile>());
 

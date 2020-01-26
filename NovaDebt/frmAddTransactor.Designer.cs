@@ -55,7 +55,7 @@
             this.btnAddConfirm.Location = new System.Drawing.Point(612, 386);
             this.btnAddConfirm.Name = "btnAddConfirm";
             this.btnAddConfirm.Size = new System.Drawing.Size(176, 52);
-            this.btnAddConfirm.TabIndex = 5;
+            this.btnAddConfirm.TabIndex = 18;
             this.btnAddConfirm.Text = "Добави";
             this.btnAddConfirm.UseVisualStyleBackColor = true;
             this.btnAddConfirm.Click += new System.EventHandler(this.btnAddConfirm_Click);
@@ -72,7 +72,7 @@
             this.btnAddCancel.Location = new System.Drawing.Point(430, 386);
             this.btnAddCancel.Name = "btnAddCancel";
             this.btnAddCancel.Size = new System.Drawing.Size(176, 52);
-            this.btnAddCancel.TabIndex = 6;
+            this.btnAddCancel.TabIndex = 17;
             this.btnAddCancel.Text = "Отказ";
             this.btnAddCancel.UseVisualStyleBackColor = true;
             this.btnAddCancel.Click += new System.EventHandler(this.btnAddCancel_Click);
@@ -83,7 +83,7 @@
             this.addNameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addNameLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addNameLabel.Location = new System.Drawing.Point(48, 34);
+            this.addNameLabel.Location = new System.Drawing.Point(192, 50);
             this.addNameLabel.Name = "addNameLabel";
             this.addNameLabel.Size = new System.Drawing.Size(68, 30);
             this.addNameLabel.TabIndex = 7;
@@ -95,7 +95,7 @@
             this.addPhoneLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addPhoneLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addPhoneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addPhoneLabel.Location = new System.Drawing.Point(48, 87);
+            this.addPhoneLabel.Location = new System.Drawing.Point(174, 100);
             this.addPhoneLabel.Name = "addPhoneLabel";
             this.addPhoneLabel.Size = new System.Drawing.Size(86, 30);
             this.addPhoneLabel.TabIndex = 8;
@@ -107,7 +107,7 @@
             this.addEmailLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addEmailLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addEmailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addEmailLabel.Location = new System.Drawing.Point(48, 140);
+            this.addEmailLabel.Location = new System.Drawing.Point(164, 150);
             this.addEmailLabel.Name = "addEmailLabel";
             this.addEmailLabel.Size = new System.Drawing.Size(96, 30);
             this.addEmailLabel.TabIndex = 9;
@@ -119,7 +119,7 @@
             this.addFacebookLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addFacebookLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addFacebookLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addFacebookLabel.Location = new System.Drawing.Point(48, 195);
+            this.addFacebookLabel.Location = new System.Drawing.Point(138, 200);
             this.addFacebookLabel.Name = "addFacebookLabel";
             this.addFacebookLabel.Size = new System.Drawing.Size(122, 30);
             this.addFacebookLabel.TabIndex = 10;
@@ -131,7 +131,7 @@
             this.addAmountLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addAmountLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addAmountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addAmountLabel.Location = new System.Drawing.Point(48, 247);
+            this.addAmountLabel.Location = new System.Drawing.Point(110, 250);
             this.addAmountLabel.Name = "addAmountLabel";
             this.addAmountLabel.Size = new System.Drawing.Size(150, 30);
             this.addAmountLabel.TabIndex = 11;
@@ -142,7 +142,7 @@
             this.addNameTextBox.BackColor = System.Drawing.Color.White;
             this.addNameTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.addNameTextBox.Location = new System.Drawing.Point(291, 32);
+            this.addNameTextBox.Location = new System.Drawing.Point(266, 48);
             this.addNameTextBox.MaxLength = 70;
             this.addNameTextBox.Name = "addNameTextBox";
             this.addNameTextBox.Size = new System.Drawing.Size(390, 36);
@@ -153,8 +153,8 @@
             this.addPhoneTextBox.BackColor = System.Drawing.Color.White;
             this.addPhoneTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addPhoneTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.addPhoneTextBox.Location = new System.Drawing.Point(291, 85);
-            this.addPhoneTextBox.MaxLength = 20;
+            this.addPhoneTextBox.Location = new System.Drawing.Point(266, 98);
+            this.addPhoneTextBox.MaxLength = 50;
             this.addPhoneTextBox.Name = "addPhoneTextBox";
             this.addPhoneTextBox.Size = new System.Drawing.Size(390, 36);
             this.addPhoneTextBox.TabIndex = 13;
@@ -164,7 +164,7 @@
             this.addEmailTextBox.BackColor = System.Drawing.Color.White;
             this.addEmailTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addEmailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.addEmailTextBox.Location = new System.Drawing.Point(291, 138);
+            this.addEmailTextBox.Location = new System.Drawing.Point(266, 148);
             this.addEmailTextBox.MaxLength = 100;
             this.addEmailTextBox.Name = "addEmailTextBox";
             this.addEmailTextBox.Size = new System.Drawing.Size(390, 36);
@@ -175,7 +175,7 @@
             this.addFacebookTextBox.BackColor = System.Drawing.Color.White;
             this.addFacebookTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addFacebookTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.addFacebookTextBox.Location = new System.Drawing.Point(291, 193);
+            this.addFacebookTextBox.Location = new System.Drawing.Point(266, 198);
             this.addFacebookTextBox.MaxLength = 100;
             this.addFacebookTextBox.Name = "addFacebookTextBox";
             this.addFacebookTextBox.Size = new System.Drawing.Size(390, 36);
@@ -186,8 +186,8 @@
             this.addAmountTextBox.BackColor = System.Drawing.Color.White;
             this.addAmountTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addAmountTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.addAmountTextBox.Location = new System.Drawing.Point(291, 245);
-            this.addAmountTextBox.MaxLength = 15;
+            this.addAmountTextBox.Location = new System.Drawing.Point(266, 248);
+            this.addAmountTextBox.MaxLength = 10;
             this.addAmountTextBox.Name = "addAmountTextBox";
             this.addAmountTextBox.Size = new System.Drawing.Size(390, 36);
             this.addAmountTextBox.TabIndex = 16;
