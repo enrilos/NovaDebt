@@ -35,7 +35,7 @@ namespace NovaDebt
         private void Form1_Load(object sender, EventArgs e)
         {
             // Initializing a profile class which contains mapping configurations inside it.
-            // Current version: 7.0.1
+            // Version which is used: 7.0.1
             // NOTE: Newer versions of the AutoMapper don't use the static Mapper class.
             Mapper
                 .Initialize(cfg => cfg.AddProfile<NovaDebtProfile>());
@@ -67,7 +67,7 @@ namespace NovaDebt
 
             this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
-            InitializeDataGridView(path, TransactorType.Debtor);
+            FillDataGridView(path, TransactorType.Debtor);
 
             debtorsDataGrid.ClearSelection();
         }
@@ -83,7 +83,7 @@ namespace NovaDebt
 
             this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
-            InitializeDataGridView(path, TransactorType.Creditor);
+            FillDataGridView(path, TransactorType.Creditor);
 
             debtorsDataGrid.ClearSelection();
         }
@@ -106,11 +106,11 @@ namespace NovaDebt
             frmAddTransactor.FormClosed += new FormClosedEventHandler(FormClosed);
         }
 
-        private void InitializeDataGridView(string path, TransactorType transactorType)
+        private void FillDataGridView(string path, TransactorType transactorType)
         {
             IEnumerable<ITransactor> transactors = DeserializeXml(path, transactorType);
 
-            foreach (var transactor in transactors)
+            foreach (ITransactor transactor in transactors)
             {
                 // I should make validating methods for properties like Email manually
                 // Sometimes the user won't know the person's email

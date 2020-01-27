@@ -16,19 +16,46 @@ namespace NovaDebt
             btnAddConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             btnAddCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
 
-            // Settins a default transactor select button
+            // Settins the default transactor select button as Debtor
             btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
         }
 
         private void btnAddConfirm_Click(object sender, EventArgs e)
         {
-            ValidateInputFields();
+            bool areFieldsValid = ValidateInputFields();
 
-            // After validating:
-            // Trimming at the beginning and the end of each string is a mandatory tasks!
-            // Also trying to validate through a regex which replaces multiple whitespaces with a single one.
-            // (which can occur in the middle of several words/characters in a string)
+            if (areFieldsValid)
+            {
+                string[] inputFields = new string[] {
+                    addNameTextBox.Text,
+                    addPhoneTextBox.Text,
+                    addEmailTextBox.Text,
+                    addFacebookTextBox.Text,
+                    addAmountTextBox.Text
+                };
+
+                RegexOptions options = RegexOptions.None;
+                Regex regex = new Regex("[ ]{2,}", options);
+                // Removing all unnecessary whitespaces.
+
+                for (int i = 0; i < inputFields.Length; i++)
+                {
+                    inputFields[i] = inputFields[i].TrimStart().TrimEnd();
+                    inputFields[i] = regex.Replace(inputFields[i], " ");
+                }
+
+                // Spacing problem should be done by now.
+
+                if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
+                {
+                    // Add the transactor in the Debtors section (serialize it as XML and then refresh the data grid)
+                }
+                else if (btnAddCreditor.BackColor == Color.FromArgb(0, 208, 255))
+                {
+                    // The exact same but with a Creditor
+                }
+            }
         }
 
         private void btnAddCancel_Click(object sender, EventArgs e)
@@ -42,7 +69,7 @@ namespace NovaDebt
             }
         }
 
-        private void ValidateInputFields()
+        private bool ValidateInputFields()
         {
             //
             // Име - Name (Required)
@@ -55,7 +82,8 @@ namespace NovaDebt
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                return;
+
+                return false;
             }
             else if (string.IsNullOrEmpty(addNameTextBox.Text) || string.IsNullOrWhiteSpace(addNameTextBox.Text))
             {
@@ -63,8 +91,10 @@ namespace NovaDebt
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                return;
+
+                return false;
             }
+
             //
             // Тел № - PhoneNumber
             //
@@ -76,8 +106,10 @@ namespace NovaDebt
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                return;
+
+                return false;
             }
+
             //
             // Имейл - Email
             //
@@ -89,8 +121,10 @@ namespace NovaDebt
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                return;
+
+                return false;
             }
+
             //
             // Фейсбук - Facebook
             //
@@ -102,8 +136,10 @@ namespace NovaDebt
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                return;
+
+                return false;
             }
+
             //
             // Количество - Amount (Required)
             //
@@ -120,16 +156,18 @@ namespace NovaDebt
                            ErrorMessageBoxCaption,
                            MessageBoxButtons.OK,
                            MessageBoxIcon.Error);
-                    return;
+
+                    return false;
                 }
             }
-            else if(string.IsNullOrEmpty(addAmountTextBox.Text) || string.IsNullOrWhiteSpace(addAmountTextBox.Text))
+            else if (string.IsNullOrEmpty(addAmountTextBox.Text) || string.IsNullOrWhiteSpace(addAmountTextBox.Text))
             {
                 MessageBox.Show($"Количеството е задължително.",
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                return;
+
+                return false;
             }
             else
             {
@@ -137,8 +175,11 @@ namespace NovaDebt
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                return;
+
+                return false;
             }
+
+            return true;
         }
 
         private void btnAddDebtor_Click(object sender, EventArgs e)
