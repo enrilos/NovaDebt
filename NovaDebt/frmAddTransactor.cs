@@ -13,15 +13,7 @@ namespace NovaDebt
         public frmAddTransactor()
         {
             InitializeComponent();
-
-            btnAddConfirm.TabStop = false;
-            btnAddConfirm.FlatStyle = FlatStyle.Flat;
-            btnAddConfirm.FlatAppearance.BorderSize = 1;
             btnAddConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-
-            btnAddCancel.TabStop = false;
-            btnAddCancel.FlatStyle = FlatStyle.Flat;
-            btnAddCancel.FlatAppearance.BorderSize = 1;
             btnAddCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
         }
         
@@ -54,10 +46,11 @@ namespace NovaDebt
 
             if (!regex.IsMatch(addNameTextBox.Text) && !string.IsNullOrEmpty(addNameTextBox.Text))
             {
-                MessageBox.Show($"Името трябва да се състои само от букви и цифри",
+                MessageBox.Show($"Името може да се състои само от букви и цифри.",
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                return;
             }
 
             // Тел № - PhoneNumber
@@ -66,10 +59,11 @@ namespace NovaDebt
 
             if (!regex.IsMatch(addPhoneTextBox.Text) && !string.IsNullOrEmpty(addPhoneTextBox.Text))
             {
-                MessageBox.Show($"Невалиден Тел №",
+                MessageBox.Show($"Невалиден Тел №.",
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                return;
             }
 
             // Имейл - Email
@@ -78,10 +72,11 @@ namespace NovaDebt
 
             if (!regex.IsMatch(addEmailTextBox.Text) && !string.IsNullOrEmpty(addEmailTextBox.Text))
             {
-                MessageBox.Show($"Невалиден Имейл",
+                MessageBox.Show($"Невалиден Имейл.",
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                return;
             }
 
             // Фейсбук - Facebook
@@ -90,13 +85,14 @@ namespace NovaDebt
 
             if (!regex.IsMatch(addFacebookTextBox.Text) && !string.IsNullOrEmpty(addFacebookTextBox.Text))
             {
-                MessageBox.Show($"Невалиден Фейсбук",
+                MessageBox.Show($"Невалиден Фейсбук.",
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                return;
             }
 
-            // Количество - Amount (consider doing it with regex too.)
+            // Количество - Amount
 
             if (!string.IsNullOrEmpty(addAmountTextBox.Text.Trim()))
             {
@@ -104,10 +100,11 @@ namespace NovaDebt
 
                 if (decimal.TryParse(addAmountTextBox.Text, out amount) == false)
                 {
-                    MessageBox.Show($"Количеството трябва да се състои само от цифри",
+                    MessageBox.Show($"Количеството трябва да се състои само от цифри.",
                         ErrorMessageBoxCaption,
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
+                    return;
                 }
                 else
                 {
@@ -115,13 +112,36 @@ namespace NovaDebt
 
                     if (amount < 0.01m || amount > 4294967295m)
                     {
-                        MessageBox.Show($"Количеството трябва да е в интервала 0.01 - 4294967295",
+                        MessageBox.Show($"Количеството трябва да е в интервала 0.01 - 4294967295.",
                                ErrorMessageBoxCaption,
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Error);
+                        return;
                     }
                 }
             }
+        }
+
+        private void btnAddDebtor_Click(object sender, EventArgs e)
+        {
+            // other
+            btnAddCreditor.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            btnAddCreditor.BackColor = Color.FromArgb(50, 50, 50);
+
+            // this
+            btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
+        }
+
+        private void btnAddCreditor_Click(object sender, EventArgs e)
+        {
+            // other
+            btnAddDebtor.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            btnAddDebtor.BackColor = Color.FromArgb(50, 50, 50);
+
+            // this
+            btnAddCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            btnAddCreditor.BackColor = Color.FromArgb(0, 208, 255);
         }
     }
 }

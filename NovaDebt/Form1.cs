@@ -25,29 +25,10 @@ namespace NovaDebt
             InitializeComponent();
 
             // Button customizations are made both in code and the UI.
-            btnDebtors.TabStop = false;
-            btnDebtors.FlatStyle = FlatStyle.Flat;
-            btnDebtors.FlatAppearance.BorderSize = 1;
             btnDebtors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-
-            btnCreditors.TabStop = false;
-            btnCreditors.FlatStyle = FlatStyle.Flat;
-            btnCreditors.FlatAppearance.BorderSize = 1;
             btnCreditors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-
-            btnAdd.TabStop = false;
-            btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.FlatAppearance.BorderSize = 1;
             btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-
-            btnEdit.TabStop = false;
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.FlatAppearance.BorderSize = 1;
             btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-
-            btnDelete.TabStop = false;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.FlatAppearance.BorderSize = 1;
             btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
         }
 
