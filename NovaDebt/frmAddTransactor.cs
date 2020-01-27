@@ -15,8 +15,12 @@ namespace NovaDebt
             InitializeComponent();
             btnAddConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             btnAddCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+
+            // Settins a default transactor select button
+            btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
         }
-        
+
         private void btnAddConfirm_Click(object sender, EventArgs e)
         {
             ValidateInputFields();
@@ -40,11 +44,12 @@ namespace NovaDebt
 
         private void ValidateInputFields()
         {
-            // Име - Name
+            //
+            // Име - Name (Required)
+            //
+            Regex regex = new Regex("^[a-zA-Z0-9 ]*$");
 
-            Regex regex = new Regex("^[a-zA-Z0-9]*$");
-
-            if (!regex.IsMatch(addNameTextBox.Text) && !string.IsNullOrEmpty(addNameTextBox.Text))
+            if (!regex.IsMatch(addNameTextBox.Text))
             {
                 MessageBox.Show($"Името може да се състои само от букви и цифри.",
                     ErrorMessageBoxCaption,
@@ -52,12 +57,20 @@ namespace NovaDebt
                     MessageBoxIcon.Error);
                 return;
             }
-
+            else if (string.IsNullOrEmpty(addNameTextBox.Text) || string.IsNullOrWhiteSpace(addNameTextBox.Text))
+            {
+                MessageBox.Show($"Името e задължително.",
+                    ErrorMessageBoxCaption,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+            //
             // Тел № - PhoneNumber
+            //
+            regex = new Regex("^[+0-9-() ]*$");
 
-            regex = new Regex("^[+0-9-()]*$");
-
-            if (!regex.IsMatch(addPhoneTextBox.Text) && !string.IsNullOrEmpty(addPhoneTextBox.Text))
+            if (!regex.IsMatch(addPhoneTextBox.Text))
             {
                 MessageBox.Show($"Невалиден Тел №.",
                     ErrorMessageBoxCaption,
@@ -65,12 +78,12 @@ namespace NovaDebt
                     MessageBoxIcon.Error);
                 return;
             }
-
+            //
             // Имейл - Email
-
+            //
             regex = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
 
-            if (!regex.IsMatch(addEmailTextBox.Text) && !string.IsNullOrEmpty(addEmailTextBox.Text))
+            if (!regex.IsMatch(addEmailTextBox.Text.Trim()) && !string.IsNullOrEmpty(addEmailTextBox.Text.Trim()))
             {
                 MessageBox.Show($"Невалиден Имейл.",
                     ErrorMessageBoxCaption,
@@ -78,12 +91,12 @@ namespace NovaDebt
                     MessageBoxIcon.Error);
                 return;
             }
-
+            //
             // Фейсбук - Facebook
-
+            //
             regex = new Regex("^[A-z ]*$");
 
-            if (!regex.IsMatch(addFacebookTextBox.Text) && !string.IsNullOrEmpty(addFacebookTextBox.Text))
+            if (!regex.IsMatch(addFacebookTextBox.Text))
             {
                 MessageBox.Show($"Невалиден Фейсбук.",
                     ErrorMessageBoxCaption,
@@ -91,34 +104,40 @@ namespace NovaDebt
                     MessageBoxIcon.Error);
                 return;
             }
+            //
+            // Количество - Amount (Required)
+            //
+            regex = new Regex("^[0-9]+([.,][0-9]{1,2})?$");
+            decimal amount;
 
-            // Количество - Amount
-
-            if (!string.IsNullOrEmpty(addAmountTextBox.Text.Trim()))
+            if (regex.IsMatch(addAmountTextBox.Text.Trim()))
             {
-                decimal amount;
+                amount = decimal.Parse(addAmountTextBox.Text);
 
-                if (decimal.TryParse(addAmountTextBox.Text, out amount) == false)
+                if (amount < 0.01m || amount > 4294967295m)
                 {
-                    MessageBox.Show($"Количеството трябва да се състои само от цифри.",
-                        ErrorMessageBoxCaption,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show($"Количеството трябва да е в интервала 0.01 - 4294967295.",
+                           ErrorMessageBoxCaption,
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Error);
                     return;
                 }
-                else
-                {
-                    amount = decimal.Parse(addAmountTextBox.Text);
-
-                    if (amount < 0.01m || amount > 4294967295m)
-                    {
-                        MessageBox.Show($"Количеството трябва да е в интервала 0.01 - 4294967295.",
-                               ErrorMessageBoxCaption,
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.Error);
-                        return;
-                    }
-                }
+            }
+            else if(string.IsNullOrEmpty(addAmountTextBox.Text) || string.IsNullOrWhiteSpace(addAmountTextBox.Text))
+            {
+                MessageBox.Show($"Количеството е задължително.",
+                    ErrorMessageBoxCaption,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                MessageBox.Show($"Невалидно количество.",
+                    ErrorMessageBoxCaption,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
             }
         }
 

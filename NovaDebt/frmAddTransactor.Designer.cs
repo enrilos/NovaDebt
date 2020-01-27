@@ -189,7 +189,7 @@
             this.addAmountTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addAmountTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.addAmountTextBox.Location = new System.Drawing.Point(266, 228);
-            this.addAmountTextBox.MaxLength = 10;
+            this.addAmountTextBox.MaxLength = 20;
             this.addAmountTextBox.Name = "addAmountTextBox";
             this.addAmountTextBox.Size = new System.Drawing.Size(390, 36);
             this.addAmountTextBox.TabIndex = 4;
