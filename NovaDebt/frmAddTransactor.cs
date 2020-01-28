@@ -7,6 +7,16 @@ namespace NovaDebt
 {
     public partial class frmAddTransactor : Form
     {
+        private const decimal MinAmountValue = 0.01m;
+        private const decimal MaxAmountValue = 4294967295m;
+        private const string InvalidNameErrorMessage = "Името може да се състои само от букви и цифри.";
+        private const string MissingNameErrorMessage = "Името e задължително.";
+        private const string InvalidPhoneNumberErrorMessage = "Невалиден Тел №.";
+        private const string InvalidEmailErrorMessage = "Невалиден Имейл.";
+        private const string InvalidFacebookErrorMessage = "Невалиден Фейсбук.";
+        private const string InvalidAmountInterval = "Количеството трябва да е в интервала {0} - {1}.";
+        private const string MissingAmountErrorMessage = "Количеството е задължително.";
+        private const string InvalidAmountErrorMessage = "Невалидно количество.";
         private const string ErrorMessageBoxCaption = "Грешка";
         private const string ExitMessageBoxCaption = "Изход";
 
@@ -37,10 +47,10 @@ namespace NovaDebt
 
                 RegexOptions options = RegexOptions.None;
                 Regex regex = new Regex("[ ]{2,}", options);
-                // Removing all unnecessary whitespaces.
 
                 for (int i = 0; i < inputFields.Length; i++)
                 {
+                    // Removing all unnecessary whitespaces.
                     inputFields[i] = inputFields[i].TrimStart().TrimEnd();
                     inputFields[i] = regex.Replace(inputFields[i], " ");
                 }
@@ -60,6 +70,8 @@ namespace NovaDebt
 
         private void btnAddCancel_Click(object sender, EventArgs e)
         {
+            // I should make the same when the user clicks the Exit button (X).
+            // And after that 2 actions will use the same function.
             if (MessageBox.Show($"Данните няма да бъдат запазени.{Environment.NewLine}Наистина ли искате да излезете?",
                 ExitMessageBoxCaption,
                 MessageBoxButtons.YesNo,
@@ -78,7 +90,7 @@ namespace NovaDebt
 
             if (!regex.IsMatch(addNameTextBox.Text))
             {
-                MessageBox.Show($"Името може да се състои само от букви и цифри.",
+                MessageBox.Show(InvalidNameErrorMessage,
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -87,7 +99,7 @@ namespace NovaDebt
             }
             else if (string.IsNullOrEmpty(addNameTextBox.Text) || string.IsNullOrWhiteSpace(addNameTextBox.Text))
             {
-                MessageBox.Show($"Името e задължително.",
+                MessageBox.Show(MissingNameErrorMessage,
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -102,7 +114,7 @@ namespace NovaDebt
 
             if (!regex.IsMatch(addPhoneTextBox.Text))
             {
-                MessageBox.Show($"Невалиден Тел №.",
+                MessageBox.Show(InvalidPhoneNumberErrorMessage,
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -117,7 +129,7 @@ namespace NovaDebt
 
             if (!regex.IsMatch(addEmailTextBox.Text.Trim()) && !string.IsNullOrEmpty(addEmailTextBox.Text.Trim()))
             {
-                MessageBox.Show($"Невалиден Имейл.",
+                MessageBox.Show(InvalidEmailErrorMessage,
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -132,7 +144,7 @@ namespace NovaDebt
 
             if (!regex.IsMatch(addFacebookTextBox.Text))
             {
-                MessageBox.Show($"Невалиден Фейсбук.",
+                MessageBox.Show(InvalidFacebookErrorMessage,
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -152,7 +164,7 @@ namespace NovaDebt
 
                 if (amount < 0.01m || amount > 4294967295m)
                 {
-                    MessageBox.Show($"Количеството трябва да е в интервала 0.01 - 4294967295.",
+                    MessageBox.Show(string.Format(InvalidAmountInterval, MinAmountValue, MaxAmountValue),
                            ErrorMessageBoxCaption,
                            MessageBoxButtons.OK,
                            MessageBoxIcon.Error);
@@ -162,7 +174,7 @@ namespace NovaDebt
             }
             else if (string.IsNullOrEmpty(addAmountTextBox.Text) || string.IsNullOrWhiteSpace(addAmountTextBox.Text))
             {
-                MessageBox.Show($"Количеството е задължително.",
+                MessageBox.Show(MissingAmountErrorMessage,
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -171,7 +183,7 @@ namespace NovaDebt
             }
             else
             {
-                MessageBox.Show($"Невалидно количество.",
+                MessageBox.Show(InvalidAmountErrorMessage,
                     ErrorMessageBoxCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

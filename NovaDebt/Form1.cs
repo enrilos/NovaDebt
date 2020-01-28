@@ -93,16 +93,10 @@ namespace NovaDebt
             frmAddTransactor frmAddTransactor = new frmAddTransactor();
             frmAddTransactor.Show();
 
-            // Found a way to disable the button if the corresponding form is open.
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.Name == "frmAddTransactor")
-                {
-                    btnAdd.Enabled = false;
-                }
-            }
+            // Disabling the main form while a subform is open.
+            this.Enabled = false;
 
-            // Event handler which will enable the add button back if the corresponding form is closed.
+            // Event handler which will enable the main form if the add form is closed.
             frmAddTransactor.FormClosed += new FormClosedEventHandler(FormClosed);
         }
 
@@ -159,7 +153,8 @@ namespace NovaDebt
 
         private void FormClosed(object sender, FormClosedEventArgs e)
         {
-            btnAdd.Enabled = true;
+            // Enabling the main form.
+            this.Enabled = true;
         }
     }
 }
