@@ -23,12 +23,18 @@ namespace NovaDebt
         public frmAddTransactor()
         {
             InitializeComponent();
+        }
+
+        private void frmAddTransactor_Load(object sender, EventArgs e)
+        {
             btnAddConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             btnAddCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
 
-            // Settins the default transactor select button as Debtor
+            // Setting the default selected button as Debtor
             btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
+
+            this.FormClosing += new FormClosingEventHandler(WarnUserOnExit);
         }
 
         private void btnAddConfirm_Click(object sender, EventArgs e)
@@ -57,6 +63,8 @@ namespace NovaDebt
 
                 // Spacing problem should be done by now.
 
+                // It is time for the actual adding now.
+
                 if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     // Add the transactor in the Debtors section (serialize it as XML and then refresh the data grid)
@@ -70,15 +78,39 @@ namespace NovaDebt
 
         private void btnAddCancel_Click(object sender, EventArgs e)
         {
-            // I should make the same when the user clicks the Exit button (X).
-            // And after that 2 actions will use the same function.
             if (MessageBox.Show($"Данните няма да бъдат запазени.{Environment.NewLine}Наистина ли искате да излезете?",
                 ExitMessageBoxCaption,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                // Deattaching the FormClosing event handler method so it doesn't glitch.
+                // This is done before every this.Close(); method to avoid potential bugs.
+                // In this case only the button Cancel and the EXIT button.
+                this.FormClosing -= WarnUserOnExit;
                 this.Close();
             }
+        }
+
+        private void btnAddDebtor_Click(object sender, EventArgs e)
+        {
+            // other
+            btnAddCreditor.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            btnAddCreditor.BackColor = Color.FromArgb(50, 50, 50);
+
+            // this
+            btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
+        }
+
+        private void btnAddCreditor_Click(object sender, EventArgs e)
+        {
+            // other
+            btnAddDebtor.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            btnAddDebtor.BackColor = Color.FromArgb(50, 50, 50);
+
+            // this
+            btnAddCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            btnAddCreditor.BackColor = Color.FromArgb(0, 208, 255);
         }
 
         private bool ValidateInputFields()
@@ -194,26 +226,25 @@ namespace NovaDebt
             return true;
         }
 
-        private void btnAddDebtor_Click(object sender, EventArgs e)
+        private void WarnUserOnExit(object sender, FormClosingEventArgs e)
         {
-            // other
-            btnAddCreditor.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            btnAddCreditor.BackColor = Color.FromArgb(50, 50, 50);
+            DialogResult dialog = MessageBox.Show($"Данните няма да бъдат запазени.{Environment.NewLine}Наистина ли искате да излезете?",
+                   ExitMessageBoxCaption,
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question);
 
-            // this
-            btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
-        }
-
-        private void btnAddCreditor_Click(object sender, EventArgs e)
-        {
-            // other
-            btnAddDebtor.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            btnAddDebtor.BackColor = Color.FromArgb(50, 50, 50);
-
-            // this
-            btnAddCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnAddCreditor.BackColor = Color.FromArgb(0, 208, 255);
+            if (dialog == DialogResult.Yes)
+            {
+                // Deattaching the FormClosing event handler method so it doesn't glitch.
+                // This is done before every this.Close(); method to avoid potential bugs.
+                // In this case only the button Cancel and the EXIT button.
+                this.FormClosing -= WarnUserOnExit;
+                this.Close();
+            }
+            else if (dialog == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

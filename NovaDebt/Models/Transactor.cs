@@ -1,6 +1,4 @@
-﻿using DataAnnotationsExtensions;
-using NovaDebt.Models.Contracts;
-using System.ComponentModel.DataAnnotations;
+﻿using NovaDebt.Models.Contracts;
 
 namespace NovaDebt.Models
 {
@@ -29,52 +27,42 @@ namespace NovaDebt.Models
             this.transactorType = transactorType;
         }
 
-        [Key]
-        [Required]
         public int Id
         {
             get { return this.id; }
             set { this.id = value; }
         }
 
-        [Required]
-        [MaxLength(100)]
         public string Name
         {
             get { return this.name; }
             set { this.name = value; }
         }
 
-        [Phone]
         public string PhoneNumber
         {
             get { return this.phoneNumber; }
             set { this.phoneNumber = value; }
         }
 
-        [Email]
         public string Email
         {
             get { return this.email; }
             set { this.email = value; }
         }
 
-        [MaxLength(70)]
         public string Facebook
         {
             get { return this.facebook; }
             set { this.facebook = value; }
         }
 
-        [Required]
-        [Range(typeof(decimal), minimum: "0.01", maximum: "4294967295")]
         public decimal Amount
         {
             get { return this.amount; }
             set { this.amount = value; }
         }
 
-        [Required]
         public string TransactorType
         {
             get { return this.transactorType; }

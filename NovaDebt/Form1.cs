@@ -1,18 +1,11 @@
 ﻿using AutoMapper;
-using NovaDebt.Models;
 using NovaDebt.Models.Contracts;
-using NovaDebt.Models.DTOs;
 using NovaDebt.Models.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using ValidationContext = System.ComponentModel.DataAnnotations.ValidationContext;
 
 namespace NovaDebt
 {
@@ -23,23 +16,18 @@ namespace NovaDebt
         public Form1()
         {
             InitializeComponent();
-
-            // Button customizations are made both in code and the UI.
-            btnDebtors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnCreditors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // static Mapper
             // Initializing a profile class which contains mapping configurations inside it.
             // Version which is used: 7.0.1
             // NOTE: Newer versions of the AutoMapper don't use the static Mapper class.
             Mapper
                 .Initialize(cfg => cfg.AddProfile<NovaDebtProfile>());
 
+            // DataTable
             table = new DataTable();
 
             table.Columns.Add("№", typeof(int)); // Id
@@ -52,8 +40,16 @@ namespace NovaDebt
             // Setting the source of the DataGridView.
             debtorsDataGrid.DataSource = table;
 
+            // Customizing the columns/headers of the table
             DataGridViewColumn column = debtorsDataGrid.Columns[0];
             column.Width = 50;
+
+            // Button customizations are made both in code and the UI.
+            btnDebtors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            btnCreditors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
         }
 
         private void btnDebtors_Click(object sender, EventArgs e)
@@ -102,53 +98,18 @@ namespace NovaDebt
 
         private void FillDataGridView(string path, TransactorType transactorType)
         {
-            IEnumerable<ITransactor> transactors = DeserializeXml(path, transactorType);
+            IEnumerable<ITransactor> transactors = XmlProcess.DeserializeXml(path, transactorType);
 
             foreach (ITransactor transactor in transactors)
             {
-                // I should make validating methods for properties like Email manually
-                // Sometimes the user won't know the person's email
-                // And if left null the whole object is considered invalid and doesn't go in (but it must).
-                if (IsValid(transactor))
-                {
-                    table.Rows.Add(
-                        transactor.Id,
-                        transactor.Name,
-                        transactor.PhoneNumber,
-                        transactor.Email,
-                        transactor.Facebook,
-                        transactor.Amount + " лв.");
-                }
+                table.Rows.Add(
+                    transactor.Id,
+                    transactor.Name,
+                    transactor.PhoneNumber,
+                    transactor.Email,
+                    transactor.Facebook,
+                    transactor.Amount + " лв.");
             }
-        }
-
-        private IEnumerable<ITransactor> DeserializeXml(string path, TransactorType transactorType)
-        {
-            string xmlText = File.ReadAllText(path);
-
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                          new XmlRootAttribute("Transactors"));
-
-            TransactorDTO[] transactorDTOs = (TransactorDTO[])xmlSerializer.Deserialize(new StringReader(xmlText));
-
-            Transactor[] transactors = Mapper.Map<Transactor[]>(transactorDTOs)
-                                       .Where(t => t.TransactorType == transactorType.ToString())
-                                       .ToArray();
-
-            for (int i = 0; i < transactors.Length; i++)
-            {
-                transactors[i].Id = i + 1;
-            }
-
-            return transactors;
-        }
-
-        private static bool IsValid(object dto)
-        {
-            ValidationContext validationContext = new ValidationContext(dto);
-            List<ValidationResult> validationResult = new List<ValidationResult>();
-
-            return Validator.TryValidateObject(dto, validationContext, validationResult, true);
         }
 
         private void FormClosed(object sender, FormClosedEventArgs e)

@@ -245,6 +245,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddTransactor";
             this.Text = "Добави";
+            this.Load += new System.EventHandler(this.frmAddTransactor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
