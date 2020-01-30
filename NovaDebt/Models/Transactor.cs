@@ -16,15 +16,20 @@ namespace NovaDebt.Models
         {
         }
 
-        public Transactor(int id, string name, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
+        public Transactor(string name, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
         {
-            this.id = id;
             this.name = name;
             this.phoneNumber = phoneNumber;
             this.email = email;
             this.facebook = facebook;
             this.amount = amount;
             this.transactorType = transactorType;
+        }
+
+        public Transactor(int id, string name, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
+            :this(name, phoneNumber, email, facebook, amount,transactorType)
+        {
+            this.id = id;
         }
 
         public int Id

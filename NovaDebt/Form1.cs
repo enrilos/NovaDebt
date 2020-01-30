@@ -61,7 +61,7 @@ namespace NovaDebt
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
 
-            this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
+            debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
             FillDataGridView(path, TransactorType.Debtor);
 
@@ -77,10 +77,10 @@ namespace NovaDebt
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
 
-            this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
+            debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
             FillDataGridView(path, TransactorType.Creditor);
-
+            
             debtorsDataGrid.ClearSelection();
         }
 
@@ -98,7 +98,7 @@ namespace NovaDebt
 
         private void FillDataGridView(string path, TransactorType transactorType)
         {
-            IEnumerable<ITransactor> transactors = XmlProcess.DeserializeXml(path, transactorType);
+            IEnumerable<ITransactor> transactors = XmlProcess.DeserializeXmlWithTransactor(path, transactorType);
 
             foreach (ITransactor transactor in transactors)
             {

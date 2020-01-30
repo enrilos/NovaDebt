@@ -1,5 +1,10 @@
-﻿using System;
+﻿using NovaDebt.Models;
+using NovaDebt.Models.Contracts;
+using NovaDebt.Models.Enums;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -61,18 +66,43 @@ namespace NovaDebt
                     inputFields[i] = regex.Replace(inputFields[i], " ");
                 }
 
-                // Spacing problem should be done by now.
-
-                // It is time for the actual adding now.
+                string name = inputFields[0];
+                string phone = inputFields[1];
+                string email = inputFields[2];
+                string facebook = inputFields[3];
+                decimal amount = decimal.Parse(inputFields[4]);
+                string transactorType = string.Empty;
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
 
                 if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
-                    // Add the transactor in the Debtors section (serialize it as XML and then refresh the data grid)
+                    transactorType = TransactorType.Debtor.ToString();
+                    Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
+                    HashSet<Transactor> transactors = XmlProcess.DeserializeXml(path).ToHashSet();
+
+                    transactor.Id = transactors.Last().Id + 1;
+
+                    transactors.Add(transactor);
+                    XmlProcess.SerializeXml(path, transactors.ToArray());
                 }
                 else if (btnAddCreditor.BackColor == Color.FromArgb(0, 208, 255))
                 {
-                    // The exact same but with a Creditor
+                    transactorType = TransactorType.Creditor.ToString();
+                    Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
+                    HashSet<Transactor> transactors = XmlProcess.DeserializeXml(path).ToHashSet();
+
+                    transactor.Id = transactors.Last().Id + 1;
+
+                    transactors.Add(transactor);
+                    XmlProcess.SerializeXml(path, transactors.ToArray());
                 }
+                
+                // After the user adds his/her desires I must refresh the data grid.
+                // In case he has already clicked one of the left most buttons.
+                // I somehow must refresh the data grid view so the new record can appear instantly without user interaction.
+                
+                this.FormClosing -= WarnUserOnExit;
+                this.Close();
             }
         }
 
@@ -118,7 +148,7 @@ namespace NovaDebt
             //
             // Име - Name (Required)
             //
-            Regex regex = new Regex("^[a-zA-Z0-9 ]*$");
+            Regex regex = new Regex("^[a-zA-Z0-9., ]*$");
 
             if (!regex.IsMatch(addNameTextBox.Text))
             {
@@ -235,9 +265,6 @@ namespace NovaDebt
 
             if (dialog == DialogResult.Yes)
             {
-                // Deattaching the FormClosing event handler method so it doesn't glitch.
-                // This is done before every this.Close(); method to avoid potential bugs.
-                // In this case only the button Cancel and the EXIT button.
                 this.FormClosing -= WarnUserOnExit;
                 this.Close();
             }
