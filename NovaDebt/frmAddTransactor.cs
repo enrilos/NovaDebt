@@ -66,6 +66,7 @@ namespace NovaDebt
                     inputFields[i] = regex.Replace(inputFields[i], " ");
                 }
 
+
                 string name = inputFields[0];
                 string phone = inputFields[1];
                 string email = inputFields[2];
