@@ -27,61 +27,59 @@ namespace NovaDebt
             Mapper
                 .Initialize(cfg => cfg.AddProfile<NovaDebtProfile>());
 
-            // DataTable
-            table = new DataTable();
+            this.table = new DataTable();
 
-            table.Columns.Add("№", typeof(int)); // Id
-            table.Columns.Add("Име", typeof(string)); // Name
-            table.Columns.Add("Тел №", typeof(string)); // Phone Number
-            table.Columns.Add("Имейл", typeof(string)); // Email
-            table.Columns.Add("Фейсбук", typeof(string)); // Facebook
-            table.Columns.Add("Количество", typeof(string)); // Amount. (Actual Amount type is decimal.)
+            this.table.Columns.Add("№", typeof(int)); // Id
+            this.table.Columns.Add("Име", typeof(string)); // Name
+            this.table.Columns.Add("Тел №", typeof(string)); // Phone Number
+            this.table.Columns.Add("Имейл", typeof(string)); // Email
+            this.table.Columns.Add("Фейсбук", typeof(string)); // Facebook
+            this.table.Columns.Add("Количество", typeof(string)); // Amount. (Actual Amount type is decimal.)
 
             // Setting the source of the DataGridView.
-            debtorsDataGrid.DataSource = table;
+            this.debtorsDataGrid.DataSource = table;
+            // Data grid styling.
+            this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
             // Customizing the columns/headers of the table
             DataGridViewColumn column = debtorsDataGrid.Columns[0];
             column.Width = 50;
 
             // Button customizations are made both in code and the UI.
-            btnDebtors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnCreditors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnDebtors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnCreditors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+
         }
 
         private void btnDebtors_Click(object sender, EventArgs e)
         {
-            btnDebtors.Enabled = false;
-            btnCreditors.Enabled = true;
+            this.btnDebtors.Enabled = false;
+            this.btnCreditors.Enabled = true;
 
-            table.Rows.Clear();
+            this.table.Rows.Clear();
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
 
-            debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
+            this.FillDataGridView(path, TransactorType.Debtor);
 
-            FillDataGridView(path, TransactorType.Debtor);
-
-            debtorsDataGrid.ClearSelection();
+            this.debtorsDataGrid.ClearSelection();
         }
 
         private void btnCreditors_Click(object sender, EventArgs e)
         {
-            btnDebtors.Enabled = true;
-            btnCreditors.Enabled = false;
+            this.btnDebtors.Enabled = true;
+            this.btnCreditors.Enabled = false;
 
-            table.Rows.Clear();
+            this.table.Rows.Clear();
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
 
-            debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
-
-            FillDataGridView(path, TransactorType.Creditor);
+            this.FillDataGridView(path, TransactorType.Creditor);
             
-            debtorsDataGrid.ClearSelection();
+            this.debtorsDataGrid.ClearSelection();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -96,13 +94,21 @@ namespace NovaDebt
             frmAddTransactor.FormClosed += new FormClosedEventHandler(FormClosed);
         }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+        }
+
         private void FillDataGridView(string path, TransactorType transactorType)
         {
             IEnumerable<ITransactor> transactors = XmlProcess.DeserializeXmlWithTransactorType(path, transactorType);
 
             foreach (ITransactor transactor in transactors)
             {
-                table.Rows.Add(
+                this.table.Rows.Add(
                     transactor.Id,
                     transactor.Name,
                     transactor.PhoneNumber,
@@ -116,6 +122,15 @@ namespace NovaDebt
         {
             // Enabling the main form.
             this.Enabled = true;
+            // Here I should refresh the dataGridView
+            if (this.btnDebtors.Enabled == false)
+            {
+
+            }
+            else if (this.btnCreditors.Enabled == false)
+            {
+
+            }
         }
     }
 }

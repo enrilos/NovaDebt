@@ -32,12 +32,12 @@ namespace NovaDebt
 
         private void frmAddTransactor_Load(object sender, EventArgs e)
         {
-            btnAddConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnAddCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnAddConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnAddCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
 
             // Setting the default selected button as Debtor
-            btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
+            this.btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
 
             this.FormClosing += new FormClosingEventHandler(WarnUserOnExit);
         }
@@ -89,7 +89,7 @@ namespace NovaDebt
                 // After the user adds his/her desires I must refresh the data grid.
                 // In case he has already clicked one of the left most buttons.
                 // I somehow must refresh the data grid view so the new record can appear instantly without user interaction.
-                
+
                 this.FormClosing -= WarnUserOnExit;
                 this.Close();
             }
@@ -102,9 +102,6 @@ namespace NovaDebt
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                // Deattaching the FormClosing event handler method so it doesn't glitch.
-                // This is done before every this.Close(); method to avoid potential bugs.
-                // In this case only the button Cancel and the EXIT button.
                 this.FormClosing -= WarnUserOnExit;
                 this.Close();
             }
@@ -113,23 +110,23 @@ namespace NovaDebt
         private void btnAddDebtor_Click(object sender, EventArgs e)
         {
             // other
-            btnAddCreditor.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            btnAddCreditor.BackColor = Color.FromArgb(50, 50, 50);
+            this.btnAddCreditor.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            this.btnAddCreditor.BackColor = Color.FromArgb(50, 50, 50);
 
             // this
-            btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
+            this.btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
         }
 
         private void btnAddCreditor_Click(object sender, EventArgs e)
         {
             // other
-            btnAddDebtor.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            btnAddDebtor.BackColor = Color.FromArgb(50, 50, 50);
+            this.btnAddDebtor.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            this.btnAddDebtor.BackColor = Color.FromArgb(50, 50, 50);
 
             // this
-            btnAddCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            btnAddCreditor.BackColor = Color.FromArgb(0, 208, 255);
+            this.btnAddCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnAddCreditor.BackColor = Color.FromArgb(0, 208, 255);
         }
 
         private void AddTransactor(string path, string name, string phone, string email, decimal amount, string facebook, string transactorType)
@@ -150,7 +147,7 @@ namespace NovaDebt
             //
             Regex regex = new Regex("^[a-zA-Z0-9., ]*$");
 
-            if (!regex.IsMatch(addNameTextBox.Text))
+            if (!regex.IsMatch(this.addNameTextBox.Text))
             {
                 MessageBox.Show(InvalidNameErrorMessage,
                     ErrorMessageBoxCaption,
@@ -159,7 +156,7 @@ namespace NovaDebt
 
                 return false;
             }
-            else if (string.IsNullOrEmpty(addNameTextBox.Text) || string.IsNullOrWhiteSpace(addNameTextBox.Text))
+            else if (string.IsNullOrEmpty(this.addNameTextBox.Text) || string.IsNullOrWhiteSpace(this.addNameTextBox.Text))
             {
                 MessageBox.Show(MissingNameErrorMessage,
                     ErrorMessageBoxCaption,
@@ -174,7 +171,7 @@ namespace NovaDebt
             //
             regex = new Regex("^[+0-9-() ]*$");
 
-            if (!regex.IsMatch(addPhoneTextBox.Text))
+            if (!regex.IsMatch(this.addPhoneTextBox.Text))
             {
                 MessageBox.Show(InvalidPhoneNumberErrorMessage,
                     ErrorMessageBoxCaption,
@@ -189,7 +186,7 @@ namespace NovaDebt
             //
             regex = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
 
-            if (!regex.IsMatch(addEmailTextBox.Text.Trim()) && !string.IsNullOrEmpty(addEmailTextBox.Text.Trim()))
+            if (!regex.IsMatch(this.addEmailTextBox.Text.Trim()) && !string.IsNullOrEmpty(this.addEmailTextBox.Text.Trim()))
             {
                 MessageBox.Show(InvalidEmailErrorMessage,
                     ErrorMessageBoxCaption,
@@ -204,7 +201,7 @@ namespace NovaDebt
             //
             regex = new Regex("^[A-z ]*$");
 
-            if (!regex.IsMatch(addFacebookTextBox.Text))
+            if (!regex.IsMatch(this.addFacebookTextBox.Text))
             {
                 MessageBox.Show(InvalidFacebookErrorMessage,
                     ErrorMessageBoxCaption,
@@ -220,7 +217,7 @@ namespace NovaDebt
             regex = new Regex("^[0-9]+([.,][0-9]{1,2})?$");
             decimal amount;
 
-            if (regex.IsMatch(addAmountTextBox.Text.Trim()))
+            if (regex.IsMatch(this.addAmountTextBox.Text.Trim()))
             {
                 amount = decimal.Parse(addAmountTextBox.Text);
 
@@ -234,7 +231,7 @@ namespace NovaDebt
                     return false;
                 }
             }
-            else if (string.IsNullOrEmpty(addAmountTextBox.Text) || string.IsNullOrWhiteSpace(addAmountTextBox.Text))
+            else if (string.IsNullOrEmpty(this.addAmountTextBox.Text) || string.IsNullOrWhiteSpace(this.addAmountTextBox.Text))
             {
                 MessageBox.Show(MissingAmountErrorMessage,
                     ErrorMessageBoxCaption,
