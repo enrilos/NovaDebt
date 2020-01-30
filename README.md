@@ -5,3 +5,6 @@
 **NovaDebt** is user-friendly, easy to use and interactive desktop app that takes care of the debtors and creditors
 of the user. The user is no logner obliged to remeber everyone from whom he/she has borrowed money
 and to whom he/she has lent.
+
+# Diving deeper
+Technically the data is stored on the device itself (locally). Rest assured. The data isn't sent anywhere over the internet.
