@@ -15,4 +15,3 @@ Only you know it.
 One of the future plans is to include a registration and an every time log in which will be used to decrypt the data (which the app uses) upon log in and encrypt it back upon application exit.
 
 **Cross-Platform** - Right now the application is running only on Windows. In the future it can be developed as a mobile app and be able to run both on Android and iOS.
-Thus more users will be able to use this application.
