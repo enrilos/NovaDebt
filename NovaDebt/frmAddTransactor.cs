@@ -77,24 +77,12 @@ namespace NovaDebt
                 if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     transactorType = TransactorType.Debtor.ToString();
-                    Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
-                    HashSet<Transactor> transactors = XmlProcess.DeserializeXml(path).ToHashSet();
-
-                    transactor.Id = transactors.Last().Id + 1;
-
-                    transactors.Add(transactor);
-                    XmlProcess.SerializeXml(path, transactors.ToArray());
+                    AddTransactor(path, name, phone, email, amount, facebook, transactorType);
                 }
                 else if (btnAddCreditor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     transactorType = TransactorType.Creditor.ToString();
-                    Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
-                    HashSet<Transactor> transactors = XmlProcess.DeserializeXml(path).ToHashSet();
-
-                    transactor.Id = transactors.Last().Id + 1;
-
-                    transactors.Add(transactor);
-                    XmlProcess.SerializeXml(path, transactors.ToArray());
+                    AddTransactor(path, name, phone, email, amount, facebook, transactorType);
                 }
                 
                 // After the user adds his/her desires I must refresh the data grid.
@@ -141,6 +129,17 @@ namespace NovaDebt
             // this
             btnAddCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             btnAddCreditor.BackColor = Color.FromArgb(0, 208, 255);
+        }
+
+        private void AddTransactor(string path, string name, string phone, string email, decimal amount, string facebook, string transactorType)
+        {
+            Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
+            HashSet<Transactor> transactors = XmlProcess.DeserializeXml(path).ToHashSet();
+
+            transactor.Id = transactors.Last().Id + 1;
+
+            transactors.Add(transactor);
+            XmlProcess.SerializeXml(path, transactors.ToArray());
         }
 
         private bool ValidateInputFields()

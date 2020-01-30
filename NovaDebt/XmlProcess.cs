@@ -43,7 +43,7 @@ namespace NovaDebt
             return transactors;
         }
         
-        public static IEnumerable<Transactor> DeserializeXmlWithTransactor(string path, TransactorType transactorType)
+        public static IEnumerable<Transactor> DeserializeXmlWithTransactorType(string path, TransactorType transactorType)
         {
             if (path == null)
             {

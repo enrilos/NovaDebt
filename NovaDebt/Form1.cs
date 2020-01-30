@@ -98,7 +98,7 @@ namespace NovaDebt
 
         private void FillDataGridView(string path, TransactorType transactorType)
         {
-            IEnumerable<ITransactor> transactors = XmlProcess.DeserializeXmlWithTransactor(path, transactorType);
+            IEnumerable<ITransactor> transactors = XmlProcess.DeserializeXmlWithTransactorType(path, transactorType);
 
             foreach (ITransactor transactor in transactors)
             {
