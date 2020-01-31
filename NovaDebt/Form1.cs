@@ -125,11 +125,11 @@ namespace NovaDebt
             // Here I should refresh the dataGridView
             if (this.btnDebtors.Enabled == false)
             {
-                
+                // TODO
             }
             else if (this.btnCreditors.Enabled == false)
             {
-               
+                // TODO
             }
         }
     }
