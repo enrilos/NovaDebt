@@ -12,6 +12,8 @@ namespace NovaDebt
     public partial class Form1 : Form
     {
         private DataTable table;
+        string path;
+
 
         public Form1()
         {
@@ -28,13 +30,9 @@ namespace NovaDebt
                 .Initialize(cfg => cfg.AddProfile<NovaDebtProfile>());
 
             this.table = new DataTable();
+            InitializeDataTable(this.table);
 
-            this.table.Columns.Add("№", typeof(int)); // Id
-            this.table.Columns.Add("Име", typeof(string)); // Name
-            this.table.Columns.Add("Тел №", typeof(string)); // Phone Number
-            this.table.Columns.Add("Имейл", typeof(string)); // Email
-            this.table.Columns.Add("Фейсбук", typeof(string)); // Facebook
-            this.table.Columns.Add("Количество", typeof(string)); // Amount. (Actual Amount type is decimal.)
+            path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
 
             // Setting the source of the DataGridView.
             this.debtorsDataGrid.DataSource = table;
@@ -61,9 +59,7 @@ namespace NovaDebt
 
             this.table.Rows.Clear();
 
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
-
-            this.FillDataGridView(path, TransactorType.Debtor);
+            this.FillDataTable(path, TransactorType.Debtor);
 
             this.debtorsDataGrid.ClearSelection();
         }
@@ -75,10 +71,8 @@ namespace NovaDebt
 
             this.table.Rows.Clear();
 
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
+            this.FillDataTable(path, TransactorType.Creditor);
 
-            this.FillDataGridView(path, TransactorType.Creditor);
-            
             this.debtorsDataGrid.ClearSelection();
         }
 
@@ -101,9 +95,10 @@ namespace NovaDebt
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            // TODO
         }
 
-        private void FillDataGridView(string path, TransactorType transactorType)
+        private void FillDataTable(string path, TransactorType transactorType)
         {
             IEnumerable<ITransactor> transactors = XmlProcess.DeserializeXmlWithTransactorType(path, transactorType);
 
@@ -119,19 +114,42 @@ namespace NovaDebt
             }
         }
 
+        private void InitializeDataTable(DataTable table)
+        {
+            // Maybe the № will be unnecessary in the future.
+            this.table.Columns.Add("№", typeof(int)); // Id
+            this.table.Columns.Add("Име", typeof(string)); // Name
+            this.table.Columns.Add("Тел №", typeof(string)); // Phone Number
+            this.table.Columns.Add("Имейл", typeof(string)); // Email
+            this.table.Columns.Add("Фейсбук", typeof(string)); // Facebook
+            this.table.Columns.Add("Количество", typeof(string)); // Amount. (Actual Amount type is decimal.)
+        }
+
         private void FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Enabling the main form.
+            // Enabling the main form and refreshing the Data Grid View.
             this.Enabled = true;
-            // Here I should refresh the dataGridView
+            this.debtorsDataGrid.DataSource = null;
+            this.table = new DataTable();
+            InitializeDataTable(table);
+
             if (this.btnDebtors.Enabled == false)
             {
-                // TODO
+                // Fix the scrolling problem
+                // Think about when the user has selected row/s already
+                // If the user has selected row/s I should not call .ClearSelection();
+                // Otherwise I should call .ClearSelection();
+                // THE SCROLL MUSTN'T MOVE IN BOTH SOLUTIONS.
+                this.FillDataTable(path, TransactorType.Debtor);
+                
             }
             else if (this.btnCreditors.Enabled == false)
             {
-                // TODO
+                this.FillDataTable(path, TransactorType.Creditor);
             }
+
+            this.debtorsDataGrid.DataSource = table;
+            this.debtorsDataGrid.ClearSelection();
         }
     }
 }

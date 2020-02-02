@@ -85,10 +85,6 @@ namespace NovaDebt
                     transactorType = TransactorType.Creditor.ToString();
                     AddTransactor(path, name, phone, email, amount, facebook, transactorType);
                 }
-                
-                // After the user adds his/her desires I must refresh the data grid.
-                // In case he has already clicked one of the left most buttons.
-                // I somehow must refresh the data grid view so the new record can appear instantly without user interaction.
 
                 this.FormClosing -= WarnUserOnExit;
                 this.Close();
