@@ -1,5 +1,4 @@
 ﻿using NovaDebt.Models;
-using NovaDebt.Models.Contracts;
 using NovaDebt.Models.Enums;
 using System;
 using System.Collections.Generic;
@@ -133,7 +132,7 @@ namespace NovaDebt
             transactor.Id = transactors.Last().Id + 1;
 
             transactors.Add(transactor);
-            XmlProcess.SerializeXml(path, transactors.ToArray());
+            XmlProcess.SerializeXmlWithTransactors(path, transactors.ToArray());
         }
 
         private bool ValidateInputFields()

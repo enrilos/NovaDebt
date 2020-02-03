@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using NovaDebt.Models;
-using NovaDebt.Models.Contracts;
 using NovaDebt.Models.DTOs;
 using NovaDebt.Models.Enums;
 using System;
@@ -8,7 +7,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace NovaDebt
@@ -35,6 +33,10 @@ namespace NovaDebt
 
             Transactor[] transactors = Mapper.Map<Transactor[]>(transactorDTOs).ToArray();
 
+            // Setting the Id manually since both debtors and transactors are stored in 1 file
+            // Which maens that the Id will be different
+            // I dont want Ids (№) like 2, 5, 6, 9 on the debtors/creditors list when they show up.
+            // That's why the Id setting becomes necessary.
             for (int i = 0; i < transactors.Length; i++)
             {
                 transactors[i].Id = i + 1;
@@ -73,7 +75,7 @@ namespace NovaDebt
             return transactors;
         }
 
-        public static void SerializeXml(string path, IEnumerable<Transactor> transactors)
+        public static void SerializeXmlWithTransactors(string path, IEnumerable<Transactor> transactors)
         {
             StringBuilder result = new StringBuilder();
 
