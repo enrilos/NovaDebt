@@ -4,6 +4,8 @@
     {
         int Id { get; }
 
+        int No { get; }
+
         string Name { get; }
 
         string PhoneNumber { get; }

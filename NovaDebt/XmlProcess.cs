@@ -43,7 +43,7 @@ namespace NovaDebt
             // Altought I'm planning to implement new propety just for the enumeration and leave the Id alone.
             for (int i = 0; i < transactors.Length; i++)
             {
-                transactors[i].Id = i + 1;
+                transactors[i].No = i + 1;
             }
 
             return transactors;
@@ -78,7 +78,7 @@ namespace NovaDebt
             // Altought I'm planning to implement new propety just for the enumeration and leave the Id alone.
             for (int i = 0; i < transactors.Length; i++)
             {
-                transactors[i].Id = i + 1;
+                transactors[i].No = i + 1;
             }
 
             return transactors;

@@ -8,6 +8,9 @@ namespace NovaDebt.Models.DTOs
         [XmlElement("Id")]
         public int Id { get; set; }
 
+        [XmlElement("No")]
+        public int No { get; set; }
+
         [XmlElement("Name")]
         public string Name { get; set; }
 

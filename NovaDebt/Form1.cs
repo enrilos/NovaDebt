@@ -41,7 +41,7 @@ namespace NovaDebt
 
             // Always writing the root element if the file is empty or after creation
             // Otherwise xml doesn't like it and throws exceptions.
-            // So when the form loads I initialize the file within the directory with "Transactors" root el as required.
+            // So when the form loads I initialize the file within the directory with "Transactors" root el. as required.
             if (!File.Exists(path))
             {
                 using (FileStream fs = File.Create(path))
@@ -61,6 +61,8 @@ namespace NovaDebt
             // Customizing the columns/headers of the table
             DataGridViewColumn columnNo = debtorsDataGrid.Columns[0];
             columnNo.Width = 50;
+            DataGridViewColumn columnAmount = debtorsDataGrid.Columns[5];
+            columnAmount.Width = 120;
 
             // Button customizations are made both in code and the UI.
             this.btnDebtors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
@@ -69,8 +71,8 @@ namespace NovaDebt
             this.btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
 
-            // I should attach an event on mouse leave from the data grid view
-            // And when clicked away the data grid view selection is cleared.
+            // Attaching an even which handles where the user has clicked.
+            // If clicked outside the data grid view all selected rows are no longer selected and lose focus.
             this.mainPanel.MouseClick += new MouseEventHandler(RemoveDataGridSelection);
             this.menuPanel.MouseClick += new MouseEventHandler(RemoveDataGridSelection);
         }
@@ -122,6 +124,9 @@ namespace NovaDebt
             // I should consider adding a new property which is the No itself and stop messing with the Id.
             // The Id should stay static. It's unique identifier after all.
             // TODO
+            // Fixed the problem.
+            // Now the enumeration of each record and the Id are different.
+            // It's time to implement the Delete function.
             if (this.debtorsDataGrid.SelectedRows.Count > 0)
             {
                 var selectedRows = this.debtorsDataGrid.SelectedRows;
@@ -145,7 +150,7 @@ namespace NovaDebt
             foreach (ITransactor transactor in transactors)
             {
                 this.table.Rows.Add(
-                    transactor.Id,
+                    transactor.No,
                     transactor.Name,
                     transactor.PhoneNumber,
                     transactor.Email,
@@ -161,7 +166,7 @@ namespace NovaDebt
                 throw new ArgumentNullException(DataTableCannotBeNullErrorMessage);
             }
 
-            this.table.Columns.Add("№", typeof(int)); // Id
+            this.table.Columns.Add("№", typeof(int)); // No
             this.table.Columns.Add("Име", typeof(string)); // Name
             this.table.Columns.Add("Тел №", typeof(string)); // Phone Number
             this.table.Columns.Add("Имейл", typeof(string)); // Email
