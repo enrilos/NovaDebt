@@ -3,6 +3,7 @@ using NovaDebt.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -13,6 +14,9 @@ namespace NovaDebt
     {
         private const decimal MinAmountValue = 0.01m;
         private const decimal MaxAmountValue = 4294967295m;
+        private const string PathCannotBeNullErrorMessage = "Path cannot be null.";
+        private const string FileDoesntExistErrorMessage = "File doesn't exist.";
+        private const string NameCannotBeNullErrorMessage = "Name cannot be null.";
         private const string InvalidNameErrorMessage = "Името може да се състои само от букви и цифри.";
         private const string MissingNameErrorMessage = "Името e задължително.";
         private const string InvalidPhoneNumberErrorMessage = "Невалиден Тел №.";
@@ -34,11 +38,11 @@ namespace NovaDebt
             this.btnAddConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnAddCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
 
-            // Setting the default selected button as Debtor
+            // Setting the default select button as Debtor
             this.btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
 
-            this.FormClosing += new FormClosingEventHandler(WarnUserOnExit);
+            this.FormClosing += new FormClosingEventHandler(AlertUserOnExit);
         }
 
         private void btnAddConfirm_Click(object sender, EventArgs e)
@@ -77,15 +81,15 @@ namespace NovaDebt
                 if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     transactorType = TransactorType.Debtor.ToString();
-                    AddTransactor(path, name, phone, email, amount, facebook, transactorType);
+                    AddTransactorToXml(path, name, phone, email, amount, facebook, transactorType);
                 }
                 else if (btnAddCreditor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     transactorType = TransactorType.Creditor.ToString();
-                    AddTransactor(path, name, phone, email, amount, facebook, transactorType);
+                    AddTransactorToXml(path, name, phone, email, amount, facebook, transactorType);
                 }
 
-                this.FormClosing -= WarnUserOnExit;
+                this.FormClosing -= AlertUserOnExit;
                 this.Close();
             }
         }
@@ -97,7 +101,7 @@ namespace NovaDebt
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                this.FormClosing -= WarnUserOnExit;
+                this.FormClosing -= AlertUserOnExit;
                 this.Close();
             }
         }
@@ -124,12 +128,25 @@ namespace NovaDebt
             this.btnAddCreditor.BackColor = Color.FromArgb(0, 208, 255);
         }
 
-        private void AddTransactor(string path, string name, string phone, string email, decimal amount, string facebook, string transactorType)
+        private void AddTransactorToXml(string path, string name, string phone, string email, decimal amount, string facebook, string transactorType)
         {
+            if (path == null)
+            {
+                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
+            }
+            if (!File.Exists(path))
+            {
+                throw new InvalidOperationException(FileDoesntExistErrorMessage);
+            }
+            if (name == null)
+            {
+                throw new ArgumentNullException(NameCannotBeNullErrorMessage);
+            }
+
             Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
             HashSet<Transactor> transactors = XmlProcess.DeserializeXml(path).ToHashSet();
 
-            transactor.Id = transactors.Last().Id + 1;
+            transactor.Id = transactors.Count + 1;
 
             transactors.Add(transactor);
             XmlProcess.SerializeXmlWithTransactors(path, transactors.ToArray());
@@ -248,7 +265,7 @@ namespace NovaDebt
             return true;
         }
 
-        private void WarnUserOnExit(object sender, FormClosingEventArgs e)
+        private void AlertUserOnExit(object sender, FormClosingEventArgs e)
         {
             DialogResult dialog = MessageBox.Show($"Данните няма да бъдат запазени.{Environment.NewLine}Наистина ли искате да излезете?",
                    ExitMessageBoxCaption,
@@ -257,7 +274,7 @@ namespace NovaDebt
 
             if (dialog == DialogResult.Yes)
             {
-                this.FormClosing -= WarnUserOnExit;
+                this.FormClosing -= AlertUserOnExit;
                 this.Close();
             }
             else if (dialog == DialogResult.No)

@@ -1,6 +1,4 @@
-﻿using NovaDebt.Models.Enums;
-
-namespace NovaDebt.Models.Contracts
+﻿namespace NovaDebt.Models.Contracts
 {
     public interface ITransactor
     {

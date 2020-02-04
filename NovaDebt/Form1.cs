@@ -5,12 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace NovaDebt
 {
     public partial class Form1 : Form
     {
+        private const string PathCannotBeNullErrorMessage = "Path cannot be null.";
+        private const string FileDoesntExistErrorMessage = "File doesn't exist.";
+        private const string DataTableCannotBeNullErrorMessage = "Data table cannot be null.";
+
         private DataTable table;
         string path;
 
@@ -33,6 +39,20 @@ namespace NovaDebt
 
             this.path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
 
+            // Always writing the root element if the file is empty or after creation
+            // Otherwise xml doesn't like it and throws exceptions.
+            // So when the form loads I initialize the file within the directory with "Transactors" root el as required.
+            if (!File.Exists(path))
+            {
+                using (FileStream fs = File.Create(path))
+                {
+                    byte[] xmlRoot = new UTF8Encoding(true).GetBytes($"<Transactors>{Environment.NewLine}</Transactors>");
+                    fs.Write(xmlRoot, 0, xmlRoot.Length);
+                }
+            }
+            // I should think about when the file exits but doesn't contain the xmlRoot itself inside it.
+            // That is a problem and xml won't be happy.
+
             // Setting the source of the DataGridView.
             this.debtorsDataGrid.DataSource = table;
             // Data grid styling.
@@ -48,6 +68,9 @@ namespace NovaDebt
             this.btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+
+            // I should attach an event on mouse leave from the data grid view
+            // And when clicked away the data grid view selection is cleared.
         }
 
         private void btnDebtors_Click(object sender, EventArgs e)
@@ -94,11 +117,27 @@ namespace NovaDebt
         private void btnDelete_Click(object sender, EventArgs e)
         {
             // When deleting one or more selected records I must override the original file.
+            // I should consider adding a new property which is the No itself and stop messing with the Id.
+            // The Id should stay static. It's unique identifier after all.
             // TODO
+            if (this.debtorsDataGrid.SelectedRows.Count > 0)
+            {
+                var selectedRows = this.debtorsDataGrid.SelectedRows;
+                var info = selectedRows[0].Cells["Име"].Value;
+            }
         }
 
         private void FillDataTable(string path, TransactorType transactorType)
         {
+            if (path == null)
+            {
+                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
+            }
+            else if (!File.Exists(path))
+            {
+                throw new InvalidOperationException(FileDoesntExistErrorMessage);
+            }
+
             IEnumerable<ITransactor> transactors = XmlProcess.DeserializeXmlWithTransactorType(path, transactorType);
 
             foreach (ITransactor transactor in transactors)
@@ -115,7 +154,11 @@ namespace NovaDebt
 
         private void InitializeDataTable(DataTable table)
         {
-            // Maybe the № will be unnecessary in the future.
+            if (table == null)
+            {
+                throw new ArgumentNullException(DataTableCannotBeNullErrorMessage);
+            }
+
             this.table.Columns.Add("№", typeof(int)); // Id
             this.table.Columns.Add("Име", typeof(string)); // Name
             this.table.Columns.Add("Тел №", typeof(string)); // Phone Number

@@ -13,15 +13,18 @@ namespace NovaDebt
 {
     public static class XmlProcess
     {
+        private const string PathCannotBeNullErrorMessage = "Path cannot be null.";
+        private const string FileDoesntExistErrorMessage = "File doesn't exist.";
+
         public static IEnumerable<Transactor> DeserializeXml(string path)
         {
             if (path == null)
             {
-                throw new ArgumentNullException("Path cannot be null.");
+                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
             }
             if (!File.Exists(path))
             {
-                throw new InvalidOperationException("File doesn't exist.");
+                throw new InvalidOperationException(FileDoesntExistErrorMessage);
             }
 
             string xmlText = File.ReadAllText(path);
@@ -37,6 +40,7 @@ namespace NovaDebt
             // Which maens that the Id will be different
             // I dont want Ids (№) like 2, 5, 6, 9 on the debtors/creditors list when they show up.
             // That's why the Id setting becomes necessary.
+            // Altought I'm planning to implement new propety just for the enumeration and leave the Id alone.
             for (int i = 0; i < transactors.Length; i++)
             {
                 transactors[i].Id = i + 1;
@@ -49,11 +53,11 @@ namespace NovaDebt
         {
             if (path == null)
             {
-                throw new ArgumentNullException("Path cannot be null.");
+                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
             }
             if (!File.Exists(path))
             {
-                throw new InvalidOperationException("File doesn't exist.");
+                throw new InvalidOperationException(FileDoesntExistErrorMessage);
             }
 
             string xmlText = File.ReadAllText(path);
@@ -67,6 +71,11 @@ namespace NovaDebt
                                        .Where(t => t.TransactorType.ToLower() == transactorType.ToString().ToLower())
                                        .ToArray();
 
+            // Setting the Id manually since both debtors and transactors are stored in 1 file
+            // Which maens that the Id will be different
+            // I dont want Ids ("№" as in the table) like 2, 5, 6, 9 on the debtors/creditors list when they show up.
+            // That's why the Id setting becomes necessary.
+            // Altought I'm planning to implement new propety just for the enumeration and leave the Id alone.
             for (int i = 0; i < transactors.Length; i++)
             {
                 transactors[i].Id = i + 1;
@@ -81,7 +90,7 @@ namespace NovaDebt
 
             if (path == null)
             {
-                throw new ArgumentNullException("Path cannot be null.");
+                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
             }
             if (!File.Exists(path))
             {
