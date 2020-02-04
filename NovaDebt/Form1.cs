@@ -71,6 +71,8 @@ namespace NovaDebt
 
             // I should attach an event on mouse leave from the data grid view
             // And when clicked away the data grid view selection is cleared.
+            this.mainPanel.MouseClick += new MouseEventHandler(RemoveDataGridSelection);
+            this.menuPanel.MouseClick += new MouseEventHandler(RemoveDataGridSelection);
         }
 
         private void btnDebtors_Click(object sender, EventArgs e)
@@ -188,5 +190,11 @@ namespace NovaDebt
             this.debtorsDataGrid.DataSource = table;
             this.debtorsDataGrid.ClearSelection();
         }
+
+        private void RemoveDataGridSelection(object sender, MouseEventArgs e)
+        {
+            this.debtorsDataGrid.ClearSelection();
+        }
+
     }
 }
