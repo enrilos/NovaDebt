@@ -147,8 +147,6 @@ namespace NovaDebt
             HashSet<Transactor> transactors = XmlProcess.DeserializeXml(path).ToHashSet();
 
             transactor.Id = transactors.Count + 1;
-            // Here I should get the transactor collection with the corresponding transactorType
-            // and set the new transactor's object No to the last No + 1.
 
             HashSet<Transactor> transactorTypeNos = transactors.Where(t => t.TransactorType == transactorType).ToHashSet();
             transactor.No = transactorTypeNos.Count + 1;

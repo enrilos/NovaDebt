@@ -127,11 +127,11 @@ namespace NovaDebt
             // Fixed the problem.
             // Now the enumeration of each record and the Id are different.
             // It's time to implement the Delete function.
-            if (this.debtorsDataGrid.SelectedRows.Count > 0)
-            {
-                var selectedRows = this.debtorsDataGrid.SelectedRows;
-                var info = selectedRows[0].Cells["Име"].Value;
-            }
+            //if (this.debtorsDataGrid.SelectedRows.Count > 0)
+            //{
+            //    var selectedRows = this.debtorsDataGrid.SelectedRows;
+            //    var info = selectedRows[0].Cells["Име"].Value;
+            //}
         }
 
         private void FillDataTable(string path, TransactorType transactorType)

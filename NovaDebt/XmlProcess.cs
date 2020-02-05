@@ -36,16 +36,6 @@ namespace NovaDebt
 
             Transactor[] transactors = Mapper.Map<Transactor[]>(transactorDTOs).ToArray();
 
-            // Setting the Id manually since both debtors and transactors are stored in 1 file
-            // Which maens that the Id will be different
-            // I dont want Ids (№) like 2, 5, 6, 9 on the debtors/creditors list when they show up.
-            // That's why the Id setting becomes necessary.
-            // Altought I'm planning to implement new propety just for the enumeration and leave the Id alone.
-            for (int i = 0; i < transactors.Length; i++)
-            {
-                transactors[i].No = i + 1;
-            }
-
             return transactors;
         }
         
@@ -70,16 +60,6 @@ namespace NovaDebt
             Transactor[] transactors = Mapper.Map<Transactor[]>(transactorDTOs)
                                        .Where(t => t.TransactorType.ToLower() == transactorType.ToString().ToLower())
                                        .ToArray();
-
-            // Setting the Id manually since both debtors and transactors are stored in 1 file
-            // Which maens that the Id will be different
-            // I dont want Ids ("№" as in the table) like 2, 5, 6, 9 on the debtors/creditors list when they show up.
-            // That's why the Id setting becomes necessary.
-            // Altought I'm planning to implement new propety just for the enumeration and leave the Id alone.
-            for (int i = 0; i < transactors.Length; i++)
-            {
-                transactors[i].No = i + 1;
-            }
 
             return transactors;
         }
