@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using NovaDebt.Models;
 using NovaDebt.Models.Contracts;
 using NovaDebt.Models.Enums;
 using System;
@@ -52,7 +53,8 @@ namespace NovaDebt
                 }
             }
             // I should think about when the file exits but doesn't contain the xmlRoot itself inside it.
-            // That is a problem and xml be able to find the root.
+            // Or the QA guy will scream as always.
+            // That is a problem which must be fixed or xml won't be able to find the root element.
 
             // Setting the source of the DataGridView.
             this.debtorsDataGrid.DataSource = table;
@@ -73,7 +75,7 @@ namespace NovaDebt
             this.btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
 
             // Attaching an even which handles where the user has clicked.
-            // If clicked outside the data grid view all selected rows are no longer selected and lose focus.
+            // If clicked outside the data grid view all selected rows are no longer selected and the focus is lost.
             this.mainPanel.MouseClick += new MouseEventHandler(RemoveDataGridSelection);
             this.menuPanel.MouseClick += new MouseEventHandler(RemoveDataGridSelection);
         }
@@ -124,36 +126,69 @@ namespace NovaDebt
         {
             if (this.debtorsDataGrid.SelectedRows.Count > 0)
             {
-                var selectedRows = this.debtorsDataGrid.SelectedRows;
-                var nosList = new List<int>();
+                DataGridViewSelectedRowCollection selectedRows = this.debtorsDataGrid.SelectedRows;
+                List<int> nosList = new List<int>();
 
                 for (int i = 0; i < selectedRows.Count; i++)
                 {
-                    var no = selectedRows[i].Cells["№"].Value;
+                    object no = selectedRows[i].Cells["№"].Value;
                     // Parsing the element since the no is object type
                     nosList.Add(int.Parse(no.ToString()));
                 }
 
                 nosList = nosList.OrderBy(x => x).ToList();
 
-                // Now ~$
                 // I should filter a new collection again depending on the seleted debtors/creditors button from the xml.
-                // Then overwrite the file with the new data and refresh the data grid view.
-                // Thus the data which the user has selected will be deleted
+                // Then overwrite the file without the deleted data and refresh the data grid view.
+                // Thus the data which the user has selected will be deleted and removed from the file.
+
+                IEnumerable<Transactor> transactors = XmlProcess.DeserializeXml(this.path);
+                List<Transactor> newTransactors = new List<Transactor>();
 
                 if (!this.btnDebtors.Enabled)
                 {
-                    // User has selected the Debtors button.
-                    var debtors = XmlProcess.DeserializeXmlWithTransactorType(this.path, TransactorType.Debtor);
+                    // User has the Debtors button as the selected button.
+                    foreach (var transactor in transactors)
+                    {
+                        if (!nosList.Any(x => x == transactor.No) && transactor.TransactorType == TransactorType.Debtor.ToString())
+                        {
+                            transactor.No = newTransactors.Count + 1;
+                            newTransactors.Add(transactor);
+                        }
+                    }
+
+                    newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Creditor.ToString()));
+                }
+                else if (!this.btnCreditors.Enabled)
+                {
+                    // User has the Creditors button as the selected button.
+                    foreach (var transactor in transactors)
+                    {
+                        if (!nosList.Any(x => x == transactor.No) && transactor.TransactorType == TransactorType.Creditor.ToString())
+                        {
+                            transactor.No = newTransactors.Count + 1;
+                            newTransactors.Add(transactor);
+                        }
+                    }
+
+                    newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Debtor.ToString()));
+                }
+
+                XmlProcess.SerializeXmlWithTransactors(this.path, newTransactors);
+
+                this.table.Rows.Clear();
+
+                if (!this.btnDebtors.Enabled)
+                {
+                    this.FillDataTable(path, TransactorType.Debtor);
 
                 }
                 else if (!this.btnCreditors.Enabled)
                 {
-                    // User has selected the Creditors button.
-                    var creditors = XmlProcess.DeserializeXmlWithTransactorType(this.path, TransactorType.Creditor);
+                    this.FillDataTable(path, TransactorType.Creditor);
                 }
 
-                return;
+                this.debtorsDataGrid.DataSource = table;
             }
         }
 
@@ -191,7 +226,7 @@ namespace NovaDebt
 
             this.table.Columns.Add("№", typeof(int)); // No
             this.table.Columns.Add("Име", typeof(string)); // Name
-            this.table.Columns.Add("Тел №", typeof(string)); // Phone Number
+            this.table.Columns.Add("Тел №", typeof(string)); // PhoneNumber
             this.table.Columns.Add("Имейл", typeof(string)); // Email
             this.table.Columns.Add("Фейсбук", typeof(string)); // Facebook
             this.table.Columns.Add("Количество", typeof(string)); // Amount. (Actual Amount type is decimal.)
@@ -203,14 +238,14 @@ namespace NovaDebt
             this.Enabled = true;
             this.table.Rows.Clear();
 
-            if (this.btnDebtors.Enabled == false)
+            if (!this.btnDebtors.Enabled)
             {
                 // Problem: The scroll should stay in it's last position.
                 // Thinking about how to fix it...
                 this.FillDataTable(path, TransactorType.Debtor);
                 
             }
-            else if (this.btnCreditors.Enabled == false)
+            else if (!this.btnCreditors.Enabled)
             {
                 this.FillDataTable(path, TransactorType.Creditor);
             }
@@ -223,6 +258,5 @@ namespace NovaDebt
         {
             this.debtorsDataGrid.ClearSelection();
         }
-
     }
 }

@@ -14,6 +14,7 @@ namespace NovaDebt
     public static class XmlProcess
     {
         private const string PathCannotBeNullErrorMessage = "Path cannot be null.";
+        private const string NameCannotBeNullErrorMessage = "Name cannot be null.";
         private const string FileDoesntExistErrorMessage = "File doesn't exist.";
         private const string XmlRootElement = "Transactors";
 
@@ -96,6 +97,33 @@ namespace NovaDebt
 
                 File.WriteAllText(path, result.ToString());
             }
+        }
+
+        public static void AddTransactorToXml(string path, string name, string phone, string email, decimal amount, string facebook, string transactorType)
+        {
+            if (path == null)
+            {
+                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
+            }
+            if (!File.Exists(path))
+            {
+                throw new InvalidOperationException(FileDoesntExistErrorMessage);
+            }
+            if (name == null)
+            {
+                throw new ArgumentNullException(NameCannotBeNullErrorMessage);
+            }
+
+            Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
+            HashSet<Transactor> transactors = XmlProcess.DeserializeXml(path).ToHashSet();
+
+            transactor.Id = transactors.Count + 1;
+
+            HashSet<Transactor> transactorTypeNos = transactors.Where(t => t.TransactorType == transactorType).ToHashSet();
+            transactor.No = transactorTypeNos.Count + 1;
+
+            transactors.Add(transactor);
+            XmlProcess.SerializeXmlWithTransactors(path, transactors.ToArray());
         }
     }
 }

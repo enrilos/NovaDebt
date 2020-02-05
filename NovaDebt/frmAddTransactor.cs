@@ -14,9 +14,6 @@ namespace NovaDebt
     {
         private const decimal MinAmountValue = 0.01m;
         private const decimal MaxAmountValue = 4294967295m;
-        private const string PathCannotBeNullErrorMessage = "Path cannot be null.";
-        private const string FileDoesntExistErrorMessage = "File doesn't exist.";
-        private const string NameCannotBeNullErrorMessage = "Name cannot be null.";
         private const string InvalidNameErrorMessage = "Името може да се състои само от букви и цифри.";
         private const string MissingNameErrorMessage = "Името e задължително.";
         private const string InvalidPhoneNumberErrorMessage = "Невалиден Тел №.";
@@ -81,12 +78,12 @@ namespace NovaDebt
                 if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     transactorType = TransactorType.Debtor.ToString();
-                    AddTransactorToXml(path, name, phone, email, amount, facebook, transactorType);
+                    XmlProcess.AddTransactorToXml(path, name, phone, email, amount, facebook, transactorType);
                 }
                 else if (btnAddCreditor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     transactorType = TransactorType.Creditor.ToString();
-                    AddTransactorToXml(path, name, phone, email, amount, facebook, transactorType);
+                    XmlProcess.AddTransactorToXml(path, name, phone, email, amount, facebook, transactorType);
                 }
 
                 this.FormClosing -= AlertUserOnExit;
@@ -126,33 +123,6 @@ namespace NovaDebt
             // this
             this.btnAddCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnAddCreditor.BackColor = Color.FromArgb(0, 208, 255);
-        }
-
-        private void AddTransactorToXml(string path, string name, string phone, string email, decimal amount, string facebook, string transactorType)
-        {
-            if (path == null)
-            {
-                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
-            }
-            if (!File.Exists(path))
-            {
-                throw new InvalidOperationException(FileDoesntExistErrorMessage);
-            }
-            if (name == null)
-            {
-                throw new ArgumentNullException(NameCannotBeNullErrorMessage);
-            }
-
-            Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
-            HashSet<Transactor> transactors = XmlProcess.DeserializeXml(path).ToHashSet();
-
-            transactor.Id = transactors.Count + 1;
-
-            HashSet<Transactor> transactorTypeNos = transactors.Where(t => t.TransactorType == transactorType).ToHashSet();
-            transactor.No = transactorTypeNos.Count + 1;
-
-            transactors.Add(transactor);
-            XmlProcess.SerializeXmlWithTransactors(path, transactors.ToArray());
         }
 
         private bool ValidateInputFields()
