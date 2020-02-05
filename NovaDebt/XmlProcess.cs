@@ -15,6 +15,7 @@ namespace NovaDebt
     {
         private const string PathCannotBeNullErrorMessage = "Path cannot be null.";
         private const string FileDoesntExistErrorMessage = "File doesn't exist.";
+        private const string XmlRootElement = "Transactors";
 
         public static IEnumerable<Transactor> DeserializeXml(string path)
         {
@@ -30,7 +31,7 @@ namespace NovaDebt
             string xmlText = File.ReadAllText(path);
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                          new XmlRootAttribute("Transactors"));
+                                          new XmlRootAttribute(XmlRootElement));
 
             TransactorDTO[] transactorDTOs = (TransactorDTO[])xmlSerializer.Deserialize(new StringReader(xmlText));
 
@@ -53,7 +54,7 @@ namespace NovaDebt
             string xmlText = File.ReadAllText(path);
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                          new XmlRootAttribute("Transactors"));
+                                          new XmlRootAttribute(XmlRootElement));
 
             TransactorDTO[] transactorDTOs = (TransactorDTO[])xmlSerializer.Deserialize(new StringReader(xmlText));
 
@@ -79,7 +80,7 @@ namespace NovaDebt
             else
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                              new XmlRootAttribute("Transactors"));
+                                              new XmlRootAttribute(XmlRootElement));
 
                 // Removing only the unnecessary namespace headers.
                 XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();

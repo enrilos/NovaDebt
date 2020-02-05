@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -51,7 +52,7 @@ namespace NovaDebt
                 }
             }
             // I should think about when the file exits but doesn't contain the xmlRoot itself inside it.
-            // That is a problem and xml won't be happy.
+            // That is a problem and xml be able to find the root.
 
             // Setting the source of the DataGridView.
             this.debtorsDataGrid.DataSource = table;
@@ -116,22 +117,44 @@ namespace NovaDebt
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // TODO
+            // I should create a separate form for this one.
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // When deleting one or more selected records I must override the original file.
-            // I should consider adding a new property which is the No itself and stop messing with the Id.
-            // The Id should stay static. It's unique identifier after all.
-            // TODO
-            // Fixed the problem.
-            // Now the enumeration of each record and the Id are different.
-            // It's time to implement the Delete function.
-            //if (this.debtorsDataGrid.SelectedRows.Count > 0)
-            //{
-            //    var selectedRows = this.debtorsDataGrid.SelectedRows;
-            //    var info = selectedRows[0].Cells["Име"].Value;
-            //}
+            if (this.debtorsDataGrid.SelectedRows.Count > 0)
+            {
+                var selectedRows = this.debtorsDataGrid.SelectedRows;
+                var nosList = new List<int>();
+
+                for (int i = 0; i < selectedRows.Count; i++)
+                {
+                    var no = selectedRows[i].Cells["№"].Value;
+                    // Parsing the element since the no is object type
+                    nosList.Add(int.Parse(no.ToString()));
+                }
+
+                nosList = nosList.OrderBy(x => x).ToList();
+
+                // Now ~$
+                // I should filter a new collection again depending on the seleted debtors/creditors button from the xml.
+                // Then overwrite the file with the new data and refresh the data grid view.
+                // Thus the data which the user has selected will be deleted
+
+                if (!this.btnDebtors.Enabled)
+                {
+                    // User has selected the Debtors button.
+                    var debtors = XmlProcess.DeserializeXmlWithTransactorType(this.path, TransactorType.Debtor);
+
+                }
+                else if (!this.btnCreditors.Enabled)
+                {
+                    // User has selected the Creditors button.
+                    var creditors = XmlProcess.DeserializeXmlWithTransactorType(this.path, TransactorType.Creditor);
+                }
+
+                return;
+            }
         }
 
         private void FillDataTable(string path, TransactorType transactorType)
