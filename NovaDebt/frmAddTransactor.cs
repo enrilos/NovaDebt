@@ -1,31 +1,17 @@
-﻿using NovaDebt.Models;
-using NovaDebt.Models.Enums;
+﻿using NovaDebt.Models.Enums;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+
+using static NovaDebt.DataSettings;
 
 namespace NovaDebt
 {
     public partial class frmAddTransactor : Form
     {
-        private const decimal MinAmountValue = 0.01m;
-        private const decimal MaxAmountValue = 4294967295m;
-        private const string InvalidNameErrorMessage = "Името може да се състои само от букви и цифри.";
-        private const string MissingNameErrorMessage = "Името e задължително.";
-        private const string InvalidPhoneNumberErrorMessage = "Невалиден Тел №.";
-        private const string InvalidEmailErrorMessage = "Невалиден Имейл.";
-        private const string InvalidFacebookErrorMessage = "Невалиден Фейсбук.";
-        private const string InvalidAmountInterval = "Количеството трябва да е в интервала {0} - {1}.";
-        private const string MissingAmountErrorMessage = "Количеството е задължително.";
-        private const string InvalidAmountErrorMessage = "Невалидно количество.";
-        private const string ErrorMessageBoxCaption = "Грешка";
-        private const string ExitMessageBoxCaption = "Изход";
-
         public frmAddTransactor()
         {
             InitializeComponent();
@@ -75,7 +61,7 @@ namespace NovaDebt
                 string facebook = inputFields[3];
                 decimal amount = decimal.Parse(inputFields[4]);
                 string transactorType = string.Empty;
-                string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\transactors.xml";
+                string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + DefaultFileName;
 
                 if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
@@ -95,8 +81,8 @@ namespace NovaDebt
 
         private void btnAddCancel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Данните няма да бъдат запазени.{Environment.NewLine}Наистина ли искате да излезете?",
-                ExitMessageBoxCaption,
+            if (MessageBox.Show(MessageBoxText.ExitConfirmation,
+                MessageBoxCaption.Exit,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -136,8 +122,8 @@ namespace NovaDebt
 
             if (!regex.IsMatch(this.addNameTextBox.Text))
             {
-                MessageBox.Show(InvalidNameErrorMessage,
-                    ErrorMessageBoxCaption,
+                MessageBox.Show(ErrorMessage.InvalidName,
+                    MessageBoxCaption.Error,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
@@ -145,8 +131,8 @@ namespace NovaDebt
             }
             else if (string.IsNullOrEmpty(this.addNameTextBox.Text) || string.IsNullOrWhiteSpace(this.addNameTextBox.Text))
             {
-                MessageBox.Show(MissingNameErrorMessage,
-                    ErrorMessageBoxCaption,
+                MessageBox.Show(ErrorMessage.MissingName,
+                    MessageBoxCaption.Error,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
@@ -160,8 +146,8 @@ namespace NovaDebt
 
             if (!regex.IsMatch(this.addPhoneTextBox.Text))
             {
-                MessageBox.Show(InvalidPhoneNumberErrorMessage,
-                    ErrorMessageBoxCaption,
+                MessageBox.Show(ErrorMessage.InvalidPhoneNumber,
+                    MessageBoxCaption.Error,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
@@ -175,8 +161,8 @@ namespace NovaDebt
 
             if (!regex.IsMatch(this.addEmailTextBox.Text.Trim()) && !string.IsNullOrEmpty(this.addEmailTextBox.Text.Trim()))
             {
-                MessageBox.Show(InvalidEmailErrorMessage,
-                    ErrorMessageBoxCaption,
+                MessageBox.Show(ErrorMessage.InvalidEmail,
+                    MessageBoxCaption.Error,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
@@ -190,8 +176,8 @@ namespace NovaDebt
 
             if (!regex.IsMatch(this.addFacebookTextBox.Text))
             {
-                MessageBox.Show(InvalidFacebookErrorMessage,
-                    ErrorMessageBoxCaption,
+                MessageBox.Show(ErrorMessage.InvalidFacebook,
+                    MessageBoxCaption.Error,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
@@ -210,8 +196,8 @@ namespace NovaDebt
 
                 if (amount < 0.01m || amount > 4294967295m)
                 {
-                    MessageBox.Show(string.Format(InvalidAmountInterval, MinAmountValue, MaxAmountValue),
-                           ErrorMessageBoxCaption,
+                    MessageBox.Show(string.Format(string.Format(ErrorMessage.InvalidAmountInterval, MinAmountValue, MaxAmountValue)),
+                           MessageBoxCaption.Error,
                            MessageBoxButtons.OK,
                            MessageBoxIcon.Error);
 
@@ -220,8 +206,8 @@ namespace NovaDebt
             }
             else if (string.IsNullOrEmpty(this.addAmountTextBox.Text) || string.IsNullOrWhiteSpace(this.addAmountTextBox.Text))
             {
-                MessageBox.Show(MissingAmountErrorMessage,
-                    ErrorMessageBoxCaption,
+                MessageBox.Show(ErrorMessage.MissingAmount,
+                    MessageBoxCaption.Error,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
@@ -229,8 +215,8 @@ namespace NovaDebt
             }
             else
             {
-                MessageBox.Show(InvalidAmountErrorMessage,
-                    ErrorMessageBoxCaption,
+                MessageBox.Show(ErrorMessage.InvalidAmount,
+                    MessageBoxCaption.Error,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
@@ -242,8 +228,8 @@ namespace NovaDebt
 
         private void AlertUserOnExit(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show($"Данните няма да бъдат запазени.{Environment.NewLine}Наистина ли искате да излезете?",
-                   ExitMessageBoxCaption,
+            DialogResult dialog = MessageBox.Show(MessageBoxText.ExitConfirmation,
+                   MessageBoxCaption.Exit,
                    MessageBoxButtons.YesNo,
                    MessageBoxIcon.Question);
 

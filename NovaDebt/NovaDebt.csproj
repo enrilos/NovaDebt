@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSettings.cs" />
     <Compile Include="frmAddTransactor.cs">
       <SubType>Form</SubType>
     </Compile>

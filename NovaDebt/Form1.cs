@@ -12,17 +12,12 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
+using static NovaDebt.DataSettings;
+
 namespace NovaDebt
 {
     public partial class Form1 : Form
     {
-        // I should create a new class just for the constants and the path
-        // because not only this form uses the same constants and path.
-        private const string ConfirmMessageBoxCaption = "Потвърди";
-        private const string PathCannotBeNullErrorMessage = "Path cannot be null.";
-        private const string FileDoesntExistErrorMessage = "File doesn't exist.";
-        private const string DataTableCannotBeNullErrorMessage = "Data table cannot be null.";
-
         private DataTable table;
         string path;
 
@@ -45,7 +40,7 @@ namespace NovaDebt
             this.table = new DataTable();
             this.InitializeDataTable(this.table);
 
-            this.path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\transactors.xml";
+            this.path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + DefaultFileName;
 
             // Always writing the root element if the file is empty or after creation
             // Otherwise xml doesn't like it and throws exceptions.
@@ -54,7 +49,7 @@ namespace NovaDebt
             {
                 using (FileStream fs = File.Create(path))
                 {
-                    byte[] xmlRoot = new UTF8Encoding(true).GetBytes($"<Transactors>{Environment.NewLine}</Transactors>");
+                    byte[] xmlRoot = new UTF8Encoding(true).GetBytes(DefaultXmlRootOpenClose);
                     fs.Write(xmlRoot, 0, xmlRoot.Length);
                 }
             }
@@ -90,11 +85,8 @@ namespace NovaDebt
         {
             this.btnDebtors.Enabled = false;
             this.btnCreditors.Enabled = true;
-
             this.table.Rows.Clear();
-
             this.FillDataTable(path, TransactorType.Debtor);
-
             this.debtorsDataGrid.ClearSelection();
         }
 
@@ -102,11 +94,8 @@ namespace NovaDebt
         {
             this.btnDebtors.Enabled = true;
             this.btnCreditors.Enabled = false;
-
             this.table.Rows.Clear();
-
             this.FillDataTable(path, TransactorType.Creditor);
-
             this.debtorsDataGrid.ClearSelection();
         }
 
@@ -132,8 +121,8 @@ namespace NovaDebt
         {
             if (this.debtorsDataGrid.SelectedRows.Count > 0)
             {
-                DialogResult dialog = MessageBox.Show($"Изтрий избраните записи?",
-                   ConfirmMessageBoxCaption,
+                DialogResult dialog = MessageBox.Show(MessageBoxText.DeleteConfirmation,
+                   MessageBoxCaption.Confirm,
                    MessageBoxButtons.YesNo,
                    MessageBoxIcon.Question);
 
@@ -144,7 +133,7 @@ namespace NovaDebt
 
                     for (int i = 0; i < selectedRows.Count; i++)
                     {
-                        object no = selectedRows[i].Cells["№"].Value;
+                        object no = selectedRows[i].Cells[TableColumn.No].Value;
                         // Parsing the element since the no is object type
                         nosList.Add(int.Parse(no.ToString()));
                     }
@@ -171,6 +160,7 @@ namespace NovaDebt
                             }
                         }
 
+                        // Adding all the creditors after the filtration of debtors so we don't have missing records.
                         newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Creditor.ToString()));
                     }
                     else if (!this.btnCreditors.Enabled)
@@ -186,11 +176,14 @@ namespace NovaDebt
                             }
                         }
 
+                        // Adding all the debtors after the filtration of creditors so we don't have missing records.
                         newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Debtor.ToString()));
                     }
 
+                    // Overwriting the transactors.xml file.
                     XmlProcess.SerializeXmlWithTransactors(this.path, newTransactors);
 
+                    // Refreshing the grid.
                     this.table.Rows.Clear();
 
                     if (!this.btnDebtors.Enabled)
@@ -212,11 +205,11 @@ namespace NovaDebt
         {
             if (path == null)
             {
-                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
+                throw new ArgumentNullException(ErrorMessage.PathCannotBeNull);
             }
             else if (!File.Exists(path))
             {
-                throw new InvalidOperationException(FileDoesntExistErrorMessage);
+                throw new InvalidOperationException(ErrorMessage.FileDoesntExist);
             }
 
             IEnumerable<ITransactor> transactors = XmlProcess.DeserializeXmlWithTransactorType(path, transactorType);
@@ -229,7 +222,7 @@ namespace NovaDebt
                     transactor.PhoneNumber,
                     transactor.Email,
                     transactor.Facebook,
-                    transactor.Amount + " лв.");
+                    transactor.Amount + DefaultCurrencySymbol);
             }
         }
 
@@ -237,15 +230,15 @@ namespace NovaDebt
         {
             if (table == null)
             {
-                throw new ArgumentNullException(DataTableCannotBeNullErrorMessage);
+                throw new ArgumentNullException(ErrorMessage.DataTableCannotBeNull);
             }
-
-            this.table.Columns.Add("№", typeof(int)); // No
-            this.table.Columns.Add("Име", typeof(string)); // Name
-            this.table.Columns.Add("Тел №", typeof(string)); // PhoneNumber
-            this.table.Columns.Add("Имейл", typeof(string)); // Email
-            this.table.Columns.Add("Фейсбук", typeof(string)); // Facebook
-            this.table.Columns.Add("Количество", typeof(string)); // Amount. (Actual Amount type is decimal.)
+            
+            this.table.Columns.Add(TableColumn.No, typeof(int)); // No
+            this.table.Columns.Add(TableColumn.Name, typeof(string)); // Name
+            this.table.Columns.Add(TableColumn.PhoneNumber, typeof(string)); // PhoneNumber
+            this.table.Columns.Add(TableColumn.Email, typeof(string)); // Email
+            this.table.Columns.Add(TableColumn.Facebook, typeof(string)); // Facebook
+            this.table.Columns.Add(TableColumn.Amount, typeof(string)); // Amount. (Actual Amount type is decimal.)
         }
 
         private void FormClosed(object sender, FormClosedEventArgs e)

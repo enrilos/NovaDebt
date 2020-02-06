@@ -9,30 +9,27 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
+using static NovaDebt.DataSettings;
+
 namespace NovaDebt
 {
     public static class XmlProcess
     {
-        private const string PathCannotBeNullErrorMessage = "Path cannot be null.";
-        private const string NameCannotBeNullErrorMessage = "Name cannot be null.";
-        private const string FileDoesntExistErrorMessage = "File doesn't exist.";
-        private const string XmlRootElement = "Transactors";
-
         public static IEnumerable<Transactor> DeserializeXml(string path)
         {
             if (path == null)
             {
-                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
+                throw new ArgumentNullException(ErrorMessage.PathCannotBeNull);
             }
             if (!File.Exists(path))
             {
-                throw new InvalidOperationException(FileDoesntExistErrorMessage);
+                throw new InvalidOperationException(ErrorMessage.FileDoesntExist);
             }
 
             string xmlText = File.ReadAllText(path);
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                          new XmlRootAttribute(XmlRootElement));
+                                          new XmlRootAttribute(DefaultXmlRoot));
 
             TransactorDTO[] transactorDTOs = (TransactorDTO[])xmlSerializer.Deserialize(new StringReader(xmlText));
 
@@ -45,17 +42,17 @@ namespace NovaDebt
         {
             if (path == null)
             {
-                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
+                throw new ArgumentNullException(ErrorMessage.PathCannotBeNull);
             }
             if (!File.Exists(path))
             {
-                throw new InvalidOperationException(FileDoesntExistErrorMessage);
+                throw new InvalidOperationException(ErrorMessage.FileDoesntExist);
             }
 
             string xmlText = File.ReadAllText(path);
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                          new XmlRootAttribute(XmlRootElement));
+                                          new XmlRootAttribute(DefaultXmlRoot));
 
             TransactorDTO[] transactorDTOs = (TransactorDTO[])xmlSerializer.Deserialize(new StringReader(xmlText));
 
@@ -72,7 +69,7 @@ namespace NovaDebt
 
             if (path == null)
             {
-                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
+                throw new ArgumentNullException(ErrorMessage.PathCannotBeNull);
             }
             if (!File.Exists(path))
             {
@@ -81,7 +78,7 @@ namespace NovaDebt
             else
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                              new XmlRootAttribute(XmlRootElement));
+                                              new XmlRootAttribute(DefaultXmlRoot));
 
                 // Removing only the unnecessary namespace headers.
                 XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
@@ -103,15 +100,15 @@ namespace NovaDebt
         {
             if (path == null)
             {
-                throw new ArgumentNullException(PathCannotBeNullErrorMessage);
+                throw new ArgumentNullException(ErrorMessage.PathCannotBeNull);
             }
             if (!File.Exists(path))
             {
-                throw new InvalidOperationException(FileDoesntExistErrorMessage);
+                throw new InvalidOperationException(ErrorMessage.FileDoesntExist);
             }
             if (name == null)
             {
-                throw new ArgumentNullException(NameCannotBeNullErrorMessage);
+                throw new ArgumentNullException(ErrorMessage.NameCannotBeNull);
             }
 
             Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
