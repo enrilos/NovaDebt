@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -39,6 +40,7 @@ namespace NovaDebt
             this.btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
 
+            // Attaching an event will will warn the user upon cancel/exit.
             this.FormClosing += new FormClosingEventHandler(AlertUserOnExit);
         }
 
@@ -73,7 +75,7 @@ namespace NovaDebt
                 string facebook = inputFields[3];
                 decimal amount = decimal.Parse(inputFields[4]);
                 string transactorType = string.Empty;
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
+                string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\transactors.xml";
 
                 if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {

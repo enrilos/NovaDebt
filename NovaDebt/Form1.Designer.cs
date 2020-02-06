@@ -61,7 +61,7 @@ namespace NovaDebt
             this.btnDebtors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.btnDebtors.Location = new System.Drawing.Point(0, 144);
             this.btnDebtors.Name = "btnDebtors";
-            this.btnDebtors.Size = new System.Drawing.Size(212, 80);
+            this.btnDebtors.Size = new System.Drawing.Size(212, 90);
             this.btnDebtors.TabIndex = 0;
             this.btnDebtors.TabStop = false;
             this.btnDebtors.Text = "Дебитори";
@@ -77,9 +77,9 @@ namespace NovaDebt
             this.btnCreditors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreditors.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCreditors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnCreditors.Location = new System.Drawing.Point(0, 230);
+            this.btnCreditors.Location = new System.Drawing.Point(0, 240);
             this.btnCreditors.Name = "btnCreditors";
-            this.btnCreditors.Size = new System.Drawing.Size(212, 80);
+            this.btnCreditors.Size = new System.Drawing.Size(212, 90);
             this.btnCreditors.TabIndex = 0;
             this.btnCreditors.TabStop = false;
             this.btnCreditors.Text = "Кредитори";

@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,6 +16,9 @@ namespace NovaDebt
 {
     public partial class Form1 : Form
     {
+        // I should create a new class just for the constants and the path
+        // because not only this form uses the same constants and path.
+        private const string ConfirmMessageBoxCaption = "Потвърди";
         private const string PathCannotBeNullErrorMessage = "Path cannot be null.";
         private const string FileDoesntExistErrorMessage = "File doesn't exist.";
         private const string DataTableCannotBeNullErrorMessage = "Data table cannot be null.";
@@ -29,6 +33,8 @@ namespace NovaDebt
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // I should consider preventing the user to start the application more than once.
+
             // Static Mapper.
             // Initializing a profile class which contains mapping configurations inside.
             // Version of AutoMapper which is used: 7.0.1
@@ -39,7 +45,7 @@ namespace NovaDebt
             this.table = new DataTable();
             this.InitializeDataTable(this.table);
 
-            this.path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\transactors.xml";
+            this.path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\transactors.xml";
 
             // Always writing the root element if the file is empty or after creation
             // Otherwise xml doesn't like it and throws exceptions.
@@ -126,69 +132,79 @@ namespace NovaDebt
         {
             if (this.debtorsDataGrid.SelectedRows.Count > 0)
             {
-                DataGridViewSelectedRowCollection selectedRows = this.debtorsDataGrid.SelectedRows;
-                List<int> nosList = new List<int>();
+                DialogResult dialog = MessageBox.Show($"Изтрий избраните записи?",
+                   ConfirmMessageBoxCaption,
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question);
 
-                for (int i = 0; i < selectedRows.Count; i++)
+                if (dialog == DialogResult.Yes)
                 {
-                    object no = selectedRows[i].Cells["№"].Value;
-                    // Parsing the element since the no is object type
-                    nosList.Add(int.Parse(no.ToString()));
-                }
+                    DataGridViewSelectedRowCollection selectedRows = this.debtorsDataGrid.SelectedRows;
+                    List<int> nosList = new List<int>();
 
-                nosList = nosList.OrderBy(x => x).ToList();
-
-                // I should filter a new collection again depending on the seleted debtors/creditors button from the xml.
-                // Then overwrite the file without the deleted data and refresh the data grid view.
-                // Thus the data which the user has selected will be deleted and removed from the file.
-
-                IEnumerable<Transactor> transactors = XmlProcess.DeserializeXml(this.path);
-                List<Transactor> newTransactors = new List<Transactor>();
-
-                if (!this.btnDebtors.Enabled)
-                {
-                    // User has the Debtors button as the selected button.
-                    foreach (var transactor in transactors)
+                    for (int i = 0; i < selectedRows.Count; i++)
                     {
-                        if (!nosList.Any(x => x == transactor.No) && transactor.TransactorType == TransactorType.Debtor.ToString())
-                        {
-                            transactor.No = newTransactors.Count + 1;
-                            newTransactors.Add(transactor);
-                        }
+                        object no = selectedRows[i].Cells["№"].Value;
+                        // Parsing the element since the no is object type
+                        nosList.Add(int.Parse(no.ToString()));
                     }
 
-                    newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Creditor.ToString()));
-                }
-                else if (!this.btnCreditors.Enabled)
-                {
-                    // User has the Creditors button as the selected button.
-                    foreach (var transactor in transactors)
+                    nosList = nosList.OrderBy(x => x).ToList();
+
+                    // I should filter a new collection again depending on the seleted debtors/creditors button from the xml.
+                    // Then overwrite the file without the deleted data and refresh the data grid view.
+                    // Thus the data which the user has selected will be deleted and removed from the file.
+
+                    IEnumerable<Transactor> transactors = XmlProcess.DeserializeXml(this.path);
+                    List<Transactor> newTransactors = new List<Transactor>();
+
+                    if (!this.btnDebtors.Enabled)
                     {
-                        if (!nosList.Any(x => x == transactor.No) && transactor.TransactorType == TransactorType.Creditor.ToString())
+                        // User has the Debtors button as the selected button.
+                        foreach (var transactor in transactors)
                         {
-                            transactor.No = newTransactors.Count + 1;
-                            newTransactors.Add(transactor);
+                            if (!nosList.Any(x => x == transactor.No)
+                                && transactor.TransactorType == TransactorType.Debtor.ToString())
+                            {
+                                transactor.No = newTransactors.Count + 1;
+                                newTransactors.Add(transactor);
+                            }
                         }
+
+                        newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Creditor.ToString()));
+                    }
+                    else if (!this.btnCreditors.Enabled)
+                    {
+                        // User has the Creditors button as the selected button.
+                        foreach (var transactor in transactors)
+                        {
+                            if (!nosList.Any(x => x == transactor.No)
+                                && transactor.TransactorType == TransactorType.Creditor.ToString())
+                            {
+                                transactor.No = newTransactors.Count + 1;
+                                newTransactors.Add(transactor);
+                            }
+                        }
+
+                        newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Debtor.ToString()));
                     }
 
-                    newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Debtor.ToString()));
+                    XmlProcess.SerializeXmlWithTransactors(this.path, newTransactors);
+
+                    this.table.Rows.Clear();
+
+                    if (!this.btnDebtors.Enabled)
+                    {
+                        this.FillDataTable(path, TransactorType.Debtor);
+
+                    }
+                    else if (!this.btnCreditors.Enabled)
+                    {
+                        this.FillDataTable(path, TransactorType.Creditor);
+                    }
+
+                    this.debtorsDataGrid.DataSource = table;
                 }
-
-                XmlProcess.SerializeXmlWithTransactors(this.path, newTransactors);
-
-                this.table.Rows.Clear();
-
-                if (!this.btnDebtors.Enabled)
-                {
-                    this.FillDataTable(path, TransactorType.Debtor);
-
-                }
-                else if (!this.btnCreditors.Enabled)
-                {
-                    this.FillDataTable(path, TransactorType.Creditor);
-                }
-
-                this.debtorsDataGrid.DataSource = table;
             }
         }
 
