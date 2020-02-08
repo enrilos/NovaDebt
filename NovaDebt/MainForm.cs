@@ -39,17 +39,30 @@ namespace NovaDebt
             this.table = new DataTable();
             this.InitializeDataTable(this.table);
 
+            // Making a separate file which keeps track of the id
+            // Overwriting it always by incrementing with +1.
+            // Thus I guarantee that no duplicate records will be sent to the transactors file.
+            if (!File.Exists(IdCounterFilePath))
+            {
+                using (FileStream fs = File.Create(IdCounterFilePath))
+                {
+                    byte[] counterText = new UTF8Encoding(true).GetBytes(IdCounterSeed);
+                    fs.Write(counterText, 0, counterText.Length);
+                }
+            }
+
             // Always writing the root element if the file is empty or after creation
             // Otherwise xml doesn't like it and throws exceptions.
             // So when the form loads I initialize the file within the directory with "Transactors" root el. as required.
-            if (!File.Exists(DefaultFilePath))
+            if (!File.Exists(TransactorsFilePath))
             {
-                using (FileStream fs = File.Create(DefaultFilePath))
+                using (FileStream fs = File.Create(TransactorsFilePath))
                 {
                     byte[] xmlRoot = new UTF8Encoding(true).GetBytes(DefaultXmlRootOpenClose);
                     fs.Write(xmlRoot, 0, xmlRoot.Length);
                 }
             }
+
             // I should think about when the file exits but doesn't contain the xmlRoot itself inside it.
             // Or the QA guy will scream as always.
             // That is a problem which must be fixed or xml won't be able to find the root element.
@@ -85,7 +98,7 @@ namespace NovaDebt
             this.btnDebtors.Enabled = false;
             this.btnCreditors.Enabled = true;
             this.table.Rows.Clear();
-            this.FillDataTable(DefaultFilePath, TransactorType.Debtor);
+            this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
             this.debtorsDataGrid.ClearSelection();
         }
 
@@ -94,7 +107,7 @@ namespace NovaDebt
             this.btnDebtors.Enabled = true;
             this.btnCreditors.Enabled = false;
             this.table.Rows.Clear();
-            this.FillDataTable(DefaultFilePath, TransactorType.Creditor);
+            this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
             this.debtorsDataGrid.ClearSelection();
         }
 
@@ -143,7 +156,7 @@ namespace NovaDebt
                     // Then overwrite the file without the deleted data and refresh the data grid view.
                     // Thus the data which the user has selected will be deleted and removed from the file.
 
-                    IEnumerable<Transactor> transactors = XmlProcess.DeserializeXml(DefaultFilePath);
+                    IEnumerable<Transactor> transactors = XmlProcess.DeserializeXml(TransactorsFilePath);
                     List<Transactor> newTransactors = new List<Transactor>();
 
                     if (!this.btnDebtors.Enabled)
@@ -180,19 +193,20 @@ namespace NovaDebt
                     }
 
                     // Overwriting the transactors.xml file.
-                    XmlProcess.SerializeXmlWithTransactors(DefaultFilePath, newTransactors);
+                    // Overwriting the whole file here is needed since the debtors/creditors are being changed.
+                    XmlProcess.SerializeXmlWithTransactors(TransactorsFilePath, newTransactors);
 
                     // Refreshing the grid.
                     this.table.Rows.Clear();
 
                     if (!this.btnDebtors.Enabled)
                     {
-                        this.FillDataTable(DefaultFilePath, TransactorType.Debtor);
+                        this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
 
                     }
                     else if (!this.btnCreditors.Enabled)
                     {
-                        this.FillDataTable(DefaultFilePath, TransactorType.Creditor);
+                        this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
                     }
 
                     this.debtorsDataGrid.DataSource = table;
@@ -251,12 +265,12 @@ namespace NovaDebt
             {
                 // Problem: The scroll should stay in it's last position.
                 // Thinking about how to fix it...
-                this.FillDataTable(DefaultFilePath, TransactorType.Debtor);
+                this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
                 
             }
             else if (!this.btnCreditors.Enabled)
             {
-                this.FillDataTable(DefaultFilePath, TransactorType.Creditor);
+                this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
             }
 
             this.debtorsDataGrid.DataSource = table;

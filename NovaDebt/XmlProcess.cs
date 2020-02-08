@@ -29,7 +29,7 @@ namespace NovaDebt
             string xmlText = File.ReadAllText(path);
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                          new XmlRootAttribute(DefaultXmlRoot));
+                                          new XmlRootAttribute(XmlRoot));
 
             TransactorDTO[] transactorDTOs = (TransactorDTO[])xmlSerializer.Deserialize(new StringReader(xmlText));
 
@@ -52,7 +52,7 @@ namespace NovaDebt
             string xmlText = File.ReadAllText(path);
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                          new XmlRootAttribute(DefaultXmlRoot));
+                                          new XmlRootAttribute(XmlRoot));
 
             TransactorDTO[] transactorDTOs = (TransactorDTO[])xmlSerializer.Deserialize(new StringReader(xmlText));
 
@@ -78,7 +78,7 @@ namespace NovaDebt
             else
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                              new XmlRootAttribute(DefaultXmlRoot));
+                                              new XmlRootAttribute(XmlRoot));
 
                 // Removing only the unnecessary namespace headers.
                 XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
@@ -113,11 +113,12 @@ namespace NovaDebt
 
             Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
             HashSet<Transactor> transactors = XmlProcess.DeserializeXml(path).ToHashSet();
+            int idCount = int.Parse(File.ReadAllText(IdCounterFilePath));
+            transactor.Id = idCount++;
+            File.WriteAllText(IdCounterFilePath, idCount.ToString());
 
-            transactor.Id = transactors.Count + 1;
-
-            HashSet<Transactor> transactorTypeNos = transactors.Where(t => t.TransactorType == transactorType).ToHashSet();
-            transactor.No = transactorTypeNos.Count + 1;
+            HashSet<Transactor> transactorWithTypes = transactors.Where(t => t.TransactorType == transactorType).ToHashSet();
+            transactor.No = transactorWithTypes.Count + 1;
 
             // In the adding action, serializing the whole entry is too complex.
             // I just need to put the new record in the last lines of the xml before the root closing tag.

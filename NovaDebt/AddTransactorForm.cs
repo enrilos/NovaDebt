@@ -61,7 +61,7 @@ namespace NovaDebt
                 string facebook = inputFields[3];
                 decimal amount = decimal.Parse(inputFields[4]);
                 string transactorType = string.Empty;
-                string path = DefaultFilePath;
+                string path = TransactorsFilePath;
 
                 if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {

@@ -7,15 +7,21 @@ namespace NovaDebt
     {
         public static string DefaultAssemblyPath { get; } = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-        public static string DefaultFileName { get; } = "\\transactors.xml";
+        public static string TransactorsFileName { get; } = "\\transactors.xml";
 
-        public static string DefaultFilePath { get; } = DefaultAssemblyPath + DefaultFileName;
+        public static string TransactorsFilePath { get; } = DefaultAssemblyPath + TransactorsFileName;
 
-        public static string DefaultXmlRoot { get; } = "Transactors";
+        public static string XmlRoot { get; } = "Transactors";
 
         public static string DefaultXmlRootOpenClose { get; } = "<Transactors>\n</Transactors>";
 
         public static string DefaultCurrencySymbol { get; } = " лв.";
+
+        public static string IdCounterSeed { get; } = "1";
+
+        public static string IdCounterFileName { get; } = "\\idcounter.txt";
+
+        public static string IdCounterFilePath { get; } = DefaultAssemblyPath + IdCounterFileName;
 
         public static decimal MinAmountValue { get; } = 0.01m;
 
