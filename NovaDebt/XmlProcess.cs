@@ -119,6 +119,12 @@ namespace NovaDebt
             HashSet<Transactor> transactorTypeNos = transactors.Where(t => t.TransactorType == transactorType).ToHashSet();
             transactor.No = transactorTypeNos.Count + 1;
 
+            // In the adding action, serializing the whole entry is too complex.
+            // I just need to put the new record in the last lines of the xml before the root closing tag.
+            // 'Cause I don't change the other records in any way.
+            // I just get the count of collections of them.
+            // That's why it will be a lot better if I just edit the xml file at the end (put the new record)
+            // Not to overwrite the whole file just to add a chunk of data.
             transactors.Add(transactor);
             XmlProcess.SerializeXmlWithTransactors(path, transactors.ToArray());
         }

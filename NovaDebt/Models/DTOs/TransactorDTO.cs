@@ -5,10 +5,10 @@ namespace NovaDebt.Models.DTOs
     [XmlType("Transactor")]
     public class TransactorDTO
     {
-        [XmlElement("Id")]
+        [XmlAttribute("id")]
         public int Id { get; set; }
 
-        [XmlElement("No")]
+        [XmlAttribute("no")]
         public int No { get; set; }
 
         [XmlElement("Name")]

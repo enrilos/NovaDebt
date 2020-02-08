@@ -19,7 +19,6 @@ namespace NovaDebt
     public partial class MainForm : Form
     {
         private DataTable table;
-        string path;
 
         public MainForm()
         {
@@ -40,14 +39,12 @@ namespace NovaDebt
             this.table = new DataTable();
             this.InitializeDataTable(this.table);
 
-            this.path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + DefaultFileName;
-
             // Always writing the root element if the file is empty or after creation
             // Otherwise xml doesn't like it and throws exceptions.
             // So when the form loads I initialize the file within the directory with "Transactors" root el. as required.
-            if (!File.Exists(path))
+            if (!File.Exists(DefaultFilePath))
             {
-                using (FileStream fs = File.Create(path))
+                using (FileStream fs = File.Create(DefaultFilePath))
                 {
                     byte[] xmlRoot = new UTF8Encoding(true).GetBytes(DefaultXmlRootOpenClose);
                     fs.Write(xmlRoot, 0, xmlRoot.Length);
@@ -63,8 +60,10 @@ namespace NovaDebt
             this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
             // Customizing the columns/headers of the table
+            // No Column
             DataGridViewColumn columnNo = debtorsDataGrid.Columns[0];
             columnNo.Width = 50;
+            // Amount Column
             DataGridViewColumn columnAmount = debtorsDataGrid.Columns[5];
             columnAmount.Width = 120;
 
@@ -86,7 +85,7 @@ namespace NovaDebt
             this.btnDebtors.Enabled = false;
             this.btnCreditors.Enabled = true;
             this.table.Rows.Clear();
-            this.FillDataTable(path, TransactorType.Debtor);
+            this.FillDataTable(DefaultFilePath, TransactorType.Debtor);
             this.debtorsDataGrid.ClearSelection();
         }
 
@@ -95,7 +94,7 @@ namespace NovaDebt
             this.btnDebtors.Enabled = true;
             this.btnCreditors.Enabled = false;
             this.table.Rows.Clear();
-            this.FillDataTable(path, TransactorType.Creditor);
+            this.FillDataTable(DefaultFilePath, TransactorType.Creditor);
             this.debtorsDataGrid.ClearSelection();
         }
 
@@ -144,7 +143,7 @@ namespace NovaDebt
                     // Then overwrite the file without the deleted data and refresh the data grid view.
                     // Thus the data which the user has selected will be deleted and removed from the file.
 
-                    IEnumerable<Transactor> transactors = XmlProcess.DeserializeXml(this.path);
+                    IEnumerable<Transactor> transactors = XmlProcess.DeserializeXml(DefaultFilePath);
                     List<Transactor> newTransactors = new List<Transactor>();
 
                     if (!this.btnDebtors.Enabled)
@@ -181,19 +180,19 @@ namespace NovaDebt
                     }
 
                     // Overwriting the transactors.xml file.
-                    XmlProcess.SerializeXmlWithTransactors(this.path, newTransactors);
+                    XmlProcess.SerializeXmlWithTransactors(DefaultFilePath, newTransactors);
 
                     // Refreshing the grid.
                     this.table.Rows.Clear();
 
                     if (!this.btnDebtors.Enabled)
                     {
-                        this.FillDataTable(path, TransactorType.Debtor);
+                        this.FillDataTable(DefaultFilePath, TransactorType.Debtor);
 
                     }
                     else if (!this.btnCreditors.Enabled)
                     {
-                        this.FillDataTable(path, TransactorType.Creditor);
+                        this.FillDataTable(DefaultFilePath, TransactorType.Creditor);
                     }
 
                     this.debtorsDataGrid.DataSource = table;
@@ -252,12 +251,12 @@ namespace NovaDebt
             {
                 // Problem: The scroll should stay in it's last position.
                 // Thinking about how to fix it...
-                this.FillDataTable(path, TransactorType.Debtor);
+                this.FillDataTable(DefaultFilePath, TransactorType.Debtor);
                 
             }
             else if (!this.btnCreditors.Enabled)
             {
-                this.FillDataTable(path, TransactorType.Creditor);
+                this.FillDataTable(DefaultFilePath, TransactorType.Creditor);
             }
 
             this.debtorsDataGrid.DataSource = table;

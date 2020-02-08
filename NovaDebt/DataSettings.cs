@@ -1,76 +1,83 @@
-﻿namespace NovaDebt
+﻿using System.IO;
+using System.Reflection;
+
+namespace NovaDebt
 {
     public static class DataSettings
     {
-        public const string DefaultFileName = "\\transactors.xml";
+        public static string DefaultAssemblyPath { get; } = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-        public const string DefaultXmlRoot = "Transactors";
+        public static string DefaultFileName { get; } = "\\transactors.xml";
 
-        public const string DefaultXmlRootOpenClose = "<Transactors>\n</Transactors>";
+        public static string DefaultFilePath { get; } = DefaultAssemblyPath + DefaultFileName;
 
-        public const string DefaultCurrencySymbol = " лв.";
+        public static string DefaultXmlRoot { get; } = "Transactors";
 
-        public const decimal MinAmountValue = 0.01m;
+        public static string DefaultXmlRootOpenClose { get; } = "<Transactors>\n</Transactors>";
 
-        public const decimal MaxAmountValue = 4294967295m;
+        public static string DefaultCurrencySymbol { get; } = " лв.";
+
+        public static decimal MinAmountValue { get; } = 0.01m;
+
+        public static decimal MaxAmountValue { get; } = 4294967295m;
 
         public static class TableColumn
         {
-            public const string No = "№";
+            public static string No { get; } = "№";
 
-            public const string Name = "Име";
+            public static string Name { get; } = "Име";
 
-            public const string PhoneNumber = "Тел №";
+            public static string PhoneNumber { get; } = "Тел №";
 
-            public const string Email = "Имейл";
+            public static string Email { get; } = "Имейл";
 
-            public const string Facebook = "Фейсбук";
+            public static string Facebook { get; } = "Фейсбук";
 
-            public const string Amount = "Количество";
+            public static string Amount { get; } = "Количество";
         }
 
         public static class MessageBoxCaption
         {
-            public const string Confirm = "Потвърди";
+            public static string Confirm { get; } = "Потвърди";
 
-            public const string Error = "Грешка";
+            public static string Error { get; } = "Грешка";
 
-            public const string Exit = "Изход";
+            public static string Exit { get; } = "Изход";
         }
 
         public static class MessageBoxText
         {
-            public const string DeleteConfirmation = "Изтрий избраните записи?";
+            public static string DeleteConfirmation { get; } = "Изтрий избраните записи?";
 
-            public const string ExitConfirmation = "Данните няма да бъдат запазени.\nНаистина ли искате да излезете?";
+            public static string ExitConfirmation { get; } = "Данните няма да бъдат запазени.\nНаистина ли искате да излезете?";
 
         }
 
         public static class ErrorMessage
         {
-            public const string PathCannotBeNull = "Path cannot be null.";
+            public static string PathCannotBeNull { get; } = "Path cannot be null.";
 
-            public const string FileDoesntExist = "File doesn't exist.";
+            public static string FileDoesntExist { get; } = "File doesn't exist.";
 
-            public const string DataTableCannotBeNull = "Data table cannot be null.";
+            public static string DataTableCannotBeNull { get; } = "Data table cannot be null.";
 
-            public const string NameCannotBeNull = "Name cannot be null.";
+            public static string NameCannotBeNull { get; } = "Name cannot be null.";
 
-            public const string InvalidAmountInterval = "Количеството трябва да е в интервала {0} - {1}.";
+            public static string InvalidAmountInterval { get; } = "Количеството трябва да е в интервала {0} - {1}.";
 
-            public const string InvalidName = "Името може да се състои само от букви и цифри.";
+            public static string InvalidName { get; } = "Името може да се състои само от букви и цифри.";
 
-            public const string MissingName = "Името e задължително.";
+            public static string MissingName { get; } = "Името e задължително.";
 
-            public const string InvalidPhoneNumber = "Невалиден Тел №.";
+            public static string InvalidPhoneNumber { get; } = "Невалиден Тел №.";
 
-            public const string InvalidEmail = "Невалиден Имейл.";
+            public static string InvalidEmail { get; } = "Невалиден Имейл.";
 
-            public const string InvalidFacebook = "Невалиден Фейсбук.";
+            public static string InvalidFacebook { get; } = "Невалиден Фейсбук.";
 
-            public const string MissingAmount = "Количеството е задължително.";
+            public static string MissingAmount { get; } = "Количеството е задължително.";
 
-            public const string InvalidAmount = "Невалидно количество.";
+            public static string InvalidAmount { get; } = "Невалидно количество.";
         }
     }
 }
