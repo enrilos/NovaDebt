@@ -11,7 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
-
+using System.Xml.Linq;
 using static NovaDebt.DataSettings;
 
 namespace NovaDebt
@@ -140,69 +140,57 @@ namespace NovaDebt
 
                 if (dialog == DialogResult.Yes)
                 {
+                    // When doing the delete think
+                    // I should change the No of all the remaining others in the same category.
+                    // NEW
+
+                    XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
+                    IEnumerable<XElement> debtors = xmlDocument.Element("Transactors")
+                                                               .Elements("Transactor");
                     DataGridViewSelectedRowCollection selectedRows = this.debtorsDataGrid.SelectedRows;
-                    List<int> nosList = new List<int>();
-
-                    for (int i = 0; i < selectedRows.Count; i++)
-                    {
-                        object no = selectedRows[i].Cells[TableColumn.No].Value;
-                        // Parsing the element since the no is object type
-                        nosList.Add(int.Parse(no.ToString()));
-                    }
-
-                    nosList = nosList.OrderBy(x => x).ToList();
-
-                    // I should filter a new collection again depending on the seleted debtors/creditors button from the xml.
-                    // Then overwrite the file without the deleted data and refresh the data grid view.
-                    // Thus the data which the user has selected will be deleted and removed from the file.
-
-                    IEnumerable<Transactor> transactors = XmlProcess.DeserializeXml(TransactorsFilePath);
-                    List<Transactor> newTransactors = new List<Transactor>();
 
                     if (!this.btnDebtors.Enabled)
                     {
-                        // User has the Debtors button as the selected button.
-                        foreach (var transactor in transactors)
-                        {
-                            if (!nosList.Any(x => x == transactor.No)
-                                && transactor.TransactorType == TransactorType.Debtor.ToString())
-                            {
-                                transactor.No = newTransactors.Count + 1;
-                                newTransactors.Add(transactor);
-                            }
-                        }
+                        // The user has the Debtors button as the selected button.
+                        debtors = debtors.Where(x => x.Element("TransactorType").Value == "Debtor");
 
-                        // Adding all the creditors after the filtration of debtors so we don't have missing records.
-                        newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Creditor.ToString()));
+                        for (int i = 0; i < selectedRows.Count; i++)
+                        {
+                            string no = selectedRows[i].Cells[TableColumn.No].Value.ToString();
+                            xmlDocument.Root.Elements().FirstOrDefault(x => x.Attribute("no").Value == no
+                                                                       && x.Element("TransactorType").Value == "Debtor")
+                                .Remove();
+                        }
                     }
                     else if (!this.btnCreditors.Enabled)
                     {
-                        // User has the Creditors button as the selected button.
-                        foreach (var transactor in transactors)
-                        {
-                            if (!nosList.Any(x => x == transactor.No)
-                                && transactor.TransactorType == TransactorType.Creditor.ToString())
-                            {
-                                transactor.No = newTransactors.Count + 1;
-                                newTransactors.Add(transactor);
-                            }
-                        }
+                        // The user has the Creditors button as the selected button.
+                        debtors = debtors.Where(x => x.Element("TransactorType").Value == "Creditor");
 
-                        // Adding all the debtors after the filtration of creditors so we don't have missing records.
-                        newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Debtor.ToString()));
+                        for (int i = 0; i < selectedRows.Count; i++)
+                        {
+                            string no = selectedRows[i].Cells[TableColumn.No].Value.ToString();
+                            xmlDocument.Root.Elements().FirstOrDefault(x => x.Attribute("no").Value == no
+                                                                       && x.Element("TransactorType").Value == "Creditor")
+                                .Remove();
+                        }
                     }
 
-                    // Overwriting the transactors.xml file.
-                    // Overwriting the whole file here is needed since the debtors/creditors are being changed.
-                    XmlProcess.SerializeXmlWithTransactors(TransactorsFilePath, newTransactors);
+                    int noCounter = 1;
 
-                    // Refreshing the grid.
+                    foreach (XElement debtor in debtors)
+                    {
+                        debtor.SetAttributeValue("no", noCounter++);
+                    }
+
+                    xmlDocument.Save(TransactorsFilePath);
+
+                    // Refreshing the grid upon deletion.
                     this.table.Rows.Clear();
 
                     if (!this.btnDebtors.Enabled)
                     {
                         this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
-
                     }
                     else if (!this.btnCreditors.Enabled)
                     {
@@ -210,6 +198,78 @@ namespace NovaDebt
                     }
 
                     this.debtorsDataGrid.DataSource = table;
+
+                    // OLD
+                    //DataGridViewSelectedRowCollection selectedRows = this.debtorsDataGrid.SelectedRows;
+                    //List<int> nosList = new List<int>();
+
+                    //for (int i = 0; i < selectedRows.Count; i++)
+                    //{
+                    //    object no = selectedRows[i].Cells[TableColumn.No].Value;
+                    //    // Parsing the element since the no is object type
+                    //    nosList.Add(int.Parse(no.ToString()));
+                    //}
+
+                    //nosList = nosList.OrderBy(x => x).ToList();
+
+                    //// I should filter a new collection again depending on the seleted debtors/creditors button from the xml.
+                    //// Then overwrite the file without the deleted data and refresh the data grid view.
+                    //// Thus the data which the user has selected will be deleted and removed from the file.
+
+                    //IEnumerable<Transactor> transactors = XmlProcess.DeserializeXml(TransactorsFilePath);
+                    //List<Transactor> newTransactors = new List<Transactor>();
+
+                    //if (!this.btnDebtors.Enabled)
+                    //{
+                    //    // User has the Debtors button as the selected button.
+                    //    foreach (var transactor in transactors)
+                    //    {
+                    //        if (!nosList.Any(x => x == transactor.No)
+                    //            && transactor.TransactorType == TransactorType.Debtor.ToString())
+                    //        {
+                    //            transactor.No = newTransactors.Count + 1;
+                    //            newTransactors.Add(transactor);
+                    //        }
+                    //    }
+
+                    //    // Adding all the creditors after the filtration of debtors so we don't have missing records.
+                    //    newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Creditor.ToString()));
+                    //}
+                    //else if (!this.btnCreditors.Enabled)
+                    //{
+                    //    // User has the Creditors button as the selected button.
+                    //    foreach (var transactor in transactors)
+                    //    {
+                    //        if (!nosList.Any(x => x == transactor.No)
+                    //            && transactor.TransactorType == TransactorType.Creditor.ToString())
+                    //        {
+                    //            transactor.No = newTransactors.Count + 1;
+                    //            newTransactors.Add(transactor);
+                    //        }
+                    //    }
+
+                    //    // Adding all the debtors after the filtration of creditors so we don't have missing records.
+                    //    newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Debtor.ToString()));
+                    //}
+
+                    //// Overwriting the transactors.xml file.
+                    //// Overwriting the whole file here is needed since the debtors/creditors are being changed.
+                    //XmlProcess.SerializeXmlWithTransactors(TransactorsFilePath, newTransactors);
+
+                    //// Refreshing the grid.
+                    //this.table.Rows.Clear();
+
+                    //if (!this.btnDebtors.Enabled)
+                    //{
+                    //    this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
+
+                    //}
+                    //else if (!this.btnCreditors.Enabled)
+                    //{
+                    //    this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
+                    //}
+
+                    //this.debtorsDataGrid.DataSource = table;
                 }
             }
         }
@@ -225,9 +285,9 @@ namespace NovaDebt
                 throw new InvalidOperationException(ErrorMessage.FileDoesntExist);
             }
 
-            IEnumerable<ITransactor> transactors = XmlProcess.DeserializeXmlWithTransactorType(path, transactorType);
+            IEnumerable<Transactor> transactors = XmlProcess.DeserializeXmlWithTransactorType(path, transactorType);
 
-            foreach (ITransactor transactor in transactors)
+            foreach (Transactor transactor in transactors)
             {
                 this.table.Rows.Add(
                     transactor.No,
@@ -245,7 +305,7 @@ namespace NovaDebt
             {
                 throw new ArgumentNullException(ErrorMessage.DataTableCannotBeNull);
             }
-            
+
             this.table.Columns.Add(TableColumn.No, typeof(int)); // No
             this.table.Columns.Add(TableColumn.Name, typeof(string)); // Name
             this.table.Columns.Add(TableColumn.PhoneNumber, typeof(string)); // PhoneNumber
@@ -266,7 +326,7 @@ namespace NovaDebt
                 // Problem: The scroll should stay in it's last position.
                 // Thinking about how to fix it...
                 this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
-                
+
             }
             else if (!this.btnCreditors.Enabled)
             {
