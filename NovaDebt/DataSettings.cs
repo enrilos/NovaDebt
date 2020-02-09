@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 
 namespace NovaDebt
@@ -13,7 +14,7 @@ namespace NovaDebt
 
         public static string XmlRoot { get; } = "Transactors";
 
-        public static string DefaultXmlRootOpenClose { get; } = "<Transactors>\n</Transactors>";
+        public static string XmlRootOpenClose { get; } = "<Transactors>\n</Transactors>";
 
         public static string DefaultCurrencySymbol { get; } = " лв.";
 
@@ -32,6 +33,10 @@ namespace NovaDebt
             public static string No { get; } = "№";
 
             public static string Name { get; } = "Име";
+
+            public static string Since { get; } = "Начален срок";
+
+            public static string DueDate { get; } = "Краен срок";
 
             public static string PhoneNumber { get; } = "Тел №";
 
@@ -74,6 +79,10 @@ namespace NovaDebt
             public static string InvalidName { get; } = "Името може да се състои само от букви и цифри.";
 
             public static string MissingName { get; } = "Името e задължително.";
+
+            public static string InvalidSinceDate { get; } = "Началният срок не може да е след крайния.";
+
+            public static string InvalidDueDate { get; } = "Крайният срок не може да е преди началния.";
 
             public static string InvalidPhoneNumber { get; } = "Невалиден Тел №.";
 

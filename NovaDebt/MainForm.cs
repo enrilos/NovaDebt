@@ -1,17 +1,16 @@
 ﻿using AutoMapper;
 using NovaDebt.Models;
-using NovaDebt.Models.Contracts;
 using NovaDebt.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Linq;
 using static NovaDebt.DataSettings;
 
@@ -28,6 +27,7 @@ namespace NovaDebt
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             // I should consider preventing the user to start the application more than once.
 
             // Static Mapper.
@@ -59,7 +59,7 @@ namespace NovaDebt
             {
                 using (FileStream fs = File.Create(TransactorsFilePath))
                 {
-                    byte[] xmlRoot = new UTF8Encoding(true).GetBytes(DefaultXmlRootOpenClose); // JUST FOR TESTING!
+                    byte[] xmlRoot = new UTF8Encoding(true).GetBytes(XmlRootOpenClose);
                     fs.Write(xmlRoot, 0, xmlRoot.Length);
                 }
             }
@@ -73,8 +73,13 @@ namespace NovaDebt
             // No Column
             DataGridViewColumn columnNo = debtorsDataGrid.Columns[0];
             columnNo.Width = 50;
+            // Since Column
+            DataGridViewColumn columnSince = debtorsDataGrid.Columns[2];
+            columnSince.Width = 140;
+            DataGridViewColumn columnDueDate = debtorsDataGrid.Columns[3];
+            columnDueDate.Width = 140;
             // Amount Column
-            DataGridViewColumn columnAmount = debtorsDataGrid.Columns[5];
+            DataGridViewColumn columnAmount = debtorsDataGrid.Columns[4];
             columnAmount.Width = 120;
 
             // Button customizations are made both in code and the UI.
@@ -110,14 +115,14 @@ namespace NovaDebt
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddTransactorForm frmAddTransactor = new AddTransactorForm();
-            frmAddTransactor.Show();
+            AddTransactorForm addTransactorForm = new AddTransactorForm();
+            addTransactorForm.Show();
 
             // Disabling the main form while a subform is open.
             this.Enabled = false;
 
             // Event handler which will enable the main form if the add form is closed.
-            frmAddTransactor.FormClosed += new FormClosedEventHandler(FormClosed);
+            addTransactorForm.FormClosed += new FormClosedEventHandler(FormClosed);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -217,9 +222,8 @@ namespace NovaDebt
                 this.table.Rows.Add(
                     transactor.No,
                     transactor.Name,
-                    transactor.PhoneNumber,
-                    transactor.Email,
-                    transactor.Facebook,
+                    transactor.Since,
+                    transactor.DueDate,
                     transactor.Amount + DefaultCurrencySymbol);
             }
         }
@@ -233,9 +237,8 @@ namespace NovaDebt
 
             this.table.Columns.Add(TableColumn.No, typeof(int)); // No
             this.table.Columns.Add(TableColumn.Name, typeof(string)); // Name
-            this.table.Columns.Add(TableColumn.PhoneNumber, typeof(string)); // PhoneNumber
-            this.table.Columns.Add(TableColumn.Email, typeof(string)); // Email
-            this.table.Columns.Add(TableColumn.Facebook, typeof(string)); // Facebook
+            this.table.Columns.Add(TableColumn.Since, typeof(string)); // Since
+            this.table.Columns.Add(TableColumn.DueDate, typeof(string)); // DueDate
             this.table.Columns.Add(TableColumn.Amount, typeof(string)); // Amount. (Actual Amount type is decimal.)
             // For the case of concating a currency symbol later on, the amount in the grid is of type string.
         }

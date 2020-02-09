@@ -14,6 +14,12 @@ namespace NovaDebt.Models.DTOs
         [XmlElement("Name")]
         public string Name { get; set; }
 
+        [XmlElement("Since")]
+        public string Since { get; set; }
+
+        [XmlElement("DueDate")]
+        public string DueDate { get; set; }
+
         [XmlElement("PhoneNumber")]
         public string PhoneNumber { get; set; }
 

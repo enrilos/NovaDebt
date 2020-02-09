@@ -1,4 +1,6 @@
-﻿namespace NovaDebt.Models.Contracts
+﻿using System;
+
+namespace NovaDebt.Models.Contracts
 {
     public interface ITransactor
     {
@@ -7,6 +9,10 @@
         int No { get; }
 
         string Name { get; }
+
+        string Since { get; }
+
+        string DueDate { get; }
 
         string PhoneNumber { get; }
 

@@ -8,6 +8,8 @@ namespace NovaDebt.Models
         private int id;
         private int no;
         private string name;
+        private string since;
+        private string dueDate;
         private string phoneNumber;
         private string email;
         private string facebook;
@@ -18,9 +20,11 @@ namespace NovaDebt.Models
         {
         }
 
-        public Transactor(string name, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
+        public Transactor(string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
         {
             this.name = name;
+            this.since = since;
+            this.dueDate = dueDate;
             this.phoneNumber = phoneNumber;
             this.email = email;
             this.facebook = facebook;
@@ -60,6 +64,18 @@ namespace NovaDebt.Models
 
                 this.name = value;
             }
+        }
+
+        public string Since
+        {
+            get { return this.since; }
+            set { this.since = value; }
+        }
+
+        public string DueDate
+        {
+            get { return this.dueDate; }
+            set { this.dueDate = value; }
         }
 
         public string PhoneNumber

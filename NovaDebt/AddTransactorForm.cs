@@ -1,9 +1,11 @@
 ﻿using NovaDebt.Models.Enums;
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 using static NovaDebt.DataSettings;
@@ -17,10 +19,20 @@ namespace NovaDebt
             InitializeComponent();
         }
 
-        private void frmAddTransactor_Load(object sender, EventArgs e)
+        private void AddTransactorForm_Load(object sender, EventArgs e)
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
             this.btnAddConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnAddCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+
+            this.addSinceDatePicker.Format = DateTimePickerFormat.Custom;
+            this.addSinceDatePicker.CustomFormat = "dd/MM/yyyy";
+            this.addSinceDatePicker.Value = DateTime.UtcNow;
+
+            this.addDueDatePicker.Format = DateTimePickerFormat.Custom;
+            this.addDueDatePicker.CustomFormat = "dd/MM/yyyy";
+            this.addDueDatePicker.Value = DateTime.UtcNow;
 
             // Setting the default select button as Debtor
             this.btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
@@ -38,6 +50,8 @@ namespace NovaDebt
             {
                 string[] inputFields = new string[] {
                     addNameTextBox.Text,
+                    addSinceDatePicker.Text,
+                    addDueDatePicker.Text,
                     addPhoneTextBox.Text,
                     addEmailTextBox.Text,
                     addFacebookTextBox.Text,
@@ -54,24 +68,25 @@ namespace NovaDebt
                     inputFields[i] = regex.Replace(inputFields[i], " ");
                 }
 
-
                 string name = inputFields[0];
-                string phone = inputFields[1];
-                string email = inputFields[2];
-                string facebook = inputFields[3];
-                decimal amount = decimal.Parse(inputFields[4]);
+                string since = inputFields[1];
+                string dueDate = inputFields[2];
+                string phone = inputFields[3];
+                string email = inputFields[4];
+                string facebook = inputFields[5];
+                decimal amount = decimal.Parse(inputFields[6]);
                 string transactorType = string.Empty;
                 string path = TransactorsFilePath;
 
                 if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     transactorType = TransactorType.Debtor.ToString();
-                    XmlProcess.AddTransactorToXml(path, name, phone, email, amount, facebook, transactorType);
+                    XmlProcess.AddTransactorToXml(path, name, since, dueDate, phone, email, amount, facebook, transactorType);
                 }
                 else if (btnAddCreditor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     transactorType = TransactorType.Creditor.ToString();
-                    XmlProcess.AddTransactorToXml(path, name, phone, email, amount, facebook, transactorType);
+                    XmlProcess.AddTransactorToXml(path, name, since, dueDate, phone, email, amount, facebook, transactorType);
                 }
 
                 this.FormClosing -= AlertUserOnExit;
@@ -135,6 +150,33 @@ namespace NovaDebt
                   || string.IsNullOrWhiteSpace(this.addNameTextBox.Text))
             {
                 MessageBox.Show(ErrorMessage.MissingName,
+                    MessageBoxCaption.Error,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return false;
+            }
+
+            //
+            // Since
+            //
+            if (addSinceDatePicker.Value > addDueDatePicker.Value)
+            {
+                MessageBox.Show(ErrorMessage.InvalidSinceDate,
+                    MessageBoxCaption.Error,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return false;
+            }
+
+            //
+            // Due Date
+            //
+            // One of the date validations is unnecessary.
+            if (addDueDatePicker.Value < addSinceDatePicker.Value)
+            {
+                MessageBox.Show(ErrorMessage.InvalidDueDate,
                     MessageBoxCaption.Error,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

@@ -64,6 +64,7 @@ namespace NovaDebt
             return transactors;
         }
 
+        // This method may become unnecessary in the future.
         public static void SerializeXmlWithTransactors(string path, IEnumerable<Transactor> transactors)
         {
             StringBuilder result = new StringBuilder();
@@ -93,7 +94,7 @@ namespace NovaDebt
             }
         }
 
-        public static void AddTransactorToXml(string path, string name, string phone, string email, decimal amount, string facebook, string transactorType)
+        public static void AddTransactorToXml(string path, string name, string since, string dueDate, string phone, string email, decimal amount, string facebook, string transactorType)
         {
             if (path == null)
             {
@@ -108,7 +109,7 @@ namespace NovaDebt
                 throw new ArgumentNullException(ErrorMessage.NameCannotBeNull);
             }
 
-            Transactor transactor = new Transactor(name, phone, email, facebook, amount, transactorType);
+            Transactor transactor = new Transactor(name, since, dueDate, phone, email, facebook, amount, transactorType);
             int idCount = int.Parse(File.ReadAllText(IdCounterFilePath));
             transactor.Id = idCount++;
             File.WriteAllText(IdCounterFilePath, idCount.ToString());
@@ -134,6 +135,8 @@ namespace NovaDebt
             xmlDocument.Element("Transactors")
                 .Add(new XElement("Transactor", new XAttribute("id", transactor.Id), new XAttribute("no", transactor.No),
                         new XElement("Name", name),
+                        new XElement("Since", since),
+                        new XElement("DueDate", dueDate),
                         new XElement("PhoneNumber", phone),
                         new XElement("Email", email),
                         new XElement("Facebook", facebook),
