@@ -28,18 +28,6 @@ namespace NovaDebt.Models
             this.transactorType = transactorType;
         }
 
-        public Transactor(int no, string name, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
-            : this(name, phoneNumber, email, facebook, amount, transactorType)
-        {
-            this.no = no;
-        }
-
-        public Transactor(int id, int no, string name, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
-            : this(no, name, phoneNumber, email, facebook, amount, transactorType)
-        {
-            this.id = id;
-        }
-
         public int Id
         {
             get { return this.id; }

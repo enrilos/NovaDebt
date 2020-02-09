@@ -118,9 +118,11 @@ namespace NovaDebt
             //
             // Име - Name (Required)
             //
-            Regex regex = new Regex("^[a-zA-Z0-9., ]*$");
+            Regex mainRegex = new Regex("^[a-zA-Z0-9., ]*$");
+            Regex cyrillicRegex = new Regex("^[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя0-9., ]*$");
 
-            if (!regex.IsMatch(this.addNameTextBox.Text))
+            if (!mainRegex.IsMatch(this.addNameTextBox.Text)
+             && !cyrillicRegex.IsMatch(this.addNameTextBox.Text))
             {
                 MessageBox.Show(ErrorMessage.InvalidName,
                     MessageBoxCaption.Error,
@@ -129,7 +131,8 @@ namespace NovaDebt
 
                 return false;
             }
-            else if (string.IsNullOrEmpty(this.addNameTextBox.Text) || string.IsNullOrWhiteSpace(this.addNameTextBox.Text))
+            else if (string.IsNullOrEmpty(this.addNameTextBox.Text)
+                  || string.IsNullOrWhiteSpace(this.addNameTextBox.Text))
             {
                 MessageBox.Show(ErrorMessage.MissingName,
                     MessageBoxCaption.Error,
@@ -142,9 +145,9 @@ namespace NovaDebt
             //
             // Тел № - PhoneNumber
             //
-            regex = new Regex("^[+0-9-() ]*$");
+            mainRegex = new Regex("^[+0-9-() ]*$");
 
-            if (!regex.IsMatch(this.addPhoneTextBox.Text))
+            if (!mainRegex.IsMatch(this.addPhoneTextBox.Text))
             {
                 MessageBox.Show(ErrorMessage.InvalidPhoneNumber,
                     MessageBoxCaption.Error,
@@ -157,9 +160,11 @@ namespace NovaDebt
             //
             // Имейл - Email
             //
-            regex = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
+            mainRegex = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
 
-            if (!regex.IsMatch(this.addEmailTextBox.Text.Trim()) && !string.IsNullOrEmpty(this.addEmailTextBox.Text.Trim()))
+            if (!mainRegex.IsMatch(this.addEmailTextBox.Text.Trim())
+                && !string.IsNullOrEmpty(this.addEmailTextBox.Text.Trim())
+                && !cyrillicRegex.IsMatch(this.addEmailTextBox.Text.Trim()))
             {
                 MessageBox.Show(ErrorMessage.InvalidEmail,
                     MessageBoxCaption.Error,
@@ -172,9 +177,10 @@ namespace NovaDebt
             //
             // Фейсбук - Facebook
             //
-            regex = new Regex("^[A-z ]*$");
+            mainRegex = new Regex("^[A-z ]*$");
 
-            if (!regex.IsMatch(this.addFacebookTextBox.Text))
+            if (!mainRegex.IsMatch(this.addFacebookTextBox.Text)
+                && !cyrillicRegex.IsMatch(this.addFacebookTextBox.Text))
             {
                 MessageBox.Show(ErrorMessage.InvalidFacebook,
                     MessageBoxCaption.Error,
@@ -187,10 +193,10 @@ namespace NovaDebt
             //
             // Количество - Amount (Required)
             //
-            regex = new Regex("^[0-9]+([.,][0-9]{1,2})?$");
+            mainRegex = new Regex("^[0-9]+([.,][0-9]{1,2})?$");
             decimal amount;
 
-            if (regex.IsMatch(this.addAmountTextBox.Text.Trim()))
+            if (mainRegex.IsMatch(this.addAmountTextBox.Text.Trim()))
             {
                 amount = decimal.Parse(addAmountTextBox.Text);
 

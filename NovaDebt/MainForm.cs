@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Linq;
 using static NovaDebt.DataSettings;
 
@@ -40,7 +41,7 @@ namespace NovaDebt
             this.InitializeDataTable(this.table);
 
             // Making a separate file which keeps track of the id
-            // Overwriting it always by incrementing with +1.
+            // Overwriting it always when adding a new record - incrementing with +1.
             // Thus I guarantee that no duplicate records will be sent to the transactors file.
             if (!File.Exists(IdCounterFilePath))
             {
@@ -58,14 +59,10 @@ namespace NovaDebt
             {
                 using (FileStream fs = File.Create(TransactorsFilePath))
                 {
-                    byte[] xmlRoot = new UTF8Encoding(true).GetBytes(DefaultXmlRootOpenClose);
+                    byte[] xmlRoot = new UTF8Encoding(true).GetBytes(DefaultXmlRootOpenClose); // JUST FOR TESTING!
                     fs.Write(xmlRoot, 0, xmlRoot.Length);
                 }
             }
-
-            // I should think about when the file exits but doesn't contain the xmlRoot itself inside it.
-            // Or the QA guy will scream as always.
-            // That is a problem which must be fixed or xml won't be able to find the root element.
 
             // Setting the source of the DataGridView.
             this.debtorsDataGrid.DataSource = table;
@@ -198,78 +195,6 @@ namespace NovaDebt
                     }
 
                     this.debtorsDataGrid.DataSource = table;
-
-                    // OLD
-                    //DataGridViewSelectedRowCollection selectedRows = this.debtorsDataGrid.SelectedRows;
-                    //List<int> nosList = new List<int>();
-
-                    //for (int i = 0; i < selectedRows.Count; i++)
-                    //{
-                    //    object no = selectedRows[i].Cells[TableColumn.No].Value;
-                    //    // Parsing the element since the no is object type
-                    //    nosList.Add(int.Parse(no.ToString()));
-                    //}
-
-                    //nosList = nosList.OrderBy(x => x).ToList();
-
-                    //// I should filter a new collection again depending on the seleted debtors/creditors button from the xml.
-                    //// Then overwrite the file without the deleted data and refresh the data grid view.
-                    //// Thus the data which the user has selected will be deleted and removed from the file.
-
-                    //IEnumerable<Transactor> transactors = XmlProcess.DeserializeXml(TransactorsFilePath);
-                    //List<Transactor> newTransactors = new List<Transactor>();
-
-                    //if (!this.btnDebtors.Enabled)
-                    //{
-                    //    // User has the Debtors button as the selected button.
-                    //    foreach (var transactor in transactors)
-                    //    {
-                    //        if (!nosList.Any(x => x == transactor.No)
-                    //            && transactor.TransactorType == TransactorType.Debtor.ToString())
-                    //        {
-                    //            transactor.No = newTransactors.Count + 1;
-                    //            newTransactors.Add(transactor);
-                    //        }
-                    //    }
-
-                    //    // Adding all the creditors after the filtration of debtors so we don't have missing records.
-                    //    newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Creditor.ToString()));
-                    //}
-                    //else if (!this.btnCreditors.Enabled)
-                    //{
-                    //    // User has the Creditors button as the selected button.
-                    //    foreach (var transactor in transactors)
-                    //    {
-                    //        if (!nosList.Any(x => x == transactor.No)
-                    //            && transactor.TransactorType == TransactorType.Creditor.ToString())
-                    //        {
-                    //            transactor.No = newTransactors.Count + 1;
-                    //            newTransactors.Add(transactor);
-                    //        }
-                    //    }
-
-                    //    // Adding all the debtors after the filtration of creditors so we don't have missing records.
-                    //    newTransactors.AddRange(transactors.Where(t => t.TransactorType == TransactorType.Debtor.ToString()));
-                    //}
-
-                    //// Overwriting the transactors.xml file.
-                    //// Overwriting the whole file here is needed since the debtors/creditors are being changed.
-                    //XmlProcess.SerializeXmlWithTransactors(TransactorsFilePath, newTransactors);
-
-                    //// Refreshing the grid.
-                    //this.table.Rows.Clear();
-
-                    //if (!this.btnDebtors.Enabled)
-                    //{
-                    //    this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
-
-                    //}
-                    //else if (!this.btnCreditors.Enabled)
-                    //{
-                    //    this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
-                    //}
-
-                    //this.debtorsDataGrid.DataSource = table;
                 }
             }
         }
