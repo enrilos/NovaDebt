@@ -47,6 +47,7 @@
             this.addDueDateLabel = new System.Windows.Forms.Label();
             this.addDueDatePicker = new System.Windows.Forms.DateTimePicker();
             this.addSinceDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.addInterestCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnAddConfirm
@@ -151,7 +152,7 @@
             this.addNameTextBox.Location = new System.Drawing.Point(171, 28);
             this.addNameTextBox.MaxLength = 70;
             this.addNameTextBox.Name = "addNameTextBox";
-            this.addNameTextBox.Size = new System.Drawing.Size(234, 36);
+            this.addNameTextBox.Size = new System.Drawing.Size(375, 36);
             this.addNameTextBox.TabIndex = 0;
             // 
             // addPhoneTextBox
@@ -162,7 +163,7 @@
             this.addPhoneTextBox.Location = new System.Drawing.Point(171, 78);
             this.addPhoneTextBox.MaxLength = 50;
             this.addPhoneTextBox.Name = "addPhoneTextBox";
-            this.addPhoneTextBox.Size = new System.Drawing.Size(234, 36);
+            this.addPhoneTextBox.Size = new System.Drawing.Size(375, 36);
             this.addPhoneTextBox.TabIndex = 1;
             // 
             // addEmailTextBox
@@ -173,7 +174,7 @@
             this.addEmailTextBox.Location = new System.Drawing.Point(171, 128);
             this.addEmailTextBox.MaxLength = 100;
             this.addEmailTextBox.Name = "addEmailTextBox";
-            this.addEmailTextBox.Size = new System.Drawing.Size(234, 36);
+            this.addEmailTextBox.Size = new System.Drawing.Size(375, 36);
             this.addEmailTextBox.TabIndex = 2;
             // 
             // addFacebookTextBox
@@ -184,7 +185,7 @@
             this.addFacebookTextBox.Location = new System.Drawing.Point(171, 178);
             this.addFacebookTextBox.MaxLength = 100;
             this.addFacebookTextBox.Name = "addFacebookTextBox";
-            this.addFacebookTextBox.Size = new System.Drawing.Size(234, 36);
+            this.addFacebookTextBox.Size = new System.Drawing.Size(375, 36);
             this.addFacebookTextBox.TabIndex = 3;
             // 
             // addAmountTextBox
@@ -195,7 +196,7 @@
             this.addAmountTextBox.Location = new System.Drawing.Point(171, 228);
             this.addAmountTextBox.MaxLength = 20;
             this.addAmountTextBox.Name = "addAmountTextBox";
-            this.addAmountTextBox.Size = new System.Drawing.Size(234, 36);
+            this.addAmountTextBox.Size = new System.Drawing.Size(375, 36);
             this.addAmountTextBox.TabIndex = 4;
             // 
             // btnAddDebtor
@@ -232,7 +233,7 @@
             this.addSinceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addSinceLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addSinceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addSinceLabel.Location = new System.Drawing.Point(446, 30);
+            this.addSinceLabel.Location = new System.Drawing.Point(610, 30);
             this.addSinceLabel.Name = "addSinceLabel";
             this.addSinceLabel.Size = new System.Drawing.Size(43, 30);
             this.addSinceLabel.TabIndex = 12;
@@ -244,7 +245,7 @@
             this.addDueDateLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addDueDateLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addDueDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addDueDateLabel.Location = new System.Drawing.Point(442, 80);
+            this.addDueDateLabel.Location = new System.Drawing.Point(606, 80);
             this.addDueDateLabel.Name = "addDueDateLabel";
             this.addDueDateLabel.Size = new System.Drawing.Size(47, 30);
             this.addDueDateLabel.TabIndex = 13;
@@ -254,7 +255,7 @@
             // 
             this.addDueDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addDueDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.addDueDatePicker.Location = new System.Drawing.Point(495, 76);
+            this.addDueDatePicker.Location = new System.Drawing.Point(659, 76);
             this.addDueDatePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.addDueDatePicker.Name = "addDueDatePicker";
             this.addDueDatePicker.Size = new System.Drawing.Size(176, 38);
@@ -265,12 +266,24 @@
             // 
             this.addSinceDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addSinceDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.addSinceDatePicker.Location = new System.Drawing.Point(495, 26);
+            this.addSinceDatePicker.Location = new System.Drawing.Point(659, 26);
             this.addSinceDatePicker.MaxDate = new System.DateTime(3020, 12, 31, 0, 0, 0, 0);
             this.addSinceDatePicker.Name = "addSinceDatePicker";
             this.addSinceDatePicker.Size = new System.Drawing.Size(176, 38);
             this.addSinceDatePicker.TabIndex = 14;
             this.addSinceDatePicker.Value = new System.DateTime(2020, 2, 9, 0, 0, 0, 0);
+            // 
+            // addInterestCheckBox
+            // 
+            this.addInterestCheckBox.AutoSize = true;
+            this.addInterestCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addInterestCheckBox.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.addInterestCheckBox.Location = new System.Drawing.Point(552, 233);
+            this.addInterestCheckBox.Name = "addInterestCheckBox";
+            this.addInterestCheckBox.Size = new System.Drawing.Size(110, 27);
+            this.addInterestCheckBox.TabIndex = 16;
+            this.addInterestCheckBox.Text = "С лихва";
+            this.addInterestCheckBox.UseVisualStyleBackColor = true;
             // 
             // AddTransactorForm
             // 
@@ -278,6 +291,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(982, 358);
+            this.Controls.Add(this.addInterestCheckBox);
             this.Controls.Add(this.addSinceDatePicker);
             this.Controls.Add(this.addDueDatePicker);
             this.Controls.Add(this.addDueDateLabel);
@@ -324,5 +338,6 @@
         private System.Windows.Forms.Label addDueDateLabel;
         private System.Windows.Forms.DateTimePicker addDueDatePicker;
         private System.Windows.Forms.DateTimePicker addSinceDatePicker;
+        private System.Windows.Forms.CheckBox addInterestCheckBox;
     }
 }
