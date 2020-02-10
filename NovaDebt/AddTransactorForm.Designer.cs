@@ -48,6 +48,11 @@
             this.addDueDatePicker = new System.Windows.Forms.DateTimePicker();
             this.addSinceDatePicker = new System.Windows.Forms.DateTimePicker();
             this.addInterestCheckBox = new System.Windows.Forms.CheckBox();
+            this.addInterestWithCurrencyTextBox = new System.Windows.Forms.TextBox();
+            this.addInterestWithPercentageTextBox = new System.Windows.Forms.TextBox();
+            this.addInterestWithCurrencyLabel = new System.Windows.Forms.Label();
+            this.addInterestWithPercentageLabel = new System.Windows.Forms.Label();
+            this.addInterestsSeparator = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // btnAddConfirm
@@ -233,7 +238,7 @@
             this.addSinceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addSinceLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addSinceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addSinceLabel.Location = new System.Drawing.Point(610, 30);
+            this.addSinceLabel.Location = new System.Drawing.Point(656, 30);
             this.addSinceLabel.Name = "addSinceLabel";
             this.addSinceLabel.Size = new System.Drawing.Size(43, 30);
             this.addSinceLabel.TabIndex = 12;
@@ -245,7 +250,7 @@
             this.addDueDateLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addDueDateLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addDueDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addDueDateLabel.Location = new System.Drawing.Point(606, 80);
+            this.addDueDateLabel.Location = new System.Drawing.Point(652, 80);
             this.addDueDateLabel.Name = "addDueDateLabel";
             this.addDueDateLabel.Size = new System.Drawing.Size(47, 30);
             this.addDueDateLabel.TabIndex = 13;
@@ -255,10 +260,10 @@
             // 
             this.addDueDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addDueDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.addDueDatePicker.Location = new System.Drawing.Point(659, 76);
+            this.addDueDatePicker.Location = new System.Drawing.Point(705, 76);
             this.addDueDatePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.addDueDatePicker.Name = "addDueDatePicker";
-            this.addDueDatePicker.Size = new System.Drawing.Size(176, 38);
+            this.addDueDatePicker.Size = new System.Drawing.Size(198, 38);
             this.addDueDatePicker.TabIndex = 15;
             this.addDueDatePicker.Value = new System.DateTime(2020, 2, 9, 0, 0, 0, 0);
             // 
@@ -266,10 +271,10 @@
             // 
             this.addSinceDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addSinceDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.addSinceDatePicker.Location = new System.Drawing.Point(659, 26);
+            this.addSinceDatePicker.Location = new System.Drawing.Point(705, 26);
             this.addSinceDatePicker.MaxDate = new System.DateTime(3020, 12, 31, 0, 0, 0, 0);
             this.addSinceDatePicker.Name = "addSinceDatePicker";
-            this.addSinceDatePicker.Size = new System.Drawing.Size(176, 38);
+            this.addSinceDatePicker.Size = new System.Drawing.Size(198, 38);
             this.addSinceDatePicker.TabIndex = 14;
             this.addSinceDatePicker.Value = new System.DateTime(2020, 2, 9, 0, 0, 0, 0);
             // 
@@ -284,6 +289,70 @@
             this.addInterestCheckBox.TabIndex = 16;
             this.addInterestCheckBox.Text = "С лихва";
             this.addInterestCheckBox.UseVisualStyleBackColor = true;
+            this.addInterestCheckBox.CheckedChanged += new System.EventHandler(this.addInterestCheckBox_CheckedChanged);
+            // 
+            // addInterestWithCurrencyTextBox
+            // 
+            this.addInterestWithCurrencyTextBox.BackColor = System.Drawing.Color.White;
+            this.addInterestWithCurrencyTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addInterestWithCurrencyTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.addInterestWithCurrencyTextBox.Location = new System.Drawing.Point(705, 174);
+            this.addInterestWithCurrencyTextBox.MaxLength = 100;
+            this.addInterestWithCurrencyTextBox.Name = "addInterestWithCurrencyTextBox";
+            this.addInterestWithCurrencyTextBox.Size = new System.Drawing.Size(198, 36);
+            this.addInterestWithCurrencyTextBox.TabIndex = 17;
+            this.addInterestWithCurrencyTextBox.Text = "0";
+            this.addInterestWithCurrencyTextBox.Visible = false;
+            this.addInterestWithCurrencyTextBox.WordWrap = false;
+            // 
+            // addInterestWithPercentageTextBox
+            // 
+            this.addInterestWithPercentageTextBox.BackColor = System.Drawing.Color.White;
+            this.addInterestWithPercentageTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addInterestWithPercentageTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.addInterestWithPercentageTextBox.Location = new System.Drawing.Point(705, 224);
+            this.addInterestWithPercentageTextBox.MaxLength = 100;
+            this.addInterestWithPercentageTextBox.Name = "addInterestWithPercentageTextBox";
+            this.addInterestWithPercentageTextBox.Size = new System.Drawing.Size(198, 36);
+            this.addInterestWithPercentageTextBox.TabIndex = 18;
+            this.addInterestWithPercentageTextBox.Text = "0";
+            this.addInterestWithPercentageTextBox.Visible = false;
+            this.addInterestWithPercentageTextBox.WordWrap = false;
+            // 
+            // addInterestWithCurrencyLabel
+            // 
+            this.addInterestWithCurrencyLabel.AutoSize = true;
+            this.addInterestWithCurrencyLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addInterestWithCurrencyLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addInterestWithCurrencyLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.addInterestWithCurrencyLabel.Location = new System.Drawing.Point(909, 176);
+            this.addInterestWithCurrencyLabel.Name = "addInterestWithCurrencyLabel";
+            this.addInterestWithCurrencyLabel.Size = new System.Drawing.Size(44, 30);
+            this.addInterestWithCurrencyLabel.TabIndex = 19;
+            this.addInterestWithCurrencyLabel.Text = "лв.";
+            this.addInterestWithCurrencyLabel.Visible = false;
+            // 
+            // addInterestWithPercentageLabel
+            // 
+            this.addInterestWithPercentageLabel.AutoSize = true;
+            this.addInterestWithPercentageLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addInterestWithPercentageLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addInterestWithPercentageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.addInterestWithPercentageLabel.Location = new System.Drawing.Point(909, 226);
+            this.addInterestWithPercentageLabel.Name = "addInterestWithPercentageLabel";
+            this.addInterestWithPercentageLabel.Size = new System.Drawing.Size(32, 30);
+            this.addInterestWithPercentageLabel.TabIndex = 20;
+            this.addInterestWithPercentageLabel.Text = "%";
+            this.addInterestWithPercentageLabel.Visible = false;
+            // 
+            // addInterestsSeparator
+            // 
+            this.addInterestsSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.addInterestsSeparator.Location = new System.Drawing.Point(705, 217);
+            this.addInterestsSeparator.Name = "addInterestsSeparator";
+            this.addInterestsSeparator.Size = new System.Drawing.Size(198, 1);
+            this.addInterestsSeparator.TabIndex = 21;
+            this.addInterestsSeparator.Visible = false;
             // 
             // AddTransactorForm
             // 
@@ -291,6 +360,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(982, 358);
+            this.Controls.Add(this.addInterestsSeparator);
+            this.Controls.Add(this.addInterestWithPercentageLabel);
+            this.Controls.Add(this.addInterestWithCurrencyLabel);
+            this.Controls.Add(this.addInterestWithPercentageTextBox);
+            this.Controls.Add(this.addInterestWithCurrencyTextBox);
             this.Controls.Add(this.addInterestCheckBox);
             this.Controls.Add(this.addSinceDatePicker);
             this.Controls.Add(this.addDueDatePicker);
@@ -339,5 +413,10 @@
         private System.Windows.Forms.DateTimePicker addDueDatePicker;
         private System.Windows.Forms.DateTimePicker addSinceDatePicker;
         private System.Windows.Forms.CheckBox addInterestCheckBox;
+        private System.Windows.Forms.TextBox addInterestWithCurrencyTextBox;
+        private System.Windows.Forms.TextBox addInterestWithPercentageTextBox;
+        private System.Windows.Forms.Label addInterestWithCurrencyLabel;
+        private System.Windows.Forms.Label addInterestWithPercentageLabel;
+        private System.Windows.Forms.Panel addInterestsSeparator;
     }
 }

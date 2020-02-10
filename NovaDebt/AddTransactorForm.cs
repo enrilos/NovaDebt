@@ -49,13 +49,13 @@ namespace NovaDebt
             if (areFieldsValid)
             {
                 string[] inputFields = new string[] {
-                    addNameTextBox.Text,
-                    addSinceDatePicker.Text,
-                    addDueDatePicker.Text,
-                    addPhoneTextBox.Text,
-                    addEmailTextBox.Text,
-                    addFacebookTextBox.Text,
-                    addAmountTextBox.Text
+                    this.addNameTextBox.Text,
+                    this.addSinceDatePicker.Text,
+                    this.addDueDatePicker.Text,
+                    this.addPhoneTextBox.Text,
+                    this.addEmailTextBox.Text,
+                    this.addFacebookTextBox.Text,
+                    this.addAmountTextBox.Text
                 };
 
                 RegexOptions options = RegexOptions.None;
@@ -68,13 +68,22 @@ namespace NovaDebt
                     inputFields[i] = regex.Replace(inputFields[i], " ");
                 }
 
+                decimal currencyInterest = decimal.Parse(this.addInterestWithCurrencyTextBox.Text);
+                decimal percentageInterest = 1.00m + (decimal.Parse(this.addInterestWithPercentageTextBox.Text) / 100.00m);
+
                 string name = inputFields[0];
                 string since = inputFields[1];
                 string dueDate = inputFields[2];
                 string phone = inputFields[3];
                 string email = inputFields[4];
                 string facebook = inputFields[5];
-                decimal amount = decimal.Parse(inputFields[6]);
+                decimal amount = (decimal.Parse(inputFields[6]) + currencyInterest);
+
+                if (percentageInterest > 0)
+                {
+                    amount *= percentageInterest;
+                }
+
                 string transactorType = string.Empty;
                 string path = TransactorsFilePath;
 
@@ -173,7 +182,6 @@ namespace NovaDebt
             //
             // Due Date
             //
-            // One of the date validations is unnecessary.
             if (addDueDatePicker.Value < addSinceDatePicker.Value)
             {
                 MessageBox.Show(ErrorMessage.InvalidDueDate,
@@ -242,9 +250,9 @@ namespace NovaDebt
             {
                 amount = decimal.Parse(addAmountTextBox.Text);
 
-                if (amount < 0.01m || amount > 4294967295m)
+                if (amount < MinAmountValue || amount > MaxAmountValue)
                 {
-                    MessageBox.Show(string.Format(string.Format(ErrorMessage.InvalidAmountInterval, MinAmountValue, MaxAmountValue)),
+                    MessageBox.Show(string.Format(ErrorMessage.InvalidAmountInterval, MinAmountValue, MaxAmountValue),
                            MessageBoxCaption.Error,
                            MessageBoxButtons.OK,
                            MessageBoxIcon.Error);
@@ -271,6 +279,60 @@ namespace NovaDebt
                 return false;
             }
 
+            if (this.addInterestCheckBox.Checked)
+            {
+                // Количествена лихва
+                if (mainRegex.IsMatch(this.addInterestWithCurrencyTextBox.Text.Trim())
+                    && !string.IsNullOrEmpty(this.addInterestWithCurrencyTextBox.Text.Trim()))
+                {
+                    decimal currencyInterest = decimal.Parse(this.addInterestWithCurrencyTextBox.Text);
+
+                    if (currencyInterest < MinAmountValue || currencyInterest > MaxAmountValue)
+                    {
+                        MessageBox.Show(string.Format(ErrorMessage.InvalidInterestCurrencyInterval, MinAmountValue, MaxAmountValue),
+                               MessageBoxCaption.Error,
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(ErrorMessage.InvalidInterestCurrency,
+                        MessageBoxCaption.Error,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    return false;
+                }
+                // Процентна лихва
+                if (mainRegex.IsMatch(this.addInterestWithPercentageTextBox.Text.Trim())
+                    && !string.IsNullOrEmpty(this.addInterestWithPercentageTextBox.Text.Trim()))
+                {
+                    decimal percentageInterest = decimal.Parse(this.addInterestWithPercentageTextBox.Text);
+
+                    if (percentageInterest < MinInterestPercentageValue || percentageInterest > MaxInterestPercentageValue)
+                    {
+                        MessageBox.Show(string.Format(ErrorMessage.InvalidInterestPercentageInterval, MinInterestPercentageValue, MaxInterestPercentageValue),
+                           MessageBoxCaption.Error,
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Error);
+
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(ErrorMessage.InvalidInterestPercentage,
+                        MessageBoxCaption.Error,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -289,6 +351,26 @@ namespace NovaDebt
             else if (dialog == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void addInterestCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.addInterestCheckBox.Checked)
+            {
+                this.addInterestWithCurrencyLabel.Visible = true;
+                this.addInterestWithCurrencyTextBox.Visible = true;
+                this.addInterestWithPercentageLabel.Visible = true;
+                this.addInterestWithPercentageTextBox.Visible = true;
+                this.addInterestsSeparator.Visible = true;
+            }
+            else if (!this.addInterestCheckBox.Checked)
+            {
+                this.addInterestWithCurrencyLabel.Visible = false;
+                this.addInterestWithCurrencyTextBox.Visible = false;
+                this.addInterestWithPercentageLabel.Visible = false;
+                this.addInterestWithPercentageTextBox.Visible = false;
+                this.addInterestsSeparator.Visible = false;
             }
         }
     }

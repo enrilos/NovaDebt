@@ -28,6 +28,10 @@ namespace NovaDebt
 
         public static decimal MaxAmountValue { get; } = 4294967295m;
 
+        public static decimal MinInterestPercentageValue { get; } = 0.01m;
+
+        public static decimal MaxInterestPercentageValue { get; } = 4096.00m;
+
         public static class TableColumn
         {
             public static string No { get; } = "№";
@@ -76,6 +80,10 @@ namespace NovaDebt
 
             public static string InvalidAmountInterval { get; } = "Количеството трябва да е в интервала {0} - {1}.";
 
+            public static string InvalidInterestCurrencyInterval { get; } = "Количествената лихва трабва да е в интервала {0} - {1}.";
+
+            public static string InvalidInterestPercentageInterval { get; } = "Процентната лихва трябва да е в интервала {0} - {1}.";
+
             public static string InvalidName { get; } = "Името може да се състои само от букви и цифри.";
 
             public static string MissingName { get; } = "Името e задължително.";
@@ -93,6 +101,10 @@ namespace NovaDebt
             public static string MissingAmount { get; } = "Количеството е задължително.";
 
             public static string InvalidAmount { get; } = "Невалидно количество.";
+
+            public static string InvalidInterestCurrency { get; } = "Невалидна лихва в левове.";
+
+            public static string InvalidInterestPercentage { get; } = "Невалидна лихва в проценти.";
         }
     }
 }
