@@ -56,11 +56,11 @@
             this.btnAddConfirm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnAddConfirm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnAddConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddConfirm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAddConfirm.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAddConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnAddConfirm.Location = new System.Drawing.Point(612, 386);
+            this.btnAddConfirm.Location = new System.Drawing.Point(770, 281);
             this.btnAddConfirm.Name = "btnAddConfirm";
-            this.btnAddConfirm.Size = new System.Drawing.Size(176, 52);
+            this.btnAddConfirm.Size = new System.Drawing.Size(200, 65);
             this.btnAddConfirm.TabIndex = 8;
             this.btnAddConfirm.Text = "Добави";
             this.btnAddConfirm.UseVisualStyleBackColor = true;
@@ -73,11 +73,11 @@
             this.btnAddCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnAddCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnAddCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAddCancel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAddCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnAddCancel.Location = new System.Drawing.Point(430, 386);
+            this.btnAddCancel.Location = new System.Drawing.Point(564, 281);
             this.btnAddCancel.Name = "btnAddCancel";
-            this.btnAddCancel.Size = new System.Drawing.Size(176, 52);
+            this.btnAddCancel.Size = new System.Drawing.Size(200, 65);
             this.btnAddCancel.TabIndex = 7;
             this.btnAddCancel.Text = "Отказ";
             this.btnAddCancel.UseVisualStyleBackColor = true;
@@ -151,7 +151,7 @@
             this.addNameTextBox.Location = new System.Drawing.Point(171, 28);
             this.addNameTextBox.MaxLength = 70;
             this.addNameTextBox.Name = "addNameTextBox";
-            this.addNameTextBox.Size = new System.Drawing.Size(300, 36);
+            this.addNameTextBox.Size = new System.Drawing.Size(234, 36);
             this.addNameTextBox.TabIndex = 0;
             // 
             // addPhoneTextBox
@@ -162,7 +162,7 @@
             this.addPhoneTextBox.Location = new System.Drawing.Point(171, 78);
             this.addPhoneTextBox.MaxLength = 50;
             this.addPhoneTextBox.Name = "addPhoneTextBox";
-            this.addPhoneTextBox.Size = new System.Drawing.Size(300, 36);
+            this.addPhoneTextBox.Size = new System.Drawing.Size(234, 36);
             this.addPhoneTextBox.TabIndex = 1;
             // 
             // addEmailTextBox
@@ -173,7 +173,7 @@
             this.addEmailTextBox.Location = new System.Drawing.Point(171, 128);
             this.addEmailTextBox.MaxLength = 100;
             this.addEmailTextBox.Name = "addEmailTextBox";
-            this.addEmailTextBox.Size = new System.Drawing.Size(300, 36);
+            this.addEmailTextBox.Size = new System.Drawing.Size(234, 36);
             this.addEmailTextBox.TabIndex = 2;
             // 
             // addFacebookTextBox
@@ -184,7 +184,7 @@
             this.addFacebookTextBox.Location = new System.Drawing.Point(171, 178);
             this.addFacebookTextBox.MaxLength = 100;
             this.addFacebookTextBox.Name = "addFacebookTextBox";
-            this.addFacebookTextBox.Size = new System.Drawing.Size(300, 36);
+            this.addFacebookTextBox.Size = new System.Drawing.Size(234, 36);
             this.addFacebookTextBox.TabIndex = 3;
             // 
             // addAmountTextBox
@@ -195,7 +195,7 @@
             this.addAmountTextBox.Location = new System.Drawing.Point(171, 228);
             this.addAmountTextBox.MaxLength = 20;
             this.addAmountTextBox.Name = "addAmountTextBox";
-            this.addAmountTextBox.Size = new System.Drawing.Size(300, 36);
+            this.addAmountTextBox.Size = new System.Drawing.Size(234, 36);
             this.addAmountTextBox.TabIndex = 4;
             // 
             // btnAddDebtor
@@ -204,9 +204,9 @@
             this.btnAddDebtor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDebtor.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAddDebtor.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAddDebtor.Location = new System.Drawing.Point(56, 293);
+            this.btnAddDebtor.Location = new System.Drawing.Point(20, 286);
             this.btnAddDebtor.Name = "btnAddDebtor";
-            this.btnAddDebtor.Size = new System.Drawing.Size(343, 53);
+            this.btnAddDebtor.Size = new System.Drawing.Size(260, 53);
             this.btnAddDebtor.TabIndex = 5;
             this.btnAddDebtor.Text = "Дебитор";
             this.btnAddDebtor.UseVisualStyleBackColor = true;
@@ -218,9 +218,9 @@
             this.btnAddCreditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddCreditor.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAddCreditor.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAddCreditor.Location = new System.Drawing.Point(405, 293);
+            this.btnAddCreditor.Location = new System.Drawing.Point(286, 286);
             this.btnAddCreditor.Name = "btnAddCreditor";
-            this.btnAddCreditor.Size = new System.Drawing.Size(343, 53);
+            this.btnAddCreditor.Size = new System.Drawing.Size(260, 53);
             this.btnAddCreditor.TabIndex = 6;
             this.btnAddCreditor.Text = "Кредитор";
             this.btnAddCreditor.UseVisualStyleBackColor = true;
@@ -232,7 +232,7 @@
             this.addSinceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addSinceLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addSinceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addSinceLabel.Location = new System.Drawing.Point(590, 80);
+            this.addSinceLabel.Location = new System.Drawing.Point(446, 30);
             this.addSinceLabel.Name = "addSinceLabel";
             this.addSinceLabel.Size = new System.Drawing.Size(43, 30);
             this.addSinceLabel.TabIndex = 12;
@@ -244,31 +244,31 @@
             this.addDueDateLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addDueDateLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addDueDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.addDueDateLabel.Location = new System.Drawing.Point(477, 180);
+            this.addDueDateLabel.Location = new System.Drawing.Point(442, 80);
             this.addDueDateLabel.Name = "addDueDateLabel";
-            this.addDueDateLabel.Size = new System.Drawing.Size(156, 30);
+            this.addDueDateLabel.Size = new System.Drawing.Size(47, 30);
             this.addDueDateLabel.TabIndex = 13;
-            this.addDueDateLabel.Text = "Краен срок";
+            this.addDueDateLabel.Text = "До";
             // 
             // addDueDatePicker
             // 
-            this.addDueDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addDueDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addDueDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.addDueDatePicker.Location = new System.Drawing.Point(639, 180);
+            this.addDueDatePicker.Location = new System.Drawing.Point(495, 76);
             this.addDueDatePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.addDueDatePicker.Name = "addDueDatePicker";
-            this.addDueDatePicker.Size = new System.Drawing.Size(149, 34);
+            this.addDueDatePicker.Size = new System.Drawing.Size(176, 38);
             this.addDueDatePicker.TabIndex = 15;
             this.addDueDatePicker.Value = new System.DateTime(2020, 2, 9, 0, 0, 0, 0);
             // 
             // addSinceDatePicker
             // 
-            this.addSinceDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addSinceDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addSinceDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.addSinceDatePicker.Location = new System.Drawing.Point(639, 80);
+            this.addSinceDatePicker.Location = new System.Drawing.Point(495, 26);
             this.addSinceDatePicker.MaxDate = new System.DateTime(3020, 12, 31, 0, 0, 0, 0);
             this.addSinceDatePicker.Name = "addSinceDatePicker";
-            this.addSinceDatePicker.Size = new System.Drawing.Size(149, 34);
+            this.addSinceDatePicker.Size = new System.Drawing.Size(176, 38);
             this.addSinceDatePicker.TabIndex = 14;
             this.addSinceDatePicker.Value = new System.DateTime(2020, 2, 9, 0, 0, 0, 0);
             // 
@@ -276,8 +276,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.ClientSize = new System.Drawing.Size(982, 358);
             this.Controls.Add(this.addSinceDatePicker);
             this.Controls.Add(this.addDueDatePicker);
             this.Controls.Add(this.addDueDateLabel);
@@ -297,8 +297,6 @@
             this.Controls.Add(this.btnAddCancel);
             this.Controls.Add(this.btnAddConfirm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(818, 497);
-            this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "AddTransactorForm";
             this.Text = "Добави";
             this.Load += new System.EventHandler(this.AddTransactorForm_Load);

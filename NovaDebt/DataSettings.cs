@@ -34,9 +34,9 @@ namespace NovaDebt
 
             public static string Name { get; } = "Име";
 
-            public static string Since { get; } = "Начален срок";
+            public static string Since { get; } = "От";
 
-            public static string DueDate { get; } = "Краен срок";
+            public static string DueDate { get; } = "До";
 
             public static string PhoneNumber { get; } = "Тел №";
 

@@ -87,6 +87,7 @@ namespace NovaDebt
             this.btnCreditors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnDetails.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
 
             // Attaching an even which handles where the user has clicked.
@@ -129,6 +130,13 @@ namespace NovaDebt
         {
             // TODO
             // I should create a separate form for this one.
+        }
+
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+            // TODO
+            // And also a separate form for this which has labels with data
+            // It also must have an edit button and delete button below.
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
