@@ -145,9 +145,46 @@ namespace NovaDebt
             // TODO
             // And also a separate form for this which has labels with data
             // It also must have an edit button and delete button below.
+            // And I should give the Details form all the data of the selected record.
             if (this.debtorsDataGrid.SelectedRows.Count == 1)
             {
-                DetailsForm detailsForm = new DetailsForm();
+                // Before disabling the form
+                // I should check which button is clicked
+                // Then filter the deserialized xml collection and find that exact record
+                // And then send it to the DetailsForm constructor.
+                XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
+                IEnumerable<XElement> debtors = xmlDocument.Element("Transactors")
+                                                           .Elements("Transactor");
+                DataGridViewSelectedRowCollection selectedRows = this.debtorsDataGrid.SelectedRows;
+                string no = selectedRows[0].Cells[TableColumn.No].Value.ToString();
+                XElement transactor = null;
+
+                if (!this.btnDebtors.Enabled)
+                {
+                    // The user has the Debtors button as the selected button.
+                    transactor = debtors.Where(x => x.Attribute("no").Value == no
+                                            && x.Element("TransactorType").Value == "Debtor")
+                        .FirstOrDefault();
+                }
+                else if (!this.btnCreditors.Enabled)
+                {
+                    // The user has the Creditors button as the selected button.
+                    transactor = debtors.Where(x => x.Attribute("no").Value == no
+                                            && x.Element("TransactorType").Value == "Creditor")
+                        .FirstOrDefault();
+                }
+
+                DetailsForm detailsForm = new DetailsForm(
+                    int.Parse(transactor.Attribute("no").Value),
+                    transactor.Element("Name").Value,
+                    transactor.Element("Since").Value,
+                    transactor.Element("DueDate").Value,
+                    transactor.Element("PhoneNumber").Value,
+                    transactor.Element("Email").Value,
+                    transactor.Element("Facebook").Value,
+                    decimal.Parse(transactor.Element("Amount").Value),
+                    transactor.Element("TransactorType").Value);
+
                 detailsForm.Show();
 
                 this.Enabled = false;
@@ -214,6 +251,7 @@ namespace NovaDebt
 
                     int noCounter = 1;
 
+                    // Setting the id -1 for each record.
                     foreach (XElement debtor in debtors)
                     {
                         debtor.SetAttributeValue("no", noCounter++);

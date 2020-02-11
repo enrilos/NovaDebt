@@ -155,7 +155,7 @@
             this.addNameTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.addNameTextBox.Location = new System.Drawing.Point(171, 28);
-            this.addNameTextBox.MaxLength = 70;
+            this.addNameTextBox.MaxLength = 30;
             this.addNameTextBox.Name = "addNameTextBox";
             this.addNameTextBox.Size = new System.Drawing.Size(375, 36);
             this.addNameTextBox.TabIndex = 0;
@@ -166,7 +166,7 @@
             this.addPhoneTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addPhoneTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.addPhoneTextBox.Location = new System.Drawing.Point(171, 78);
-            this.addPhoneTextBox.MaxLength = 50;
+            this.addPhoneTextBox.MaxLength = 20;
             this.addPhoneTextBox.Name = "addPhoneTextBox";
             this.addPhoneTextBox.Size = new System.Drawing.Size(375, 36);
             this.addPhoneTextBox.TabIndex = 1;
@@ -177,7 +177,7 @@
             this.addEmailTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addEmailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.addEmailTextBox.Location = new System.Drawing.Point(171, 128);
-            this.addEmailTextBox.MaxLength = 100;
+            this.addEmailTextBox.MaxLength = 40;
             this.addEmailTextBox.Name = "addEmailTextBox";
             this.addEmailTextBox.Size = new System.Drawing.Size(375, 36);
             this.addEmailTextBox.TabIndex = 2;
@@ -188,7 +188,7 @@
             this.addFacebookTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addFacebookTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.addFacebookTextBox.Location = new System.Drawing.Point(171, 178);
-            this.addFacebookTextBox.MaxLength = 100;
+            this.addFacebookTextBox.MaxLength = 30;
             this.addFacebookTextBox.Name = "addFacebookTextBox";
             this.addFacebookTextBox.Size = new System.Drawing.Size(375, 36);
             this.addFacebookTextBox.TabIndex = 3;
@@ -199,7 +199,7 @@
             this.addAmountTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addAmountTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.addAmountTextBox.Location = new System.Drawing.Point(171, 228);
-            this.addAmountTextBox.MaxLength = 20;
+            this.addAmountTextBox.MaxLength = 15;
             this.addAmountTextBox.Name = "addAmountTextBox";
             this.addAmountTextBox.Size = new System.Drawing.Size(375, 36);
             this.addAmountTextBox.TabIndex = 4;
@@ -297,7 +297,7 @@
             this.addInterestWithCurrencyTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addInterestWithCurrencyTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.addInterestWithCurrencyTextBox.Location = new System.Drawing.Point(705, 174);
-            this.addInterestWithCurrencyTextBox.MaxLength = 100;
+            this.addInterestWithCurrencyTextBox.MaxLength = 15;
             this.addInterestWithCurrencyTextBox.Name = "addInterestWithCurrencyTextBox";
             this.addInterestWithCurrencyTextBox.Size = new System.Drawing.Size(198, 36);
             this.addInterestWithCurrencyTextBox.TabIndex = 17;
@@ -311,7 +311,7 @@
             this.addInterestWithPercentageTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addInterestWithPercentageTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.addInterestWithPercentageTextBox.Location = new System.Drawing.Point(705, 224);
-            this.addInterestWithPercentageTextBox.MaxLength = 100;
+            this.addInterestWithPercentageTextBox.MaxLength = 7;
             this.addInterestWithPercentageTextBox.Name = "addInterestWithPercentageTextBox";
             this.addInterestWithPercentageTextBox.Size = new System.Drawing.Size(198, 36);
             this.addInterestWithPercentageTextBox.TabIndex = 18;
