@@ -16,8 +16,6 @@ namespace NovaDebt
 
         public static string XmlRootOpenClose { get; } = "<Transactors>\n</Transactors>";
 
-        public static string DefaultCurrencySymbol { get; } = " лв.";
-
         public static string IdCounterSeed { get; } = "1";
 
         public static string IdCounterFileName { get; } = "\\idcounter.txt";
@@ -52,7 +50,7 @@ namespace NovaDebt
 
             public static string Facebook { get; } = "Фейсбук";
 
-            public static string Amount { get; } = "Количество";
+            public static string Amount { get; } = "Количество в лв.";
         }
 
         public static class MessageBoxCaption

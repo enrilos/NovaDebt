@@ -71,16 +71,20 @@ namespace NovaDebt
 
             // Customizing the columns/headers of the table
             // No Column
-            DataGridViewColumn columnNo = debtorsDataGrid.Columns[0];
+            DataGridViewColumn columnNo = this.debtorsDataGrid.Columns[0];
             columnNo.Width = 50;
+            // Name Column
+            DataGridViewColumn columnName = this.debtorsDataGrid.Columns[1];
+            columnName.Width = 200;
             // Since Column
-            DataGridViewColumn columnSince = debtorsDataGrid.Columns[2];
+            DataGridViewColumn columnSince = this.debtorsDataGrid.Columns[2];
             columnSince.Width = 140;
-            DataGridViewColumn columnDueDate = debtorsDataGrid.Columns[3];
+            // Due Column
+            DataGridViewColumn columnDueDate = this.debtorsDataGrid.Columns[3];
             columnDueDate.Width = 140;
             // Amount Column
-            DataGridViewColumn columnAmount = debtorsDataGrid.Columns[4];
-            columnAmount.Width = 120;
+            DataGridViewColumn columnAmount = this.debtorsDataGrid.Columns[4];
+            columnAmount.Width = 188;
 
             // Button customizations are made both in code and the UI.
             this.btnDebtors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
@@ -246,7 +250,7 @@ namespace NovaDebt
                     transactor.Name,
                     transactor.Since,
                     transactor.DueDate,
-                    transactor.Amount + DefaultCurrencySymbol);
+                    $"{transactor.Amount:f2}");
             }
         }
 
