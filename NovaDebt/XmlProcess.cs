@@ -16,11 +16,12 @@ namespace NovaDebt
 {
     public static class XmlProcess
     {
+        // This method may become unnecessary in the future.
         public static IEnumerable<Transactor> DeserializeXml(string path)
         {
             if (path == null)
             {
-                throw new ArgumentNullException(ErrorMessage.PathCannotBeNull);
+                throw new NullReferenceException(ErrorMessage.PathCannotBeNull);
             }
             if (!File.Exists(path))
             {
@@ -43,7 +44,7 @@ namespace NovaDebt
         {
             if (path == null)
             {
-                throw new ArgumentNullException(ErrorMessage.PathCannotBeNull);
+                throw new NullReferenceException(ErrorMessage.PathCannotBeNull);
             }
             if (!File.Exists(path))
             {
@@ -71,7 +72,7 @@ namespace NovaDebt
 
             if (path == null)
             {
-                throw new ArgumentNullException(ErrorMessage.PathCannotBeNull);
+                throw new NullReferenceException(ErrorMessage.PathCannotBeNull);
             }
             if (!File.Exists(path))
             {
@@ -98,7 +99,7 @@ namespace NovaDebt
         {
             if (path == null)
             {
-                throw new ArgumentNullException(ErrorMessage.PathCannotBeNull);
+                throw new NullReferenceException(ErrorMessage.PathCannotBeNull);
             }
             if (!File.Exists(path))
             {
@@ -106,7 +107,7 @@ namespace NovaDebt
             }
             if (name == null)
             {
-                throw new ArgumentNullException(ErrorMessage.NameCannotBeNull);
+                throw new NullReferenceException(ErrorMessage.NameCannotBeNull);
             }
 
             Transactor transactor = new Transactor(name, since, dueDate, phone, email, facebook, amount, transactorType);

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTransactorForm));
-            this.btnAddConfirm = new System.Windows.Forms.Button();
-            this.btnAddCancel = new System.Windows.Forms.Button();
+            this.addBtnConfirm = new System.Windows.Forms.Button();
+            this.addBtnCancel = new System.Windows.Forms.Button();
             this.addNameLabel = new System.Windows.Forms.Label();
             this.addPhoneLabel = new System.Windows.Forms.Label();
             this.addEmailLabel = new System.Windows.Forms.Label();
@@ -41,8 +41,8 @@
             this.addEmailTextBox = new System.Windows.Forms.TextBox();
             this.addFacebookTextBox = new System.Windows.Forms.TextBox();
             this.addAmountTextBox = new System.Windows.Forms.TextBox();
-            this.btnAddDebtor = new System.Windows.Forms.Button();
-            this.btnAddCreditor = new System.Windows.Forms.Button();
+            this.addBtnDebtor = new System.Windows.Forms.Button();
+            this.addBtnCreditor = new System.Windows.Forms.Button();
             this.addSinceLabel = new System.Windows.Forms.Label();
             this.addDueDateLabel = new System.Windows.Forms.Label();
             this.addDueDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -55,39 +55,39 @@
             this.addInterestsSeparator = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // btnAddConfirm
+            // addBtnConfirm
             // 
-            this.btnAddConfirm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddConfirm.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnAddConfirm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnAddConfirm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnAddConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddConfirm.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnAddConfirm.Location = new System.Drawing.Point(770, 281);
-            this.btnAddConfirm.Name = "btnAddConfirm";
-            this.btnAddConfirm.Size = new System.Drawing.Size(200, 65);
-            this.btnAddConfirm.TabIndex = 8;
-            this.btnAddConfirm.Text = "Добави";
-            this.btnAddConfirm.UseVisualStyleBackColor = true;
-            this.btnAddConfirm.Click += new System.EventHandler(this.btnAddConfirm_Click);
+            this.addBtnConfirm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addBtnConfirm.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.addBtnConfirm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.addBtnConfirm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.addBtnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addBtnConfirm.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addBtnConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.addBtnConfirm.Location = new System.Drawing.Point(770, 281);
+            this.addBtnConfirm.Name = "addBtnConfirm";
+            this.addBtnConfirm.Size = new System.Drawing.Size(200, 65);
+            this.addBtnConfirm.TabIndex = 8;
+            this.addBtnConfirm.Text = "Добави";
+            this.addBtnConfirm.UseVisualStyleBackColor = true;
+            this.addBtnConfirm.Click += new System.EventHandler(this.btnAddConfirm_Click);
             // 
-            // btnAddCancel
+            // addBtnCancel
             // 
-            this.btnAddCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnAddCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnAddCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnAddCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddCancel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnAddCancel.Location = new System.Drawing.Point(564, 281);
-            this.btnAddCancel.Name = "btnAddCancel";
-            this.btnAddCancel.Size = new System.Drawing.Size(200, 65);
-            this.btnAddCancel.TabIndex = 7;
-            this.btnAddCancel.Text = "Отказ";
-            this.btnAddCancel.UseVisualStyleBackColor = true;
-            this.btnAddCancel.Click += new System.EventHandler(this.btnAddCancel_Click);
+            this.addBtnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addBtnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.addBtnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.addBtnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.addBtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addBtnCancel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addBtnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.addBtnCancel.Location = new System.Drawing.Point(564, 281);
+            this.addBtnCancel.Name = "addBtnCancel";
+            this.addBtnCancel.Size = new System.Drawing.Size(200, 65);
+            this.addBtnCancel.TabIndex = 7;
+            this.addBtnCancel.Text = "Отказ";
+            this.addBtnCancel.UseVisualStyleBackColor = true;
+            this.addBtnCancel.Click += new System.EventHandler(this.btnAddCancel_Click);
             // 
             // addNameLabel
             // 
@@ -204,33 +204,33 @@
             this.addAmountTextBox.Size = new System.Drawing.Size(375, 36);
             this.addAmountTextBox.TabIndex = 4;
             // 
-            // btnAddDebtor
+            // addBtnDebtor
             // 
-            this.btnAddDebtor.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAddDebtor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddDebtor.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddDebtor.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAddDebtor.Location = new System.Drawing.Point(20, 286);
-            this.btnAddDebtor.Name = "btnAddDebtor";
-            this.btnAddDebtor.Size = new System.Drawing.Size(260, 53);
-            this.btnAddDebtor.TabIndex = 5;
-            this.btnAddDebtor.Text = "Дебитор";
-            this.btnAddDebtor.UseVisualStyleBackColor = true;
-            this.btnAddDebtor.Click += new System.EventHandler(this.btnAddDebtor_Click);
+            this.addBtnDebtor.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.addBtnDebtor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addBtnDebtor.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addBtnDebtor.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.addBtnDebtor.Location = new System.Drawing.Point(20, 286);
+            this.addBtnDebtor.Name = "addBtnDebtor";
+            this.addBtnDebtor.Size = new System.Drawing.Size(260, 53);
+            this.addBtnDebtor.TabIndex = 5;
+            this.addBtnDebtor.Text = "Дебитор";
+            this.addBtnDebtor.UseVisualStyleBackColor = true;
+            this.addBtnDebtor.Click += new System.EventHandler(this.btnAddDebtor_Click);
             // 
-            // btnAddCreditor
+            // addBtnCreditor
             // 
-            this.btnAddCreditor.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAddCreditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddCreditor.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddCreditor.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAddCreditor.Location = new System.Drawing.Point(286, 286);
-            this.btnAddCreditor.Name = "btnAddCreditor";
-            this.btnAddCreditor.Size = new System.Drawing.Size(260, 53);
-            this.btnAddCreditor.TabIndex = 6;
-            this.btnAddCreditor.Text = "Кредитор";
-            this.btnAddCreditor.UseVisualStyleBackColor = true;
-            this.btnAddCreditor.Click += new System.EventHandler(this.btnAddCreditor_Click);
+            this.addBtnCreditor.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.addBtnCreditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addBtnCreditor.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addBtnCreditor.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.addBtnCreditor.Location = new System.Drawing.Point(286, 286);
+            this.addBtnCreditor.Name = "addBtnCreditor";
+            this.addBtnCreditor.Size = new System.Drawing.Size(260, 53);
+            this.addBtnCreditor.TabIndex = 6;
+            this.addBtnCreditor.Text = "Кредитор";
+            this.addBtnCreditor.UseVisualStyleBackColor = true;
+            this.addBtnCreditor.Click += new System.EventHandler(this.btnAddCreditor_Click);
             // 
             // addSinceLabel
             // 
@@ -370,8 +370,8 @@
             this.Controls.Add(this.addDueDatePicker);
             this.Controls.Add(this.addDueDateLabel);
             this.Controls.Add(this.addSinceLabel);
-            this.Controls.Add(this.btnAddCreditor);
-            this.Controls.Add(this.btnAddDebtor);
+            this.Controls.Add(this.addBtnCreditor);
+            this.Controls.Add(this.addBtnDebtor);
             this.Controls.Add(this.addAmountTextBox);
             this.Controls.Add(this.addFacebookTextBox);
             this.Controls.Add(this.addEmailTextBox);
@@ -382,8 +382,8 @@
             this.Controls.Add(this.addEmailLabel);
             this.Controls.Add(this.addPhoneLabel);
             this.Controls.Add(this.addNameLabel);
-            this.Controls.Add(this.btnAddCancel);
-            this.Controls.Add(this.btnAddConfirm);
+            this.Controls.Add(this.addBtnCancel);
+            this.Controls.Add(this.addBtnConfirm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddTransactorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -395,8 +395,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnAddConfirm;
-        private System.Windows.Forms.Button btnAddCancel;
+        private System.Windows.Forms.Button addBtnConfirm;
+        private System.Windows.Forms.Button addBtnCancel;
         private System.Windows.Forms.Label addNameLabel;
         private System.Windows.Forms.Label addPhoneLabel;
         private System.Windows.Forms.Label addEmailLabel;
@@ -407,8 +407,8 @@
         private System.Windows.Forms.TextBox addEmailTextBox;
         private System.Windows.Forms.TextBox addFacebookTextBox;
         private System.Windows.Forms.TextBox addAmountTextBox;
-        private System.Windows.Forms.Button btnAddDebtor;
-        private System.Windows.Forms.Button btnAddCreditor;
+        private System.Windows.Forms.Button addBtnDebtor;
+        private System.Windows.Forms.Button addBtnCreditor;
         private System.Windows.Forms.Label addSinceLabel;
         private System.Windows.Forms.Label addDueDateLabel;
         private System.Windows.Forms.DateTimePicker addDueDatePicker;

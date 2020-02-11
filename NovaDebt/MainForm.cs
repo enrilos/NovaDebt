@@ -84,7 +84,7 @@ namespace NovaDebt
             columnDueDate.Width = 140;
             // Amount Column
             DataGridViewColumn columnAmount = this.debtorsDataGrid.Columns[4];
-            columnAmount.Width = 188;
+            columnAmount.Width = 190;
 
             // Button customizations are made both in code and the UI.
             this.btnDebtors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
@@ -134,6 +134,10 @@ namespace NovaDebt
         {
             // TODO
             // I should create a separate form for this one.
+            // Getting the record with XML Linq and then filling the fields with it.
+            // Enabling the user to edit everything even switching the transactor type.
+            // In such case I must delete the transactor in the old transactors list
+            // and add it to the new one to the new list.
         }
 
         private void btnDetails_Click(object sender, EventArgs e)
@@ -152,8 +156,12 @@ namespace NovaDebt
             }
             else
             {
-                // TODO
-                // msg box show: it can only show 1 record at a time.
+                MessageBox.Show(ErrorMessage.DetailsOverOneSelectedRecords,
+                    MessageBoxCaption.Error,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return;
             }
         }
 
@@ -234,7 +242,7 @@ namespace NovaDebt
         {
             if (path == null)
             {
-                throw new ArgumentNullException(ErrorMessage.PathCannotBeNull);
+                throw new NullReferenceException(ErrorMessage.PathCannotBeNull);
             }
             else if (!File.Exists(path))
             {
@@ -258,15 +266,14 @@ namespace NovaDebt
         {
             if (table == null)
             {
-                throw new ArgumentNullException(ErrorMessage.DataTableCannotBeNull);
+                throw new NullReferenceException(ErrorMessage.DataTableCannotBeNull);
             }
 
             this.table.Columns.Add(TableColumn.No, typeof(int)); // No
             this.table.Columns.Add(TableColumn.Name, typeof(string)); // Name
             this.table.Columns.Add(TableColumn.Since, typeof(string)); // Since
             this.table.Columns.Add(TableColumn.DueDate, typeof(string)); // DueDate
-            this.table.Columns.Add(TableColumn.Amount, typeof(string)); // Amount. (Actual Amount type is decimal.)
-            // For the case of concating a currency symbol later on, the amount in the grid is of type string.
+            this.table.Columns.Add(TableColumn.Amount, typeof(string)); // Amount.
         }
 
         private void FormClosed(object sender, FormClosedEventArgs e)

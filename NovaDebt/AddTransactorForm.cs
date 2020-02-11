@@ -23,8 +23,8 @@ namespace NovaDebt
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
-            this.btnAddConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.btnAddCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.addBtnConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.addBtnCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
 
             this.addSinceDatePicker.Format = DateTimePickerFormat.Custom;
             this.addSinceDatePicker.CustomFormat = "dd/MM/yyyy";
@@ -35,8 +35,8 @@ namespace NovaDebt
             this.addDueDatePicker.Value = DateTime.UtcNow;
 
             // Setting the default select button as Debtor
-            this.btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
+            this.addBtnDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.addBtnDebtor.BackColor = Color.FromArgb(0, 208, 255);
 
             // Attaching an event will will warn the user upon cancel/exit.
             this.FormClosing += new FormClosingEventHandler(AlertUserOnExit);
@@ -87,12 +87,12 @@ namespace NovaDebt
                 string transactorType = string.Empty;
                 string path = TransactorsFilePath;
 
-                if (btnAddDebtor.BackColor == Color.FromArgb(0, 208, 255))
+                if (addBtnDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     transactorType = TransactorType.Debtor.ToString();
                     XmlProcess.AddTransactorToXml(path, name, since, dueDate, phone, email, amount, facebook, transactorType);
                 }
-                else if (btnAddCreditor.BackColor == Color.FromArgb(0, 208, 255))
+                else if (addBtnCreditor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     transactorType = TransactorType.Creditor.ToString();
                     XmlProcess.AddTransactorToXml(path, name, since, dueDate, phone, email, amount, facebook, transactorType);
@@ -118,23 +118,23 @@ namespace NovaDebt
         private void btnAddDebtor_Click(object sender, EventArgs e)
         {
             // other
-            this.btnAddCreditor.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            this.btnAddCreditor.BackColor = Color.FromArgb(50, 50, 50);
+            this.addBtnCreditor.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            this.addBtnCreditor.BackColor = Color.FromArgb(50, 50, 50);
 
             // this
-            this.btnAddDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.btnAddDebtor.BackColor = Color.FromArgb(0, 208, 255);
+            this.addBtnDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.addBtnDebtor.BackColor = Color.FromArgb(0, 208, 255);
         }
 
         private void btnAddCreditor_Click(object sender, EventArgs e)
         {
             // other
-            this.btnAddDebtor.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            this.btnAddDebtor.BackColor = Color.FromArgb(50, 50, 50);
+            this.addBtnDebtor.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            this.addBtnDebtor.BackColor = Color.FromArgb(50, 50, 50);
 
             // this
-            this.btnAddCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.btnAddCreditor.BackColor = Color.FromArgb(0, 208, 255);
+            this.addBtnCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.addBtnCreditor.BackColor = Color.FromArgb(0, 208, 255);
         }
 
         private bool ValidateInputFields()
