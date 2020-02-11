@@ -28,6 +28,10 @@ namespace NovaDebt
 
         public static decimal MaxAmountValue { get; } = 4294967295m;
 
+        public static decimal MinInterestCurrencyValue { get; } = 0.00m;
+
+        public static decimal MaxInterestCurrencyValue { get; } = 4294967295m;
+
         public static decimal MinInterestPercentageValue { get; } = 0.01m;
 
         public static decimal MaxInterestPercentageValue { get; } = 4096.00m;

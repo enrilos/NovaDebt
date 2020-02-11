@@ -137,6 +137,20 @@ namespace NovaDebt
             // TODO
             // And also a separate form for this which has labels with data
             // It also must have an edit button and delete button below.
+            if (this.debtorsDataGrid.SelectedRows.Count == 1)
+            {
+                DetailsForm detailsForm = new DetailsForm();
+                detailsForm.Show();
+
+                this.Enabled = false;
+
+                detailsForm.FormClosed += new FormClosedEventHandler(FormClosed);
+            }
+            else
+            {
+                // TODO
+                // msg box show: it can only show 1 record at a time.
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

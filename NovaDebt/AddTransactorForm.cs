@@ -287,9 +287,9 @@ namespace NovaDebt
                 {
                     decimal currencyInterest = decimal.Parse(this.addInterestWithCurrencyTextBox.Text);
 
-                    if (currencyInterest < MinAmountValue || currencyInterest > MaxAmountValue)
+                    if (currencyInterest < MinInterestCurrencyValue || currencyInterest > MaxInterestCurrencyValue)
                     {
-                        MessageBox.Show(string.Format(ErrorMessage.InvalidInterestCurrencyInterval, MinAmountValue, MaxAmountValue),
+                        MessageBox.Show(string.Format(ErrorMessage.InvalidInterestCurrencyInterval, MinInterestCurrencyValue, MaxInterestCurrencyValue),
                                MessageBoxCaption.Error,
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Error);

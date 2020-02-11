@@ -386,6 +386,7 @@
             this.Controls.Add(this.btnAddConfirm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddTransactorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добави";
             this.Load += new System.EventHandler(this.AddTransactorForm_Load);
             this.ResumeLayout(false);
