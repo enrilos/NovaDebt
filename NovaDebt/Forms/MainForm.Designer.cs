@@ -39,7 +39,7 @@ namespace NovaDebt
             this.btnCreditors = new System.Windows.Forms.Button();
             this.menuPanel = new System.Windows.Forms.Panel();
             this.novaDebtImage = new System.Windows.Forms.PictureBox();
-            this.debtorsDataGrid = new System.Windows.Forms.DataGridView();
+            this.transactorsDataGrid = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@ namespace NovaDebt
             this.btnDetails = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.novaDebtImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.debtorsDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactorsDataGrid)).BeginInit();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,15 +109,15 @@ namespace NovaDebt
             this.novaDebtImage.TabIndex = 3;
             this.novaDebtImage.TabStop = false;
             // 
-            // debtorsDataGrid
+            // transactorsDataGrid
             // 
-            this.debtorsDataGrid.AllowUserToAddRows = false;
-            this.debtorsDataGrid.AllowUserToDeleteRows = false;
-            this.debtorsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.debtorsDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.debtorsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.debtorsDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.debtorsDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.transactorsDataGrid.AllowUserToAddRows = false;
+            this.transactorsDataGrid.AllowUserToDeleteRows = false;
+            this.transactorsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.transactorsDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.transactorsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.transactorsDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.transactorsDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -125,13 +125,13 @@ namespace NovaDebt
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.debtorsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.debtorsDataGrid.ColumnHeadersHeight = 50;
-            this.debtorsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.debtorsDataGrid.EnableHeadersVisualStyles = false;
-            this.debtorsDataGrid.Location = new System.Drawing.Point(12, 9);
-            this.debtorsDataGrid.Name = "debtorsDataGrid";
-            this.debtorsDataGrid.ReadOnly = true;
+            this.transactorsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.transactorsDataGrid.ColumnHeadersHeight = 50;
+            this.transactorsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.transactorsDataGrid.EnableHeadersVisualStyles = false;
+            this.transactorsDataGrid.Location = new System.Drawing.Point(12, 9);
+            this.transactorsDataGrid.Name = "transactorsDataGrid";
+            this.transactorsDataGrid.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -139,23 +139,23 @@ namespace NovaDebt
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.debtorsDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.debtorsDataGrid.RowHeadersVisible = false;
-            this.debtorsDataGrid.RowHeadersWidth = 51;
+            this.transactorsDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.transactorsDataGrid.RowHeadersVisible = false;
+            this.transactorsDataGrid.RowHeadersWidth = 51;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.debtorsDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.debtorsDataGrid.RowTemplate.Height = 50;
-            this.debtorsDataGrid.RowTemplate.ReadOnly = true;
-            this.debtorsDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.debtorsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.debtorsDataGrid.Size = new System.Drawing.Size(828, 400);
-            this.debtorsDataGrid.TabIndex = 0;
-            this.debtorsDataGrid.TabStop = false;
+            this.transactorsDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.transactorsDataGrid.RowTemplate.Height = 50;
+            this.transactorsDataGrid.RowTemplate.ReadOnly = true;
+            this.transactorsDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.transactorsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.transactorsDataGrid.Size = new System.Drawing.Size(828, 400);
+            this.transactorsDataGrid.TabIndex = 0;
+            this.transactorsDataGrid.TabStop = false;
             // 
             // btnAdd
             // 
@@ -218,7 +218,7 @@ namespace NovaDebt
             this.mainPanel.Controls.Add(this.btnDelete);
             this.mainPanel.Controls.Add(this.btnEdit);
             this.mainPanel.Controls.Add(this.btnAdd);
-            this.mainPanel.Controls.Add(this.debtorsDataGrid);
+            this.mainPanel.Controls.Add(this.transactorsDataGrid);
             this.mainPanel.Location = new System.Drawing.Point(212, 0);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(851, 528);
@@ -259,7 +259,7 @@ namespace NovaDebt
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.novaDebtImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.debtorsDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactorsDataGrid)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -272,7 +272,7 @@ namespace NovaDebt
         private System.Windows.Forms.Button btnCreditors;
         private System.Windows.Forms.Panel menuPanel;
         private PictureBox novaDebtImage;
-        private DataGridView debtorsDataGrid;
+        private DataGridView transactorsDataGrid;
         private Button btnAdd;
         private Button btnEdit;
         private Button btnDelete;

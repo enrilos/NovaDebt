@@ -66,25 +66,25 @@ namespace NovaDebt
             }
 
             // Setting the source of the DataGridView.
-            this.debtorsDataGrid.DataSource = table;
+            this.transactorsDataGrid.DataSource = table;
             // Data grid styling.
-            this.debtorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
+            this.transactorsDataGrid.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
 
             // Customizing the columns/headers of the table
             // No Column
-            DataGridViewColumn columnNo = this.debtorsDataGrid.Columns[0];
+            DataGridViewColumn columnNo = this.transactorsDataGrid.Columns[0];
             columnNo.Width = 50;
             // Name Column
-            DataGridViewColumn columnName = this.debtorsDataGrid.Columns[1];
+            DataGridViewColumn columnName = this.transactorsDataGrid.Columns[1];
             columnName.Width = 200;
             // Since Column
-            DataGridViewColumn columnSince = this.debtorsDataGrid.Columns[2];
+            DataGridViewColumn columnSince = this.transactorsDataGrid.Columns[2];
             columnSince.Width = 140;
             // Due Column
-            DataGridViewColumn columnDueDate = this.debtorsDataGrid.Columns[3];
+            DataGridViewColumn columnDueDate = this.transactorsDataGrid.Columns[3];
             columnDueDate.Width = 140;
             // Amount Column
-            DataGridViewColumn columnAmount = this.debtorsDataGrid.Columns[4];
+            DataGridViewColumn columnAmount = this.transactorsDataGrid.Columns[4];
             columnAmount.Width = 190;
 
             // Button customizations are made both in code and the UI.
@@ -107,7 +107,7 @@ namespace NovaDebt
             this.btnCreditors.Enabled = true;
             this.table.Rows.Clear();
             this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
-            this.debtorsDataGrid.ClearSelection();
+            this.transactorsDataGrid.ClearSelection();
         }
 
         private void btnCreditors_Click(object sender, EventArgs e)
@@ -116,12 +116,12 @@ namespace NovaDebt
             this.btnCreditors.Enabled = false;
             this.table.Rows.Clear();
             this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
-            this.debtorsDataGrid.ClearSelection();
+            this.transactorsDataGrid.ClearSelection();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddTransactorForm addTransactorForm = new AddTransactorForm();
+            AddOrEditTransactorForm addTransactorForm = new AddOrEditTransactorForm();
             addTransactorForm.Show();
 
             // Disabling the main form while a subform is open.
@@ -138,38 +138,81 @@ namespace NovaDebt
             // Enabling the user to edit everything even switching the transactor type.
             // In such case I must delete the transactor in the old transactors list
             // and add it to the new one to the new list.
-        }
 
-        private void btnDetails_Click(object sender, EventArgs e)
-        {
-            // TODO
-            // And also a separate form for this which has labels with data
-            // It also must have an edit button and delete button below.
-            // And I should give the Details form all the data of the selected record.
-            if (this.debtorsDataGrid.SelectedRows.Count == 1)
+            if (this.transactorsDataGrid.SelectedRows.Count == 1)
             {
-                // Before disabling the form
-                // I should check which button is clicked
-                // Then filter the deserialized xml collection and find that exact record
-                // And then send it to the DetailsForm constructor.
                 XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
-                IEnumerable<XElement> debtors = xmlDocument.Element("Transactors")
+                IEnumerable<XElement> transactors = xmlDocument.Element("Transactors")
                                                            .Elements("Transactor");
-                DataGridViewSelectedRowCollection selectedRows = this.debtorsDataGrid.SelectedRows;
+                DataGridViewSelectedRowCollection selectedRows = this.transactorsDataGrid.SelectedRows;
                 string no = selectedRows[0].Cells[TableColumn.No].Value.ToString();
                 XElement transactor = null;
 
                 if (!this.btnDebtors.Enabled)
                 {
                     // The user has the Debtors button as the selected button.
-                    transactor = debtors.Where(x => x.Attribute("no").Value == no
+                    transactor = transactors.Where(x => x.Attribute("no").Value == no
                                             && x.Element("TransactorType").Value == "Debtor")
                         .FirstOrDefault();
                 }
                 else if (!this.btnCreditors.Enabled)
                 {
                     // The user has the Creditors button as the selected button.
-                    transactor = debtors.Where(x => x.Attribute("no").Value == no
+                    transactor = transactors.Where(x => x.Attribute("no").Value == no
+                                            && x.Element("TransactorType").Value == "Creditor")
+                        .FirstOrDefault();
+                }
+
+                AddOrEditTransactorForm addOrEditTransactorForm = new AddOrEditTransactorForm(
+                    int.Parse(transactor.Attribute("no").Value),
+                    transactor.Element("Name").Value,
+                    transactor.Element("Since").Value,
+                    transactor.Element("DueDate").Value,
+                    transactor.Element("PhoneNumber").Value,
+                    transactor.Element("Email").Value,
+                    transactor.Element("Facebook").Value,
+                    decimal.Parse(transactor.Element("Amount").Value),
+                    transactor.Element("TransactorType").Value);
+
+                addOrEditTransactorForm.Show();
+
+                this.Enabled = false;
+
+                addOrEditTransactorForm.FormClosed += new FormClosedEventHandler(FormClosed);
+            }
+            else
+            {
+                MessageBox.Show(ErrorMessage.EditOverOneSelectedRecords,
+                    MessageBoxCaption.Error,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return;
+            }
+        }
+
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+            if (this.transactorsDataGrid.SelectedRows.Count == 1)
+            {
+                XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
+                IEnumerable<XElement> transactors = xmlDocument.Element("Transactors")
+                                                           .Elements("Transactor");
+                DataGridViewSelectedRowCollection selectedRows = this.transactorsDataGrid.SelectedRows;
+                string no = selectedRows[0].Cells[TableColumn.No].Value.ToString();
+                XElement transactor = null;
+
+                if (!this.btnDebtors.Enabled)
+                {
+                    // The user has the Debtors button as the selected button.
+                    transactor = transactors.Where(x => x.Attribute("no").Value == no
+                                            && x.Element("TransactorType").Value == "Debtor")
+                        .FirstOrDefault();
+                }
+                else if (!this.btnCreditors.Enabled)
+                {
+                    // The user has the Creditors button as the selected button.
+                    transactor = transactors.Where(x => x.Attribute("no").Value == no
                                             && x.Element("TransactorType").Value == "Creditor")
                         .FirstOrDefault();
                 }
@@ -204,7 +247,7 @@ namespace NovaDebt
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (this.debtorsDataGrid.SelectedRows.Count > 0)
+            if (this.transactorsDataGrid.SelectedRows.Count > 0)
             {
                 DialogResult dialog = MessageBox.Show(MessageBoxText.DeleteConfirmationPlural,
                    MessageBoxCaption.Confirm,
@@ -220,7 +263,7 @@ namespace NovaDebt
                     XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
                     IEnumerable<XElement> debtors = xmlDocument.Element("Transactors")
                                                                .Elements("Transactor");
-                    DataGridViewSelectedRowCollection selectedRows = this.debtorsDataGrid.SelectedRows;
+                    DataGridViewSelectedRowCollection selectedRows = this.transactorsDataGrid.SelectedRows;
 
                     if (!this.btnDebtors.Enabled)
                     {
@@ -271,7 +314,7 @@ namespace NovaDebt
                         this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
                     }
 
-                    this.debtorsDataGrid.DataSource = table;
+                    this.transactorsDataGrid.DataSource = table;
                 }
             }
         }
@@ -330,13 +373,13 @@ namespace NovaDebt
                 this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
             }
 
-            this.debtorsDataGrid.DataSource = table;
-            this.debtorsDataGrid.ClearSelection();
+            this.transactorsDataGrid.DataSource = table;
+            this.transactorsDataGrid.ClearSelection();
         }
 
         private void RemoveDataGridSelection(object sender, MouseEventArgs e)
         {
-            this.debtorsDataGrid.ClearSelection();
+            this.transactorsDataGrid.ClearSelection();
         }
     }
 }

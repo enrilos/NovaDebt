@@ -111,6 +111,8 @@ namespace NovaDebt
             public static string InvalidInterestPercentage { get; } = "Невалидна лихва в проценти.";
 
             public static string DetailsOverOneSelectedRecords { get; } = "Трябва да изберете един запис за детайли.";
+
+            public static string EditOverOneSelectedRecords { get; } = "Трябва да изберете един запис за редакция.";
         }
     }
 }

@@ -41,11 +41,6 @@ namespace NovaDebt
 
         private void DetailsForm_Load(object sender, EventArgs e)
         {
-            // Get the collection with transactor type
-            // The transactor type is based upon which of the 2 buttons (debtors/creditors) the user has chosen.
-            // And then filter the deserialized from xml collection with .Where(No = x && TransactorType = Debtor/Creditor)
-            // And then fill all the labels with the transactor data
-            // If a field is empty it should have a default value of None - (няма)
             // The same way I will send the data to the Edit section
             // Just like the Main form send to this object through the constructor.
             this.detailsNoLabel.Text = no.ToString();
@@ -77,9 +72,6 @@ namespace NovaDebt
 
         private void detailsBtnDelete_Click(object sender, EventArgs e)
         {
-            // Asks if the user is certain to delete the record
-            // Just with the delete button in the Main form.
-
             DialogResult dialog = MessageBox.Show(MessageBoxText.DeleteConfirmationSingular,
                    MessageBoxCaption.Confirm,
                    MessageBoxButtons.YesNo,
