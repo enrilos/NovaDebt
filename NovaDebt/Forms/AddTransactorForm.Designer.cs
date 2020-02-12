@@ -68,7 +68,7 @@
             this.addBtnConfirm.Name = "addBtnConfirm";
             this.addBtnConfirm.Size = new System.Drawing.Size(200, 65);
             this.addBtnConfirm.TabIndex = 8;
-            this.addBtnConfirm.Text = "Добави";
+            this.addBtnConfirm.Text = "Запиши";
             this.addBtnConfirm.UseVisualStyleBackColor = true;
             this.addBtnConfirm.Click += new System.EventHandler(this.btnAddConfirm_Click);
             // 

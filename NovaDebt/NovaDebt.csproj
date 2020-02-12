@@ -58,22 +58,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSettings.cs" />
-    <Compile Include="AddTransactorForm.cs">
+    <Compile Include="Forms\AddTransactorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddTransactorForm.Designer.cs">
+    <Compile Include="Forms\AddTransactorForm.Designer.cs">
       <DependentUpon>AddTransactorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DetailsForm.cs">
+    <Compile Include="Forms\DetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DetailsForm.Designer.cs">
+    <Compile Include="Forms\DetailsForm.Designer.cs">
       <DependentUpon>DetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Contracts\ITransactor.cs" />
@@ -83,13 +83,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Models\Enums\TransactorType.cs" />
     <Compile Include="XmlProcess.cs" />
-    <EmbeddedResource Include="DetailsForm.resx">
+    <EmbeddedResource Include="Forms\DetailsForm.resx">
       <DependentUpon>DetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddTransactorForm.resx">
+    <EmbeddedResource Include="Forms\AddTransactorForm.resx">
       <DependentUpon>AddTransactorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

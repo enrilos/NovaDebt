@@ -10,6 +10,8 @@ namespace NovaDebt
 
         public static string TransactorsFileName { get; } = "\\transactors.xml";
 
+        public static string IdCounterFileName { get; } = "\\idcounter.txt";
+
         public static string TransactorsFilePath { get; } = DefaultAssemblyPath + TransactorsFileName;
 
         public static string XmlRoot { get; } = "Transactors";
@@ -17,8 +19,6 @@ namespace NovaDebt
         public static string XmlRootOpenClose { get; } = "<Transactors>\n</Transactors>";
 
         public static string IdCounterSeed { get; } = "1";
-
-        public static string IdCounterFileName { get; } = "\\idcounter.txt";
 
         public static string IdCounterFilePath { get; } = DefaultAssemblyPath + IdCounterFileName;
 
@@ -64,7 +64,9 @@ namespace NovaDebt
 
         public static class MessageBoxText
         {
-            public static string DeleteConfirmation { get; } = "Изтрий избраните записи?";
+            public static string DeleteConfirmationSingular { get; } = "Изтрий записа?";
+
+            public static string DeleteConfirmationPlural { get; } = "Изтрий избраните записи?";
 
             public static string ExitConfirmation { get; } = "Данните няма да бъдат запазени.\nНаистина ли искате да излезете?";
 

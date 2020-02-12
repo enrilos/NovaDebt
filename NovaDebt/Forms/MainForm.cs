@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
+
 using static NovaDebt.DataSettings;
 
 namespace NovaDebt
@@ -133,7 +134,6 @@ namespace NovaDebt
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // TODO
-            // I should create a separate form for this one.
             // Getting the record with XML Linq and then filling the fields with it.
             // Enabling the user to edit everything even switching the transactor type.
             // In such case I must delete the transactor in the old transactors list
@@ -206,7 +206,7 @@ namespace NovaDebt
         {
             if (this.debtorsDataGrid.SelectedRows.Count > 0)
             {
-                DialogResult dialog = MessageBox.Show(MessageBoxText.DeleteConfirmation,
+                DialogResult dialog = MessageBox.Show(MessageBoxText.DeleteConfirmationPlural,
                    MessageBoxCaption.Confirm,
                    MessageBoxButtons.YesNo,
                    MessageBoxIcon.Question);
@@ -316,14 +316,12 @@ namespace NovaDebt
 
         private void FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Enabling the main form and refreshing the Data Grid View.
+            // Enabling the main form and refreshing the DataGridView after each sub form close.
             this.Enabled = true;
             this.table.Rows.Clear();
 
             if (!this.btnDebtors.Enabled)
             {
-                // Problem: The scroll should stay in it's last position.
-                // Thinking about how to fix it...
                 this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
 
             }

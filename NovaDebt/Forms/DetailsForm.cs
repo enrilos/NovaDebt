@@ -1,9 +1,9 @@
-﻿using NovaDebt.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
+
 using static NovaDebt.DataSettings;
 
 namespace NovaDebt
@@ -71,6 +71,8 @@ namespace NovaDebt
         {
             // Closes the Details form
             // Opens up the Edit form with the same data
+            // The edit form should have a separate constructor which accepts all of these private fields data.
+            // And when Edit is clicked the new Edit form will open and this form should close.
         }
 
         private void detailsBtnDelete_Click(object sender, EventArgs e)
@@ -78,7 +80,7 @@ namespace NovaDebt
             // Asks if the user is certain to delete the record
             // Just with the delete button in the Main form.
 
-            DialogResult dialog = MessageBox.Show("Изтрий записа?",
+            DialogResult dialog = MessageBox.Show(MessageBoxText.DeleteConfirmationSingular,
                    MessageBoxCaption.Confirm,
                    MessageBoxButtons.YesNo,
                    MessageBoxIcon.Question);
