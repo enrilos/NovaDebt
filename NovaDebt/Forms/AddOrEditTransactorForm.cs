@@ -31,6 +31,14 @@ namespace NovaDebt
             // Setting the default select button as Debtor
             this.btnDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnDebtor.BackColor = Color.FromArgb(0, 208, 255);
+
+            this.sinceDatePicker.Format = DateTimePickerFormat.Custom;
+            this.sinceDatePicker.CustomFormat = "dd/MM/yyyy";
+            this.sinceDatePicker.Value = DateTime.UtcNow;
+
+            this.dueDatePicker.Format = DateTimePickerFormat.Custom;
+            this.dueDatePicker.CustomFormat = "dd/MM/yyyy";
+            this.dueDatePicker.Value = DateTime.UtcNow;
         }
 
         public AddOrEditTransactorForm(int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
@@ -51,8 +59,15 @@ namespace NovaDebt
         private void InitializeEditSection()
         {
             this.nameTextBox.Text = this.name;
+
+            this.sinceDatePicker.Format = DateTimePickerFormat.Custom;
+            this.sinceDatePicker.CustomFormat = "dd/MM/yyyy";
             this.sinceDatePicker.Value = DateTime.ParseExact(this.since, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            this.dueDatePicker.Format = DateTimePickerFormat.Custom;
+            this.dueDatePicker.CustomFormat = "dd/MM/yyyy";
             this.dueDatePicker.Value = DateTime.ParseExact(this.dueDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
             this.phoneTextBox.Text = this.phoneNumber;
             this.emailTextBox.Text = this.email;
             this.facebookTextBox.Text = this.facebook;
@@ -80,14 +95,6 @@ namespace NovaDebt
 
             this.btnConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-
-            this.sinceDatePicker.Format = DateTimePickerFormat.Custom;
-            this.sinceDatePicker.CustomFormat = "dd/MM/yyyy";
-            this.sinceDatePicker.Value = DateTime.UtcNow;
-
-            this.dueDatePicker.Format = DateTimePickerFormat.Custom;
-            this.dueDatePicker.CustomFormat = "dd/MM/yyyy";
-            this.dueDatePicker.Value = DateTime.UtcNow;
 
             // Attaching an event will will warn the user upon cancel/exit.
             this.FormClosing += new FormClosingEventHandler(AlertUserOnExit);
