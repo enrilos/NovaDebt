@@ -121,7 +121,7 @@ namespace NovaDebt
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddOrEditTransactorForm addTransactorForm = new AddOrEditTransactorForm();
+            AddEditTransactorForm addTransactorForm = new AddEditTransactorForm();
             addTransactorForm.Show();
 
             // Disabling the main form while a subform is open.
@@ -163,7 +163,7 @@ namespace NovaDebt
                         .FirstOrDefault();
                 }
 
-                AddOrEditTransactorForm addOrEditTransactorForm = new AddOrEditTransactorForm(
+                AddEditTransactorForm addOrEditTransactorForm = new AddEditTransactorForm(
                     int.Parse(transactor.Attribute("no").Value),
                     transactor.Element("Name").Value,
                     transactor.Element("Since").Value,

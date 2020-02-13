@@ -58,11 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSettings.cs" />
-    <Compile Include="Forms\AddOrEditTransactorForm.cs">
+    <Compile Include="Forms\AddEditTransactorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddOrEditTransactorForm.Designer.cs">
-      <DependentUpon>AddOrEditTransactorForm.cs</DependentUpon>
+    <Compile Include="Forms\AddEditTransactorForm.Designer.cs">
+      <DependentUpon>AddEditTransactorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DetailsForm.cs">
       <SubType>Form</SubType>
@@ -89,8 +89,8 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddOrEditTransactorForm.resx">
-      <DependentUpon>AddOrEditTransactorForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddEditTransactorForm.resx">
+      <DependentUpon>AddEditTransactorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
