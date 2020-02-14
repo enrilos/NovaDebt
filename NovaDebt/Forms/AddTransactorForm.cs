@@ -83,6 +83,7 @@ namespace NovaDebt.Forms
 
                 string addTransactorType = string.Empty;
                 string path = TransactorsFilePath;
+
                 if (btnDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     addTransactorType = TransactorType.Debtor.ToString();
@@ -97,7 +98,6 @@ namespace NovaDebt.Forms
                 this.FormClosing -= AlertUserOnExit;
                 this.Close();
             }
-
         }
 
         private void btnAddCancel_Click(object sender, EventArgs e)
@@ -134,6 +134,44 @@ namespace NovaDebt.Forms
             this.btnCreditor.BackColor = Color.FromArgb(0, 208, 255);
         }
 
+        private void AlertUserOnExit(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show(MessageBoxText.ExitConfirmation,
+                   MessageBoxCaption.Exit,
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question);
+
+            if (dialog == DialogResult.Yes)
+            {
+                this.FormClosing -= AlertUserOnExit;
+                this.Close();
+            }
+            else if (dialog == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void addInterestCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.interestCheckBox.Checked)
+            {
+                this.interestWithCurrencyLabel.Visible = true;
+                this.interestWithCurrencyTextBox.Visible = true;
+                this.interestWithPercentageLabel.Visible = true;
+                this.interestWithPercentageTextBox.Visible = true;
+                this.interestsSeparator.Visible = true;
+            }
+            else if (!this.interestCheckBox.Checked)
+            {
+                this.interestWithCurrencyLabel.Visible = false;
+                this.interestWithCurrencyTextBox.Visible = false;
+                this.interestWithPercentageLabel.Visible = false;
+                this.interestWithPercentageTextBox.Visible = false;
+                this.interestsSeparator.Visible = false;
+            }
+        }
+
         private bool ValidateInputFields()
         {
             //
@@ -166,7 +204,7 @@ namespace NovaDebt.Forms
             //
             // Since
             //
-            if (sinceDatePicker.Value > dueDatePicker.Value)
+            if (this.sinceDatePicker.Value > this.dueDatePicker.Value)
             {
                 MessageBox.Show(ErrorMessage.InvalidSinceDate,
                     MessageBoxCaption.Error,
@@ -179,7 +217,7 @@ namespace NovaDebt.Forms
             //
             // Due Date
             //
-            if (dueDatePicker.Value < sinceDatePicker.Value)
+            if (this.dueDatePicker.Value < this.sinceDatePicker.Value)
             {
                 MessageBox.Show(ErrorMessage.InvalidDueDate,
                     MessageBoxCaption.Error,
@@ -245,7 +283,7 @@ namespace NovaDebt.Forms
 
             if (mainRegex.IsMatch(this.amountTextBox.Text.Trim()))
             {
-                amount = decimal.Parse(amountTextBox.Text);
+                amount = decimal.Parse(this.amountTextBox.Text);
 
                 if (amount < MinAmountValue || amount > MaxAmountValue)
                 {
@@ -343,42 +381,5 @@ namespace NovaDebt.Forms
             return true;
         }
 
-        private void AlertUserOnExit(object sender, FormClosingEventArgs e)
-        {
-            DialogResult dialog = MessageBox.Show(MessageBoxText.ExitConfirmation,
-                   MessageBoxCaption.Exit,
-                   MessageBoxButtons.YesNo,
-                   MessageBoxIcon.Question);
-
-            if (dialog == DialogResult.Yes)
-            {
-                this.FormClosing -= AlertUserOnExit;
-                this.Close();
-            }
-            else if (dialog == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-        }
-
-        private void addInterestCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.interestCheckBox.Checked)
-            {
-                this.interestWithCurrencyLabel.Visible = true;
-                this.interestWithCurrencyTextBox.Visible = true;
-                this.interestWithPercentageLabel.Visible = true;
-                this.interestWithPercentageTextBox.Visible = true;
-                this.interestsSeparator.Visible = true;
-            }
-            else if (!this.interestCheckBox.Checked)
-            {
-                this.interestWithCurrencyLabel.Visible = false;
-                this.interestWithCurrencyTextBox.Visible = false;
-                this.interestWithPercentageLabel.Visible = false;
-                this.interestWithPercentageTextBox.Visible = false;
-                this.interestsSeparator.Visible = false;
-            }
-        }
     }
 }

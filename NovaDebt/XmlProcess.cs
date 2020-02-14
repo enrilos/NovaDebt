@@ -105,10 +105,6 @@ namespace NovaDebt
             {
                 throw new InvalidOperationException(ErrorMessage.FileDoesntExist);
             }
-            if (name == null)
-            {
-                throw new NullReferenceException(ErrorMessage.NameCannotBeNull);
-            }
 
             Transactor transactor = new Transactor(name, since, dueDate, phone, email, facebook, amount, transactorType);
             int idCount = int.Parse(File.ReadAllText(IdCounterFilePath));
@@ -117,21 +113,13 @@ namespace NovaDebt
 
             XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
 
-            var transactorRoot = xmlDocument.Element("Transactors");
+            IEnumerable<XElement> transactorsWithType = xmlDocument
+                .Element("Transactors")
+                .Elements("Transactor")
+                .Where(x => x.Element("TransactorType").Value == transactorType);
 
-            if (transactorRoot.HasElements)
-            {
-                IEnumerable<XElement> transactorsWithType = xmlDocument
-                    .Element("Transactors")
-                    .Elements("Transactor")
-                    .Where(x => x.Element("TransactorType").Value == transactorType);
+            transactor.No = transactorsWithType.Count() + 1;
 
-                transactor.No = transactorsWithType.Count() + 1;
-            }
-            else
-            {
-                transactor.No = 1;
-            }
 
             xmlDocument.Element("Transactors")
                 .Add(new XElement("Transactor", new XAttribute("id", transactor.Id), new XAttribute("no", transactor.No),
@@ -145,6 +133,11 @@ namespace NovaDebt
                         new XElement("TransactorType", transactorType)));
 
             xmlDocument.Save(TransactorsFilePath);
+        }
+
+        public static void EditTransactorToXml(string path, int no, string name, string since, string dueDate, string phone, string email, decimal amount, string facebook, string oldTransactorType, string newTransactorType)
+        {
+            // TODO
         }
     }
 }

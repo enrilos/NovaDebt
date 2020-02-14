@@ -128,7 +128,7 @@ namespace NovaDebt.Forms
             this.Enabled = false;
 
             // Event handler which will enable the main form if the add form is closed.
-            addTransactorForm.FormClosed += new FormClosedEventHandler(FormClosed);
+            addTransactorForm.FormClosed += new FormClosedEventHandler(FormClosedIncludeRefresh);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -141,11 +141,47 @@ namespace NovaDebt.Forms
 
             if (this.transactorsDataGrid.SelectedRows.Count == 1)
             {
-                EditTransactorForm editTransactorForm = new EditTransactorForm();
+                XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
+                IEnumerable<XElement> transactors = xmlDocument.Element("Transactors")
+                                                           .Elements("Transactor");
+                DataGridViewSelectedRowCollection selectedRows = this.transactorsDataGrid.SelectedRows;
+                string no = selectedRows[0].Cells[TableColumn.No].Value.ToString();
+                XElement transactor = null;
+
+                if (!this.btnDebtors.Enabled)
+                {
+                    // The user has the Debtors button as the selected button.
+                    transactor = transactors.Where(x => x.Attribute("no").Value == no
+                                            && x.Element("TransactorType").Value == "Debtor")
+                        .FirstOrDefault();
+                }
+                else if (!this.btnCreditors.Enabled)
+                {
+                    // The user has the Creditors button as the selected button.
+                    transactor = transactors.Where(x => x.Attribute("no").Value == no
+                                            && x.Element("TransactorType").Value == "Creditor")
+                        .FirstOrDefault();
+                }
+
+                EditTransactorForm editTransactorForm = new EditTransactorForm(
+                    int.Parse(transactor.Attribute("no").Value),
+                    transactor.Element("Name").Value,
+                    transactor.Element("Since").Value,
+                    transactor.Element("DueDate").Value,
+                    transactor.Element("PhoneNumber").Value,
+                    transactor.Element("Email").Value,
+                    transactor.Element("Facebook").Value,
+                    decimal.Parse(transactor.Element("Amount").Value),
+                    transactor.Element("TransactorType").Value);
 
                 editTransactorForm.Show();
                 this.Enabled = false;
-                editTransactorForm.FormClosed += new FormClosedEventHandler(FormClosed);
+                //TODO
+                // That's why the main form won't enable itself after the edit button is clicked inside the Details section.
+                // The instance in the Details form (of Edit form) and the instance in here are different.
+                // Thus it won't trigger the .FormClosed and the main form remains disabled.
+                // I should find another way.
+                editTransactorForm.FormClosed += new FormClosedEventHandler(FormClosedIncludeRefresh);
             }
             else
             {
@@ -196,10 +232,8 @@ namespace NovaDebt.Forms
                     transactor.Element("TransactorType").Value);
 
                 detailsForm.Show();
-
                 this.Enabled = false;
-
-                detailsForm.FormClosed += new FormClosedEventHandler(FormClosed);
+                detailsForm.FormClosed += new FormClosedEventHandler(FormClosedExcludeRefresh);
             }
             else
             {
@@ -320,23 +354,45 @@ namespace NovaDebt.Forms
             this.table.Columns.Add(TableColumn.Amount, typeof(string)); // Amount.
         }
 
-        private void FormClosed(object sender, FormClosedEventArgs e)
+        private void FormClosedIncludeRefresh(object sender, FormClosedEventArgs e)
         {
-            // Enabling the main form and refreshing the DataGridView after each sub form close.
+            // Checking if the Edit form is open
+            //FormCollection openForms = Application.OpenForms;
+
+            //if (openForms.Count > 1)
+            //{
+            //    foreach (Form frm in openForms)
+            //    {
+            //        if (frm.Name == "EditTransactorForm")
+            //        {
+            //            return;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+                // Enabling the main form and refreshing the DataGridView after each sub form close.
+                this.Enabled = true;
+                this.table.Rows.Clear();
+
+                if (!this.btnDebtors.Enabled)
+                {
+                    this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
+
+                }
+                else if (!this.btnCreditors.Enabled)
+                {
+                    this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
+                }
+
+                this.transactorsDataGrid.DataSource = table;
+                this.transactorsDataGrid.ClearSelection();
+            //}
+        }
+
+        private void FormClosedExcludeRefresh(object sender, FormClosedEventArgs e)
+        {
             this.Enabled = true;
-            this.table.Rows.Clear();
-
-            if (!this.btnDebtors.Enabled)
-            {
-                this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
-
-            }
-            else if (!this.btnCreditors.Enabled)
-            {
-                this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
-            }
-
-            this.transactorsDataGrid.DataSource = table;
             this.transactorsDataGrid.ClearSelection();
         }
 

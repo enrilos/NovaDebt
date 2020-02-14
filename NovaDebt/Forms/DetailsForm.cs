@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NovaDebt.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -24,6 +25,7 @@ namespace NovaDebt.Forms
         {
             InitializeComponent();
         }
+
         public DetailsForm(int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
         {
             InitializeComponent();
@@ -52,11 +54,11 @@ namespace NovaDebt.Forms
             this.detailsFacebookLabel.Text = facebook;
             this.detailsAmountLabel.Text = amount.ToString();
 
-            if (this.transactorType == "Debtor")
+            if (this.transactorType == TransactorType.Debtor.ToString())
             {
                 this.detailsTransactorTypeLabel.Text = "Дебитор";
             }
-            else if (this.transactorType == "Creditor")
+            else if (this.transactorType == TransactorType.Creditor.ToString())
             {
                 this.detailsTransactorTypeLabel.Text = "Кредитор";
             }
@@ -68,6 +70,23 @@ namespace NovaDebt.Forms
             // Opens up the Edit form with the same data
             // The edit form should have a separate constructor which accepts all of these private fields data.
             // And when Edit is clicked the new Edit form will open and this form should close.
+
+            EditTransactorForm editTransactorForm = new EditTransactorForm(
+                this.no,
+                this.name,
+                this.since,
+                this.dueDate,
+                this.phoneNumber,
+                this.email,
+                this.facebook,
+                this.amount,
+                this.transactorType);
+
+            editTransactorForm.Show();
+
+            // I have to find a way to disable the main form.
+
+            this.Close();
         }
 
         private void detailsBtnDelete_Click(object sender, EventArgs e)
@@ -105,9 +124,9 @@ namespace NovaDebt.Forms
                 }
 
                 xmlDocument.Save(TransactorsFilePath);
+                this.Close();
             }
 
-            this.Close();
         }
     }
 }

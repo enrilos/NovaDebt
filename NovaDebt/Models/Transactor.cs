@@ -99,7 +99,15 @@ namespace NovaDebt.Models
         public decimal Amount
         {
             get { return this.amount; }
-            set { this.amount = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new InvalidOperationException($"{nameof(this.Amount)} cannot be less than zero.");
+                }
+
+                this.amount = value;
+            }
         }
 
         public string TransactorType

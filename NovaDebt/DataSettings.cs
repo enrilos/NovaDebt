@@ -68,7 +68,7 @@ namespace NovaDebt
 
             public static string DeleteConfirmationPlural { get; } = "Изтрий избраните записи?";
 
-            public static string ExitConfirmation { get; } = "Данните няма да бъдат запазени.\nНаистина ли искате да излезете?";
+            public static string ExitConfirmation { get; } = "Наистина ли искате да излезете?";
 
         }
 
