@@ -1,4 +1,4 @@
-﻿namespace NovaDebt
+﻿namespace NovaDebt.Forms
 {
     partial class DetailsForm
     {
@@ -60,7 +60,7 @@
             this.detailsBtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.detailsBtnDelete.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsBtnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.detailsBtnDelete.Location = new System.Drawing.Point(700, 311);
+            this.detailsBtnDelete.Location = new System.Drawing.Point(524, 312);
             this.detailsBtnDelete.Name = "detailsBtnDelete";
             this.detailsBtnDelete.Size = new System.Drawing.Size(170, 65);
             this.detailsBtnDelete.TabIndex = 8;
@@ -77,7 +77,7 @@
             this.detailsBtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.detailsBtnEdit.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsBtnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.detailsBtnEdit.Location = new System.Drawing.Point(524, 312);
+            this.detailsBtnEdit.Location = new System.Drawing.Point(700, 312);
             this.detailsBtnEdit.Name = "detailsBtnEdit";
             this.detailsBtnEdit.Size = new System.Drawing.Size(170, 65);
             this.detailsBtnEdit.TabIndex = 9;
@@ -319,6 +319,8 @@
             this.Controls.Add(this.detailsBtnEdit);
             this.Controls.Add(this.detailsBtnDelete);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(900, 436);
+            this.MinimumSize = new System.Drawing.Size(900, 436);
             this.Name = "DetailsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Детайли";

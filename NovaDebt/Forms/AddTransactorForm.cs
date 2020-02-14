@@ -2,41 +2,38 @@
 using System;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
-
 using static NovaDebt.DataSettings;
 
-namespace NovaDebt
+namespace NovaDebt.Forms
 {
     public partial class AddTransactorForm : Form
     {
         public AddTransactorForm()
         {
             InitializeComponent();
+
+            // Setting the default select button as Debtor
+            this.btnDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnDebtor.BackColor = Color.FromArgb(0, 208, 255);
+
+            this.sinceDatePicker.Format = DateTimePickerFormat.Custom;
+            this.sinceDatePicker.CustomFormat = "dd/MM/yyyy";
+            this.sinceDatePicker.Value = DateTime.UtcNow;
+
+            this.dueDatePicker.Format = DateTimePickerFormat.Custom;
+            this.dueDatePicker.CustomFormat = "dd/MM/yyyy";
+            this.dueDatePicker.Value = DateTime.UtcNow;
         }
 
         private void AddTransactorForm_Load(object sender, EventArgs e)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
-            this.addBtnConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.addBtnCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-
-            this.addSinceDatePicker.Format = DateTimePickerFormat.Custom;
-            this.addSinceDatePicker.CustomFormat = "dd/MM/yyyy";
-            this.addSinceDatePicker.Value = DateTime.UtcNow;
-
-            this.addDueDatePicker.Format = DateTimePickerFormat.Custom;
-            this.addDueDatePicker.CustomFormat = "dd/MM/yyyy";
-            this.addDueDatePicker.Value = DateTime.UtcNow;
-
-            // Setting the default select button as Debtor
-            this.addBtnDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.addBtnDebtor.BackColor = Color.FromArgb(0, 208, 255);
+            this.btnConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
 
             // Attaching an event will will warn the user upon cancel/exit.
             this.FormClosing += new FormClosingEventHandler(AlertUserOnExit);
@@ -49,13 +46,13 @@ namespace NovaDebt
             if (areFieldsValid)
             {
                 string[] inputFields = new string[] {
-                    this.addNameTextBox.Text,
-                    this.addSinceDatePicker.Text,
-                    this.addDueDatePicker.Text,
-                    this.addPhoneTextBox.Text,
-                    this.addEmailTextBox.Text,
-                    this.addFacebookTextBox.Text,
-                    this.addAmountTextBox.Text
+                    this.nameTextBox.Text,
+                    this.sinceDatePicker.Text,
+                    this.dueDatePicker.Text,
+                    this.phoneTextBox.Text,
+                    this.emailTextBox.Text,
+                    this.facebookTextBox.Text,
+                    this.amountTextBox.Text
                 };
 
                 RegexOptions options = RegexOptions.None;
@@ -68,8 +65,8 @@ namespace NovaDebt
                     inputFields[i] = regex.Replace(inputFields[i], " ");
                 }
 
-                decimal currencyInterest = decimal.Parse(this.addInterestWithCurrencyTextBox.Text);
-                decimal percentageInterest = 1.00m + (decimal.Parse(this.addInterestWithPercentageTextBox.Text) / 100.00m);
+                decimal currencyInterest = decimal.Parse(this.interestWithCurrencyTextBox.Text);
+                decimal percentageInterest = 1.00m + (decimal.Parse(this.interestWithPercentageTextBox.Text) / 100.00m);
 
                 string name = inputFields[0];
                 string since = inputFields[1];
@@ -84,23 +81,23 @@ namespace NovaDebt
                     amount *= percentageInterest;
                 }
 
-                string transactorType = string.Empty;
+                string addTransactorType = string.Empty;
                 string path = TransactorsFilePath;
-
-                if (addBtnDebtor.BackColor == Color.FromArgb(0, 208, 255))
+                if (btnDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
-                    transactorType = TransactorType.Debtor.ToString();
-                    XmlProcess.AddTransactorToXml(path, name, since, dueDate, phone, email, amount, facebook, transactorType);
+                    addTransactorType = TransactorType.Debtor.ToString();
+                    XmlProcess.AddTransactorToXml(path, name, since, dueDate, phone, email, amount, facebook, addTransactorType);
                 }
-                else if (addBtnCreditor.BackColor == Color.FromArgb(0, 208, 255))
+                else if (btnCreditor.BackColor == Color.FromArgb(0, 208, 255))
                 {
-                    transactorType = TransactorType.Creditor.ToString();
-                    XmlProcess.AddTransactorToXml(path, name, since, dueDate, phone, email, amount, facebook, transactorType);
+                    addTransactorType = TransactorType.Creditor.ToString();
+                    XmlProcess.AddTransactorToXml(path, name, since, dueDate, phone, email, amount, facebook, addTransactorType);
                 }
 
                 this.FormClosing -= AlertUserOnExit;
                 this.Close();
             }
+
         }
 
         private void btnAddCancel_Click(object sender, EventArgs e)
@@ -118,23 +115,23 @@ namespace NovaDebt
         private void btnAddDebtor_Click(object sender, EventArgs e)
         {
             // other
-            this.addBtnCreditor.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            this.addBtnCreditor.BackColor = Color.FromArgb(50, 50, 50);
+            this.btnCreditor.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            this.btnCreditor.BackColor = Color.FromArgb(50, 50, 50);
 
             // this
-            this.addBtnDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.addBtnDebtor.BackColor = Color.FromArgb(0, 208, 255);
+            this.btnDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnDebtor.BackColor = Color.FromArgb(0, 208, 255);
         }
 
         private void btnAddCreditor_Click(object sender, EventArgs e)
         {
             // other
-            this.addBtnDebtor.FlatAppearance.BorderColor = Color.WhiteSmoke;
-            this.addBtnDebtor.BackColor = Color.FromArgb(50, 50, 50);
+            this.btnDebtor.FlatAppearance.BorderColor = Color.WhiteSmoke;
+            this.btnDebtor.BackColor = Color.FromArgb(50, 50, 50);
 
             // this
-            this.addBtnCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.addBtnCreditor.BackColor = Color.FromArgb(0, 208, 255);
+            this.btnCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnCreditor.BackColor = Color.FromArgb(0, 208, 255);
         }
 
         private bool ValidateInputFields()
@@ -145,8 +142,8 @@ namespace NovaDebt
             Regex mainRegex = new Regex("^[a-zA-Z0-9., ]*$");
             Regex cyrillicRegex = new Regex("^[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя0-9., ]*$");
 
-            if (!mainRegex.IsMatch(this.addNameTextBox.Text)
-             && !cyrillicRegex.IsMatch(this.addNameTextBox.Text))
+            if (!mainRegex.IsMatch(this.nameTextBox.Text)
+             && !cyrillicRegex.IsMatch(this.nameTextBox.Text))
             {
                 MessageBox.Show(ErrorMessage.InvalidName,
                     MessageBoxCaption.Error,
@@ -155,8 +152,8 @@ namespace NovaDebt
 
                 return false;
             }
-            else if (string.IsNullOrEmpty(this.addNameTextBox.Text)
-                  || string.IsNullOrWhiteSpace(this.addNameTextBox.Text))
+            else if (string.IsNullOrEmpty(this.nameTextBox.Text)
+                  || string.IsNullOrWhiteSpace(this.nameTextBox.Text))
             {
                 MessageBox.Show(ErrorMessage.MissingName,
                     MessageBoxCaption.Error,
@@ -169,7 +166,7 @@ namespace NovaDebt
             //
             // Since
             //
-            if (addSinceDatePicker.Value > addDueDatePicker.Value)
+            if (sinceDatePicker.Value > dueDatePicker.Value)
             {
                 MessageBox.Show(ErrorMessage.InvalidSinceDate,
                     MessageBoxCaption.Error,
@@ -182,7 +179,7 @@ namespace NovaDebt
             //
             // Due Date
             //
-            if (addDueDatePicker.Value < addSinceDatePicker.Value)
+            if (dueDatePicker.Value < sinceDatePicker.Value)
             {
                 MessageBox.Show(ErrorMessage.InvalidDueDate,
                     MessageBoxCaption.Error,
@@ -197,7 +194,7 @@ namespace NovaDebt
             //
             mainRegex = new Regex("^[+0-9-() ]*$");
 
-            if (!mainRegex.IsMatch(this.addPhoneTextBox.Text))
+            if (!mainRegex.IsMatch(this.phoneTextBox.Text))
             {
                 MessageBox.Show(ErrorMessage.InvalidPhoneNumber,
                     MessageBoxCaption.Error,
@@ -212,9 +209,9 @@ namespace NovaDebt
             //
             mainRegex = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
 
-            if (!mainRegex.IsMatch(this.addEmailTextBox.Text.Trim())
-                && !string.IsNullOrEmpty(this.addEmailTextBox.Text.Trim())
-                && !cyrillicRegex.IsMatch(this.addEmailTextBox.Text.Trim()))
+            if (!mainRegex.IsMatch(this.emailTextBox.Text.Trim())
+                && !string.IsNullOrEmpty(this.emailTextBox.Text.Trim())
+                && !cyrillicRegex.IsMatch(this.emailTextBox.Text.Trim()))
             {
                 MessageBox.Show(ErrorMessage.InvalidEmail,
                     MessageBoxCaption.Error,
@@ -229,8 +226,8 @@ namespace NovaDebt
             //
             mainRegex = new Regex("^[A-z ]*$");
 
-            if (!mainRegex.IsMatch(this.addFacebookTextBox.Text)
-                && !cyrillicRegex.IsMatch(this.addFacebookTextBox.Text))
+            if (!mainRegex.IsMatch(this.facebookTextBox.Text)
+                && !cyrillicRegex.IsMatch(this.facebookTextBox.Text))
             {
                 MessageBox.Show(ErrorMessage.InvalidFacebook,
                     MessageBoxCaption.Error,
@@ -246,9 +243,9 @@ namespace NovaDebt
             mainRegex = new Regex("^[0-9]+([.,][0-9]{1,2})?$");
             decimal amount;
 
-            if (mainRegex.IsMatch(this.addAmountTextBox.Text.Trim()))
+            if (mainRegex.IsMatch(this.amountTextBox.Text.Trim()))
             {
-                amount = decimal.Parse(addAmountTextBox.Text);
+                amount = decimal.Parse(amountTextBox.Text);
 
                 if (amount < MinAmountValue || amount > MaxAmountValue)
                 {
@@ -260,7 +257,7 @@ namespace NovaDebt
                     return false;
                 }
             }
-            else if (string.IsNullOrEmpty(this.addAmountTextBox.Text) || string.IsNullOrWhiteSpace(this.addAmountTextBox.Text))
+            else if (string.IsNullOrEmpty(this.amountTextBox.Text) || string.IsNullOrWhiteSpace(this.amountTextBox.Text))
             {
                 MessageBox.Show(ErrorMessage.MissingAmount,
                     MessageBoxCaption.Error,
@@ -279,13 +276,18 @@ namespace NovaDebt
                 return false;
             }
 
-            if (this.addInterestCheckBox.Checked)
+            if (this.interestCheckBox.Checked)
             {
                 // Количествена лихва
-                if (mainRegex.IsMatch(this.addInterestWithCurrencyTextBox.Text.Trim())
-                    && !string.IsNullOrEmpty(this.addInterestWithCurrencyTextBox.Text.Trim()))
+
+                if (string.IsNullOrWhiteSpace(this.interestWithCurrencyTextBox.Text)
+                    || string.IsNullOrEmpty(this.interestWithCurrencyTextBox.Text))
                 {
-                    decimal currencyInterest = decimal.Parse(this.addInterestWithCurrencyTextBox.Text);
+                    this.interestWithCurrencyTextBox.Text = "0";
+                }
+                if (mainRegex.IsMatch(this.interestWithCurrencyTextBox.Text.Trim()))
+                {
+                    decimal currencyInterest = decimal.Parse(this.interestWithCurrencyTextBox.Text);
 
                     if (currencyInterest < MinInterestCurrencyValue || currencyInterest > MaxInterestCurrencyValue)
                     {
@@ -306,11 +308,16 @@ namespace NovaDebt
 
                     return false;
                 }
+
                 // Процентна лихва
-                if (mainRegex.IsMatch(this.addInterestWithPercentageTextBox.Text.Trim())
-                    && !string.IsNullOrEmpty(this.addInterestWithPercentageTextBox.Text.Trim()))
+                if (string.IsNullOrWhiteSpace(this.interestWithPercentageTextBox.Text)
+                    || string.IsNullOrEmpty(this.interestWithPercentageTextBox.Text))
                 {
-                    decimal percentageInterest = decimal.Parse(this.addInterestWithPercentageTextBox.Text);
+                    this.interestWithPercentageTextBox.Text = "0";
+                }
+                if (mainRegex.IsMatch(this.interestWithPercentageTextBox.Text.Trim()))
+                {
+                    decimal percentageInterest = decimal.Parse(this.interestWithPercentageTextBox.Text);
 
                     if (percentageInterest < MinInterestPercentageValue || percentageInterest > MaxInterestPercentageValue)
                     {
@@ -356,21 +363,21 @@ namespace NovaDebt
 
         private void addInterestCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.addInterestCheckBox.Checked)
+            if (this.interestCheckBox.Checked)
             {
-                this.addInterestWithCurrencyLabel.Visible = true;
-                this.addInterestWithCurrencyTextBox.Visible = true;
-                this.addInterestWithPercentageLabel.Visible = true;
-                this.addInterestWithPercentageTextBox.Visible = true;
-                this.addInterestsSeparator.Visible = true;
+                this.interestWithCurrencyLabel.Visible = true;
+                this.interestWithCurrencyTextBox.Visible = true;
+                this.interestWithPercentageLabel.Visible = true;
+                this.interestWithPercentageTextBox.Visible = true;
+                this.interestsSeparator.Visible = true;
             }
-            else if (!this.addInterestCheckBox.Checked)
+            else if (!this.interestCheckBox.Checked)
             {
-                this.addInterestWithCurrencyLabel.Visible = false;
-                this.addInterestWithCurrencyTextBox.Visible = false;
-                this.addInterestWithPercentageLabel.Visible = false;
-                this.addInterestWithPercentageTextBox.Visible = false;
-                this.addInterestsSeparator.Visible = false;
+                this.interestWithCurrencyLabel.Visible = false;
+                this.interestWithCurrencyTextBox.Visible = false;
+                this.interestWithPercentageLabel.Visible = false;
+                this.interestWithPercentageTextBox.Visible = false;
+                this.interestsSeparator.Visible = false;
             }
         }
     }

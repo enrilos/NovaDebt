@@ -15,7 +15,7 @@ using System.Xml.Linq;
 
 using static NovaDebt.DataSettings;
 
-namespace NovaDebt
+namespace NovaDebt.Forms
 {
     public partial class MainForm : Form
     {
@@ -26,7 +26,7 @@ namespace NovaDebt
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             // I should consider preventing the user to start the application more than once.
@@ -121,7 +121,7 @@ namespace NovaDebt
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddEditTransactorForm addTransactorForm = new AddEditTransactorForm();
+            AddTransactorForm addTransactorForm = new AddTransactorForm();
             addTransactorForm.Show();
 
             // Disabling the main form while a subform is open.
@@ -141,44 +141,11 @@ namespace NovaDebt
 
             if (this.transactorsDataGrid.SelectedRows.Count == 1)
             {
-                XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
-                IEnumerable<XElement> transactors = xmlDocument.Element("Transactors")
-                                                           .Elements("Transactor");
-                DataGridViewSelectedRowCollection selectedRows = this.transactorsDataGrid.SelectedRows;
-                string no = selectedRows[0].Cells[TableColumn.No].Value.ToString();
-                XElement transactor = null;
+                EditTransactorForm editTransactorForm = new EditTransactorForm();
 
-                if (!this.btnDebtors.Enabled)
-                {
-                    // The user has the Debtors button as the selected button.
-                    transactor = transactors.Where(x => x.Attribute("no").Value == no
-                                            && x.Element("TransactorType").Value == "Debtor")
-                        .FirstOrDefault();
-                }
-                else if (!this.btnCreditors.Enabled)
-                {
-                    // The user has the Creditors button as the selected button.
-                    transactor = transactors.Where(x => x.Attribute("no").Value == no
-                                            && x.Element("TransactorType").Value == "Creditor")
-                        .FirstOrDefault();
-                }
-
-                AddEditTransactorForm addOrEditTransactorForm = new AddEditTransactorForm(
-                    int.Parse(transactor.Attribute("no").Value),
-                    transactor.Element("Name").Value,
-                    transactor.Element("Since").Value,
-                    transactor.Element("DueDate").Value,
-                    transactor.Element("PhoneNumber").Value,
-                    transactor.Element("Email").Value,
-                    transactor.Element("Facebook").Value,
-                    decimal.Parse(transactor.Element("Amount").Value),
-                    transactor.Element("TransactorType").Value);
-
-                addOrEditTransactorForm.Show();
-
+                editTransactorForm.Show();
                 this.Enabled = false;
-
-                addOrEditTransactorForm.FormClosed += new FormClosedEventHandler(FormClosed);
+                editTransactorForm.FormClosed += new FormClosedEventHandler(FormClosed);
             }
             else
             {
@@ -256,10 +223,6 @@ namespace NovaDebt
 
                 if (dialog == DialogResult.Yes)
                 {
-                    // When doing the delete think
-                    // I should change the No of all the remaining others in the same category.
-                    // NEW
-
                     XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
                     IEnumerable<XElement> debtors = xmlDocument.Element("Transactors")
                                                                .Elements("Transactor");
@@ -294,7 +257,7 @@ namespace NovaDebt
 
                     int noCounter = 1;
 
-                    // Setting the id -1 for each record.
+                    // Setting the id -1 for each record in the selected transactors collection.
                     foreach (XElement debtor in debtors)
                     {
                         debtor.SetAttributeValue("no", noCounter++);

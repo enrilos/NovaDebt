@@ -58,17 +58,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSettings.cs" />
-    <Compile Include="Forms\AddEditTransactorForm.cs">
+    <Compile Include="Forms\AddTransactorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddEditTransactorForm.Designer.cs">
-      <DependentUpon>AddEditTransactorForm.cs</DependentUpon>
+    <Compile Include="Forms\AddTransactorForm.Designer.cs">
+      <DependentUpon>AddTransactorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\DetailsForm.Designer.cs">
       <DependentUpon>DetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditTransactorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditTransactorForm.Designer.cs">
+      <DependentUpon>EditTransactorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -86,11 +92,14 @@
     <EmbeddedResource Include="Forms\DetailsForm.resx">
       <DependentUpon>DetailsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditTransactorForm.resx">
+      <DependentUpon>EditTransactorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddEditTransactorForm.resx">
-      <DependentUpon>AddEditTransactorForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddTransactorForm.resx">
+      <DependentUpon>AddTransactorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 using static NovaDebt.DataSettings;
 
-namespace NovaDebt
+namespace NovaDebt.Forms
 {
     public partial class DetailsForm : Form
     {

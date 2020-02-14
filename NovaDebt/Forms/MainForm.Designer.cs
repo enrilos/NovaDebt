@@ -1,7 +1,6 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
-namespace NovaDebt
+namespace NovaDebt.Forms
 {
     partial class MainForm
     {
@@ -256,7 +255,7 @@ namespace NovaDebt
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NovaDebt";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.novaDebtImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactorsDataGrid)).EndInit();
