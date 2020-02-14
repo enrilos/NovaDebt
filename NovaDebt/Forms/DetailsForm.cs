@@ -123,7 +123,7 @@ namespace NovaDebt.Forms
                     debtor.SetAttributeValue("no", noCounter++);
                 }
 
-                xmlDocument.Save(TransactorsFilePath);
+                xmlDocument.Save(TransactorsFilePath, SaveOptions.DisableFormatting);
                 this.Close();
             }
 

@@ -16,30 +16,6 @@ namespace NovaDebt
 {
     public static class XmlProcess
     {
-        // This method may become unnecessary in the future.
-        public static IEnumerable<Transactor> DeserializeXml(string path)
-        {
-            if (path == null)
-            {
-                throw new NullReferenceException(ErrorMessage.PathCannotBeNull);
-            }
-            if (!File.Exists(path))
-            {
-                throw new InvalidOperationException(ErrorMessage.FileDoesntExist);
-            }
-
-            string xmlText = File.ReadAllText(path);
-
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                          new XmlRootAttribute(XmlRoot));
-
-            TransactorDTO[] transactorDTOs = (TransactorDTO[])xmlSerializer.Deserialize(new StringReader(xmlText));
-
-            Transactor[] transactors = Mapper.Map<Transactor[]>(transactorDTOs).ToArray();
-
-            return transactors;
-        }
-
         public static IEnumerable<Transactor> DeserializeXmlWithTransactorType(string path, TransactorType transactorType)
         {
             if (path == null)
@@ -63,36 +39,6 @@ namespace NovaDebt
                                        .ToArray();
 
             return transactors;
-        }
-
-        // This method may become unnecessary in the future.
-        public static void SerializeXmlWithTransactors(string path, IEnumerable<Transactor> transactors)
-        {
-            StringBuilder result = new StringBuilder();
-
-            if (path == null)
-            {
-                throw new NullReferenceException(ErrorMessage.PathCannotBeNull);
-            }
-            if (!File.Exists(path))
-            {
-                File.Create(path);
-            }
-            else
-            {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
-                                              new XmlRootAttribute(XmlRoot));
-
-                TransactorDTO[] transactorDTOs = Mapper.Map<TransactorDTO[]>(transactors).ToArray();
-
-                using (StringWriter writer = new StringWriter(result))
-                {
-                    // TODO: It will be a good idea to serialize without spaces, line breaks.
-                    xmlSerializer.Serialize(writer, transactorDTOs);
-                }
-
-                File.WriteAllText(path, result.ToString());
-            }
         }
 
         public static void AddTransactorToXml(string path, string name, string since, string dueDate, string phone, string email, decimal amount, string facebook, string transactorType)
@@ -132,12 +78,7 @@ namespace NovaDebt
                         new XElement("Amount", amount),
                         new XElement("TransactorType", transactorType)));
 
-            xmlDocument.Save(TransactorsFilePath);
-        }
-
-        public static void EditTransactorToXml(string path, int no, string name, string since, string dueDate, string phone, string email, decimal amount, string facebook, string oldTransactorType, string newTransactorType)
-        {
-            // TODO
+            xmlDocument.Save(TransactorsFilePath, SaveOptions.DisableFormatting);
         }
     }
 }

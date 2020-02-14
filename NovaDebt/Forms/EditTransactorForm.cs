@@ -139,7 +139,7 @@ namespace NovaDebt.Forms
                 this.newFacebook = inputFields[5];
                 this.newAmount = decimal.Parse(inputFields[6]) + currencyInterest;
 
-                if (percentageInterest > 0)
+                if (percentageInterest > 1.00m)
                 {
                     newAmount *= percentageInterest;
                 }
@@ -175,7 +175,7 @@ namespace NovaDebt.Forms
                         debtor.SetAttributeValue("no", noCounter++);
                     }
 
-                    xmlDocument.Save(path);
+                    xmlDocument.Save(path, SaveOptions.DisableFormatting);
 
                     XmlProcess.AddTransactorToXml(path,
                         this.newName,
@@ -205,7 +205,7 @@ namespace NovaDebt.Forms
                     transactor.SetElementValue("Facebook", this.newFacebook);
                     transactor.SetElementValue("Amount", this.newAmount);
 
-                    xmlDocument.Save(path);
+                    xmlDocument.Save(path, SaveOptions.DisableFormatting);
                 }
 
                 this.FormClosing -= AlertUserOnExit;

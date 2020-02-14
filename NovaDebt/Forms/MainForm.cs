@@ -298,7 +298,7 @@ namespace NovaDebt.Forms
                         debtor.SetAttributeValue("no", noCounter++);
                     }
 
-                    xmlDocument.Save(TransactorsFilePath);
+                    xmlDocument.Save(TransactorsFilePath, SaveOptions.DisableFormatting);
 
                     // Refreshing the grid upon deletion.
                     this.table.Rows.Clear();
