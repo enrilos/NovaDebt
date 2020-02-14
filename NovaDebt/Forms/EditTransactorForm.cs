@@ -66,8 +66,15 @@ namespace NovaDebt.Forms
         private void SetFieldValues()
         {
             this.nameTextBox.Text = this.oldName;
+            this.sinceDatePicker.Format = DateTimePickerFormat.Custom;
+            this.sinceDatePicker.CustomFormat = "dd/MM/yyyy";
+
+            this.dueDatePicker.Format = DateTimePickerFormat.Custom;
+            this.dueDatePicker.CustomFormat = "dd/MM/yyyy";
+
             this.sinceDatePicker.Value = DateTime.ParseExact(this.oldSince, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             this.dueDatePicker.Value = DateTime.ParseExact(this.oldDueDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
             this.phoneTextBox.Text = this.oldPhoneNumber;
             this.emailTextBox.Text = this.oldEmail;
             this.facebookTextBox.Text = this.oldFacebook;
@@ -141,11 +148,6 @@ namespace NovaDebt.Forms
                 string path = TransactorsFilePath;
 
                 XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
-                IEnumerable<XElement> transactorsWithType = xmlDocument
-                            .Element("Transactors")
-                            .Elements("Transactor")
-                            .Where(x => x.Element("TransactorType").Value == this.oldTransactorType
-                                   && x.Attribute("no").Value == this.oldNo.ToString());
 
                 if (btnDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
@@ -156,26 +158,34 @@ namespace NovaDebt.Forms
                     this.newTransactorType = TransactorType.Creditor.ToString();
                 }
 
-                if (this.oldTransactorType != newTransactorType)
+                if (this.oldTransactorType != this.newTransactorType)
                 {
-                    // CHANGING THE COLLECTION OF THE RECORD
-                    // I could just use the AddTransactorToXml method when the user changes the transactor type
-                    // and add it to the other collection of transactors.
-                    // Don't forget to remove the transactor from the old collection.
-                    if (this.newTransactorType == TransactorType.Debtor.ToString())
-                    {
-                        HashSet<Transactor> debtors = XmlProcess.DeserializeXmlWithTransactorType(path, TransactorType.Debtor).ToHashSet();
-                        this.newNo = debtors.Count + 1;
+                    xmlDocument.Root.Elements().FirstOrDefault(x => x.Attribute("no").Value == this.oldNo.ToString()
+                                                               && x.Element("TransactorType").Value == this.oldTransactorType)
+                                .Remove();
 
-                        // Here I should put the edited transactor in the collection of debtors.
-                    }
-                    else if (this.newTransactorType == TransactorType.Creditor.ToString())
-                    {
-                        HashSet<Transactor> creditors = XmlProcess.DeserializeXmlWithTransactorType(path, TransactorType.Creditor).ToHashSet();
-                        this.newNo = creditors.Count + 1;
+                    int noCounter = 1;
+                    IEnumerable<XElement> transactors = xmlDocument
+                            .Element("Transactors")
+                            .Elements("Transactor")
+                            .Where(x => x.Element("TransactorType").Value == this.oldTransactorType);
 
-                        // Here I should put the edited transactor in the collection of creditors.
+                    foreach (XElement debtor in transactors)
+                    {
+                        debtor.SetAttributeValue("no", noCounter++);
                     }
+
+                    xmlDocument.Save(path);
+
+                    XmlProcess.AddTransactorToXml(path,
+                        this.newName,
+                        this.newSince,
+                        this.newDueDate,
+                        this.newPhoneNumber,
+                        this.newEmail,
+                        this.newAmount,
+                        this.newFacebook,
+                        this.newTransactorType);
                 }
                 else if (this.oldTransactorType == this.newTransactorType)
                 {
@@ -183,6 +193,19 @@ namespace NovaDebt.Forms
                     // If the user didn't change the transactor type I should just replace the properties
                     // and refresh the grid.
                     // Replace the old data fields with the new ones and refresh the grid.
+                    XElement transactor = xmlDocument.Element("Transactors")
+                                .Elements("Transactor")
+                                .FirstOrDefault(x => x.Attribute("no").Value == this.oldNo.ToString()
+                                                && x.Element("TransactorType").Value == this.oldTransactorType);
+                    transactor.SetElementValue("Name", this.newName);
+                    transactor.SetElementValue("Since", this.newSince);
+                    transactor.SetElementValue("DueDate", this.newDueDate);
+                    transactor.SetElementValue("PhoneNumber", this.newPhoneNumber);
+                    transactor.SetElementValue("Email", this.newEmail);
+                    transactor.SetElementValue("Facebook", this.newFacebook);
+                    transactor.SetElementValue("Amount", this.newAmount);
+
+                    xmlDocument.Save(path);
                 }
 
                 this.FormClosing -= AlertUserOnExit;

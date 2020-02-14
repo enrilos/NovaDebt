@@ -176,10 +176,11 @@ namespace NovaDebt.Forms
 
                 editTransactorForm.Show();
                 this.Enabled = false;
-                //TODO
+                // IMPORTANT BUG!!!!!!!!!!
+                // TODO
                 // That's why the main form won't enable itself after the edit button is clicked inside the Details section.
                 // The instance in the Details form (of Edit form) and the instance in here are different.
-                // Thus it won't trigger the .FormClosed and the main form remains disabled.
+                // Thus it won't trigger the .FormClosed here and the main form remains disabled.
                 // I should find another way.
                 editTransactorForm.FormClosed += new FormClosedEventHandler(FormClosedIncludeRefresh);
             }
