@@ -15,6 +15,8 @@ namespace NovaDebt.Forms
 {
     public partial class EditTransactorForm : Form
     {
+        private MainForm mainForm;
+
         private int oldNo;
         private string oldName;
         private string oldSince;
@@ -46,9 +48,10 @@ namespace NovaDebt.Forms
             this.dueDatePicker.CustomFormat = "dd/MM/yyyy";
         }
 
-        public EditTransactorForm(int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
+        public EditTransactorForm(MainForm mainForm, int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
             this.oldNo = no;
             this.oldName = name;
             this.oldSince = since;
@@ -204,6 +207,7 @@ namespace NovaDebt.Forms
                     xmlDocument.Save(path, SaveOptions.DisableFormatting);
                 }
 
+                this.mainForm.Enabled = true;
                 this.FormClosing -= AlertUserOnExit;
                 this.Close();
             }
@@ -216,6 +220,7 @@ namespace NovaDebt.Forms
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                this.mainForm.Enabled = true;
                 this.FormClosing -= AlertUserOnExit;
                 this.Close();
             }

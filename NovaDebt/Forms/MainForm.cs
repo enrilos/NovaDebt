@@ -164,6 +164,7 @@ namespace NovaDebt.Forms
                 }
 
                 EditTransactorForm editTransactorForm = new EditTransactorForm(
+                    this,
                     int.Parse(transactor.Attribute("no").Value),
                     transactor.Element("Name").Value,
                     transactor.Element("Since").Value,
@@ -223,6 +224,7 @@ namespace NovaDebt.Forms
                 }
 
                 DetailsForm detailsForm = new DetailsForm(
+                    this,
                     int.Parse(transactor.Attribute("no").Value),
                     transactor.Element("Name").Value,
                     transactor.Element("Since").Value,
@@ -358,6 +360,13 @@ namespace NovaDebt.Forms
 
         private void FormClosedIncludeRefresh(object sender, FormClosedEventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "EditTransactorForm")
+                {
+                    return;
+                }
+            }
             this.Enabled = true;
             this.table.Rows.Clear();
 

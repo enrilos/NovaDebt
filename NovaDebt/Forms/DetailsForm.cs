@@ -11,6 +11,8 @@ namespace NovaDebt.Forms
 {
     public partial class DetailsForm : Form
     {
+        private MainForm mainForm;
+
         private int no;
         private string name;
         private string since;
@@ -26,9 +28,10 @@ namespace NovaDebt.Forms
             InitializeComponent();
         }
 
-        public DetailsForm(int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
+        public DetailsForm(MainForm mainForm, int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
             this.no = no;
             this.name = name;
             this.since = since;
@@ -67,6 +70,7 @@ namespace NovaDebt.Forms
         private void detailsBtnEdit_Click(object sender, EventArgs e)
         {
             EditTransactorForm editTransactorForm = new EditTransactorForm(
+                this.mainForm,
                 this.no,
                 this.name,
                 this.since,
@@ -77,6 +81,7 @@ namespace NovaDebt.Forms
                 this.amount,
                 this.transactorType);
 
+            this.Enabled = false;
             editTransactorForm.Show();
             this.Close();
         }
