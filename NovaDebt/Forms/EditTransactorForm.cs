@@ -1,5 +1,4 @@
-﻿using NovaDebt.Models;
-using NovaDebt.Models.Enums;
+﻿using NovaDebt.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
+
 using static NovaDebt.DataSettings;
 
 namespace NovaDebt.Forms
@@ -41,11 +41,9 @@ namespace NovaDebt.Forms
 
             this.sinceDatePicker.Format = DateTimePickerFormat.Custom;
             this.sinceDatePicker.CustomFormat = "dd/MM/yyyy";
-            this.sinceDatePicker.Value = DateTime.UtcNow;
 
             this.dueDatePicker.Format = DateTimePickerFormat.Custom;
             this.dueDatePicker.CustomFormat = "dd/MM/yyyy";
-            this.dueDatePicker.Value = DateTime.UtcNow;
         }
 
         public EditTransactorForm(int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
@@ -66,6 +64,7 @@ namespace NovaDebt.Forms
         private void SetFieldValues()
         {
             this.nameTextBox.Text = this.oldName;
+
             this.sinceDatePicker.Format = DateTimePickerFormat.Custom;
             this.sinceDatePicker.CustomFormat = "dd/MM/yyyy";
 
@@ -189,14 +188,11 @@ namespace NovaDebt.Forms
                 }
                 else if (this.oldTransactorType == this.newTransactorType)
                 {
-                    // NOT CHANGING THE COLLECTION OF THE RECORD
-                    // If the user didn't change the transactor type I should just replace the properties
-                    // and refresh the grid.
-                    // Replace the old data fields with the new ones and refresh the grid.
                     XElement transactor = xmlDocument.Element("Transactors")
                                 .Elements("Transactor")
                                 .FirstOrDefault(x => x.Attribute("no").Value == this.oldNo.ToString()
                                                 && x.Element("TransactorType").Value == this.oldTransactorType);
+
                     transactor.SetElementValue("Name", this.newName);
                     transactor.SetElementValue("Since", this.newSince);
                     transactor.SetElementValue("DueDate", this.newDueDate);

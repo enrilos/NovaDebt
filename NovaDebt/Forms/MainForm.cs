@@ -202,6 +202,7 @@ namespace NovaDebt.Forms
                 XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
                 IEnumerable<XElement> transactors = xmlDocument.Element("Transactors")
                                                            .Elements("Transactor");
+
                 DataGridViewSelectedRowCollection selectedRows = this.transactorsDataGrid.SelectedRows;
                 string no = selectedRows[0].Cells[TableColumn.No].Value.ToString();
                 XElement transactor = null;
@@ -234,7 +235,7 @@ namespace NovaDebt.Forms
 
                 detailsForm.Show();
                 this.Enabled = false;
-                detailsForm.FormClosed += new FormClosedEventHandler(FormClosedExcludeRefresh);
+                detailsForm.FormClosed += new FormClosedEventHandler(FormClosedIncludeRefresh);
             }
             else
             {
@@ -357,43 +358,20 @@ namespace NovaDebt.Forms
 
         private void FormClosedIncludeRefresh(object sender, FormClosedEventArgs e)
         {
-            // Checking if the Edit form is open
-            //FormCollection openForms = Application.OpenForms;
-
-            //if (openForms.Count > 1)
-            //{
-            //    foreach (Form frm in openForms)
-            //    {
-            //        if (frm.Name == "EditTransactorForm")
-            //        {
-            //            return;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-                // Enabling the main form and refreshing the DataGridView after each sub form close.
-                this.Enabled = true;
-                this.table.Rows.Clear();
-
-                if (!this.btnDebtors.Enabled)
-                {
-                    this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
-
-                }
-                else if (!this.btnCreditors.Enabled)
-                {
-                    this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
-                }
-
-                this.transactorsDataGrid.DataSource = table;
-                this.transactorsDataGrid.ClearSelection();
-            //}
-        }
-
-        private void FormClosedExcludeRefresh(object sender, FormClosedEventArgs e)
-        {
             this.Enabled = true;
+            this.table.Rows.Clear();
+
+            if (!this.btnDebtors.Enabled)
+            {
+                this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
+
+            }
+            else if (!this.btnCreditors.Enabled)
+            {
+                this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
+            }
+
+            this.transactorsDataGrid.DataSource = table;
             this.transactorsDataGrid.ClearSelection();
         }
 

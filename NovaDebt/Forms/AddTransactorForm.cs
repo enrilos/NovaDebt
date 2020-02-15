@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+
 using static NovaDebt.DataSettings;
 
 namespace NovaDebt.Forms

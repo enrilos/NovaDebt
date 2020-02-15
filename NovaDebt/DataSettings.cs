@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 
 namespace NovaDebt
@@ -84,10 +83,6 @@ namespace NovaDebt
 
             public static string InvalidAmountInterval { get; } = "Количеството трябва да е в интервала {0} - {1}.";
 
-            public static string InvalidInterestCurrencyInterval { get; } = "Количествената лихва трабва да е в интервала {0} - {1}.";
-
-            public static string InvalidInterestPercentageInterval { get; } = "Процентната лихва трябва да е в интервала {0} - {1}.";
-
             public static string InvalidName { get; } = "Името може да се състои само от букви и цифри.";
 
             public static string MissingName { get; } = "Името e задължително.";
@@ -105,6 +100,10 @@ namespace NovaDebt
             public static string MissingAmount { get; } = "Количеството е задължително.";
 
             public static string InvalidAmount { get; } = "Невалидно количество.";
+
+            public static string InvalidInterestCurrencyInterval { get; } = "Количествената лихва трабва да е в интервала {0} - {1}.";
+
+            public static string InvalidInterestPercentageInterval { get; } = "Процентната лихва трябва да е в интервала {0} - {1}.";
 
             public static string InvalidInterestCurrency { get; } = "Невалидна лихва в левове.";
 

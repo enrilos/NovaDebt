@@ -66,11 +66,6 @@ namespace NovaDebt.Forms
 
         private void detailsBtnEdit_Click(object sender, EventArgs e)
         {
-            // Closes the Details form
-            // Opens up the Edit form with the same data
-            // The edit form should have a separate constructor which accepts all of these private fields data.
-            // And when Edit is clicked the new Edit form will open and this form should close.
-
             EditTransactorForm editTransactorForm = new EditTransactorForm(
                 this.no,
                 this.name,
@@ -83,9 +78,6 @@ namespace NovaDebt.Forms
                 this.transactorType);
 
             editTransactorForm.Show();
-
-            // I have to find a way to disable the main form.
-
             this.Close();
         }
 
@@ -124,9 +116,9 @@ namespace NovaDebt.Forms
                 }
 
                 xmlDocument.Save(TransactorsFilePath, SaveOptions.DisableFormatting);
+
                 this.Close();
             }
-
         }
     }
 }
