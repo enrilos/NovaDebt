@@ -81,7 +81,6 @@ namespace NovaDebt.Forms
                 this.amount,
                 this.transactorType);
 
-            this.Enabled = false;
             editTransactorForm.Show();
             this.Close();
         }

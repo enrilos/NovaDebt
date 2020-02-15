@@ -207,7 +207,7 @@ namespace NovaDebt.Forms
                     xmlDocument.Save(path, SaveOptions.DisableFormatting);
                 }
 
-                this.mainForm.Enabled = true;
+                this.mainForm.EnableMainFormAndRefreshDataGrid(this.mainForm);
                 this.FormClosing -= AlertUserOnExit;
                 this.Close();
             }

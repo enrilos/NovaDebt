@@ -4,6 +4,7 @@ using NovaDebt.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -23,6 +24,14 @@ namespace NovaDebt.Forms
 
         public MainForm()
         {
+            // Checking if there is another thread of this application.
+            Process[] processes = Process.GetProcessesByName("NovaDebt");
+
+            if (processes.Length > 1)
+            {
+                Environment.Exit(0);
+            }
+
             InitializeComponent();
         }
 
@@ -133,12 +142,6 @@ namespace NovaDebt.Forms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            // TODO
-            // Getting the record with XML Linq and then filling the fields with it.
-            // Enabling the user to edit everything even switching the transactor type.
-            // In such case I must delete the transactor in the old transactors list
-            // and add it to the new one to the new list.
-
             if (this.transactorsDataGrid.SelectedRows.Count == 1)
             {
                 XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
@@ -177,12 +180,6 @@ namespace NovaDebt.Forms
 
                 editTransactorForm.Show();
                 this.Enabled = false;
-                // IMPORTANT BUG!!!!!!!!!!
-                // TODO
-                // That's why the main form won't enable itself after the edit button is clicked inside the Details section.
-                // The instance in the Details form (of Edit form) and the instance in here are different.
-                // Thus it won't trigger the .FormClosed here and the main form remains disabled.
-                // I should find another way.
                 editTransactorForm.FormClosed += new FormClosedEventHandler(FormClosedIncludeRefresh);
             }
             else
@@ -367,26 +364,32 @@ namespace NovaDebt.Forms
                     return;
                 }
             }
-            this.Enabled = true;
-            this.table.Rows.Clear();
 
-            if (!this.btnDebtors.Enabled)
-            {
-                this.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
-
-            }
-            else if (!this.btnCreditors.Enabled)
-            {
-                this.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
-            }
-
-            this.transactorsDataGrid.DataSource = table;
-            this.transactorsDataGrid.ClearSelection();
+            EnableMainFormAndRefreshDataGrid(this);
         }
 
         private void RemoveDataGridSelection(object sender, MouseEventArgs e)
         {
             this.transactorsDataGrid.ClearSelection();
+        }
+
+        public void EnableMainFormAndRefreshDataGrid(MainForm mainForm)
+        {
+            mainForm.Enabled = true;
+            mainForm.table.Rows.Clear();
+
+            if (!mainForm.btnDebtors.Enabled)
+            {
+                mainForm.FillDataTable(TransactorsFilePath, TransactorType.Debtor);
+
+            }
+            else if (!mainForm.btnCreditors.Enabled)
+            {
+                mainForm.FillDataTable(TransactorsFilePath, TransactorType.Creditor);
+            }
+
+            mainForm.transactorsDataGrid.DataSource = table;
+            mainForm.transactorsDataGrid.ClearSelection();
         }
     }
 }
