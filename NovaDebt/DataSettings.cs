@@ -11,7 +11,13 @@ namespace NovaDebt
 
         public static string IdCounterFileName { get; } = "\\idcounter.txt";
 
+        public static string UninstallerFileName { get; } = "\\uninstall.bat";
+
         public static string TransactorsFilePath { get; } = DefaultAssemblyPath + TransactorsFileName;
+
+        public static string IdCounterFilePath { get; } = DefaultAssemblyPath + IdCounterFileName;
+
+        public static string UninstallerFilePath { get; } = DefaultAssemblyPath + UninstallerFileName;
 
         public static string XmlRoot { get; } = "Transactors";
 
@@ -19,7 +25,7 @@ namespace NovaDebt
 
         public static string IdCounterSeed { get; } = "1";
 
-        public static string IdCounterFilePath { get; } = DefaultAssemblyPath + IdCounterFileName;
+        public static string UninstallerSeed { get; } = "@echo off\nmsiexec /x {42931FE8-6212-4C80-8436-2B554C8F4A57}";
 
         public static decimal MinAmountValue { get; } = 0.01m;
 

@@ -49,6 +49,15 @@ namespace NovaDebt.Forms
             this.table = new DataTable();
             this.InitializeDataTable(this.table);
 
+            // Creating an uninstaller bat file
+            if (!File.Exists(UninstallerFilePath))
+            {
+                using (FileStream fs = File.Create(UninstallerFilePath))
+                {
+                    byte[] bash = new UTF8Encoding(true).GetBytes(UninstallerSeed);
+                    fs.Write(bash, 0, bash.Length);
+                }
+            }
             // Making a separate file which keeps track of the id
             // Overwriting it always when adding a new record - incrementing with +1.
             // Thus I guarantee that no duplicate records will be sent to the transactors file.
