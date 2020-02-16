@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -28,10 +27,8 @@ namespace NovaDebt
             }
 
             string xmlText = File.ReadAllText(path);
-
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
                                           new XmlRootAttribute(XmlRoot));
-
             TransactorDTO[] transactorDTOs = (TransactorDTO[])xmlSerializer.Deserialize(new StringReader(xmlText));
 
             Transactor[] transactors = Mapper.Map<Transactor[]>(transactorDTOs)
@@ -58,14 +55,12 @@ namespace NovaDebt
             File.WriteAllText(IdCounterFilePath, idCount.ToString());
 
             XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
-
             IEnumerable<XElement> transactorsWithType = xmlDocument
                 .Element("Transactors")
                 .Elements("Transactor")
                 .Where(x => x.Element("TransactorType").Value == transactorType);
 
             transactor.No = transactorsWithType.Count() + 1;
-
 
             xmlDocument.Element("Transactors")
                 .Add(new XElement("Transactor", new XAttribute("id", transactor.Id), new XAttribute("no", transactor.No),
@@ -79,6 +74,26 @@ namespace NovaDebt
                         new XElement("TransactorType", transactorType)));
 
             xmlDocument.Save(TransactorsFilePath, SaveOptions.DisableFormatting);
+        }
+
+        public static void EditTransactorFromXml(string path, int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
+        {
+            XDocument xmlDocument = XDocument.Load(path);
+
+            XElement transactor = xmlDocument.Element("Transactors")
+                                .Elements("Transactor")
+                                .FirstOrDefault(x => x.Attribute("no").Value == no.ToString()
+                                                && x.Element("TransactorType").Value == transactorType);
+
+            transactor.SetElementValue("Name", name);
+            transactor.SetElementValue("Since", since);
+            transactor.SetElementValue("DueDate", dueDate);
+            transactor.SetElementValue("PhoneNumber", phoneNumber);
+            transactor.SetElementValue("Email", email);
+            transactor.SetElementValue("Facebook", facebook);
+            transactor.SetElementValue("Amount", amount);
+
+            xmlDocument.Save(path, SaveOptions.DisableFormatting);
         }
     }
 }

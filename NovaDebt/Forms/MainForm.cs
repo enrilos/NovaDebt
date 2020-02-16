@@ -38,7 +38,6 @@ namespace NovaDebt.Forms
         private void MainForm_Load(object sender, EventArgs e)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            // I should consider preventing the user to start the application more than once.
 
             // Static Mapper.
             // Initializing a profile class which contains mapping configurations inside.
@@ -137,7 +136,7 @@ namespace NovaDebt.Forms
             this.Enabled = false;
 
             // Event handler which will enable the main form if the add form is closed.
-            addTransactorForm.FormClosed += new FormClosedEventHandler(FormClosedIncludeRefresh);
+            addTransactorForm.FormClosed += new FormClosedEventHandler(FormClosedAction);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -147,8 +146,10 @@ namespace NovaDebt.Forms
                 XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
                 IEnumerable<XElement> transactors = xmlDocument.Element("Transactors")
                                                            .Elements("Transactor");
+
                 DataGridViewSelectedRowCollection selectedRows = this.transactorsDataGrid.SelectedRows;
                 string no = selectedRows[0].Cells[TableColumn.No].Value.ToString();
+
                 XElement transactor = null;
 
                 if (!this.btnDebtors.Enabled)
@@ -180,7 +181,7 @@ namespace NovaDebt.Forms
 
                 editTransactorForm.Show();
                 this.Enabled = false;
-                editTransactorForm.FormClosed += new FormClosedEventHandler(FormClosedIncludeRefresh);
+                editTransactorForm.FormClosed += new FormClosedEventHandler(FormClosedAction);
             }
             else
             {
@@ -234,7 +235,7 @@ namespace NovaDebt.Forms
 
                 detailsForm.Show();
                 this.Enabled = false;
-                detailsForm.FormClosed += new FormClosedEventHandler(FormClosedIncludeRefresh);
+                detailsForm.FormClosed += new FormClosedEventHandler(FormClosedAction);
             }
             else
             {
@@ -355,7 +356,7 @@ namespace NovaDebt.Forms
             this.table.Columns.Add(TableColumn.Amount, typeof(string)); // Amount.
         }
 
-        private void FormClosedIncludeRefresh(object sender, FormClosedEventArgs e)
+        private void FormClosedAction(object sender, FormClosedEventArgs e)
         {
             foreach (Form form in Application.OpenForms)
             {

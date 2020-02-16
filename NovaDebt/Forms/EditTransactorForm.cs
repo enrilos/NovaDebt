@@ -17,7 +17,8 @@ namespace NovaDebt.Forms
     {
         private MainForm mainForm;
 
-        private int oldNo;
+        private int no;
+
         private string oldName;
         private string oldSince;
         private string oldDueDate;
@@ -27,7 +28,6 @@ namespace NovaDebt.Forms
         private decimal oldAmount;
         private string oldTransactorType;
 
-        private int newNo;
         private string newName;
         private string newSince;
         private string newDueDate;
@@ -52,7 +52,7 @@ namespace NovaDebt.Forms
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            this.oldNo = no;
+            this.no = no;
             this.oldName = name;
             this.oldSince = since;
             this.oldDueDate = dueDate;
@@ -117,7 +117,9 @@ namespace NovaDebt.Forms
                     this.phoneTextBox.Text,
                     this.emailTextBox.Text,
                     this.facebookTextBox.Text,
-                    this.amountTextBox.Text
+                    this.amountTextBox.Text,
+                    this.interestWithCurrencyTextBox.Text,
+                    this.interestWithPercentageTextBox.Text
                 };
 
                 RegexOptions options = RegexOptions.None;
@@ -130,8 +132,8 @@ namespace NovaDebt.Forms
                     inputFields[i] = regex.Replace(inputFields[i], " ");
                 }
 
-                decimal currencyInterest = decimal.Parse(this.interestWithCurrencyTextBox.Text);
-                decimal percentageInterest = 1.00m + (decimal.Parse(this.interestWithPercentageTextBox.Text) / 100.00m);
+                decimal currencyInterest = decimal.Parse(inputFields[7]);
+                decimal percentageInterest = 1.00m + (decimal.Parse(inputFields[8]) / 100.00m);
 
                 this.newName = inputFields[0];
                 this.newSince = inputFields[1];
@@ -147,8 +149,6 @@ namespace NovaDebt.Forms
                 }
 
                 this.newTransactorType = string.Empty;
-                string path = TransactorsFilePath;
-
                 XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
 
                 if (btnDebtor.BackColor == Color.FromArgb(0, 208, 255))
@@ -162,24 +162,24 @@ namespace NovaDebt.Forms
 
                 if (this.oldTransactorType != this.newTransactorType)
                 {
-                    xmlDocument.Root.Elements().FirstOrDefault(x => x.Attribute("no").Value == this.oldNo.ToString()
+                    xmlDocument.Root.Elements().FirstOrDefault(x => x.Attribute("no").Value == this.no.ToString()
                                                                && x.Element("TransactorType").Value == this.oldTransactorType)
                                 .Remove();
 
                     int noCounter = 1;
-                    IEnumerable<XElement> transactors = xmlDocument
+                    IEnumerable<XElement> transactorsWithType = xmlDocument
                             .Element("Transactors")
                             .Elements("Transactor")
                             .Where(x => x.Element("TransactorType").Value == this.oldTransactorType);
 
-                    foreach (XElement debtor in transactors)
+                    foreach (XElement debtor in transactorsWithType)
                     {
                         debtor.SetAttributeValue("no", noCounter++);
                     }
 
-                    xmlDocument.Save(path, SaveOptions.DisableFormatting);
+                    xmlDocument.Save(TransactorsFilePath, SaveOptions.DisableFormatting);
 
-                    XmlProcess.AddTransactorToXml(path,
+                    XmlProcess.AddTransactorToXml(TransactorsFilePath,
                         this.newName,
                         this.newSince,
                         this.newDueDate,
@@ -191,20 +191,17 @@ namespace NovaDebt.Forms
                 }
                 else if (this.oldTransactorType == this.newTransactorType)
                 {
-                    XElement transactor = xmlDocument.Element("Transactors")
-                                .Elements("Transactor")
-                                .FirstOrDefault(x => x.Attribute("no").Value == this.oldNo.ToString()
-                                                && x.Element("TransactorType").Value == this.oldTransactorType);
-
-                    transactor.SetElementValue("Name", this.newName);
-                    transactor.SetElementValue("Since", this.newSince);
-                    transactor.SetElementValue("DueDate", this.newDueDate);
-                    transactor.SetElementValue("PhoneNumber", this.newPhoneNumber);
-                    transactor.SetElementValue("Email", this.newEmail);
-                    transactor.SetElementValue("Facebook", this.newFacebook);
-                    transactor.SetElementValue("Amount", this.newAmount);
-
-                    xmlDocument.Save(path, SaveOptions.DisableFormatting);
+                    XmlProcess.EditTransactorFromXml(
+                        TransactorsFilePath,
+                        this.no,
+                        this.newName,
+                        this.newSince,
+                        this.newDueDate,
+                        this.newPhoneNumber,
+                        this.newEmail,
+                        this.newFacebook,
+                        this.newAmount,
+                        this.oldTransactorType);
                 }
 
                 this.mainForm.EnableMainFormAndRefreshDataGrid(this.mainForm);
@@ -316,7 +313,7 @@ namespace NovaDebt.Forms
             }
 
             //
-            // Since
+            // От - Since (Required)
             //
             if (this.sinceDatePicker.Value > this.dueDatePicker.Value)
             {
@@ -329,7 +326,7 @@ namespace NovaDebt.Forms
             }
 
             //
-            // Due Date
+            // До - Due Date (Required)
             //
             if (this.dueDatePicker.Value < this.sinceDatePicker.Value)
             {
@@ -430,8 +427,7 @@ namespace NovaDebt.Forms
 
             if (this.interestCheckBox.Checked)
             {
-                // Количествена лихва
-
+                // Количествена лихва - Currency interest
                 if (string.IsNullOrWhiteSpace(this.interestWithCurrencyTextBox.Text)
                     || string.IsNullOrEmpty(this.interestWithCurrencyTextBox.Text))
                 {
@@ -461,7 +457,7 @@ namespace NovaDebt.Forms
                     return false;
                 }
 
-                // Процентна лихва
+                // Процентна лихва - Percentage interest
                 if (string.IsNullOrWhiteSpace(this.interestWithPercentageTextBox.Text)
                     || string.IsNullOrEmpty(this.interestWithPercentageTextBox.Text))
                 {

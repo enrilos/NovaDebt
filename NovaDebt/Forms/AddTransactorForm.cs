@@ -36,7 +36,6 @@ namespace NovaDebt.Forms
             this.btnConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
             this.btnCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
 
-            // Attaching an event will will warn the user upon cancel/exit.
             this.FormClosing += new FormClosingEventHandler(AlertUserOnExit);
         }
 
@@ -83,17 +82,16 @@ namespace NovaDebt.Forms
                 }
 
                 string addTransactorType = string.Empty;
-                string path = TransactorsFilePath;
 
                 if (btnDebtor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     addTransactorType = TransactorType.Debtor.ToString();
-                    XmlProcess.AddTransactorToXml(path, name, since, dueDate, phone, email, amount, facebook, addTransactorType);
+                    XmlProcess.AddTransactorToXml(TransactorsFilePath, name, since, dueDate, phone, email, amount, facebook, addTransactorType);
                 }
                 else if (btnCreditor.BackColor == Color.FromArgb(0, 208, 255))
                 {
                     addTransactorType = TransactorType.Creditor.ToString();
-                    XmlProcess.AddTransactorToXml(path, name, since, dueDate, phone, email, amount, facebook, addTransactorType);
+                    XmlProcess.AddTransactorToXml(TransactorsFilePath, name, since, dueDate, phone, email, amount, facebook, addTransactorType);
                 }
 
                 this.FormClosing -= AlertUserOnExit;
@@ -203,7 +201,7 @@ namespace NovaDebt.Forms
             }
 
             //
-            // Since
+            // От - Since (Required)
             //
             if (this.sinceDatePicker.Value > this.dueDatePicker.Value)
             {
@@ -216,7 +214,7 @@ namespace NovaDebt.Forms
             }
 
             //
-            // Due Date
+            // До - Due Date (Required)
             //
             if (this.dueDatePicker.Value < this.sinceDatePicker.Value)
             {
@@ -317,8 +315,7 @@ namespace NovaDebt.Forms
 
             if (this.interestCheckBox.Checked)
             {
-                // Количествена лихва
-
+                // Количествена лихва - Currency interest
                 if (string.IsNullOrWhiteSpace(this.interestWithCurrencyTextBox.Text)
                     || string.IsNullOrEmpty(this.interestWithCurrencyTextBox.Text))
                 {
@@ -348,7 +345,7 @@ namespace NovaDebt.Forms
                     return false;
                 }
 
-                // Процентна лихва
+                // Процентна лихва - Percentage interest
                 if (string.IsNullOrWhiteSpace(this.interestWithPercentageTextBox.Text)
                     || string.IsNullOrEmpty(this.interestWithPercentageTextBox.Text))
                 {

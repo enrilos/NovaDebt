@@ -8,7 +8,6 @@ namespace NovaDebt
     {
         public NovaDebtProfile()
         {
-            this.CreateMap<Transactor, TransactorDTO>();
             this.CreateMap<TransactorDTO, Transactor>();
         }
     }

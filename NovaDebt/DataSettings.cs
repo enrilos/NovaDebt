@@ -43,12 +43,6 @@ namespace NovaDebt
 
             public static string DueDate { get; } = "До";
 
-            public static string PhoneNumber { get; } = "Тел №";
-
-            public static string Email { get; } = "Имейл";
-
-            public static string Facebook { get; } = "Фейсбук";
-
             public static string Amount { get; } = "Количество в лв.";
         }
 
@@ -78,8 +72,6 @@ namespace NovaDebt
             public static string FileDoesntExist { get; } = "File doesn't exist.";
 
             public static string DataTableCannotBeNull { get; } = "Data table cannot be null.";
-
-            public static string NameCannotBeNull { get; } = "Name cannot be null.";
 
             public static string InvalidAmountInterval { get; } = "Количеството трябва да е в интервала {0} - {1}.";
 
