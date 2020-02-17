@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Drawing;
+using System.IO;
 using System.Reflection;
 
 namespace NovaDebt
@@ -26,6 +27,10 @@ namespace NovaDebt
         public static string IdCounterSeed { get; } = "1";
 
         public static string UninstallerSeed { get; } = "@echo off\nmsiexec /x {42931FE8-6212-4C80-8436-2B554C8F4A57}";
+
+        public static Color DefaultButtonBorderColor { get; } = Color.FromArgb(0, 208, 255);
+
+        public static Font DefaultButtonFont { get; } = new Font("Century Gothic", 16.2f, FontStyle.Regular);
 
         public static decimal MinAmountValue { get; } = 0.01m;
 

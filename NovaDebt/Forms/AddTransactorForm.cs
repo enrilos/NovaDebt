@@ -33,8 +33,11 @@ namespace NovaDebt.Forms
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
-            this.btnConfirm.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.btnCancel.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            this.btnConfirm.Font = DefaultButtonFont;
+            this.btnCancel.Font = DefaultButtonFont;
+
+            this.btnConfirm.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+            this.btnCancel.FlatAppearance.BorderColor = DefaultButtonBorderColor;
 
             this.FormClosing += new FormClosingEventHandler(AlertUserOnExit);
         }

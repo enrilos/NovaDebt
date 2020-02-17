@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -105,12 +104,21 @@ namespace NovaDebt.Forms
             columnAmount.Width = 190;
 
             // Button customizations are made both in code and the UI.
-            this.btnDebtors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.btnCreditors.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.btnDetails.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-            this.btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
+            // Font
+            this.btnDebtors.Font = DefaultButtonFont;
+            this.btnCreditors.Font = DefaultButtonFont;
+            this.btnAdd.Font = DefaultButtonFont;
+            this.btnEdit.Font = DefaultButtonFont;
+            this.btnDetails.Font = DefaultButtonFont;
+            this.btnDelete.Font = DefaultButtonFont;
+
+            // BorderColor
+            this.btnDebtors.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+            this.btnCreditors.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+            this.btnAdd.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+            this.btnEdit.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+            this.btnDetails.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+            this.btnDelete.FlatAppearance.BorderColor = DefaultButtonBorderColor;
 
             // Attaching an even which handles where the user has clicked.
             // If clicked outside the data grid view all selected rows are no longer selected and the focus is lost.
@@ -358,15 +366,17 @@ namespace NovaDebt.Forms
                 throw new NullReferenceException(ErrorMessage.DataTableCannotBeNull);
             }
 
-            this.table.Columns.Add(TableColumn.No, typeof(int)); // No
-            this.table.Columns.Add(TableColumn.Name, typeof(string)); // Name
-            this.table.Columns.Add(TableColumn.Since, typeof(string)); // Since
-            this.table.Columns.Add(TableColumn.DueDate, typeof(string)); // DueDate
-            this.table.Columns.Add(TableColumn.Amount, typeof(string)); // Amount.
+            this.table.Columns.Add(TableColumn.No, typeof(int)); // №
+            this.table.Columns.Add(TableColumn.Name, typeof(string)); // Име
+            this.table.Columns.Add(TableColumn.Since, typeof(string)); // От
+            this.table.Columns.Add(TableColumn.DueDate, typeof(string)); // До
+            this.table.Columns.Add(TableColumn.Amount, typeof(string)); // Количество в лв.
         }
 
         private void FormClosedAction(object sender, FormClosedEventArgs e)
         {
+            // This check if necessary so when the user has clicked the edit button in the Details section
+            // the main forms remains disabled.
             foreach (Form form in Application.OpenForms)
             {
                 if (form.Name == "EditTransactorForm")

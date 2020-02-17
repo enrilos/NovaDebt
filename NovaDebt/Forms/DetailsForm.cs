@@ -46,8 +46,12 @@ namespace NovaDebt.Forms
 
         private void DetailsForm_Load(object sender, EventArgs e)
         {
-            // The same way I will send the data to the Edit section
-            // Just like the Main form send to this object through the constructor.
+            this.detailsBtnEdit.Font = DefaultButtonFont;
+            this.detailsBtnDelete.Font = DefaultButtonFont;
+
+            this.detailsBtnEdit.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+            this.detailsBtnDelete.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+
             this.detailsNoLabel.Text = no.ToString();
             this.detailsNameLabel.Text = name;
             this.detailsSinceLabel.Text = since;
