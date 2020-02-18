@@ -121,7 +121,7 @@
             this.interestCheckBox.AutoSize = true;
             this.interestCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.interestCheckBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.interestCheckBox.Location = new System.Drawing.Point(552, 233);
+            this.interestCheckBox.Location = new System.Drawing.Point(565, 233);
             this.interestCheckBox.Name = "interestCheckBox";
             this.interestCheckBox.Size = new System.Drawing.Size(110, 27);
             this.interestCheckBox.TabIndex = 17;
