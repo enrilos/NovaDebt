@@ -152,7 +152,7 @@ namespace NovaDebt.Forms
             this.transactorsDataGrid.RowTemplate.ReadOnly = true;
             this.transactorsDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.transactorsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.transactorsDataGrid.Size = new System.Drawing.Size(828, 400);
+            this.transactorsDataGrid.Size = new System.Drawing.Size(866, 400);
             this.transactorsDataGrid.TabIndex = 0;
             this.transactorsDataGrid.TabStop = false;
             // 
@@ -167,7 +167,7 @@ namespace NovaDebt.Forms
             this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.btnAdd.Location = new System.Drawing.Point(12, 426);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(203, 90);
+            this.btnAdd.Size = new System.Drawing.Size(217, 90);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.TabStop = false;
             this.btnAdd.Text = "Добави";
@@ -183,9 +183,9 @@ namespace NovaDebt.Forms
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnEdit.Location = new System.Drawing.Point(221, 426);
+            this.btnEdit.Location = new System.Drawing.Point(235, 426);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(202, 90);
+            this.btnEdit.Size = new System.Drawing.Size(226, 90);
             this.btnEdit.TabIndex = 0;
             this.btnEdit.TabStop = false;
             this.btnEdit.Text = "Редактирай";
@@ -201,7 +201,7 @@ namespace NovaDebt.Forms
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnDelete.Location = new System.Drawing.Point(637, 426);
+            this.btnDelete.Location = new System.Drawing.Point(675, 426);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(203, 90);
             this.btnDelete.TabIndex = 0;
@@ -220,7 +220,7 @@ namespace NovaDebt.Forms
             this.mainPanel.Controls.Add(this.transactorsDataGrid);
             this.mainPanel.Location = new System.Drawing.Point(212, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(851, 528);
+            this.mainPanel.Size = new System.Drawing.Size(893, 528);
             this.mainPanel.TabIndex = 3;
             // 
             // btnDetails
@@ -232,7 +232,7 @@ namespace NovaDebt.Forms
             this.btnDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetails.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.btnDetails.Location = new System.Drawing.Point(429, 426);
+            this.btnDetails.Location = new System.Drawing.Point(467, 426);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(202, 90);
             this.btnDetails.TabIndex = 1;
@@ -245,13 +245,13 @@ namespace NovaDebt.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1063, 528);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.ClientSize = new System.Drawing.Size(1102, 528);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.menuPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1081, 575);
-            this.MinimumSize = new System.Drawing.Size(1081, 575);
+            this.MaximumSize = new System.Drawing.Size(1120, 575);
+            this.MinimumSize = new System.Drawing.Size(1120, 575);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NovaDebt";

@@ -84,13 +84,13 @@ namespace NovaDebt.Forms
 
             if (this.oldTransactorType == TransactorType.Debtor.ToString())
             {
-                this.btnDebtor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-                this.btnDebtor.BackColor = Color.FromArgb(0, 208, 255);
+                this.btnDebtor.FlatAppearance.BorderColor = DefaultButtonColor;
+                this.btnDebtor.BackColor = DefaultButtonColor;
             }
             else
             {
-                this.btnCreditor.FlatAppearance.BorderColor = Color.FromArgb(0, 208, 255);
-                this.btnCreditor.BackColor = Color.FromArgb(0, 208, 255);
+                this.btnCreditor.FlatAppearance.BorderColor = DefaultButtonColor;
+                this.btnCreditor.BackColor = DefaultButtonColor;
             }
         }
 
@@ -101,8 +101,8 @@ namespace NovaDebt.Forms
             this.btnConfirm.Font = DefaultButtonFont;
             this.btnCancel.Font = DefaultButtonFont;
 
-            this.btnConfirm.FlatAppearance.BorderColor = DefaultButtonBorderColor;
-            this.btnCancel.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+            this.btnConfirm.FlatAppearance.BorderColor = DefaultButtonColor;
+            this.btnCancel.FlatAppearance.BorderColor = DefaultButtonColor;
 
             this.FormClosing += new FormClosingEventHandler(AlertUserOnExit);
         }

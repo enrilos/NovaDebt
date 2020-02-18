@@ -28,7 +28,7 @@ namespace NovaDebt
 
         public static string UninstallerSeed { get; } = "@echo off\nmsiexec /x {42931FE8-6212-4C80-8436-2B554C8F4A57}";
 
-        public static Color DefaultButtonBorderColor { get; } = Color.FromArgb(0, 208, 255);
+        public static Color DefaultButtonColor { get; } = Color.FromArgb(0, 208, 255);
 
         public static Font DefaultButtonFont { get; } = new Font("Century Gothic", 16.2f, FontStyle.Regular);
 

@@ -60,9 +60,9 @@
             this.detailsBtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.detailsBtnDelete.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsBtnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.detailsBtnDelete.Location = new System.Drawing.Point(524, 312);
+            this.detailsBtnDelete.Location = new System.Drawing.Point(472, 297);
             this.detailsBtnDelete.Name = "detailsBtnDelete";
-            this.detailsBtnDelete.Size = new System.Drawing.Size(170, 65);
+            this.detailsBtnDelete.Size = new System.Drawing.Size(231, 80);
             this.detailsBtnDelete.TabIndex = 8;
             this.detailsBtnDelete.Text = "Изтрий";
             this.detailsBtnDelete.UseVisualStyleBackColor = true;
@@ -77,9 +77,9 @@
             this.detailsBtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.detailsBtnEdit.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsBtnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.detailsBtnEdit.Location = new System.Drawing.Point(700, 312);
+            this.detailsBtnEdit.Location = new System.Drawing.Point(709, 297);
             this.detailsBtnEdit.Name = "detailsBtnEdit";
-            this.detailsBtnEdit.Size = new System.Drawing.Size(170, 65);
+            this.detailsBtnEdit.Size = new System.Drawing.Size(231, 80);
             this.detailsBtnEdit.TabIndex = 9;
             this.detailsBtnEdit.Text = "Редактирай";
             this.detailsBtnEdit.UseVisualStyleBackColor = true;
@@ -297,7 +297,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(882, 389);
+            this.ClientSize = new System.Drawing.Size(952, 389);
             this.Controls.Add(this.detailsDueDateLabel);
             this.Controls.Add(this.detailsSinceLabel);
             this.Controls.Add(this.detailsTransactorTypeLabel);
@@ -319,8 +319,8 @@
             this.Controls.Add(this.detailsBtnEdit);
             this.Controls.Add(this.detailsBtnDelete);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(900, 436);
-            this.MinimumSize = new System.Drawing.Size(900, 436);
+            this.MaximumSize = new System.Drawing.Size(970, 436);
+            this.MinimumSize = new System.Drawing.Size(970, 436);
             this.Name = "DetailsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Детайли";

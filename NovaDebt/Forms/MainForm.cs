@@ -113,12 +113,12 @@ namespace NovaDebt.Forms
             this.btnDelete.Font = DefaultButtonFont;
 
             // BorderColor
-            this.btnDebtors.FlatAppearance.BorderColor = DefaultButtonBorderColor;
-            this.btnCreditors.FlatAppearance.BorderColor = DefaultButtonBorderColor;
-            this.btnAdd.FlatAppearance.BorderColor = DefaultButtonBorderColor;
-            this.btnEdit.FlatAppearance.BorderColor = DefaultButtonBorderColor;
-            this.btnDetails.FlatAppearance.BorderColor = DefaultButtonBorderColor;
-            this.btnDelete.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+            this.btnDebtors.FlatAppearance.BorderColor = DefaultButtonColor;
+            this.btnCreditors.FlatAppearance.BorderColor = DefaultButtonColor;
+            this.btnAdd.FlatAppearance.BorderColor = DefaultButtonColor;
+            this.btnEdit.FlatAppearance.BorderColor = DefaultButtonColor;
+            this.btnDetails.FlatAppearance.BorderColor = DefaultButtonColor;
+            this.btnDelete.FlatAppearance.BorderColor = DefaultButtonColor;
 
             // Attaching an even which handles where the user has clicked.
             // If clicked outside the data grid view all selected rows are no longer selected and the focus is lost.

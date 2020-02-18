@@ -49,8 +49,8 @@ namespace NovaDebt.Forms
             this.detailsBtnEdit.Font = DefaultButtonFont;
             this.detailsBtnDelete.Font = DefaultButtonFont;
 
-            this.detailsBtnEdit.FlatAppearance.BorderColor = DefaultButtonBorderColor;
-            this.detailsBtnDelete.FlatAppearance.BorderColor = DefaultButtonBorderColor;
+            this.detailsBtnEdit.FlatAppearance.BorderColor = DefaultButtonColor;
+            this.detailsBtnDelete.FlatAppearance.BorderColor = DefaultButtonColor;
 
             this.detailsNoLabel.Text = no.ToString();
             this.detailsNameLabel.Text = name;
