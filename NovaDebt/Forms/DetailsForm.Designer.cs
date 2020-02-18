@@ -53,6 +53,7 @@
             // 
             // detailsBtnDelete
             // 
+            this.detailsBtnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.detailsBtnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.detailsBtnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.detailsBtnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
@@ -70,6 +71,7 @@
             // 
             // detailsBtnEdit
             // 
+            this.detailsBtnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.detailsBtnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.detailsBtnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.detailsBtnEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
@@ -147,6 +149,7 @@
             // 
             // detailsSinceLabelLayout
             // 
+            this.detailsSinceLabelLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.detailsSinceLabelLayout.AutoSize = true;
             this.detailsSinceLabelLayout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsSinceLabelLayout.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -159,6 +162,7 @@
             // 
             // detailsDueDateLabelLayout
             // 
+            this.detailsDueDateLabelLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.detailsDueDateLabelLayout.AutoSize = true;
             this.detailsDueDateLabelLayout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsDueDateLabelLayout.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -201,8 +205,9 @@
             this.detailsNoLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.detailsNoLabel.Location = new System.Drawing.Point(257, 30);
             this.detailsNoLabel.Name = "detailsNoLabel";
-            this.detailsNoLabel.Size = new System.Drawing.Size(0, 30);
+            this.detailsNoLabel.Size = new System.Drawing.Size(26, 30);
             this.detailsNoLabel.TabIndex = 19;
+            this.detailsNoLabel.Text = "1";
             // 
             // detailsNameLabel
             // 
@@ -212,8 +217,9 @@
             this.detailsNameLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.detailsNameLabel.Location = new System.Drawing.Point(257, 80);
             this.detailsNameLabel.Name = "detailsNameLabel";
-            this.detailsNameLabel.Size = new System.Drawing.Size(0, 30);
+            this.detailsNameLabel.Size = new System.Drawing.Size(26, 30);
             this.detailsNameLabel.TabIndex = 20;
+            this.detailsNameLabel.Text = "1";
             // 
             // detailsPhoneLabel
             // 
@@ -223,8 +229,9 @@
             this.detailsPhoneLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.detailsPhoneLabel.Location = new System.Drawing.Point(257, 130);
             this.detailsPhoneLabel.Name = "detailsPhoneLabel";
-            this.detailsPhoneLabel.Size = new System.Drawing.Size(0, 30);
+            this.detailsPhoneLabel.Size = new System.Drawing.Size(26, 30);
             this.detailsPhoneLabel.TabIndex = 21;
+            this.detailsPhoneLabel.Text = "1";
             // 
             // detailsEmailLabel
             // 
@@ -234,8 +241,9 @@
             this.detailsEmailLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.detailsEmailLabel.Location = new System.Drawing.Point(257, 180);
             this.detailsEmailLabel.Name = "detailsEmailLabel";
-            this.detailsEmailLabel.Size = new System.Drawing.Size(0, 30);
+            this.detailsEmailLabel.Size = new System.Drawing.Size(26, 30);
             this.detailsEmailLabel.TabIndex = 22;
+            this.detailsEmailLabel.Text = "1";
             // 
             // detailsFacebookLabel
             // 
@@ -245,8 +253,9 @@
             this.detailsFacebookLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.detailsFacebookLabel.Location = new System.Drawing.Point(257, 230);
             this.detailsFacebookLabel.Name = "detailsFacebookLabel";
-            this.detailsFacebookLabel.Size = new System.Drawing.Size(0, 30);
+            this.detailsFacebookLabel.Size = new System.Drawing.Size(26, 30);
             this.detailsFacebookLabel.TabIndex = 23;
+            this.detailsFacebookLabel.Text = "1";
             // 
             // detailsAmountLabel
             // 
@@ -256,8 +265,9 @@
             this.detailsAmountLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.detailsAmountLabel.Location = new System.Drawing.Point(257, 280);
             this.detailsAmountLabel.Name = "detailsAmountLabel";
-            this.detailsAmountLabel.Size = new System.Drawing.Size(0, 30);
+            this.detailsAmountLabel.Size = new System.Drawing.Size(26, 30);
             this.detailsAmountLabel.TabIndex = 24;
+            this.detailsAmountLabel.Text = "1";
             // 
             // detailsTransactorTypeLabel
             // 
@@ -267,30 +277,35 @@
             this.detailsTransactorTypeLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.detailsTransactorTypeLabel.Location = new System.Drawing.Point(257, 330);
             this.detailsTransactorTypeLabel.Name = "detailsTransactorTypeLabel";
-            this.detailsTransactorTypeLabel.Size = new System.Drawing.Size(0, 30);
+            this.detailsTransactorTypeLabel.Size = new System.Drawing.Size(26, 30);
             this.detailsTransactorTypeLabel.TabIndex = 25;
+            this.detailsTransactorTypeLabel.Text = "1";
             // 
             // detailsSinceLabel
             // 
+            this.detailsSinceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.detailsSinceLabel.AutoSize = true;
             this.detailsSinceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsSinceLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsSinceLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.detailsSinceLabel.Location = new System.Drawing.Point(703, 30);
             this.detailsSinceLabel.Name = "detailsSinceLabel";
-            this.detailsSinceLabel.Size = new System.Drawing.Size(0, 30);
+            this.detailsSinceLabel.Size = new System.Drawing.Size(26, 30);
             this.detailsSinceLabel.TabIndex = 26;
+            this.detailsSinceLabel.Text = "1";
             // 
             // detailsDueDateLabel
             // 
+            this.detailsDueDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.detailsDueDateLabel.AutoSize = true;
             this.detailsDueDateLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsDueDateLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsDueDateLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.detailsDueDateLabel.Location = new System.Drawing.Point(703, 130);
             this.detailsDueDateLabel.Name = "detailsDueDateLabel";
-            this.detailsDueDateLabel.Size = new System.Drawing.Size(0, 30);
+            this.detailsDueDateLabel.Size = new System.Drawing.Size(26, 30);
             this.detailsDueDateLabel.TabIndex = 27;
+            this.detailsDueDateLabel.Text = "1";
             // 
             // DetailsForm
             // 
@@ -319,7 +334,6 @@
             this.Controls.Add(this.detailsBtnEdit);
             this.Controls.Add(this.detailsBtnDelete);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(970, 436);
             this.MinimumSize = new System.Drawing.Size(970, 436);
             this.Name = "DetailsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

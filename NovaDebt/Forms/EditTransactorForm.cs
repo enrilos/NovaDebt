@@ -109,9 +109,7 @@ namespace NovaDebt.Forms
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            bool areFieldsValid = ValidateInputFields();
-
-            if (areFieldsValid)
+            if (AreInputFieldsValid())
             {
                 string[] inputFields = new string[] {
                     this.nameTextBox.Text,
@@ -257,6 +255,7 @@ namespace NovaDebt.Forms
 
             if (dialog == DialogResult.Yes)
             {
+                this.mainForm.Enabled = true;
                 this.FormClosing -= AlertUserOnExit;
                 this.Close();
             }
@@ -286,7 +285,7 @@ namespace NovaDebt.Forms
             }
         }
 
-        private bool ValidateInputFields()
+        private bool AreInputFieldsValid()
         {
             //
             // Име - Name (Required)
