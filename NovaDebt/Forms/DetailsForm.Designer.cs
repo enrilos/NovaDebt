@@ -41,7 +41,6 @@
             this.detailsTransactorTypeLabelLayout = new System.Windows.Forms.Label();
             this.detailsNoLabelLayout = new System.Windows.Forms.Label();
             this.detailsNoLabel = new System.Windows.Forms.Label();
-            this.detailsNameLabel = new System.Windows.Forms.Label();
             this.detailsPhoneLabel = new System.Windows.Forms.Label();
             this.detailsEmailLabel = new System.Windows.Forms.Label();
             this.detailsFacebookLabel = new System.Windows.Forms.Label();
@@ -49,6 +48,7 @@
             this.detailsTransactorTypeLabel = new System.Windows.Forms.Label();
             this.detailsSinceLabel = new System.Windows.Forms.Label();
             this.detailsDueDateLabel = new System.Windows.Forms.Label();
+            this.detailsNameLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // detailsBtnDelete
@@ -201,35 +201,23 @@
             // 
             this.detailsNoLabel.AutoSize = true;
             this.detailsNoLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.detailsNoLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.detailsNoLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsNoLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsNoLabel.Location = new System.Drawing.Point(257, 30);
+            this.detailsNoLabel.Location = new System.Drawing.Point(257, 26);
             this.detailsNoLabel.Name = "detailsNoLabel";
-            this.detailsNoLabel.Size = new System.Drawing.Size(26, 30);
+            this.detailsNoLabel.Size = new System.Drawing.Size(31, 34);
             this.detailsNoLabel.TabIndex = 19;
             this.detailsNoLabel.Text = "1";
-            // 
-            // detailsNameLabel
-            // 
-            this.detailsNameLabel.AutoSize = true;
-            this.detailsNameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.detailsNameLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.detailsNameLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsNameLabel.Location = new System.Drawing.Point(257, 80);
-            this.detailsNameLabel.Name = "detailsNameLabel";
-            this.detailsNameLabel.Size = new System.Drawing.Size(26, 30);
-            this.detailsNameLabel.TabIndex = 20;
-            this.detailsNameLabel.Text = "1";
             // 
             // detailsPhoneLabel
             // 
             this.detailsPhoneLabel.AutoSize = true;
             this.detailsPhoneLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.detailsPhoneLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.detailsPhoneLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsPhoneLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsPhoneLabel.Location = new System.Drawing.Point(257, 130);
+            this.detailsPhoneLabel.Location = new System.Drawing.Point(257, 126);
             this.detailsPhoneLabel.Name = "detailsPhoneLabel";
-            this.detailsPhoneLabel.Size = new System.Drawing.Size(26, 30);
+            this.detailsPhoneLabel.Size = new System.Drawing.Size(31, 34);
             this.detailsPhoneLabel.TabIndex = 21;
             this.detailsPhoneLabel.Text = "1";
             // 
@@ -237,11 +225,11 @@
             // 
             this.detailsEmailLabel.AutoSize = true;
             this.detailsEmailLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.detailsEmailLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.detailsEmailLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsEmailLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsEmailLabel.Location = new System.Drawing.Point(257, 180);
+            this.detailsEmailLabel.Location = new System.Drawing.Point(257, 176);
             this.detailsEmailLabel.Name = "detailsEmailLabel";
-            this.detailsEmailLabel.Size = new System.Drawing.Size(26, 30);
+            this.detailsEmailLabel.Size = new System.Drawing.Size(31, 34);
             this.detailsEmailLabel.TabIndex = 22;
             this.detailsEmailLabel.Text = "1";
             // 
@@ -249,11 +237,11 @@
             // 
             this.detailsFacebookLabel.AutoSize = true;
             this.detailsFacebookLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.detailsFacebookLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.detailsFacebookLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsFacebookLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsFacebookLabel.Location = new System.Drawing.Point(257, 230);
+            this.detailsFacebookLabel.Location = new System.Drawing.Point(257, 226);
             this.detailsFacebookLabel.Name = "detailsFacebookLabel";
-            this.detailsFacebookLabel.Size = new System.Drawing.Size(26, 30);
+            this.detailsFacebookLabel.Size = new System.Drawing.Size(31, 34);
             this.detailsFacebookLabel.TabIndex = 23;
             this.detailsFacebookLabel.Text = "1";
             // 
@@ -261,11 +249,11 @@
             // 
             this.detailsAmountLabel.AutoSize = true;
             this.detailsAmountLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.detailsAmountLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.detailsAmountLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsAmountLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsAmountLabel.Location = new System.Drawing.Point(257, 280);
+            this.detailsAmountLabel.Location = new System.Drawing.Point(257, 276);
             this.detailsAmountLabel.Name = "detailsAmountLabel";
-            this.detailsAmountLabel.Size = new System.Drawing.Size(26, 30);
+            this.detailsAmountLabel.Size = new System.Drawing.Size(31, 34);
             this.detailsAmountLabel.TabIndex = 24;
             this.detailsAmountLabel.Text = "1";
             // 
@@ -273,11 +261,11 @@
             // 
             this.detailsTransactorTypeLabel.AutoSize = true;
             this.detailsTransactorTypeLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.detailsTransactorTypeLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.detailsTransactorTypeLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsTransactorTypeLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsTransactorTypeLabel.Location = new System.Drawing.Point(257, 330);
+            this.detailsTransactorTypeLabel.Location = new System.Drawing.Point(257, 326);
             this.detailsTransactorTypeLabel.Name = "detailsTransactorTypeLabel";
-            this.detailsTransactorTypeLabel.Size = new System.Drawing.Size(26, 30);
+            this.detailsTransactorTypeLabel.Size = new System.Drawing.Size(31, 34);
             this.detailsTransactorTypeLabel.TabIndex = 25;
             this.detailsTransactorTypeLabel.Text = "1";
             // 
@@ -286,11 +274,11 @@
             this.detailsSinceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.detailsSinceLabel.AutoSize = true;
             this.detailsSinceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.detailsSinceLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.detailsSinceLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsSinceLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsSinceLabel.Location = new System.Drawing.Point(703, 30);
+            this.detailsSinceLabel.Location = new System.Drawing.Point(703, 26);
             this.detailsSinceLabel.Name = "detailsSinceLabel";
-            this.detailsSinceLabel.Size = new System.Drawing.Size(26, 30);
+            this.detailsSinceLabel.Size = new System.Drawing.Size(31, 34);
             this.detailsSinceLabel.TabIndex = 26;
             this.detailsSinceLabel.Text = "1";
             // 
@@ -299,13 +287,25 @@
             this.detailsDueDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.detailsDueDateLabel.AutoSize = true;
             this.detailsDueDateLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.detailsDueDateLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.detailsDueDateLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsDueDateLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsDueDateLabel.Location = new System.Drawing.Point(703, 130);
+            this.detailsDueDateLabel.Location = new System.Drawing.Point(703, 126);
             this.detailsDueDateLabel.Name = "detailsDueDateLabel";
-            this.detailsDueDateLabel.Size = new System.Drawing.Size(26, 30);
+            this.detailsDueDateLabel.Size = new System.Drawing.Size(31, 34);
             this.detailsDueDateLabel.TabIndex = 27;
             this.detailsDueDateLabel.Text = "1";
+            // 
+            // detailsNameLabel
+            // 
+            this.detailsNameLabel.AutoSize = true;
+            this.detailsNameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.detailsNameLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.detailsNameLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.detailsNameLabel.Location = new System.Drawing.Point(257, 76);
+            this.detailsNameLabel.Name = "detailsNameLabel";
+            this.detailsNameLabel.Size = new System.Drawing.Size(31, 34);
+            this.detailsNameLabel.TabIndex = 28;
+            this.detailsNameLabel.Text = "1";
             // 
             // DetailsForm
             // 
@@ -313,6 +313,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(952, 389);
+            this.Controls.Add(this.detailsNameLabel);
             this.Controls.Add(this.detailsDueDateLabel);
             this.Controls.Add(this.detailsSinceLabel);
             this.Controls.Add(this.detailsTransactorTypeLabel);
@@ -320,7 +321,6 @@
             this.Controls.Add(this.detailsFacebookLabel);
             this.Controls.Add(this.detailsEmailLabel);
             this.Controls.Add(this.detailsPhoneLabel);
-            this.Controls.Add(this.detailsNameLabel);
             this.Controls.Add(this.detailsNoLabel);
             this.Controls.Add(this.detailsNoLabelLayout);
             this.Controls.Add(this.detailsTransactorTypeLabelLayout);
@@ -358,7 +358,6 @@
         private System.Windows.Forms.Label detailsTransactorTypeLabelLayout;
         private System.Windows.Forms.Label detailsNoLabelLayout;
         private System.Windows.Forms.Label detailsNoLabel;
-        private System.Windows.Forms.Label detailsNameLabel;
         private System.Windows.Forms.Label detailsPhoneLabel;
         private System.Windows.Forms.Label detailsEmailLabel;
         private System.Windows.Forms.Label detailsFacebookLabel;
@@ -366,5 +365,6 @@
         private System.Windows.Forms.Label detailsTransactorTypeLabel;
         private System.Windows.Forms.Label detailsSinceLabel;
         private System.Windows.Forms.Label detailsDueDateLabel;
+        private System.Windows.Forms.Label detailsNameLabel;
     }
 }

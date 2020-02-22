@@ -99,8 +99,8 @@ namespace NovaDebt.Forms
             if (dialog == DialogResult.Yes)
             {
                 XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
-                IEnumerable<XElement> debtors = xmlDocument.Element("Transactors")
-                                                           .Elements("Transactor");
+                IEnumerable<XElement> debtors = xmlDocument.Element(XmlRoot)
+                                                           .Elements(XmlElement);
 
                 if (this.transactorType == "Debtor")
                 {

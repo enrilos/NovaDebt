@@ -56,14 +56,14 @@ namespace NovaDebt
 
             XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
             IEnumerable<XElement> transactorsWithType = xmlDocument
-                .Element("Transactors")
-                .Elements("Transactor")
+                .Element(XmlRoot)
+                .Elements(XmlElement)
                 .Where(x => x.Element("TransactorType").Value == transactorType);
 
             transactor.No = transactorsWithType.Count() + 1;
 
-            xmlDocument.Element("Transactors")
-                .Add(new XElement("Transactor", new XAttribute("id", transactor.Id), new XAttribute("no", transactor.No),
+            xmlDocument.Element(XmlRoot)
+                .Add(new XElement(XmlElement, new XAttribute("id", transactor.Id), new XAttribute("no", transactor.No),
                         new XElement("Name", name),
                         new XElement("Since", since),
                         new XElement("DueDate", dueDate),
@@ -80,8 +80,8 @@ namespace NovaDebt
         {
             XDocument xmlDocument = XDocument.Load(path);
 
-            XElement transactor = xmlDocument.Element("Transactors")
-                                .Elements("Transactor")
+            XElement transactor = xmlDocument.Element(XmlRoot)
+                                .Elements(XmlElement)
                                 .FirstOrDefault(x => x.Attribute("no").Value == no.ToString()
                                                 && x.Element("TransactorType").Value == transactorType);
 

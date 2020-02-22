@@ -24,7 +24,7 @@ namespace NovaDebt.Forms
         public MainForm()
         {
             // Checking if there is another thread of this application.
-            Process[] processes = Process.GetProcessesByName("NovaDebt");
+            Process[] processes = Process.GetProcessesByName(ApplicationName);
 
             if (processes.Length > 1)
             {
@@ -161,8 +161,8 @@ namespace NovaDebt.Forms
             if (this.transactorsDataGrid.SelectedRows.Count == 1)
             {
                 XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
-                IEnumerable<XElement> transactors = xmlDocument.Element("Transactors")
-                                                           .Elements("Transactor");
+                IEnumerable<XElement> transactors = xmlDocument.Element(XmlRoot)
+                                                           .Elements(XmlElement);
 
                 DataGridViewSelectedRowCollection selectedRows = this.transactorsDataGrid.SelectedRows;
                 string no = selectedRows[0].Cells[TableColumn.No].Value.ToString();
@@ -216,8 +216,8 @@ namespace NovaDebt.Forms
             if (this.transactorsDataGrid.SelectedRows.Count == 1)
             {
                 XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
-                IEnumerable<XElement> transactors = xmlDocument.Element("Transactors")
-                                                           .Elements("Transactor");
+                IEnumerable<XElement> transactors = xmlDocument.Element(XmlRoot)
+                                                           .Elements(XmlElement);
 
                 DataGridViewSelectedRowCollection selectedRows = this.transactorsDataGrid.SelectedRows;
                 string no = selectedRows[0].Cells[TableColumn.No].Value.ToString();
@@ -277,8 +277,8 @@ namespace NovaDebt.Forms
                 if (dialog == DialogResult.Yes)
                 {
                     XDocument xmlDocument = XDocument.Load(TransactorsFilePath);
-                    IEnumerable<XElement> debtors = xmlDocument.Element("Transactors")
-                                                               .Elements("Transactor");
+                    IEnumerable<XElement> debtors = xmlDocument.Element(XmlRoot)
+                                                               .Elements(XmlElement);
                     DataGridViewSelectedRowCollection selectedRows = this.transactorsDataGrid.SelectedRows;
 
                     if (!this.btnDebtors.Enabled)

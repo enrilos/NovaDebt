@@ -6,6 +6,8 @@ namespace NovaDebt
 {
     public static class DataSettings
     {
+        public static string ApplicationName = "NovaDebt";
+
         public static string DefaultAssemblyPath { get; } = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
         public static string TransactorsFileName { get; } = "\\transactors.xml";
@@ -21,6 +23,8 @@ namespace NovaDebt
         public static string UninstallerFilePath { get; } = DefaultAssemblyPath + UninstallerFileName;
 
         public static string XmlRoot { get; } = "Transactors";
+
+        public static string XmlElement { get; } = "Transactor";
 
         public static string XmlRootOpenClose { get; } = "<Transactors>\n</Transactors>";
 

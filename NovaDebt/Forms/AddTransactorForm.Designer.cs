@@ -156,12 +156,12 @@
             this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nameTextBox.BackColor = System.Drawing.Color.White;
-            this.nameTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameTextBox.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.nameTextBox.Location = new System.Drawing.Point(171, 28);
             this.nameTextBox.MaxLength = 30;
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(375, 36);
+            this.nameTextBox.Size = new System.Drawing.Size(375, 40);
             this.nameTextBox.TabIndex = 0;
             // 
             // phoneTextBox
@@ -169,12 +169,12 @@
             this.phoneTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.phoneTextBox.BackColor = System.Drawing.Color.White;
-            this.phoneTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.phoneTextBox.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.phoneTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.phoneTextBox.Location = new System.Drawing.Point(171, 78);
             this.phoneTextBox.MaxLength = 20;
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(375, 36);
+            this.phoneTextBox.Size = new System.Drawing.Size(375, 40);
             this.phoneTextBox.TabIndex = 1;
             // 
             // emailTextBox
@@ -182,12 +182,12 @@
             this.emailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.emailTextBox.BackColor = System.Drawing.Color.White;
-            this.emailTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailTextBox.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.emailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.emailTextBox.Location = new System.Drawing.Point(171, 128);
             this.emailTextBox.MaxLength = 40;
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(375, 36);
+            this.emailTextBox.Size = new System.Drawing.Size(375, 40);
             this.emailTextBox.TabIndex = 2;
             // 
             // facebookTextBox
@@ -195,12 +195,12 @@
             this.facebookTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.facebookTextBox.BackColor = System.Drawing.Color.White;
-            this.facebookTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.facebookTextBox.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.facebookTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.facebookTextBox.Location = new System.Drawing.Point(171, 178);
             this.facebookTextBox.MaxLength = 30;
             this.facebookTextBox.Name = "facebookTextBox";
-            this.facebookTextBox.Size = new System.Drawing.Size(375, 36);
+            this.facebookTextBox.Size = new System.Drawing.Size(375, 40);
             this.facebookTextBox.TabIndex = 3;
             // 
             // amountTextBox
@@ -208,12 +208,12 @@
             this.amountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.amountTextBox.BackColor = System.Drawing.Color.White;
-            this.amountTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.amountTextBox.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.amountTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.amountTextBox.Location = new System.Drawing.Point(171, 228);
             this.amountTextBox.MaxLength = 15;
             this.amountTextBox.Name = "amountTextBox";
-            this.amountTextBox.Size = new System.Drawing.Size(375, 36);
+            this.amountTextBox.Size = new System.Drawing.Size(375, 40);
             this.amountTextBox.TabIndex = 4;
             // 
             // btnDebtor
@@ -273,24 +273,24 @@
             // dueDatePicker
             // 
             this.dueDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dueDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dueDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dueDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dueDatePicker.Location = new System.Drawing.Point(705, 76);
             this.dueDatePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.dueDatePicker.Name = "dueDatePicker";
-            this.dueDatePicker.Size = new System.Drawing.Size(198, 38);
+            this.dueDatePicker.Size = new System.Drawing.Size(198, 41);
             this.dueDatePicker.TabIndex = 15;
             this.dueDatePicker.Value = new System.DateTime(2020, 2, 9, 0, 0, 0, 0);
             // 
             // sinceDatePicker
             // 
             this.sinceDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sinceDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sinceDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.sinceDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.sinceDatePicker.Location = new System.Drawing.Point(705, 26);
             this.sinceDatePicker.MaxDate = new System.DateTime(3020, 12, 31, 0, 0, 0, 0);
             this.sinceDatePicker.Name = "sinceDatePicker";
-            this.sinceDatePicker.Size = new System.Drawing.Size(198, 38);
+            this.sinceDatePicker.Size = new System.Drawing.Size(198, 41);
             this.sinceDatePicker.TabIndex = 14;
             this.sinceDatePicker.Value = new System.DateTime(2020, 2, 9, 0, 0, 0, 0);
             // 
@@ -312,12 +312,12 @@
             // 
             this.interestWithCurrencyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.interestWithCurrencyTextBox.BackColor = System.Drawing.Color.White;
-            this.interestWithCurrencyTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.interestWithCurrencyTextBox.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.interestWithCurrencyTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.interestWithCurrencyTextBox.Location = new System.Drawing.Point(705, 174);
             this.interestWithCurrencyTextBox.MaxLength = 15;
             this.interestWithCurrencyTextBox.Name = "interestWithCurrencyTextBox";
-            this.interestWithCurrencyTextBox.Size = new System.Drawing.Size(198, 36);
+            this.interestWithCurrencyTextBox.Size = new System.Drawing.Size(198, 40);
             this.interestWithCurrencyTextBox.TabIndex = 17;
             this.interestWithCurrencyTextBox.Text = "0";
             this.interestWithCurrencyTextBox.Visible = false;
@@ -327,12 +327,12 @@
             // 
             this.interestWithPercentageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.interestWithPercentageTextBox.BackColor = System.Drawing.Color.White;
-            this.interestWithPercentageTextBox.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.interestWithPercentageTextBox.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.interestWithPercentageTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.interestWithPercentageTextBox.Location = new System.Drawing.Point(705, 224);
             this.interestWithPercentageTextBox.MaxLength = 7;
             this.interestWithPercentageTextBox.Name = "interestWithPercentageTextBox";
-            this.interestWithPercentageTextBox.Size = new System.Drawing.Size(198, 36);
+            this.interestWithPercentageTextBox.Size = new System.Drawing.Size(198, 40);
             this.interestWithPercentageTextBox.TabIndex = 18;
             this.interestWithPercentageTextBox.Text = "0";
             this.interestWithPercentageTextBox.Visible = false;

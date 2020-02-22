@@ -169,8 +169,8 @@ namespace NovaDebt.Forms
 
                     int noCounter = 1;
                     IEnumerable<XElement> transactorsWithType = xmlDocument
-                            .Element("Transactors")
-                            .Elements("Transactor")
+                            .Element(XmlRoot)
+                            .Elements(XmlElement)
                             .Where(x => x.Element("TransactorType").Value == this.oldTransactorType);
 
                     foreach (XElement debtor in transactorsWithType)
