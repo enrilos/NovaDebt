@@ -146,7 +146,7 @@ namespace NovaDebt.Forms
 
                 if (percentageInterest > 1.00m)
                 {
-                    newAmount *= percentageInterest;
+                    newAmount = Math.Round(newAmount * percentageInterest, 2);
                 }
 
                 this.newTransactorType = string.Empty;

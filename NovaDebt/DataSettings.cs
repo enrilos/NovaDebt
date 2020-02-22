@@ -30,7 +30,7 @@ namespace NovaDebt
 
         public static string IdCounterSeed { get; } = "1";
 
-        public static string UninstallerSeed { get; } = "@echo off\nmsiexec /x {C2905FD8-82CF-4865-BEB4-6AA16FA10F90}";
+        public static string UninstallerSeed { get; } = "@echo off\nmsiexec /x {74CB8113-6E7D-41CB-8BD8-3E0CFF31BE7E}";
 
         public static Color DefaultButtonColor { get; } = Color.FromArgb(0, 208, 255);
 
