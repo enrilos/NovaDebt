@@ -269,6 +269,8 @@ namespace NovaDebt.Forms
         {
             if (this.interestCheckBox.Checked)
             {
+                this.interestPriorityOneLabel.Visible = true;
+                this.interestPriorityTwoLabel.Visible = true;
                 this.interestWithCurrencyLabel.Visible = true;
                 this.interestWithCurrencyTextBox.Visible = true;
                 this.interestWithPercentageLabel.Visible = true;
@@ -277,6 +279,8 @@ namespace NovaDebt.Forms
             }
             else if (!this.interestCheckBox.Checked)
             {
+                this.interestPriorityOneLabel.Visible = false;
+                this.interestPriorityTwoLabel.Visible = false;
                 this.interestWithCurrencyLabel.Visible = false;
                 this.interestWithCurrencyTextBox.Visible = false;
                 this.interestWithPercentageLabel.Visible = false;

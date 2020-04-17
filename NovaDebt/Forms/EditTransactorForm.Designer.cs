@@ -53,6 +53,8 @@
             this.dueDatePicker = new System.Windows.Forms.DateTimePicker();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.interestPriorityOneLabel = new System.Windows.Forms.Label();
+            this.interestPriorityTwoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -376,12 +378,42 @@
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // interestPriorityOneLabel
+            // 
+            this.interestPriorityOneLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.interestPriorityOneLabel.AutoSize = true;
+            this.interestPriorityOneLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.interestPriorityOneLabel.Font = new System.Drawing.Font("Century Gothic", 11.8F);
+            this.interestPriorityOneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.interestPriorityOneLabel.Location = new System.Drawing.Point(678, 184);
+            this.interestPriorityOneLabel.Name = "interestPriorityOneLabel";
+            this.interestPriorityOneLabel.Size = new System.Drawing.Size(21, 23);
+            this.interestPriorityOneLabel.TabIndex = 36;
+            this.interestPriorityOneLabel.Text = "1";
+            this.interestPriorityOneLabel.Visible = false;
+            // 
+            // interestPriorityTwoLabel
+            // 
+            this.interestPriorityTwoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.interestPriorityTwoLabel.AutoSize = true;
+            this.interestPriorityTwoLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.interestPriorityTwoLabel.Font = new System.Drawing.Font("Century Gothic", 11.8F);
+            this.interestPriorityTwoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.interestPriorityTwoLabel.Location = new System.Drawing.Point(678, 230);
+            this.interestPriorityTwoLabel.Name = "interestPriorityTwoLabel";
+            this.interestPriorityTwoLabel.Size = new System.Drawing.Size(21, 23);
+            this.interestPriorityTwoLabel.TabIndex = 37;
+            this.interestPriorityTwoLabel.Text = "2";
+            this.interestPriorityTwoLabel.Visible = false;
+            // 
             // EditTransactorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(982, 358);
+            this.Controls.Add(this.interestPriorityTwoLabel);
+            this.Controls.Add(this.interestPriorityOneLabel);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dueDatePicker);
@@ -443,5 +475,7 @@
         private System.Windows.Forms.DateTimePicker dueDatePicker;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Label interestPriorityOneLabel;
+        private System.Windows.Forms.Label interestPriorityTwoLabel;
     }
 }

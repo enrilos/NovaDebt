@@ -53,6 +53,8 @@
             this.interestWithCurrencyLabel = new System.Windows.Forms.Label();
             this.interestWithPercentageLabel = new System.Windows.Forms.Label();
             this.interestsSeparator = new System.Windows.Forms.Panel();
+            this.interestPriorityOneLabel = new System.Windows.Forms.Label();
+            this.interestPriorityTwoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnConfirm
@@ -376,12 +378,42 @@
             this.interestsSeparator.TabIndex = 21;
             this.interestsSeparator.Visible = false;
             // 
+            // interestPriorityOneLabel
+            // 
+            this.interestPriorityOneLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.interestPriorityOneLabel.AutoSize = true;
+            this.interestPriorityOneLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.interestPriorityOneLabel.Font = new System.Drawing.Font("Century Gothic", 11.8F);
+            this.interestPriorityOneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.interestPriorityOneLabel.Location = new System.Drawing.Point(678, 180);
+            this.interestPriorityOneLabel.Name = "interestPriorityOneLabel";
+            this.interestPriorityOneLabel.Size = new System.Drawing.Size(21, 23);
+            this.interestPriorityOneLabel.TabIndex = 22;
+            this.interestPriorityOneLabel.Text = "1";
+            this.interestPriorityOneLabel.Visible = false;
+            // 
+            // interestPriorityTwoLabel
+            // 
+            this.interestPriorityTwoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.interestPriorityTwoLabel.AutoSize = true;
+            this.interestPriorityTwoLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.interestPriorityTwoLabel.Font = new System.Drawing.Font("Century Gothic", 11.8F);
+            this.interestPriorityTwoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
+            this.interestPriorityTwoLabel.Location = new System.Drawing.Point(678, 230);
+            this.interestPriorityTwoLabel.Name = "interestPriorityTwoLabel";
+            this.interestPriorityTwoLabel.Size = new System.Drawing.Size(21, 23);
+            this.interestPriorityTwoLabel.TabIndex = 23;
+            this.interestPriorityTwoLabel.Text = "2";
+            this.interestPriorityTwoLabel.Visible = false;
+            // 
             // AddTransactorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(982, 358);
+            this.Controls.Add(this.interestPriorityTwoLabel);
+            this.Controls.Add(this.interestPriorityOneLabel);
             this.Controls.Add(this.interestsSeparator);
             this.Controls.Add(this.interestWithPercentageLabel);
             this.Controls.Add(this.interestWithCurrencyLabel);
@@ -442,5 +474,7 @@
         private System.Windows.Forms.Label interestWithCurrencyLabel;
         private System.Windows.Forms.Label interestWithPercentageLabel;
         private System.Windows.Forms.Panel interestsSeparator;
+        private System.Windows.Forms.Label interestPriorityOneLabel;
+        private System.Windows.Forms.Label interestPriorityTwoLabel;
     }
 }
