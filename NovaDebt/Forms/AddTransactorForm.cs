@@ -36,6 +36,8 @@ namespace NovaDebt.Forms
             this.btnConfirm.Font = DefaultButtonFont;
             this.btnCancel.Font = DefaultButtonFont;
 
+            this.interestCheckBox.Font = DefaultInterestFont;
+
             this.btnConfirm.FlatAppearance.BorderColor = DefaultButtonColor;
             this.btnCancel.FlatAppearance.BorderColor = DefaultButtonColor;
 

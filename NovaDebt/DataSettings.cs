@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Reflection;
 
@@ -30,11 +31,15 @@ namespace NovaDebt
 
         public static string IdCounterSeed { get; } = "1";
 
+        // NOTE:
+        // Product ID MUST BE CHANGED when making a new setup.
         public static string UninstallerSeed { get; } = "@echo off\nmsiexec /x {74CB8113-6E7D-41CB-8BD8-3E0CFF31BE7E}";
 
         public static Color DefaultButtonColor { get; } = Color.FromArgb(0, 208, 255);
 
-        public static Font DefaultButtonFont { get; } = new Font("Century Gothic", 16.2f, FontStyle.Regular);
+        public static Font DefaultInterestFont { get; } = ConfigureDefaultFont(12f);
+
+        public static Font DefaultButtonFont { get; } = ConfigureDefaultFont(16.2f);
 
         public static decimal MinAmountValue { get; } = 0.01m;
 
@@ -119,6 +124,16 @@ namespace NovaDebt
             public static string DetailsOverOneSelectedRecords { get; } = "Трябва да изберете един запис за детайли.";
 
             public static string EditOverOneSelectedRecords { get; } = "Трябва да изберете един запис за редакция.";
+        }
+
+        private static Font ConfigureDefaultFont(float size)
+        {
+            string path = Path.GetFullPath(Path.Combine(DefaultAssemblyPath, @"..\..\Fonts\GOTHIC.TTF"));
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile(path);
+            Font gothicFont = new Font(pfc.Families[0], size, FontStyle.Regular);
+
+            return gothicFont;
         }
     }
 }

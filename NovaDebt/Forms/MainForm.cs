@@ -57,6 +57,7 @@ namespace NovaDebt.Forms
                     fs.Write(bash, 0, bash.Length);
                 }
             }
+
             // Making a separate file which keeps track of the id
             // Overwriting it always when adding a new record - incrementing with +1.
             // Thus I guarantee that no duplicate records will be sent to the transactors file.
@@ -69,8 +70,8 @@ namespace NovaDebt.Forms
                 }
             }
 
-            // Always writing the root element if the file is empty or after creation
-            // Otherwise xml doesn't like it and throws exceptions.
+            // Always writing the root element if the transactors file is empty or after creation just in case.
+            // Otherwise xml doesn't like it and throws an exception ~ MissingRootElement.
             // So when the form loads I initialize the file within the directory with "Transactors" root el. as required.
             if (!File.Exists(TransactorsFilePath))
             {
