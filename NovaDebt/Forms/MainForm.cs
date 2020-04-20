@@ -387,7 +387,7 @@ namespace NovaDebt.Forms
                 }
             }
 
-            EnableMainFormAndRefreshDataGrid(this);
+            this.EnableMainFormAndRefreshDataGrid(this);
         }
 
         private void RemoveDataGridSelection(object sender, MouseEventArgs e)

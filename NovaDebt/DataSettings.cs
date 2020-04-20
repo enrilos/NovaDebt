@@ -37,13 +37,15 @@ namespace NovaDebt
 
         public static Color DefaultButtonColor { get; } = Color.FromArgb(0, 208, 255);
 
-        public static Font DefaultFontTwelve { get; } = new Font("Idealist Sans", 12f);
+        // Strange. When loading a font from elsewhere, the app sometimes malfunctions and throws ArugmentException - Parameter is not valid.
+        // It just randomly occurs.
+        public static Font DefaultFontTwelve => new Font("Idealist Sans", 12f);
 
-        public static Font DefaultFontThirteen { get; } = new Font("Idealist Sans", 13.8f);
+        public static Font DefaultFontThirteen => new Font("Idealist Sans", 13.8f);
 
-        public static Font DefaultFontFifteen { get; } = new Font("Idealist Sand", 15f);
+        public static Font DefaultFontFifteen => new Font("Idealist Sans", 15f);
 
-        public static Font DefaultFontSixteen { get; } = new Font("Idealist Sans", 16.2f);
+        public static Font DefaultFontSixteen => new Font("Idealist Sans", 16.2f);
 
         public static decimal MinAmountValue { get; } = 0.01m;
 
