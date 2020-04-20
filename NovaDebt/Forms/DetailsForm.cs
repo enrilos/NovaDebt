@@ -46,8 +46,31 @@ namespace NovaDebt.Forms
 
         private void DetailsForm_Load(object sender, EventArgs e)
         {
-            this.detailsBtnEdit.Font = DefaultButtonFont;
-            this.detailsBtnDelete.Font = DefaultButtonFont;
+            // Font - Primary Buttons
+            this.detailsBtnEdit.Font = DefaultFontSixteen;
+            this.detailsBtnDelete.Font = DefaultFontSixteen;
+
+            // Font - Labels (layouts)
+            this.detailsNoLabelLayout.Font = DefaultFontThirteen;
+            this.detailsNameLabelLayout.Font = DefaultFontThirteen;
+            this.detailsPhoneLabelLayout.Font = DefaultFontThirteen;
+            this.detailsEmailLabelLayout.Font = DefaultFontThirteen;
+            this.detailsFacebookLabelLayout.Font = DefaultFontThirteen;
+            this.detailsAmountLabelLayout.Font = DefaultFontThirteen;
+            this.detailsTransactorTypeLabelLayout.Font = DefaultFontThirteen;
+            this.detailsSinceLabelLayout.Font = DefaultFontThirteen;
+            this.detailsDueDateLabelLayout.Font = DefaultFontThirteen;
+
+            // Font - Labels (values)
+            this.detailsNoLabel.Font = DefaultFontSixteen;
+            this.detailsNameLabel.Font = DefaultFontSixteen;
+            this.detailsPhoneLabel.Font = DefaultFontSixteen;
+            this.detailsEmailLabel.Font = DefaultFontSixteen;
+            this.detailsFacebookLabel.Font = DefaultFontSixteen;
+            this.detailsAmountLabel.Font = DefaultFontSixteen;
+            this.detailsTransactorTypeLabel.Font = DefaultFontSixteen;
+            this.detailsSinceLabel.Font = DefaultFontSixteen;
+            this.detailsDueDateLabel.Font = DefaultFontSixteen;
 
             this.detailsBtnEdit.FlatAppearance.BorderColor = DefaultButtonColor;
             this.detailsBtnDelete.FlatAppearance.BorderColor = DefaultButtonColor;

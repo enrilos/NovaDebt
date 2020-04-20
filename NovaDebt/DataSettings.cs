@@ -37,9 +37,13 @@ namespace NovaDebt
 
         public static Color DefaultButtonColor { get; } = Color.FromArgb(0, 208, 255);
 
-        public static Font DefaultInterestFont { get; } = ConfigureDefaultFont(12f);
+        public static Font DefaultFontTwelve { get; } = new Font("Idealist Sans", 12f);
 
-        public static Font DefaultButtonFont { get; } = ConfigureDefaultFont(16.2f);
+        public static Font DefaultFontThirteen { get; } = new Font("Idealist Sans", 13.8f);
+
+        public static Font DefaultFontFifteen { get; } = new Font("Idealist Sand", 15f);
+
+        public static Font DefaultFontSixteen { get; } = new Font("Idealist Sans", 16.2f);
 
         public static decimal MinAmountValue { get; } = 0.01m;
 
@@ -124,16 +128,6 @@ namespace NovaDebt
             public static string DetailsOverOneSelectedRecords { get; } = "Трябва да изберете един запис за детайли.";
 
             public static string EditOverOneSelectedRecords { get; } = "Трябва да изберете един запис за редакция.";
-        }
-
-        private static Font ConfigureDefaultFont(float size)
-        {
-            string path = Path.GetFullPath(Path.Combine(DefaultAssemblyPath, @"..\..\Fonts\GOTHIC.TTF"));
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile(path);
-            Font gothicFont = new Font(pfc.Families[0], size, FontStyle.Regular);
-
-            return gothicFont;
         }
     }
 }

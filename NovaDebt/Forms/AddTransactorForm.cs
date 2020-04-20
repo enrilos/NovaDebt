@@ -32,11 +32,30 @@ namespace NovaDebt.Forms
         private void AddTransactorForm_Load(object sender, EventArgs e)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            
+            // Font - Primary Buttons
+            this.btnCancel.Font = DefaultFontSixteen;
+            this.btnConfirm.Font = DefaultFontSixteen;
 
-            this.btnConfirm.Font = DefaultButtonFont;
-            this.btnCancel.Font = DefaultButtonFont;
+            // Font - Labels
+            this.nameLabel.Font = DefaultFontThirteen;
+            this.phoneLabel.Font = DefaultFontThirteen;
+            this.emailLabel.Font = DefaultFontThirteen;
+            this.facebookLabel.Font = DefaultFontThirteen;
+            this.amountLabel.Font = DefaultFontThirteen;
+            this.sinceLabel.Font = DefaultFontThirteen;
+            this.dueDateLabel.Font = DefaultFontThirteen;
+            this.interestPriorityOneLabel.Font = DefaultFontTwelve;
+            this.interestPriorityTwoLabel.Font = DefaultFontTwelve;
+            this.interestWithCurrencyLabel.Font = DefaultFontThirteen;
+            this.interestWithPercentageLabel.Font = DefaultFontThirteen;
 
-            this.interestCheckBox.Font = DefaultInterestFont;
+            // Font - Transactor Buttons
+            this.btnDebtor.Font = DefaultFontFifteen;
+            this.btnCreditor.Font = DefaultFontFifteen;
+
+            // Font - Interest checkbox (not the default font)
+            this.interestCheckBox.Font = new Font("Calibri", 12f, FontStyle.Regular);
 
             this.btnConfirm.FlatAppearance.BorderColor = DefaultButtonColor;
             this.btnCancel.FlatAppearance.BorderColor = DefaultButtonColor;

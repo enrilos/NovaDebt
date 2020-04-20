@@ -61,11 +61,11 @@
             // 
             this.nameLabel.AutoSize = true;
             this.nameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.nameLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameLabel.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.nameLabel.Location = new System.Drawing.Point(97, 30);
+            this.nameLabel.Location = new System.Drawing.Point(99, 26);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(68, 30);
+            this.nameLabel.Size = new System.Drawing.Size(66, 38);
             this.nameLabel.TabIndex = 8;
             this.nameLabel.Text = "Име";
             // 
@@ -73,11 +73,11 @@
             // 
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.phoneLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.phoneLabel.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.phoneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.phoneLabel.Location = new System.Drawing.Point(79, 80);
+            this.phoneLabel.Location = new System.Drawing.Point(74, 76);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(86, 30);
+            this.phoneLabel.Size = new System.Drawing.Size(91, 38);
             this.phoneLabel.TabIndex = 9;
             this.phoneLabel.Text = "Тел №";
             // 
@@ -85,11 +85,11 @@
             // 
             this.emailLabel.AutoSize = true;
             this.emailLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.emailLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.emailLabel.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.emailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.emailLabel.Location = new System.Drawing.Point(69, 130);
+            this.emailLabel.Location = new System.Drawing.Point(69, 126);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(96, 30);
+            this.emailLabel.Size = new System.Drawing.Size(96, 38);
             this.emailLabel.TabIndex = 10;
             this.emailLabel.Text = "Имейл";
             // 
@@ -97,11 +97,11 @@
             // 
             this.facebookLabel.AutoSize = true;
             this.facebookLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.facebookLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.facebookLabel.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.facebookLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.facebookLabel.Location = new System.Drawing.Point(43, 180);
+            this.facebookLabel.Location = new System.Drawing.Point(43, 176);
             this.facebookLabel.Name = "facebookLabel";
-            this.facebookLabel.Size = new System.Drawing.Size(122, 30);
+            this.facebookLabel.Size = new System.Drawing.Size(122, 38);
             this.facebookLabel.TabIndex = 11;
             this.facebookLabel.Text = "Фейсбук";
             // 
@@ -109,11 +109,11 @@
             // 
             this.amountLabel.AutoSize = true;
             this.amountLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.amountLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.amountLabel.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.amountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.amountLabel.Location = new System.Drawing.Point(15, 230);
+            this.amountLabel.Location = new System.Drawing.Point(7, 226);
             this.amountLabel.Name = "amountLabel";
-            this.amountLabel.Size = new System.Drawing.Size(150, 30);
+            this.amountLabel.Size = new System.Drawing.Size(158, 38);
             this.amountLabel.TabIndex = 12;
             this.amountLabel.Text = "Количество";
             // 
@@ -121,11 +121,11 @@
             // 
             this.interestCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.interestCheckBox.AutoSize = true;
-            this.interestCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.interestCheckBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.interestCheckBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.interestCheckBox.Location = new System.Drawing.Point(565, 233);
+            this.interestCheckBox.Location = new System.Drawing.Point(552, 237);
             this.interestCheckBox.Name = "interestCheckBox";
-            this.interestCheckBox.Size = new System.Drawing.Size(110, 27);
+            this.interestCheckBox.Size = new System.Drawing.Size(98, 28);
             this.interestCheckBox.TabIndex = 17;
             this.interestCheckBox.Text = "С лихва";
             this.interestCheckBox.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@
             // 
             this.btnDebtor.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.btnDebtor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDebtor.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDebtor.Font = new System.Drawing.Font("Idealist Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDebtor.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnDebtor.Location = new System.Drawing.Point(20, 286);
             this.btnDebtor.Name = "btnDebtor";
@@ -214,7 +214,7 @@
             // 
             this.btnCreditor.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.btnCreditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreditor.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCreditor.Font = new System.Drawing.Font("Idealist Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCreditor.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCreditor.Location = new System.Drawing.Point(286, 286);
             this.btnCreditor.Name = "btnCreditor";
@@ -269,11 +269,11 @@
             this.interestWithCurrencyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.interestWithCurrencyLabel.AutoSize = true;
             this.interestWithCurrencyLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.interestWithCurrencyLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.interestWithCurrencyLabel.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.interestWithCurrencyLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.interestWithCurrencyLabel.Location = new System.Drawing.Point(909, 176);
+            this.interestWithCurrencyLabel.Location = new System.Drawing.Point(909, 170);
             this.interestWithCurrencyLabel.Name = "interestWithCurrencyLabel";
-            this.interestWithCurrencyLabel.Size = new System.Drawing.Size(44, 30);
+            this.interestWithCurrencyLabel.Size = new System.Drawing.Size(50, 38);
             this.interestWithCurrencyLabel.TabIndex = 28;
             this.interestWithCurrencyLabel.Text = "лв.";
             this.interestWithCurrencyLabel.Visible = false;
@@ -283,11 +283,11 @@
             this.interestWithPercentageLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.interestWithPercentageLabel.AutoSize = true;
             this.interestWithPercentageLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.interestWithPercentageLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.interestWithPercentageLabel.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.interestWithPercentageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.interestWithPercentageLabel.Location = new System.Drawing.Point(909, 226);
+            this.interestWithPercentageLabel.Location = new System.Drawing.Point(909, 220);
             this.interestWithPercentageLabel.Name = "interestWithPercentageLabel";
-            this.interestWithPercentageLabel.Size = new System.Drawing.Size(32, 30);
+            this.interestWithPercentageLabel.Size = new System.Drawing.Size(34, 38);
             this.interestWithPercentageLabel.TabIndex = 29;
             this.interestWithPercentageLabel.Text = "%";
             this.interestWithPercentageLabel.Visible = false;
@@ -297,11 +297,11 @@
             this.sinceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.sinceLabel.AutoSize = true;
             this.sinceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.sinceLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sinceLabel.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.sinceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.sinceLabel.Location = new System.Drawing.Point(656, 30);
+            this.sinceLabel.Location = new System.Drawing.Point(652, 26);
             this.sinceLabel.Name = "sinceLabel";
-            this.sinceLabel.Size = new System.Drawing.Size(43, 30);
+            this.sinceLabel.Size = new System.Drawing.Size(47, 38);
             this.sinceLabel.TabIndex = 30;
             this.sinceLabel.Text = "От";
             // 
@@ -310,11 +310,11 @@
             this.dueDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dueDateLabel.AutoSize = true;
             this.dueDateLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.dueDateLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dueDateLabel.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dueDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.dueDateLabel.Location = new System.Drawing.Point(652, 80);
+            this.dueDateLabel.Location = new System.Drawing.Point(649, 76);
             this.dueDateLabel.Name = "dueDateLabel";
-            this.dueDateLabel.Size = new System.Drawing.Size(47, 30);
+            this.dueDateLabel.Size = new System.Drawing.Size(50, 38);
             this.dueDateLabel.TabIndex = 31;
             this.dueDateLabel.Text = "До";
             // 
@@ -350,7 +350,7 @@
             this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCancel.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.btnCancel.Location = new System.Drawing.Point(564, 281);
             this.btnCancel.Name = "btnCancel";
@@ -368,7 +368,7 @@
             this.btnConfirm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnConfirm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirm.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnConfirm.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.btnConfirm.Location = new System.Drawing.Point(770, 281);
             this.btnConfirm.Name = "btnConfirm";
@@ -383,11 +383,11 @@
             this.interestPriorityOneLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.interestPriorityOneLabel.AutoSize = true;
             this.interestPriorityOneLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.interestPriorityOneLabel.Font = new System.Drawing.Font("Century Gothic", 11.8F);
+            this.interestPriorityOneLabel.Font = new System.Drawing.Font("Idealist Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.interestPriorityOneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.interestPriorityOneLabel.Location = new System.Drawing.Point(678, 184);
+            this.interestPriorityOneLabel.Location = new System.Drawing.Point(675, 174);
             this.interestPriorityOneLabel.Name = "interestPriorityOneLabel";
-            this.interestPriorityOneLabel.Size = new System.Drawing.Size(21, 23);
+            this.interestPriorityOneLabel.Size = new System.Drawing.Size(21, 32);
             this.interestPriorityOneLabel.TabIndex = 36;
             this.interestPriorityOneLabel.Text = "1";
             this.interestPriorityOneLabel.Visible = false;
@@ -397,11 +397,11 @@
             this.interestPriorityTwoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.interestPriorityTwoLabel.AutoSize = true;
             this.interestPriorityTwoLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.interestPriorityTwoLabel.Font = new System.Drawing.Font("Century Gothic", 11.8F);
+            this.interestPriorityTwoLabel.Font = new System.Drawing.Font("Idealist Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.interestPriorityTwoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.interestPriorityTwoLabel.Location = new System.Drawing.Point(678, 230);
+            this.interestPriorityTwoLabel.Location = new System.Drawing.Point(673, 224);
             this.interestPriorityTwoLabel.Name = "interestPriorityTwoLabel";
-            this.interestPriorityTwoLabel.Size = new System.Drawing.Size(21, 23);
+            this.interestPriorityTwoLabel.Size = new System.Drawing.Size(26, 32);
             this.interestPriorityTwoLabel.TabIndex = 37;
             this.interestPriorityTwoLabel.Text = "2";
             this.interestPriorityTwoLabel.Visible = false;

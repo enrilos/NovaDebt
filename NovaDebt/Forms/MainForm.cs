@@ -105,13 +105,13 @@ namespace NovaDebt.Forms
             columnAmount.Width = 190;
 
             // Button customizations are made both in code and the UI.
-            // Font
-            this.btnDebtors.Font = DefaultButtonFont;
-            this.btnCreditors.Font = DefaultButtonFont;
-            this.btnAdd.Font = DefaultButtonFont;
-            this.btnEdit.Font = DefaultButtonFont;
-            this.btnDetails.Font = DefaultButtonFont;
-            this.btnDelete.Font = DefaultButtonFont;
+            // Font - Primary Buttons
+            this.btnDebtors.Font = DefaultFontSixteen;
+            this.btnCreditors.Font = DefaultFontSixteen;
+            this.btnAdd.Font = DefaultFontSixteen;
+            this.btnEdit.Font = DefaultFontSixteen;
+            this.btnDetails.Font = DefaultFontSixteen;
+            this.btnDelete.Font = DefaultFontSixteen;
 
             // BorderColor
             this.btnDebtors.FlatAppearance.BorderColor = DefaultButtonColor;
@@ -123,6 +123,7 @@ namespace NovaDebt.Forms
 
             // Attaching an even which handles where the user has clicked.
             // If clicked outside the data grid view all selected rows are no longer selected and the focus is lost.
+            this.novaDebtImage.MouseClick += new MouseEventHandler(RemoveDataGridSelection);
             this.mainPanel.MouseClick += new MouseEventHandler(RemoveDataGridSelection);
             this.menuPanel.MouseClick += new MouseEventHandler(RemoveDataGridSelection);
         }
