@@ -300,6 +300,9 @@ namespace NovaDebt.Forms
             }
             else if (!this.interestCheckBox.Checked)
             {
+                this.interestWithCurrencyTextBox.Text = "0";
+                this.interestWithPercentageTextBox.Text = "0";
+
                 this.interestPriorityOneLabel.Visible = false;
                 this.interestPriorityTwoLabel.Visible = false;
                 this.interestWithCurrencyLabel.Visible = false;
