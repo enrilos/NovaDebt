@@ -55,6 +55,7 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.interestPriorityOneLabel = new System.Windows.Forms.Label();
             this.interestPriorityTwoLabel = new System.Windows.Forms.Label();
+            this.currencyComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -123,7 +124,7 @@
             this.interestCheckBox.AutoSize = true;
             this.interestCheckBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.interestCheckBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.interestCheckBox.Location = new System.Drawing.Point(552, 237);
+            this.interestCheckBox.Location = new System.Drawing.Point(552, 235);
             this.interestCheckBox.Name = "interestCheckBox";
             this.interestCheckBox.Size = new System.Drawing.Size(98, 28);
             this.interestCheckBox.TabIndex = 17;
@@ -193,7 +194,7 @@
             this.amountTextBox.Location = new System.Drawing.Point(171, 228);
             this.amountTextBox.MaxLength = 15;
             this.amountTextBox.Name = "amountTextBox";
-            this.amountTextBox.Size = new System.Drawing.Size(375, 40);
+            this.amountTextBox.Size = new System.Drawing.Size(260, 40);
             this.amountTextBox.TabIndex = 22;
             // 
             // btnDebtor
@@ -406,12 +407,26 @@
             this.interestPriorityTwoLabel.Text = "2";
             this.interestPriorityTwoLabel.Visible = false;
             // 
+            // currencyComboBox
+            // 
+            this.currencyComboBox.BackColor = System.Drawing.Color.White;
+            this.currencyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.currencyComboBox.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.currencyComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.currencyComboBox.FormattingEnabled = true;
+            this.currencyComboBox.Location = new System.Drawing.Point(437, 233);
+            this.currencyComboBox.MaxLength = 3;
+            this.currencyComboBox.Name = "currencyComboBox";
+            this.currencyComboBox.Size = new System.Drawing.Size(109, 30);
+            this.currencyComboBox.TabIndex = 38;
+            // 
             // EditTransactorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(982, 358);
+            this.Controls.Add(this.currencyComboBox);
             this.Controls.Add(this.interestPriorityTwoLabel);
             this.Controls.Add(this.interestPriorityOneLabel);
             this.Controls.Add(this.btnConfirm);
@@ -477,5 +492,6 @@
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Label interestPriorityOneLabel;
         private System.Windows.Forms.Label interestPriorityTwoLabel;
+        private System.Windows.Forms.ComboBox currencyComboBox;
     }
 }

@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSettings.cs" />
+    <Compile Include="Common\DataSettings.cs" />
     <Compile Include="Forms\AddTransactorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,12 +86,14 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Contracts\ITransactor.cs" />
+    <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\DTOs\TransactorDTO.cs" />
+    <Compile Include="Models\Enums\ICurrency.cs" />
     <Compile Include="Models\Transactor.cs" />
     <Compile Include="NovaDebtProfile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Models\Enums\TransactorType.cs" />
-    <Compile Include="XmlProcess.cs" />
+    <Compile Include="Common\XmlProcess.cs" />
     <EmbeddedResource Include="Forms\DetailsForm.resx">
       <DependentUpon>DetailsForm.cs</DependentUpon>
     </EmbeddedResource>

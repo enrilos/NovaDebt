@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using NovaDebt.Common;
 using NovaDebt.Models;
 using NovaDebt.Models.Enums;
 using System;
@@ -13,7 +14,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-using static NovaDebt.DataSettings;
+using static NovaDebt.Common.DataSettings;
 
 namespace NovaDebt.Forms
 {
@@ -151,7 +152,7 @@ namespace NovaDebt.Forms
             AddTransactorForm addTransactorForm = new AddTransactorForm();
             addTransactorForm.Show();
 
-            // Disabling the main form while a subform is open.
+            // Disabling the main form whilst a subform is open.
             this.Enabled = false;
 
             // Event handler which will enable the main form if the add form is closed.
@@ -186,6 +187,9 @@ namespace NovaDebt.Forms
                         .FirstOrDefault();
                 }
 
+                IEnumerable<Currency> currencies = GetCurrencies();
+                Currency currency = currencies.Where(x => x.Abbreviation == transactor.Element("CurrencyAbbreviation").Value).First();
+
                 EditTransactorForm editTransactorForm = new EditTransactorForm(
                     this,
                     int.Parse(transactor.Attribute("no").Value),
@@ -196,6 +200,7 @@ namespace NovaDebt.Forms
                     transactor.Element("Email").Value,
                     transactor.Element("Facebook").Value,
                     decimal.Parse(transactor.Element("Amount").Value),
+                    currency,
                     transactor.Element("TransactorType").Value);
 
                 editTransactorForm.Show();
@@ -250,6 +255,7 @@ namespace NovaDebt.Forms
                     transactor.Element("Email").Value,
                     transactor.Element("Facebook").Value,
                     decimal.Parse(transactor.Element("Amount").Value),
+                    transactor.Element("CurrencyAbbreviation").Value,
                     transactor.Element("TransactorType").Value);
 
                 detailsForm.Show();
@@ -357,7 +363,7 @@ namespace NovaDebt.Forms
                     transactor.Name,
                     transactor.Since,
                     transactor.DueDate,
-                    $"{transactor.Amount:f2}");
+                    $"{transactor.Amount:f2} {transactor.CurrencyAbbreviation}");
             }
         }
 

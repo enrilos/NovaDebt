@@ -14,13 +14,14 @@ namespace NovaDebt.Models
         private string email;
         private string facebook;
         private decimal amount;
+        private string currencyAbbreviation;
         private string transactorType;
 
         public Transactor()
         {
         }
 
-        public Transactor(string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
+        public Transactor(string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string currencyAbbreviation, string transactorType)
         {
             this.name = name;
             this.since = since;
@@ -29,6 +30,7 @@ namespace NovaDebt.Models
             this.email = email;
             this.facebook = facebook;
             this.amount = amount;
+            this.currencyAbbreviation = currencyAbbreviation;
             this.transactorType = transactorType;
         }
 
@@ -108,6 +110,12 @@ namespace NovaDebt.Models
 
                 this.amount = value;
             }
+        }
+
+        public string CurrencyAbbreviation
+        {
+            get { return this.currencyAbbreviation; }
+            set { this.currencyAbbreviation = value; }
         }
 
         public string TransactorType

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NovaDebt.Models.Contracts
+﻿namespace NovaDebt.Models.Contracts
 {
     public interface ITransactor
     {
@@ -21,6 +19,8 @@ namespace NovaDebt.Models.Contracts
         string Facebook { get; }
 
         decimal Amount { get; }
+
+        string CurrencyAbbreviation { get; }
 
         string TransactorType { get; }
     }

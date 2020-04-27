@@ -1,4 +1,6 @@
-﻿using NovaDebt.Models.Enums;
+﻿using NovaDebt.Common;
+using NovaDebt.Models;
+using NovaDebt.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,7 +11,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-using static NovaDebt.DataSettings;
+using static NovaDebt.Common.DataSettings;
 
 namespace NovaDebt.Forms
 {
@@ -26,6 +28,7 @@ namespace NovaDebt.Forms
         private string oldEmail;
         private string oldFacebook;
         private decimal oldAmount;
+        private Currency oldCurrency;
         private string oldTransactorType;
 
         private string newName;
@@ -35,6 +38,7 @@ namespace NovaDebt.Forms
         private string newEmail;
         private string newFacebook;
         private decimal newAmount;
+        private Currency newCurrency;
         private string newTransactorType;
 
         public EditTransactorForm()
@@ -48,7 +52,7 @@ namespace NovaDebt.Forms
             this.dueDatePicker.CustomFormat = "dd/MM/yyyy";
         }
 
-        public EditTransactorForm(MainForm mainForm, int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
+        public EditTransactorForm(MainForm mainForm, int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, Currency currency, string transactorType)
         {
             InitializeComponent();
             this.mainForm = mainForm;
@@ -60,6 +64,7 @@ namespace NovaDebt.Forms
             this.oldEmail = email;
             this.oldFacebook = facebook;
             this.oldAmount = amount;
+            this.oldCurrency = currency;
             this.oldTransactorType = transactorType;
             SetFieldValues();
         }
@@ -81,6 +86,12 @@ namespace NovaDebt.Forms
             this.emailTextBox.Text = this.oldEmail;
             this.facebookTextBox.Text = this.oldFacebook;
             this.amountTextBox.Text = this.oldAmount.ToString();
+
+            IEnumerable<Currency> currencies = GetCurrencies();
+            this.currencyComboBox.DataSource = currencies;
+            this.currencyComboBox.ValueMember = "Id";
+            this.currencyComboBox.DisplayMember = "Abbreviation";
+            this.currencyComboBox.SelectedItem = currencies.Where(x => x.Abbreviation == oldCurrency.Abbreviation).First();
 
             if (this.oldTransactorType == TransactorType.Debtor.ToString())
             {
@@ -130,8 +141,21 @@ namespace NovaDebt.Forms
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (AreInputFieldsValid())
+            bool areInputFieldsValid = AreInputFieldsValid(
+                this.nameTextBox,
+                this.sinceDatePicker,
+                this.dueDatePicker,
+                this.phoneTextBox,
+                this.emailTextBox,
+                this.facebookTextBox,
+                this.amountTextBox,
+                this.interestCheckBox,
+                this.interestWithCurrencyTextBox,
+                this.interestWithPercentageTextBox);
+
+            if (areInputFieldsValid)
             {
+                // The array is necessary so we can later trim each textbox.
                 string[] inputFields = new string[] {
                     this.nameTextBox.Text,
                     this.sinceDatePicker.Text,
@@ -164,10 +188,12 @@ namespace NovaDebt.Forms
                 this.newEmail = inputFields[4];
                 this.newFacebook = inputFields[5];
                 this.newAmount = decimal.Parse(inputFields[6]) + currencyInterest;
+                Currency currencyObj = this.currencyComboBox.SelectedItem as Currency;
+                this.newCurrency = currencyObj;
 
                 if (percentageInterest > 1.00m)
                 {
-                    newAmount = Math.Round(newAmount * percentageInterest, 2);
+                    newAmount = decimal.Parse((newAmount * percentageInterest).ToString("f2"));
                 }
 
                 this.newTransactorType = string.Empty;
@@ -184,6 +210,7 @@ namespace NovaDebt.Forms
 
                 if (this.oldTransactorType != this.newTransactorType)
                 {
+                    // Deleting the transactor from the old collection and putting it (with the new data) into the new collection.
                     xmlDocument.Root.Elements().FirstOrDefault(x => x.Attribute("no").Value == this.no.ToString()
                                                                && x.Element("TransactorType").Value == this.oldTransactorType)
                                 .Remove();
@@ -208,11 +235,13 @@ namespace NovaDebt.Forms
                         this.newPhoneNumber,
                         this.newEmail,
                         this.newAmount,
+                        this.newCurrency.Abbreviation,
                         this.newFacebook,
                         this.newTransactorType);
                 }
                 else if (this.oldTransactorType == this.newTransactorType)
                 {
+                    // Overwriting the old data with the new one and keeping the record in the same collection.
                     XmlProcess.EditTransactorFromXml(
                         TransactorsFilePath,
                         this.no,
@@ -223,6 +252,7 @@ namespace NovaDebt.Forms
                         this.newEmail,
                         this.newFacebook,
                         this.newAmount,
+                        this.newCurrency.Abbreviation,
                         this.oldTransactorType);
                 }
 
@@ -311,214 +341,6 @@ namespace NovaDebt.Forms
                 this.interestWithPercentageTextBox.Visible = false;
                 this.interestsSeparator.Visible = false;
             }
-        }
-
-        private bool AreInputFieldsValid()
-        {
-            //
-            // Име - Name (Required)
-            //
-            Regex mainRegex = new Regex("^[a-zA-Z0-9., ]*$");
-            Regex cyrillicRegex = new Regex("^[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя0-9., ]*$");
-
-            if (!mainRegex.IsMatch(this.nameTextBox.Text)
-             && !cyrillicRegex.IsMatch(this.nameTextBox.Text))
-            {
-                MessageBox.Show(ErrorMessage.InvalidName,
-                    MessageBoxCaption.Error,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
-            }
-            else if (string.IsNullOrEmpty(this.nameTextBox.Text)
-                  || string.IsNullOrWhiteSpace(this.nameTextBox.Text))
-            {
-                MessageBox.Show(ErrorMessage.MissingName,
-                    MessageBoxCaption.Error,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
-            }
-
-            //
-            // От - Since (Required)
-            //
-            if (this.sinceDatePicker.Value > this.dueDatePicker.Value)
-            {
-                MessageBox.Show(ErrorMessage.InvalidSinceDate,
-                    MessageBoxCaption.Error,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
-            }
-
-            //
-            // До - Due Date (Required)
-            //
-            if (this.dueDatePicker.Value < this.sinceDatePicker.Value)
-            {
-                MessageBox.Show(ErrorMessage.InvalidDueDate,
-                    MessageBoxCaption.Error,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
-            }
-
-            //
-            // Тел № - PhoneNumber
-            //
-            mainRegex = new Regex("^[+0-9-() ]*$");
-
-            if (!mainRegex.IsMatch(this.phoneTextBox.Text))
-            {
-                MessageBox.Show(ErrorMessage.InvalidPhoneNumber,
-                    MessageBoxCaption.Error,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
-            }
-
-            //
-            // Имейл - Email
-            //
-            mainRegex = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
-
-            if (!mainRegex.IsMatch(this.emailTextBox.Text.Trim())
-                && !string.IsNullOrEmpty(this.emailTextBox.Text.Trim())
-                && !cyrillicRegex.IsMatch(this.emailTextBox.Text.Trim()))
-            {
-                MessageBox.Show(ErrorMessage.InvalidEmail,
-                    MessageBoxCaption.Error,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
-            }
-
-            //
-            // Фейсбук - Facebook
-            //
-            mainRegex = new Regex("^[A-z ]*$");
-
-            if (!mainRegex.IsMatch(this.facebookTextBox.Text)
-                && !cyrillicRegex.IsMatch(this.facebookTextBox.Text))
-            {
-                MessageBox.Show(ErrorMessage.InvalidFacebook,
-                    MessageBoxCaption.Error,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
-            }
-
-            //
-            // Количество - Amount (Required)
-            //
-            mainRegex = new Regex("^[0-9]+([.,][0-9]{1,2})?$");
-            decimal amount;
-
-            if (mainRegex.IsMatch(this.amountTextBox.Text.Trim()))
-            {
-                amount = decimal.Parse(this.amountTextBox.Text);
-
-                if (amount < MinAmountValue || amount > MaxAmountValue)
-                {
-                    MessageBox.Show(string.Format(ErrorMessage.InvalidAmountInterval, MinAmountValue, MaxAmountValue),
-                           MessageBoxCaption.Error,
-                           MessageBoxButtons.OK,
-                           MessageBoxIcon.Error);
-
-                    return false;
-                }
-            }
-            else if (string.IsNullOrEmpty(this.amountTextBox.Text) || string.IsNullOrWhiteSpace(this.amountTextBox.Text))
-            {
-                MessageBox.Show(ErrorMessage.MissingAmount,
-                    MessageBoxCaption.Error,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
-            }
-            else
-            {
-                MessageBox.Show(ErrorMessage.InvalidAmount,
-                    MessageBoxCaption.Error,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                return false;
-            }
-
-            if (this.interestCheckBox.Checked)
-            {
-                // Количествена лихва - Currency interest
-                if (string.IsNullOrWhiteSpace(this.interestWithCurrencyTextBox.Text)
-                    || string.IsNullOrEmpty(this.interestWithCurrencyTextBox.Text))
-                {
-                    this.interestWithCurrencyTextBox.Text = "0";
-                }
-                if (mainRegex.IsMatch(this.interestWithCurrencyTextBox.Text.Trim()))
-                {
-                    decimal currencyInterest = decimal.Parse(this.interestWithCurrencyTextBox.Text);
-
-                    if (currencyInterest < MinInterestCurrencyValue || currencyInterest > MaxInterestCurrencyValue)
-                    {
-                        MessageBox.Show(string.Format(ErrorMessage.InvalidInterestCurrencyInterval, MinInterestCurrencyValue, MaxInterestCurrencyValue),
-                               MessageBoxCaption.Error,
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.Error);
-
-                        return false;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(ErrorMessage.InvalidInterestCurrency,
-                        MessageBoxCaption.Error,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-
-                    return false;
-                }
-
-                // Процентна лихва - Percentage interest
-                if (string.IsNullOrWhiteSpace(this.interestWithPercentageTextBox.Text)
-                    || string.IsNullOrEmpty(this.interestWithPercentageTextBox.Text))
-                {
-                    this.interestWithPercentageTextBox.Text = "0";
-                }
-                if (mainRegex.IsMatch(this.interestWithPercentageTextBox.Text.Trim()))
-                {
-                    decimal percentageInterest = decimal.Parse(this.interestWithPercentageTextBox.Text);
-
-                    if (percentageInterest < MinInterestPercentageValue || percentageInterest > MaxInterestPercentageValue)
-                    {
-                        MessageBox.Show(string.Format(ErrorMessage.InvalidInterestPercentageInterval, MinInterestPercentageValue, MaxInterestPercentageValue),
-                           MessageBoxCaption.Error,
-                           MessageBoxButtons.OK,
-                           MessageBoxIcon.Error);
-
-                        return false;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(ErrorMessage.InvalidInterestPercentage,
-                        MessageBoxCaption.Error,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-
-                    return false;
-                }
-            }
-
-            return true;
         }
     }
 }

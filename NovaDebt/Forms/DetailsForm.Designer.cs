@@ -93,11 +93,11 @@
             this.detailsNameLabelLayout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsNameLabelLayout.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsNameLabelLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.detailsNameLabelLayout.Location = new System.Drawing.Point(176, 60);
+            this.detailsNameLabelLayout.Location = new System.Drawing.Point(116, 60);
             this.detailsNameLabelLayout.Name = "detailsNameLabelLayout";
-            this.detailsNameLabelLayout.Size = new System.Drawing.Size(72, 38);
+            this.detailsNameLabelLayout.Size = new System.Drawing.Size(66, 38);
             this.detailsNameLabelLayout.TabIndex = 10;
-            this.detailsNameLabelLayout.Text = "Име:";
+            this.detailsNameLabelLayout.Text = "Име";
             // 
             // detailsPhoneLabelLayout
             // 
@@ -105,11 +105,11 @@
             this.detailsPhoneLabelLayout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsPhoneLabelLayout.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsPhoneLabelLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.detailsPhoneLabelLayout.Location = new System.Drawing.Point(151, 110);
+            this.detailsPhoneLabelLayout.Location = new System.Drawing.Point(91, 110);
             this.detailsPhoneLabelLayout.Name = "detailsPhoneLabelLayout";
-            this.detailsPhoneLabelLayout.Size = new System.Drawing.Size(97, 38);
+            this.detailsPhoneLabelLayout.Size = new System.Drawing.Size(91, 38);
             this.detailsPhoneLabelLayout.TabIndex = 11;
-            this.detailsPhoneLabelLayout.Text = "Тел №:";
+            this.detailsPhoneLabelLayout.Text = "Тел №";
             // 
             // detailsEmailLabelLayout
             // 
@@ -117,11 +117,11 @@
             this.detailsEmailLabelLayout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsEmailLabelLayout.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsEmailLabelLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.detailsEmailLabelLayout.Location = new System.Drawing.Point(146, 160);
+            this.detailsEmailLabelLayout.Location = new System.Drawing.Point(86, 160);
             this.detailsEmailLabelLayout.Name = "detailsEmailLabelLayout";
-            this.detailsEmailLabelLayout.Size = new System.Drawing.Size(102, 38);
+            this.detailsEmailLabelLayout.Size = new System.Drawing.Size(96, 38);
             this.detailsEmailLabelLayout.TabIndex = 12;
-            this.detailsEmailLabelLayout.Text = "Имейл:";
+            this.detailsEmailLabelLayout.Text = "Имейл";
             // 
             // detailsFacebookLabelLayout
             // 
@@ -129,11 +129,11 @@
             this.detailsFacebookLabelLayout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsFacebookLabelLayout.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsFacebookLabelLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.detailsFacebookLabelLayout.Location = new System.Drawing.Point(120, 210);
+            this.detailsFacebookLabelLayout.Location = new System.Drawing.Point(60, 210);
             this.detailsFacebookLabelLayout.Name = "detailsFacebookLabelLayout";
-            this.detailsFacebookLabelLayout.Size = new System.Drawing.Size(128, 38);
+            this.detailsFacebookLabelLayout.Size = new System.Drawing.Size(122, 38);
             this.detailsFacebookLabelLayout.TabIndex = 13;
-            this.detailsFacebookLabelLayout.Text = "Фейсбук:";
+            this.detailsFacebookLabelLayout.Text = "Фейсбук";
             // 
             // detailsAmountLabelLayout
             // 
@@ -143,9 +143,9 @@
             this.detailsAmountLabelLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.detailsAmountLabelLayout.Location = new System.Drawing.Point(24, 265);
             this.detailsAmountLabelLayout.Name = "detailsAmountLabelLayout";
-            this.detailsAmountLabelLayout.Size = new System.Drawing.Size(224, 38);
+            this.detailsAmountLabelLayout.Size = new System.Drawing.Size(158, 38);
             this.detailsAmountLabelLayout.TabIndex = 14;
-            this.detailsAmountLabelLayout.Text = "Количество в лв.:";
+            this.detailsAmountLabelLayout.Text = "Количество";
             // 
             // detailsSinceLabelLayout
             // 
@@ -156,9 +156,9 @@
             this.detailsSinceLabelLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.detailsSinceLabelLayout.Location = new System.Drawing.Point(646, 10);
             this.detailsSinceLabelLayout.Name = "detailsSinceLabelLayout";
-            this.detailsSinceLabelLayout.Size = new System.Drawing.Size(53, 38);
+            this.detailsSinceLabelLayout.Size = new System.Drawing.Size(47, 38);
             this.detailsSinceLabelLayout.TabIndex = 15;
-            this.detailsSinceLabelLayout.Text = "От:";
+            this.detailsSinceLabelLayout.Text = "От";
             // 
             // detailsDueDateLabelLayout
             // 
@@ -169,9 +169,9 @@
             this.detailsDueDateLabelLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.detailsDueDateLabelLayout.Location = new System.Drawing.Point(643, 110);
             this.detailsDueDateLabelLayout.Name = "detailsDueDateLabelLayout";
-            this.detailsDueDateLabelLayout.Size = new System.Drawing.Size(56, 38);
+            this.detailsDueDateLabelLayout.Size = new System.Drawing.Size(50, 38);
             this.detailsDueDateLabelLayout.TabIndex = 16;
-            this.detailsDueDateLabelLayout.Text = "До:";
+            this.detailsDueDateLabelLayout.Text = "До";
             // 
             // detailsTransactorTypeLabelLayout
             // 
@@ -179,11 +179,11 @@
             this.detailsTransactorTypeLabelLayout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsTransactorTypeLabelLayout.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsTransactorTypeLabelLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.detailsTransactorTypeLabelLayout.Location = new System.Drawing.Point(183, 315);
+            this.detailsTransactorTypeLabelLayout.Location = new System.Drawing.Point(123, 315);
             this.detailsTransactorTypeLabelLayout.Name = "detailsTransactorTypeLabelLayout";
-            this.detailsTransactorTypeLabelLayout.Size = new System.Drawing.Size(65, 38);
+            this.detailsTransactorTypeLabelLayout.Size = new System.Drawing.Size(59, 38);
             this.detailsTransactorTypeLabelLayout.TabIndex = 17;
-            this.detailsTransactorTypeLabelLayout.Text = "Тип:";
+            this.detailsTransactorTypeLabelLayout.Text = "Тип";
             // 
             // detailsNoLabelLayout
             // 
@@ -191,11 +191,11 @@
             this.detailsNoLabelLayout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsNoLabelLayout.Font = new System.Drawing.Font("Idealist Sans", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsNoLabelLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
-            this.detailsNoLabelLayout.Location = new System.Drawing.Point(200, 10);
+            this.detailsNoLabelLayout.Location = new System.Drawing.Point(140, 10);
             this.detailsNoLabelLayout.Name = "detailsNoLabelLayout";
-            this.detailsNoLabelLayout.Size = new System.Drawing.Size(48, 38);
+            this.detailsNoLabelLayout.Size = new System.Drawing.Size(42, 38);
             this.detailsNoLabelLayout.TabIndex = 18;
-            this.detailsNoLabelLayout.Text = "№:";
+            this.detailsNoLabelLayout.Text = "№";
             // 
             // detailsNoLabel
             // 
@@ -203,9 +203,9 @@
             this.detailsNoLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsNoLabel.Font = new System.Drawing.Font("Idealist Sans", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsNoLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsNoLabel.Location = new System.Drawing.Point(254, 5);
+            this.detailsNoLabel.Location = new System.Drawing.Point(188, 5);
             this.detailsNoLabel.Name = "detailsNoLabel";
-            this.detailsNoLabel.Size = new System.Drawing.Size(28, 43);
+            this.detailsNoLabel.Size = new System.Drawing.Size(29, 44);
             this.detailsNoLabel.TabIndex = 19;
             this.detailsNoLabel.Text = "1";
             // 
@@ -215,9 +215,9 @@
             this.detailsPhoneLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsPhoneLabel.Font = new System.Drawing.Font("Idealist Sans", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsPhoneLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsPhoneLabel.Location = new System.Drawing.Point(254, 105);
+            this.detailsPhoneLabel.Location = new System.Drawing.Point(188, 105);
             this.detailsPhoneLabel.Name = "detailsPhoneLabel";
-            this.detailsPhoneLabel.Size = new System.Drawing.Size(28, 43);
+            this.detailsPhoneLabel.Size = new System.Drawing.Size(29, 44);
             this.detailsPhoneLabel.TabIndex = 21;
             this.detailsPhoneLabel.Text = "1";
             // 
@@ -227,9 +227,9 @@
             this.detailsEmailLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsEmailLabel.Font = new System.Drawing.Font("Idealist Sans", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsEmailLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsEmailLabel.Location = new System.Drawing.Point(254, 155);
+            this.detailsEmailLabel.Location = new System.Drawing.Point(188, 155);
             this.detailsEmailLabel.Name = "detailsEmailLabel";
-            this.detailsEmailLabel.Size = new System.Drawing.Size(28, 43);
+            this.detailsEmailLabel.Size = new System.Drawing.Size(29, 44);
             this.detailsEmailLabel.TabIndex = 22;
             this.detailsEmailLabel.Text = "1";
             // 
@@ -239,9 +239,9 @@
             this.detailsFacebookLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsFacebookLabel.Font = new System.Drawing.Font("Idealist Sans", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsFacebookLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsFacebookLabel.Location = new System.Drawing.Point(254, 205);
+            this.detailsFacebookLabel.Location = new System.Drawing.Point(188, 204);
             this.detailsFacebookLabel.Name = "detailsFacebookLabel";
-            this.detailsFacebookLabel.Size = new System.Drawing.Size(28, 43);
+            this.detailsFacebookLabel.Size = new System.Drawing.Size(29, 44);
             this.detailsFacebookLabel.TabIndex = 23;
             this.detailsFacebookLabel.Text = "1";
             // 
@@ -251,9 +251,9 @@
             this.detailsAmountLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsAmountLabel.Font = new System.Drawing.Font("Idealist Sans", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsAmountLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsAmountLabel.Location = new System.Drawing.Point(254, 260);
+            this.detailsAmountLabel.Location = new System.Drawing.Point(188, 260);
             this.detailsAmountLabel.Name = "detailsAmountLabel";
-            this.detailsAmountLabel.Size = new System.Drawing.Size(28, 43);
+            this.detailsAmountLabel.Size = new System.Drawing.Size(29, 44);
             this.detailsAmountLabel.TabIndex = 24;
             this.detailsAmountLabel.Text = "1";
             // 
@@ -263,9 +263,9 @@
             this.detailsTransactorTypeLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsTransactorTypeLabel.Font = new System.Drawing.Font("Idealist Sans", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsTransactorTypeLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsTransactorTypeLabel.Location = new System.Drawing.Point(254, 310);
+            this.detailsTransactorTypeLabel.Location = new System.Drawing.Point(188, 310);
             this.detailsTransactorTypeLabel.Name = "detailsTransactorTypeLabel";
-            this.detailsTransactorTypeLabel.Size = new System.Drawing.Size(28, 43);
+            this.detailsTransactorTypeLabel.Size = new System.Drawing.Size(29, 44);
             this.detailsTransactorTypeLabel.TabIndex = 25;
             this.detailsTransactorTypeLabel.Text = "1";
             // 
@@ -276,9 +276,9 @@
             this.detailsSinceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsSinceLabel.Font = new System.Drawing.Font("Idealist Sans", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsSinceLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsSinceLabel.Location = new System.Drawing.Point(705, 5);
+            this.detailsSinceLabel.Location = new System.Drawing.Point(699, 5);
             this.detailsSinceLabel.Name = "detailsSinceLabel";
-            this.detailsSinceLabel.Size = new System.Drawing.Size(28, 43);
+            this.detailsSinceLabel.Size = new System.Drawing.Size(29, 44);
             this.detailsSinceLabel.TabIndex = 26;
             this.detailsSinceLabel.Text = "1";
             // 
@@ -289,9 +289,9 @@
             this.detailsDueDateLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsDueDateLabel.Font = new System.Drawing.Font("Idealist Sans", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsDueDateLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsDueDateLabel.Location = new System.Drawing.Point(705, 105);
+            this.detailsDueDateLabel.Location = new System.Drawing.Point(699, 105);
             this.detailsDueDateLabel.Name = "detailsDueDateLabel";
-            this.detailsDueDateLabel.Size = new System.Drawing.Size(28, 43);
+            this.detailsDueDateLabel.Size = new System.Drawing.Size(29, 44);
             this.detailsDueDateLabel.TabIndex = 27;
             this.detailsDueDateLabel.Text = "1";
             // 
@@ -301,9 +301,9 @@
             this.detailsNameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.detailsNameLabel.Font = new System.Drawing.Font("Idealist Sans", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.detailsNameLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.detailsNameLabel.Location = new System.Drawing.Point(254, 55);
+            this.detailsNameLabel.Location = new System.Drawing.Point(188, 55);
             this.detailsNameLabel.Name = "detailsNameLabel";
-            this.detailsNameLabel.Size = new System.Drawing.Size(28, 43);
+            this.detailsNameLabel.Size = new System.Drawing.Size(29, 44);
             this.detailsNameLabel.TabIndex = 28;
             this.detailsNameLabel.Text = "1";
             // 

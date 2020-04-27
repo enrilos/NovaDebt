@@ -32,6 +32,9 @@ namespace NovaDebt.Models.DTOs
         [XmlElement("Amount")]
         public decimal Amount { get; set; }
 
+        [XmlElement("CurrencyAbbreviation")]
+        public string CurrencyAbbreviation { get; set; }
+
         [XmlElement("TransactorType")]
         public string TransactorType { get; set; }
     }

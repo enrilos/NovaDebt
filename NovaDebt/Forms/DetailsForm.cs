@@ -1,12 +1,12 @@
-﻿using NovaDebt.Models.Enums;
+﻿using NovaDebt.Models;
+using NovaDebt.Models.Enums;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-using static NovaDebt.DataSettings;
+using static NovaDebt.Common.DataSettings;
 
 namespace NovaDebt.Forms
 {
@@ -22,6 +22,7 @@ namespace NovaDebt.Forms
         private string email;
         private string facebook;
         private decimal amount;
+        private string currencyAbbreviation;
         private string transactorType;
 
         public DetailsForm()
@@ -29,7 +30,7 @@ namespace NovaDebt.Forms
             InitializeComponent();
         }
 
-        public DetailsForm(MainForm mainForm, int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
+        public DetailsForm(MainForm mainForm, int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string currencyAbbreviation, string transactorType)
         {
             InitializeComponent();
             this.mainForm = mainForm;
@@ -41,6 +42,7 @@ namespace NovaDebt.Forms
             this.email = email;
             this.facebook = facebook;
             this.amount = amount;
+            this.currencyAbbreviation = currencyAbbreviation;
             this.transactorType = transactorType;
 
         }
@@ -83,7 +85,7 @@ namespace NovaDebt.Forms
             this.detailsPhoneLabel.Text = phoneNumber;
             this.detailsEmailLabel.Text = email;
             this.detailsFacebookLabel.Text = facebook;
-            this.detailsAmountLabel.Text = amount.ToString();
+            this.detailsAmountLabel.Text = amount.ToString("f2") + $" {this.currencyAbbreviation}";
 
             if (this.transactorType == TransactorType.Debtor.ToString())
             {
@@ -97,6 +99,26 @@ namespace NovaDebt.Forms
 
         private void detailsBtnEdit_Click(object sender, EventArgs e)
         {
+            Currency currencySymbolObj = new Currency();
+            currencySymbolObj.Abbreviation = currencyAbbreviation;
+
+            switch (currencyAbbreviation)
+            {
+                case "BGN": currencySymbolObj.Id = "01"; break;
+                case "EUR": currencySymbolObj.Id = "02"; break;
+                case "USD": currencySymbolObj.Id = "03"; break;
+                case "GBP": currencySymbolObj.Id = "04"; break;
+                case "PLN": currencySymbolObj.Id = "05"; break;
+                case "RON": currencySymbolObj.Id = "06"; break;
+                case "TRY": currencySymbolObj.Id = "07"; break;
+                case "RUB": currencySymbolObj.Id = "08"; break;
+                case "CZK": currencySymbolObj.Id = "09"; break;
+                case "NOK": currencySymbolObj.Id = "10"; break;
+                case "SEK": currencySymbolObj.Id = "11"; break;
+                case "CAD": currencySymbolObj.Id = "12"; break;
+                case "CHF": currencySymbolObj.Id = "13"; break;
+            }
+
             EditTransactorForm editTransactorForm = new EditTransactorForm(
                 this.mainForm,
                 this.no,
@@ -107,6 +129,7 @@ namespace NovaDebt.Forms
                 this.email,
                 this.facebook,
                 this.amount,
+                currencySymbolObj,
                 this.transactorType);
 
             editTransactorForm.Show();

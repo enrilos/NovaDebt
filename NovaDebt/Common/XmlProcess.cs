@@ -9,9 +9,9 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-using static NovaDebt.DataSettings;
+using static NovaDebt.Common.DataSettings;
 
-namespace NovaDebt
+namespace NovaDebt.Common
 {
     public static class XmlProcess
     {
@@ -29,8 +29,11 @@ namespace NovaDebt
             string xmlText = File.ReadAllText(path);
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(TransactorDTO[]),
                                           new XmlRootAttribute(XmlRoot));
+
             TransactorDTO[] transactorDTOs = (TransactorDTO[])xmlSerializer.Deserialize(new StringReader(xmlText));
 
+            // PROPERTIES ARE BEING MATCHED AUTOMATICALLY WHEN THERE IS A CONSTRUCTOR WITH THE PARAMENTERS SAME AS IN THE DTO
+            // This is how AutoMapper maps the properties of the DTO on the actual class.
             Transactor[] transactors = Mapper.Map<Transactor[]>(transactorDTOs)
                                        .Where(t => t.TransactorType.ToLower() == transactorType.ToString().ToLower())
                                        .ToArray();
@@ -38,7 +41,7 @@ namespace NovaDebt
             return transactors;
         }
 
-        public static void AddTransactorToXml(string path, string name, string since, string dueDate, string phone, string email, decimal amount, string facebook, string transactorType)
+        public static void AddTransactorToXml(string path, string name, string since, string dueDate, string phone, string email, decimal amount, string currencyAbbreviation, string facebook, string transactorType)
         {
             if (path == null)
             {
@@ -49,7 +52,7 @@ namespace NovaDebt
                 throw new InvalidOperationException(ErrorMessage.FileDoesntExist);
             }
 
-            Transactor transactor = new Transactor(name, since, dueDate, phone, email, facebook, amount, transactorType);
+            Transactor transactor = new Transactor(name, since, dueDate, phone, email, facebook, amount, currencyAbbreviation, transactorType);
             int idCount = int.Parse(File.ReadAllText(IdCounterFilePath));
             transactor.Id = idCount++;
             File.WriteAllText(IdCounterFilePath, idCount.ToString());
@@ -70,13 +73,14 @@ namespace NovaDebt
                         new XElement("PhoneNumber", phone),
                         new XElement("Email", email),
                         new XElement("Facebook", facebook),
-                        new XElement("Amount", amount),
+                        new XElement("Amount", amount.ToString("f2")),
+                        new XElement("CurrencyAbbreviation", currencyAbbreviation),
                         new XElement("TransactorType", transactorType)));
 
             xmlDocument.Save(TransactorsFilePath, SaveOptions.DisableFormatting);
         }
 
-        public static void EditTransactorFromXml(string path, int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string transactorType)
+        public static void EditTransactorFromXml(string path, int no, string name, string since, string dueDate, string phoneNumber, string email, string facebook, decimal amount, string currencyAbbreviation, string transactorType)
         {
             XDocument xmlDocument = XDocument.Load(path);
 
@@ -91,7 +95,8 @@ namespace NovaDebt
             transactor.SetElementValue("PhoneNumber", phoneNumber);
             transactor.SetElementValue("Email", email);
             transactor.SetElementValue("Facebook", facebook);
-            transactor.SetElementValue("Amount", amount);
+            transactor.SetElementValue("Amount", amount.ToString("f2"));
+            transactor.SetElementValue("CurrencyAbbreviation", currencyAbbreviation);
 
             xmlDocument.Save(path, SaveOptions.DisableFormatting);
         }
