@@ -339,6 +339,7 @@ namespace NovaDebt.Forms
                     }
 
                     this.transactorsDataGrid.DataSource = table;
+                    this.transactorsDataGrid.ClearSelection();
                 }
             }
         }

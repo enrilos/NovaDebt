@@ -1,7 +1,7 @@
-﻿namespace NovaDebt.Models
-{
-    using NovaDebt.Models.Enums;
+﻿using NovaDebt.Models.Contracts;
 
+namespace NovaDebt.Models
+{
     public class Currency : ICurrency
     {
         public string Id { get; set; }

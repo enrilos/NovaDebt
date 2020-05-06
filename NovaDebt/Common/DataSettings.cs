@@ -36,7 +36,7 @@ namespace NovaDebt.Common
 
         // NOTE:
         // Product ID MUST BE CHANGED when making a new setup.
-        public static string UninstallerSeed { get; } = "@echo off\nmsiexec /x {F3C2E03C-2250-42BA-944A-55245596295F}";
+        public static string UninstallerSeed { get; } = "@echo off\nmsiexec /x {8207D1E9-03AF-4389-95AB-3BF409F069E4}";
 
         public static Color DefaultButtonColor { get; } = Color.FromArgb(0, 208, 255);
 

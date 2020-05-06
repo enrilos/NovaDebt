@@ -1,4 +1,4 @@
-﻿namespace NovaDebt.Models.Enums
+﻿namespace NovaDebt.Models.Contracts
 {
     public interface ICurrency
     {

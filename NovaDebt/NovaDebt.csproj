@@ -88,7 +88,7 @@
     <Compile Include="Models\Contracts\ITransactor.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\DTOs\TransactorDTO.cs" />
-    <Compile Include="Models\Enums\ICurrency.cs" />
+    <Compile Include="Models\Contracts\ICurrency.cs" />
     <Compile Include="Models\Transactor.cs" />
     <Compile Include="NovaDebtProfile.cs" />
     <Compile Include="Program.cs" />
